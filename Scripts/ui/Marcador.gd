@@ -18,6 +18,7 @@ func set_gol(equipo):
 	else:
 		texto = str(goles[( equipo + 1 ) % 2 ]) + " - " + str(goles[equipo])
 	marcador.text = texto
+	EventBus.reposicionar.emit()
 	
 func actualizar_timer() -> void:
 	#if controlador_partido.time_left < 0:

@@ -73,6 +73,10 @@ p2_kick={
 2d_render/layer_2="ball"
 2d_render/layer_3="terrain"
 2d_render/layer_4="foot"
+2d_physics/layer_1="jugador"
+2d_physics/layer_2="pelota"
+2d_physics/layer_3="suelo"
+2d_physics/layer_4="pie"
 
 [physics]
 

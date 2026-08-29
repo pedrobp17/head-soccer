@@ -35,11 +35,14 @@ func cambiar_estado( estado : Estado ) -> void:
 	
 func comprobar_colisiones() -> void:
 	for i in get_slide_collision_count():
-		var collision = get_slide_collision(i)
+		var collision := get_slide_collision(i)
+		
 		if collision.get_collider() is Pelota:
-			# Aplicamos una fuerza en la dirección del impacto
-			EventBus.golpear_pelota.emit(-collision.get_normal(), false)
-
+			var direccion := -collision.get_normal()
+			var aumentar_fuerza := direccion.y < -0.5
+			
+			EventBus.golpear_pelota.emit(direccion, aumentar_fuerza)
+			
 func animacion() -> void:
 	if velocity.y == 0:
 		animacion_jugador.play("idle")
