@@ -9,7 +9,7 @@ enum ControlScheme {IA, P1, P2}
 
 @export var esquema_control : ControlScheme
 
-@onready var animacion_jugador 
+@onready var animacion_jugador = %AnimationPlayer
 @onready var pie = $Pie
 
 var estado_actual : EstadoJugador = null
@@ -41,4 +41,7 @@ func comprobar_colisiones() -> void:
 			EventBus.golpear_pelota.emit(-collision.get_normal(), false)
 
 func animacion() -> void:
-	pass 
+	if velocity.y == 0:
+		animacion_jugador.play("idle")
+	else:
+		animacion_jugador.stop()
