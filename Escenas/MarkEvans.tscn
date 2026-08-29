@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://c4s5i5rrr2rbe"]
+
+[ext_resource type="Texture2D" uid="uid://tpwcjtm583m" path="res://Sprites/jugadores/MarkEvans.png" id="1_5ye0k"]
+[ext_resource type="PackedScene" uid="uid://dn78s2f74s8ik" path="res://Escenas/Pie.tscn" id="3_3bpyk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a8ku5"]
+radius = 45.0
+
+[node name="MarkEvans" type="CharacterBody2D" unique_id=250287789]
+collision_mask = 7
+
+[node name="cabeza" type="Sprite2D" parent="." unique_id=5466215]
+position = Vector2(-5, -18)
+scale = Vector2(-1, 1)
+texture = ExtResource("1_5ye0k")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=909281865]
+position = Vector2(-4, -19)
+shape = SubResource("CircleShape2D_a8ku5")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=790947609]
+
+[node name="Pie" parent="." unique_id=425747068 instance=ExtResource("3_3bpyk")]
+position = Vector2(-11, 7)

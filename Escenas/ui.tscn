@@ -1,0 +1,112 @@
+[gd_scene format=3 uid="uid://byigg0fdudfr6"]
+
+[ext_resource type="Script" uid="uid://bwyjhpbs53u28" path="res://Scripts/Marcador.gd" id="1_fsw7x"]
+[ext_resource type="FontFile" uid="uid://0vbqxsk2buvn" path="res://Fonts/Teko-Bold.ttf" id="1_qkv3v"]
+[ext_resource type="Texture2D" uid="uid://crwvbnux7o5t" path="res://Sprites/banderas/bandera-raimon.png" id="3_ibgox"]
+[ext_resource type="Texture2D" uid="uid://dims23mtskl1p" path="res://Sprites/banderas/bandera-royalacademy.png" id="4_nmlsx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qkv3v"]
+bg_color = Color(0.003921569, 0.003921569, 0.003921569, 0.49803922)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="UI" type="CanvasLayer" unique_id=484265681]
+script = ExtResource("1_fsw7x")
+
+[node name="Control" type="Control" parent="." unique_id=1147488785]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_right = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Timer" type="Panel" parent="Control" unique_id=267107926]
+layout_mode = 0
+offset_left = 517.0
+offset_top = 1.0
+offset_right = 638.0
+offset_bottom = 35.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_qkv3v")
+
+[node name="time" type="Label" parent="Control/Timer" unique_id=1796319156]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 32.0
+offset_top = 31.0
+offset_right = 90.0
+offset_bottom = 85.0
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("1_qkv3v")
+theme_override_font_sizes/font_size = 37
+text = "1:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="name" type="Label" parent="Control/Timer" unique_id=864972948]
+layout_mode = 0
+offset_left = 24.0
+offset_right = 100.0
+offset_bottom = 39.0
+theme_override_colors/font_color = Color(1, 0.84313726, 0.4627451, 1)
+theme_override_colors/font_outline_color = Color(0.9094108, 0.40632907, 0.07888753, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("1_qkv3v")
+theme_override_font_sizes/font_size = 27
+text = "TIEMPO"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control" unique_id=1358155670]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 21.0
+offset_right = 8.0
+offset_bottom = 176.0
+grow_horizontal = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/TextureRect" unique_id=1578881831]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="equipo1" type="TextureRect" parent="Control/TextureRect/HBoxContainer" unique_id=2004346085]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("3_ibgox")
+stretch_mode = 5
+
+[node name="marcador" type="Label" parent="Control/TextureRect/HBoxContainer" unique_id=1172498914]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(1, 0.84313726, 0.4627451, 1)
+theme_override_colors/font_outline_color = Color(0.9098039, 0.40784314, 0.078431375, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("1_qkv3v")
+theme_override_font_sizes/font_size = 80
+text = "0 - 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="equipo2" type="TextureRect" parent="Control/TextureRect/HBoxContainer" unique_id=1570476136]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("4_nmlsx")
+stretch_mode = 5

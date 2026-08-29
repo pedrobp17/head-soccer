@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dn78s2f74s8ik"]
+
+[ext_resource type="Texture2D" uid="uid://4d75avvbgx6p" path="res://Sprites/pie.png" id="1_l1ok6"]
+[ext_resource type="Script" uid="uid://b8y2ud26q0vh3" path="res://Scripts/pie.gd" id="1_l3i23"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j6m78"]
+radius = 18.08482
+height = 48.14309
+
+[node name="Pie" type="Area2D" unique_id=574838392]
+collision_layer = 8
+collision_mask = 3
+script = ExtResource("1_l3i23")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1219745675]
+position = Vector2(-1.7499993, 38.5)
+texture = ExtResource("1_l1ok6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1833724924]
+position = Vector2(-3.999998, 38)
+rotation = -2.4609141
+scale = Vector2(1.08, 1.08)
+skew = 0.34906584
+shape = SubResource("CapsuleShape2D_j6m78")

@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://dva32iy5kutsy"]
+
+[ext_resource type="Texture2D" uid="uid://c1ds1psp24x1c" path="res://Sprites/pelota.png" id="1_duk3h"]
+[ext_resource type="Script" uid="uid://dsw4lenyfy7b2" path="res://Scripts/Pelota.gd" id="1_rvfdg"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rvfdg"]
+bounce = 0.6
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eu64u"]
+radius = 27.0
+
+[node name="Pelota" type="RigidBody2D" unique_id=279367134]
+collision_layer = 2
+collision_mask = 13
+physics_material_override = SubResource("PhysicsMaterial_rvfdg")
+script = ExtResource("1_rvfdg")
+
+[node name="Pelota" type="Sprite2D" parent="." unique_id=506253773]
+position = Vector2(7, 0)
+texture = ExtResource("1_duk3h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1325018700]
+position = Vector2(5, -6.018531e-36)
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("CircleShape2D_eu64u")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=945544088]
+position = Vector2(5, -1)
+scale = Vector2(0.94, 0.94)
+rect = Rect2(-29, -29, 58, 59)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
