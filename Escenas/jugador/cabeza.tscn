@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://bm0k144p4kg7l"]
+[gd_scene format=3 uid="uid://bqvmcfb0vpeg7"]
 
-[ext_resource type="Texture2D" uid="uid://dyvbdfc10udy2" path="res://Sprites/MarkEvans.png" id="1_gx6kl"]
+[ext_resource type="Texture2D" uid="uid://tpwcjtm583m" path="res://Sprites/jugadores/cabezas/MarkEvans.png" id="1_8ggx1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a8ku5"]
 size = Vector2(80, 86)
@@ -9,7 +9,7 @@ size = Vector2(80, 86)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=133786535]
 scale = Vector2(0.8, 0.8)
-texture = ExtResource("1_gx6kl")
+texture = ExtResource("1_8ggx1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=325450976]
 position = Vector2(13.999998, -3.999999)

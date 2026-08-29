@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bw7mw8se5hbqb"
-path="res://.godot/imported/JudeSharp.png-13f8a770b70921d680bf9d599275f312.ctex"
+uid="uid://demeikg0f5vi2"
+path="res://.godot/imported/PorteriaDelanteraDerecha.png-5f5f0cfcce3b4361ea5b98f8cb4efdcb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/jugadores/JudeSharp.png"
-dest_files=["res://.godot/imported/JudeSharp.png-13f8a770b70921d680bf9d599275f312.ctex"]
+source_file="res://Sprites/objetos_estadio/PorteriaDelanteraDerecha.png"
+dest_files=["res://.godot/imported/PorteriaDelanteraDerecha.png-5f5f0cfcce3b4361ea5b98f8cb4efdcb.ctex"]
 
 [params]
 

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://byigg0fdudfr6"]
 
-[ext_resource type="Script" uid="uid://bwyjhpbs53u28" path="res://Scripts/Marcador.gd" id="1_fsw7x"]
+[ext_resource type="Script" uid="uid://bwyjhpbs53u28" path="res://Scripts/ui/Marcador.gd" id="1_fsw7x"]
 [ext_resource type="FontFile" uid="uid://0vbqxsk2buvn" path="res://Fonts/Teko-Bold.ttf" id="1_qkv3v"]
 [ext_resource type="Texture2D" uid="uid://crwvbnux7o5t" path="res://Sprites/banderas/bandera-raimon.png" id="3_ibgox"]
 [ext_resource type="Texture2D" uid="uid://dims23mtskl1p" path="res://Sprites/banderas/bandera-royalacademy.png" id="4_nmlsx"]

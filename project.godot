@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 EventBus="*uid://dch54ygkrfq5v"
+KeyUtils="*uid://bs7j46nr44ron"
 
 [display]
 

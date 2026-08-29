@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://jwphuwgnf7i8"
-path="res://.godot/imported/PorteriaDelantera.png-9ab7d952313148a36eefea50aa1f10d4.ctex"
+uid="uid://bluxavl8p4kpn"
+path="res://.godot/imported/estadio.png-46ec4fd2155751d8160a0a11b7a476a0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/PorteriaDelantera.png"
-dest_files=["res://.godot/imported/PorteriaDelantera.png-9ab7d952313148a36eefea50aa1f10d4.ctex"]
+source_file="res://Sprites/objetos_estadio/estadio.png"
+dest_files=["res://.godot/imported/estadio.png-46ec4fd2155751d8160a0a11b7a476a0.ctex"]
 
 [params]
 

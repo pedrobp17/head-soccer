@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dva32iy5kutsy"]
 
-[ext_resource type="Texture2D" uid="uid://c1ds1psp24x1c" path="res://Sprites/pelota.png" id="1_duk3h"]
-[ext_resource type="Script" uid="uid://dsw4lenyfy7b2" path="res://Scripts/Pelota.gd" id="1_rvfdg"]
+[ext_resource type="Texture2D" uid="uid://c1ds1psp24x1c" path="res://Sprites/objetos_estadio/pelota.png" id="1_duk3h"]
+[ext_resource type="Script" uid="uid://dsw4lenyfy7b2" path="res://Scripts/objetos_campo/Pelota.gd" id="1_rvfdg"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rvfdg"]
 bounce = 0.6

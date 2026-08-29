@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4d75avvbgx6p"
-path="res://.godot/imported/pie.png-a4c9696213e289c7e2603faedf1df3e5.ctex"
+uid="uid://tpwcjtm583m"
+path="res://.godot/imported/MarkEvans.png-15fccbcb377231a8d203fb604c77fc2e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/pie.png"
-dest_files=["res://.godot/imported/pie.png-a4c9696213e289c7e2603faedf1df3e5.ctex"]
+source_file="res://Sprites/jugadores/cabezas/MarkEvans.png"
+dest_files=["res://.godot/imported/MarkEvans.png-15fccbcb377231a8d203fb604c77fc2e.ctex"]
 
 [params]
 

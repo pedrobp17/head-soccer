@@ -1,11 +1,14 @@
 extends CharacterBody2D
-class_name  movimiento_jugador
+class_name  Jugador
 
 const VELOCIDAD = 300.0
 const VELOCIDAD_SALTO = -600.0
 const DURACION_ATURDIMIENTO = 2000
 
 enum Estado {JUGANDO, PODER, ATURDIDO}
+enum ControlScheme {IA, P1, P2}
+
+@export var esquema_control : ControlScheme
 
 @onready var pie = $Pie
 
@@ -36,15 +39,18 @@ func set_reposition():
 	global_position = get_posicion_inicial()
 
 func _physics_process(delta: float) -> void:
-	if estado == Estado.JUGANDO:
-		movimiento_player(delta)
-		if vida == 0:
-			estado == Estado.ATURDIDO
-			time_empezar_aturdido = Time.get_ticks_msec()
-	elif estado == Estado.ATURDIDO:
-		if Time.get_ticks_msec() - time_empezar_aturdido > DURACION_ATURDIMIENTO:
-			estado = Estado.JUGANDO
-			
+	if esquema_control == ControlScheme.IA:
+		pass
+	else:
+		if estado == Estado.JUGANDO:
+			movimiento_player(delta)
+			if vida == 0:
+				estado == Estado.ATURDIDO
+				time_empezar_aturdido = Time.get_ticks_msec()
+		elif estado == Estado.ATURDIDO:
+			if Time.get_ticks_msec() - time_empezar_aturdido > DURACION_ATURDIMIENTO:
+				estado = Estado.JUGANDO
+				
 			
 func movimiento_player(delta) -> void:
 	# Add the gravity.
@@ -52,18 +58,18 @@ func movimiento_player(delta) -> void:
 		velocity += get_gravity() * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed( get_salto() ) and is_on_floor():
+	if KeyUtils.is_action_just_pressed( esquema_control, KeyUtils.Accion.SALTO ) and is_on_floor():
 		velocity.y = VELOCIDAD_SALTO
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direccion := Input.get_axis( get_izquierda(), get_derecha() )
+	var direccion :=  KeyUtils.get_input_vector(esquema_control)
 	if direccion:
 		velocity.x = direccion * VELOCIDAD
 	else:
 		velocity.x = move_toward(velocity.x, 0, VELOCIDAD)
 		
-	if Input.is_action_just_pressed( get_patada() ):
+	if KeyUtils.is_action_just_pressed( esquema_control, KeyUtils.Accion.PATADA ):
 		pie.golpear()
 	
 	move_and_slide()

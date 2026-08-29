@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bluxavl8p4kpn"
-path="res://.godot/imported/estadio.png-83c7681fbc5191f24375877f32b4b795.ctex"
+uid="uid://4d75avvbgx6p"
+path="res://.godot/imported/pie.png-f66e0970bd964cfa599cb1ef3f743a01.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/estadio.png"
-dest_files=["res://.godot/imported/estadio.png-83c7681fbc5191f24375877f32b4b795.ctex"]
+source_file="res://Sprites/jugadores/cuerpo/pie.png"
+dest_files=["res://.godot/imported/pie.png-f66e0970bd964cfa599cb1ef3f743a01.ctex"]
 
 [params]
 

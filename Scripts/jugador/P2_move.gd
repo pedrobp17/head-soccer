@@ -1,5 +1,5 @@
 
-extends movimiento_jugador
+extends Jugador
 class_name jugador2
 
 

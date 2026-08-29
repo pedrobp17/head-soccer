@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1ds1psp24x1c"
-path="res://.godot/imported/pelota.png-00dee4641629f36585421517d0265a5b.ctex"
+uid="uid://c4geia7plxr3f"
+path="res://.godot/imported/CalebStonewall.png-6b8ec0f6246d615677f1de03e41997bc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/pelota.png"
-dest_files=["res://.godot/imported/pelota.png-00dee4641629f36585421517d0265a5b.ctex"]
+source_file="res://Sprites/jugadores/cabezas/CalebStonewall.png"
+dest_files=["res://.godot/imported/CalebStonewall.png-6b8ec0f6246d615677f1de03e41997bc.ctex"]
 
 [params]
 

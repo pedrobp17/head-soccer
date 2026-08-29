@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tpwcjtm583m"
-path="res://.godot/imported/MarkEvans.png-e67bb3104feba0b1cfeac16c32f4d690.ctex"
+uid="uid://bw7mw8se5hbqb"
+path="res://.godot/imported/JudeSharp.png-993f33dd44dcab31f3b7610488b38b68.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/jugadores/MarkEvans.png"
-dest_files=["res://.godot/imported/MarkEvans.png-e67bb3104feba0b1cfeac16c32f4d690.ctex"]
+source_file="res://Sprites/jugadores/cabezas/JudeSharp.png"
+dest_files=["res://.godot/imported/JudeSharp.png-993f33dd44dcab31f3b7610488b38b68.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://day043i256yna"
-path="res://.godot/imported/ThomasFeldt.png-e68bc1b72f5febb90a65d1668421c4c9.ctex"
+uid="uid://d4m6jv7rxsm7f"
+path="res://.godot/imported/JohanTassman.png-66a366c3f4f4ef15a1930952c3c1f58f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/jugadores/ThomasFeldt.png"
-dest_files=["res://.godot/imported/ThomasFeldt.png-e68bc1b72f5febb90a65d1668421c4c9.ctex"]
+source_file="res://Sprites/jugadores/cabezas/JohanTassman.png"
+dest_files=["res://.godot/imported/JohanTassman.png-66a366c3f4f4ef15a1930952c3c1f58f.ctex"]
 
 [params]
 

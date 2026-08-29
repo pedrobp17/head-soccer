@@ -1,17 +1,16 @@
 [gd_scene format=3 uid="uid://c825xiggbfduj"]
 
-[ext_resource type="Script" uid="uid://fj550w84n6nb" path="res://Scripts/controlador_partido.gd" id="1_lbkgp"]
-[ext_resource type="Texture2D" uid="uid://bluxavl8p4kpn" path="res://Sprites/estadio.png" id="1_ojfp0"]
-[ext_resource type="PackedScene" uid="uid://c4s5i5rrr2rbe" path="res://Escenas/MarkEvans.tscn" id="2_oeuhn"]
-[ext_resource type="Script" uid="uid://b2gk0i53iliq7" path="res://Scripts/P2_move.gd" id="3_xamt6"]
-[ext_resource type="PackedScene" uid="uid://dva32iy5kutsy" path="res://Escenas/Pelota.tscn" id="4_at1mv"]
-[ext_resource type="Script" uid="uid://didxmwtmq47ty" path="res://Scripts/P1_move.gd" id="4_egfu3"]
-[ext_resource type="Texture2D" uid="uid://b6cpjldy4m88s" path="res://Sprites/PorteriaDelanteraIzquierda.png" id="6_22mea"]
-[ext_resource type="Script" uid="uid://dvdilwe5lutnx" path="res://Scripts/Porteria1.gd" id="6_n470q"]
-[ext_resource type="Texture2D" uid="uid://demeikg0f5vi2" path="res://Sprites/PorteriaDelanteraDerecha.png" id="7_63qt7"]
-[ext_resource type="Script" uid="uid://blb2fjfjf3xb1" path="res://Scripts/Porteria2.gd" id="8_ko04w"]
-[ext_resource type="PackedScene" uid="uid://cpbkjwn2rrt0i" path="res://Escenas/marcador.tscn" id="10_ko04w"]
-[ext_resource type="PackedScene" uid="uid://byigg0fdudfr6" path="res://Escenas/ui.tscn" id="11_5d45q"]
+[ext_resource type="Script" uid="uid://fj550w84n6nb" path="res://Scripts/controlador_partido.gd" id="1_4matv"]
+[ext_resource type="Texture2D" uid="uid://bluxavl8p4kpn" path="res://Sprites/objetos_estadio/estadio.png" id="2_nihhg"]
+[ext_resource type="PackedScene" uid="uid://c4s5i5rrr2rbe" path="res://Escenas/jugador/MarkEvans.tscn" id="3_7fw6c"]
+[ext_resource type="Script" uid="uid://b2gk0i53iliq7" path="res://Scripts/jugador/P2_move.gd" id="4_5ss3j"]
+[ext_resource type="Script" uid="uid://didxmwtmq47ty" path="res://Scripts/jugador/P1_move.gd" id="5_761ej"]
+[ext_resource type="PackedScene" uid="uid://dva32iy5kutsy" path="res://Escenas/objetos_campo/Pelota.tscn" id="6_fj5fn"]
+[ext_resource type="Script" uid="uid://dvdilwe5lutnx" path="res://Scripts/objetos_campo/Porteria1.gd" id="7_80k0t"]
+[ext_resource type="Texture2D" uid="uid://b6cpjldy4m88s" path="res://Sprites/objetos_estadio/PorteriaDelanteraIzquierda.png" id="8_lc2l4"]
+[ext_resource type="Script" uid="uid://blb2fjfjf3xb1" path="res://Scripts/objetos_campo/Porteria2.gd" id="9_xeo2g"]
+[ext_resource type="Texture2D" uid="uid://demeikg0f5vi2" path="res://Sprites/objetos_estadio/PorteriaDelanteraDerecha.png" id="10_qcy6x"]
+[ext_resource type="PackedScene" uid="uid://byigg0fdudfr6" path="res://Escenas/ui/ui.tscn" id="12_ll4ra"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_amyr6"]
 a = Vector2(-960, -182)
@@ -44,11 +43,11 @@ size = Vector2(178, 14)
 [node name="Campo" type="Node2D" unique_id=1716950898]
 
 [node name="ControladorPartido" type="Node" parent="." unique_id=1582824995]
-script = ExtResource("1_lbkgp")
+script = ExtResource("1_4matv")
 
 [node name="fondo" type="Sprite2D" parent="." unique_id=1120903357]
 position = Vector2(0, -248)
-texture = ExtResource("1_ojfp0")
+texture = ExtResource("2_nihhg")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1110244800]
 position = Vector2(-1, -74)
@@ -89,27 +88,29 @@ collision_mask = 11
 position = Vector2(-1, -748)
 shape = SubResource("SegmentShape2D_m3b2f")
 
-[node name="Bot" parent="." unique_id=250287789 instance=ExtResource("2_oeuhn")]
+[node name="Bot" parent="." unique_id=250287789 instance=ExtResource("3_7fw6c")]
 position = Vector2(591, -148)
-script = ExtResource("3_xamt6")
+script = ExtResource("4_5ss3j")
+esquema_control = 2
 
-[node name="Player" parent="." unique_id=786724751 instance=ExtResource("2_oeuhn")]
+[node name="Player" parent="." unique_id=786724751 instance=ExtResource("3_7fw6c")]
 position = Vector2(-584, -110)
 rotation = 3.1415927
 scale = Vector2(1, -1)
-script = ExtResource("4_egfu3")
+script = ExtResource("5_761ej")
+esquema_control = 1
 
-[node name="Pelota" parent="." unique_id=279367134 instance=ExtResource("4_at1mv")]
+[node name="Pelota" parent="." unique_id=279367134 instance=ExtResource("6_fj5fn")]
 position = Vector2(0, -536)
 
 [node name="PorteriaDelanteraIzquierda" type="Area2D" parent="." unique_id=230049315]
 collision_layer = 0
 collision_mask = 2
-script = ExtResource("6_n470q")
+script = ExtResource("7_80k0t")
 
 [node name="PorteriaDelanteraIzquierda2" type="Sprite2D" parent="PorteriaDelanteraIzquierda" unique_id=1006584691]
 position = Vector2(-1, -242)
-texture = ExtResource("6_22mea")
+texture = ExtResource("8_lc2l4")
 
 [node name="red" type="CollisionPolygon2D" parent="PorteriaDelanteraIzquierda" unique_id=1922761307]
 polygon = PackedVector2Array(-806, -298, -884, -299, -918, -256, -961, 42, -855, 43, -806, -40)
@@ -117,11 +118,11 @@ polygon = PackedVector2Array(-806, -298, -884, -299, -918, -256, -961, 42, -855,
 [node name="PorteriaDelanteraDerecha" type="Area2D" parent="." unique_id=755938709]
 collision_layer = 0
 collision_mask = 2
-script = ExtResource("8_ko04w")
+script = ExtResource("9_xeo2g")
 
 [node name="PorteriaDelanteraDerecha" type="Sprite2D" parent="PorteriaDelanteraDerecha" unique_id=55530806]
 position = Vector2(1, -242)
-texture = ExtResource("7_63qt7")
+texture = ExtResource("10_qcy6x")
 
 [node name="red" type="CollisionPolygon2D" parent="PorteriaDelanteraDerecha" unique_id=2134655370]
 position = Vector2(860, -140)
@@ -151,15 +152,4 @@ shape = SubResource("RectangleShape2D_4td64")
 position = Vector2(871, -305)
 shape = SubResource("RectangleShape2D_j6m78")
 
-[node name="UI" parent="." unique_id=484265681 instance=ExtResource("11_5d45q")]
-
-[node name="Marcador" parent="." unique_id=256415183 instance=ExtResource("10_ko04w")]
-visible = false
-offset = Vector2(-149.41, -812.505)
-scale = Vector2(1.5, 1.5)
-transform = Transform2D(1.5, 0, 0, 1.5, -149.41, -812.505)
-follow_viewport_enabled = true
-
-[node name="TimerPartido" type="Timer" parent="." unique_id=37386247]
-one_shot = true
-autostart = true
+[node name="UI" parent="." unique_id=484265681 instance=ExtResource("12_ll4ra")]

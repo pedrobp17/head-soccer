@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dn78s2f74s8ik"]
 
-[ext_resource type="Texture2D" uid="uid://4d75avvbgx6p" path="res://Sprites/pie.png" id="1_l1ok6"]
-[ext_resource type="Script" uid="uid://b8y2ud26q0vh3" path="res://Scripts/pie.gd" id="1_l3i23"]
+[ext_resource type="Texture2D" uid="uid://4d75avvbgx6p" path="res://Sprites/jugadores/cuerpo/pie.png" id="1_l1ok6"]
+[ext_resource type="Script" uid="uid://b8y2ud26q0vh3" path="res://Scripts/jugador/pie.gd" id="1_l3i23"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j6m78"]
 radius = 18.08482

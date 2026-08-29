@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1ifp0fb156p2"
-path="res://.godot/imported/AxelBlaze.png-15d9fb7407282466e4688808b04a63c7.ctex"
+uid="uid://day043i256yna"
+path="res://.godot/imported/ThomasFeldt.png-64199bb334b9bbf339bc5589f432acde.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/jugadores/AxelBlaze.png"
-dest_files=["res://.godot/imported/AxelBlaze.png-15d9fb7407282466e4688808b04a63c7.ctex"]
+source_file="res://Sprites/jugadores/cabezas/ThomasFeldt.png"
+dest_files=["res://.godot/imported/ThomasFeldt.png-64199bb334b9bbf339bc5589f432acde.ctex"]
 
 [params]
 

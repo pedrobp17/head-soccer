@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c4s5i5rrr2rbe"]
 
-[ext_resource type="Texture2D" uid="uid://tpwcjtm583m" path="res://Sprites/jugadores/MarkEvans.png" id="1_5ye0k"]
-[ext_resource type="PackedScene" uid="uid://dn78s2f74s8ik" path="res://Escenas/Pie.tscn" id="3_3bpyk"]
+[ext_resource type="Texture2D" uid="uid://tpwcjtm583m" path="res://Sprites/jugadores/cabezas/MarkEvans.png" id="1_5ye0k"]
+[ext_resource type="PackedScene" uid="uid://dn78s2f74s8ik" path="res://Escenas/jugador/Pie.tscn" id="3_3bpyk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a8ku5"]
 radius = 45.0
