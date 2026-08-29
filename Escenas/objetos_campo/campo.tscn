@@ -3,8 +3,7 @@
 [ext_resource type="Script" uid="uid://fj550w84n6nb" path="res://Scripts/controlador_partido.gd" id="1_4matv"]
 [ext_resource type="Texture2D" uid="uid://bluxavl8p4kpn" path="res://Sprites/objetos_estadio/estadio.png" id="2_nihhg"]
 [ext_resource type="PackedScene" uid="uid://c4s5i5rrr2rbe" path="res://Escenas/jugador/MarkEvans.tscn" id="3_7fw6c"]
-[ext_resource type="Script" uid="uid://b2gk0i53iliq7" path="res://Scripts/jugador/P2_move.gd" id="4_5ss3j"]
-[ext_resource type="Script" uid="uid://didxmwtmq47ty" path="res://Scripts/jugador/P1_move.gd" id="5_761ej"]
+[ext_resource type="Script" uid="uid://b2tyajr35x3cv" path="res://Scripts/jugador/Player.gd" id="4_fv5s3"]
 [ext_resource type="PackedScene" uid="uid://dva32iy5kutsy" path="res://Escenas/objetos_campo/Pelota.tscn" id="6_fj5fn"]
 [ext_resource type="Script" uid="uid://dvdilwe5lutnx" path="res://Scripts/objetos_campo/Porteria1.gd" id="7_80k0t"]
 [ext_resource type="Texture2D" uid="uid://b6cpjldy4m88s" path="res://Sprites/objetos_estadio/PorteriaDelanteraIzquierda.png" id="8_lc2l4"]
@@ -90,14 +89,14 @@ shape = SubResource("SegmentShape2D_m3b2f")
 
 [node name="Bot" parent="." unique_id=250287789 instance=ExtResource("3_7fw6c")]
 position = Vector2(591, -148)
-script = ExtResource("4_5ss3j")
+script = ExtResource("4_fv5s3")
 esquema_control = 2
 
 [node name="Player" parent="." unique_id=786724751 instance=ExtResource("3_7fw6c")]
 position = Vector2(-584, -110)
 rotation = 3.1415927
 scale = Vector2(1, -1)
-script = ExtResource("5_761ej")
+script = ExtResource("4_fv5s3")
 esquema_control = 1
 
 [node name="Pelota" parent="." unique_id=279367134 instance=ExtResource("6_fj5fn")]
