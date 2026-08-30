@@ -1,0 +1,140 @@
+{
+    "jugadores": [
+        {
+            "nombre": "MarkEvans",
+            "equipo": "raimon",
+            "estadisticas": {
+                "velocidad": 5,
+                "salto": 5,
+                "golpe": 5,
+                "power": 5
+            },
+            "poderes": [
+                "mano_magica",
+                "cabezazo"
+            ],
+            "espiritu": 0
+        },
+        {
+            "nombre": "AxelBlaze",
+            "equipo": "raimon",
+            "estadisticas": {
+                "velocidad": 5,
+                "salto": 5,
+                "golpe": 5,
+                "power": 5
+            },
+            "poderes": [
+                "tornado_fuego",
+                "tornado_dragon"
+            ],
+            "espiritu": 0
+        },
+        {
+            "nombre": "XavierFoster",
+            "equipo": "raimon",
+            "estadisticas": {
+                "velocidad": 5,
+                "salto": 5,
+                "golpe": 5,
+                "power": 5
+            },
+            "poderes": [
+                "cañon_meteoros",
+                "pingüinos_cosmicos"
+            ],
+            "espiritu": 0
+        },
+        {
+            "nombre": "JudeSharp",
+            "equipo": "royalacademy",
+            "estadisticas": {
+                "velocidad": 5,
+                "salto": 5,
+                "golpe": 5,
+                "power": 5
+            },
+            "poderes": [
+                "espejismo",
+                "pingüino_emperador"
+            ],
+            "espiritu": 0
+        }
+        ,{
+            "nombre": "CalebStonewall",
+            "equipo": "royalacademy",
+            "estadisticas": {
+                "velocidad": 5,
+                "salto": 5,
+                "golpe": 5,
+                "power": 5
+            },
+            "poderes": [
+                "tiro_reaccion",
+                "default"
+            ],
+            "espiritu": 0
+        },
+        {
+            "nombre": "JohanTassman",
+            "equipo": "occult",
+            "estadisticas": {
+                "velocidad": 5,
+                "salto": 5,
+                "golpe": 5,
+                "power": 5
+            },
+            "poderes": [
+                "murcielagos",
+                "maldicion"
+            ],
+            "espiritu": 0
+        },
+        {
+            "nombre": "NathanJones",
+            "equipo": "occult",
+            "estadisticas": {
+                "velocidad": 5,
+                "salto": 5,
+                "golpe": 5,
+                "power": 5
+            },
+            "poderes": [
+                "momia",
+                "agujero_negro"
+            ],
+            "espiritu": 0
+        },
+        {
+            "nombre": "ThomasFeldt",
+            "equipo": "brain",
+            "estadisticas": {
+                "velocidad": 5,
+                "salto": 5,
+                "golpe": 5,
+                "power": 5
+            },
+            "poderes": [
+                "dron",
+                "campo_magnetico"
+            ],
+            "espiritu": 0
+        },
+        {
+            "nombre": "ByronLove",
+            "equipo": "zeus",
+            "estadisticas": {
+                "velocidad": 5,
+                "salto": 5,
+                "golpe": 5,
+                "power": 5
+            },
+            "poderes": [
+                "hora_celestial",
+                "espada_divina"
+            ],
+            "espiritu": 0
+        }
+        
+    ]
+}

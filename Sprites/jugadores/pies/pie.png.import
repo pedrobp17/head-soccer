@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://4d75avvbgx6p"
-path="res://.godot/imported/pie.png-f66e0970bd964cfa599cb1ef3f743a01.ctex"
+path="res://.godot/imported/pie.png-d24570436b2e43209441c12b2c6f5969.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/jugadores/cuerpo/pie.png"
-dest_files=["res://.godot/imported/pie.png-f66e0970bd964cfa599cb1ef3f743a01.ctex"]
+source_file="res://Sprites/jugadores/pies/pie.png"
+dest_files=["res://.godot/imported/pie.png-d24570436b2e43209441c12b2c6f5969.ctex"]
 
 [params]
 
