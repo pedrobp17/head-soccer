@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 
 EventBus="*uid://dch54ygkrfq5v"
 KeyUtils="*uid://bs7j46nr44ron"
+PlayerUtils="*uid://dbsm22docac1m"
 
 [display]
 

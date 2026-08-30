@@ -5,6 +5,9 @@ class_name Pelota
 const VELOCIDAD = 600
 const FUERZA_Y = -0.7
 const POSICION_INICIAL = Vector2(0, -604)
+
+enum Estado {NORMAL, CONGELADA, PODER} #para en el futuro controlar la pelota
+
 var estaFuera = false
 
 # Called when the node enters the scene tree for the first time.

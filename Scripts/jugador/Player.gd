@@ -2,21 +2,23 @@ extends CharacterBody2D
 class_name  Jugador
 
 const VELOCIDAD = 300.0
-const VELOCIDAD_SALTO = -600.0
+const VELOCIDAD_SALTO = -450.0
 
 enum Estado {JUGANDO, PODER, ATURDIDO}
 enum ControlScheme {IA, P1, P2}
 
 @export var esquema_control : ControlScheme
 
-@onready var animacion_jugador = %AnimationPlayer
-@onready var pie = $Pie
+@onready var controlador_sprite : Sprite2D = %cuerpo
+@onready var animacion_jugador : AnimationPlayer = %AnimationPlayer
+@onready var pie : Area2D = $Pie
 
 var estado_actual : EstadoJugador = null
 var creador_estados := CreadorEstadoJugador.new()
 var vida := 100
 
 func _ready() -> void:
+	set_imagen_personaje()
 	cambiar_estado(Estado.JUGANDO)
 
 func _physics_process(delta: float) -> void:
@@ -48,3 +50,6 @@ func animacion() -> void:
 		animacion_jugador.play("idle")
 	else:
 		animacion_jugador.stop()
+		
+func set_imagen_personaje() -> void:
+	controlador_sprite.texture = PlayerUtils.obtener_sprite(esquema_control)
