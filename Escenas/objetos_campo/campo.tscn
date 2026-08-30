@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://c825xiggbfduj"]
 
 [ext_resource type="Script" uid="uid://fj550w84n6nb" path="res://Scripts/controlador_partido.gd" id="1_4matv"]
-[ext_resource type="Texture2D" uid="uid://bluxavl8p4kpn" path="res://Sprites/objetos_estadio/estadio.png" id="2_nihhg"]
+[ext_resource type="Texture2D" uid="uid://ddpdk6g68cged" path="res://Sprites/objetos_estadio/estadio.png" id="2_nihhg"]
 [ext_resource type="PackedScene" uid="uid://c4s5i5rrr2rbe" path="res://Escenas/jugador/MarkEvans.tscn" id="3_7fw6c"]
+[ext_resource type="PackedScene" uid="uid://drbdxstxvyn5s" path="res://Escenas/objetos_campo/porteriaTrasera.tscn" id="3_gx6bm"]
 [ext_resource type="Script" uid="uid://b2tyajr35x3cv" path="res://Scripts/jugador/Player.gd" id="4_fv5s3"]
 [ext_resource type="PackedScene" uid="uid://dva32iy5kutsy" path="res://Escenas/objetos_campo/Pelota.tscn" id="6_fj5fn"]
+[ext_resource type="PackedScene" uid="uid://knjjlr3ll4qq" path="res://Escenas/objetos_campo/porteria.tscn" id="7_5he4p"]
 [ext_resource type="Script" uid="uid://dvdilwe5lutnx" path="res://Scripts/objetos_campo/Porteria1.gd" id="7_80k0t"]
-[ext_resource type="Texture2D" uid="uid://b6cpjldy4m88s" path="res://Sprites/objetos_estadio/PorteriaDelanteraIzquierda.png" id="8_lc2l4"]
 [ext_resource type="Script" uid="uid://blb2fjfjf3xb1" path="res://Scripts/objetos_campo/Porteria2.gd" id="9_xeo2g"]
-[ext_resource type="Texture2D" uid="uid://demeikg0f5vi2" path="res://Sprites/objetos_estadio/PorteriaDelanteraDerecha.png" id="10_qcy6x"]
 [ext_resource type="PackedScene" uid="uid://byigg0fdudfr6" path="res://Escenas/ui/ui.tscn" id="12_ll4ra"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_amyr6"]
@@ -17,27 +17,15 @@ b = Vector2(960, -182)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_obkv7"]
 a = Vector2(-41, -356.5)
-b = Vector2(-41, 431)
+b = Vector2(-41, 574)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_tvkqe"]
 a = Vector2(25.5, -357)
-b = Vector2(26.5, 434)
+b = Vector2(26.5, 576)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_m3b2f"]
 a = Vector2(962, 33)
 b = Vector2(-958, 33)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_eu64u"]
-size = Vector2(177, 12)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jtwau"]
-size = Vector2(177, 10)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4td64"]
-size = Vector2(178, 15)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_j6m78"]
-size = Vector2(178, 14)
 
 [node name="Campo" type="Node2D" unique_id=1716950898]
 
@@ -48,12 +36,22 @@ script = ExtResource("1_4matv")
 position = Vector2(0, -248)
 texture = ExtResource("2_nihhg")
 
+[node name="PorteriaTrasDer" parent="." unique_id=835803769 instance=ExtResource("3_gx6bm")]
+position = Vector2(866, 11)
+scale = Vector2(-1, 1)
+script = ExtResource("9_xeo2g")
+
+[node name="PorteriaTrasIzq" parent="." unique_id=111523115 instance=ExtResource("3_gx6bm")]
+position = Vector2(-856, 10)
+script = ExtResource("7_80k0t")
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1110244800]
 position = Vector2(-1, -74)
 offset = Vector2(0.815, -173.995)
 zoom = Vector2(0.6, 0.6)
 
 [node name="suelo" type="StaticBody2D" parent="." unique_id=175781643]
+position = Vector2(0, 141)
 collision_layer = 4
 collision_mask = 11
 
@@ -88,12 +86,12 @@ position = Vector2(-1, -748)
 shape = SubResource("SegmentShape2D_m3b2f")
 
 [node name="Bot" parent="." unique_id=250287789 instance=ExtResource("3_7fw6c")]
-position = Vector2(591, -148)
+position = Vector2(591, -25)
 script = ExtResource("4_fv5s3")
 esquema_control = 2
 
 [node name="Player" parent="." unique_id=786724751 instance=ExtResource("3_7fw6c")]
-position = Vector2(-584, -110)
+position = Vector2(-584, -27)
 rotation = 3.1415927
 scale = Vector2(1, -1)
 script = ExtResource("4_fv5s3")
@@ -102,57 +100,12 @@ esquema_control = 1
 [node name="Pelota" parent="." unique_id=279367134 instance=ExtResource("6_fj5fn")]
 position = Vector2(0, -536)
 
-[node name="PorteriaDelanteraIzquierda" type="Area2D" parent="." unique_id=230049315]
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("7_80k0t")
+[node name="PorteriaDelIzq" parent="." unique_id=119984880 instance=ExtResource("7_5he4p")]
+position = Vector2(-856, 11)
 
-[node name="PorteriaDelanteraIzquierda2" type="Sprite2D" parent="PorteriaDelanteraIzquierda" unique_id=1006584691]
-position = Vector2(-1, -242)
-texture = ExtResource("8_lc2l4")
-
-[node name="red" type="CollisionPolygon2D" parent="PorteriaDelanteraIzquierda" unique_id=1922761307]
-polygon = PackedVector2Array(-806, -298, -884, -299, -918, -256, -961, 42, -855, 43, -806, -40)
-
-[node name="PorteriaDelanteraDerecha" type="Area2D" parent="." unique_id=755938709]
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("9_xeo2g")
-
-[node name="PorteriaDelanteraDerecha" type="Sprite2D" parent="PorteriaDelanteraDerecha" unique_id=55530806]
-position = Vector2(1, -242)
-texture = ExtResource("10_qcy6x")
-
-[node name="red" type="CollisionPolygon2D" parent="PorteriaDelanteraDerecha" unique_id=2134655370]
-position = Vector2(860, -140)
-polygon = PackedVector2Array(-55, -156, -54, 101, -5, 185, 104, 187, 58, -115, 25, -158)
-
-[node name="largueroIzquierdo" type="StaticBody2D" parent="." unique_id=1071408689]
-collision_layer = 4
-collision_mask = 11
-
-[node name="Area2D" type="Area2D" parent="largueroIzquierdo" unique_id=1967510207]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="largueroIzquierdo/Area2D" unique_id=1485219138]
-position = Vector2(-870.5, -306)
-shape = SubResource("RectangleShape2D_eu64u")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="largueroIzquierdo" unique_id=1579827151]
-position = Vector2(-870.5, -306)
-shape = SubResource("RectangleShape2D_jtwau")
-
-[node name="largueroDerecho" type="StaticBody2D" parent="." unique_id=591252211]
-collision_layer = 4
-collision_mask = 11
-
-[node name="Area2D" type="Area2D" parent="largueroDerecho" unique_id=1423371857]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="largueroDerecho/Area2D" unique_id=1347989521]
-position = Vector2(871, -305.5)
-shape = SubResource("RectangleShape2D_4td64")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="largueroDerecho" unique_id=1123621470]
-position = Vector2(871, -305)
-shape = SubResource("RectangleShape2D_j6m78")
+[node name="PorteriaDelDer" parent="." unique_id=1513105652 instance=ExtResource("7_5he4p")]
+position = Vector2(866, 11)
+rotation = -3.1415925
+scale = Vector2(1, -1)
 
 [node name="UI" parent="." unique_id=484265681 instance=ExtResource("12_ll4ra")]

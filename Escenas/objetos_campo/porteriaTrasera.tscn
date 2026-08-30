@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://drbdxstxvyn5s"]
+
+[ext_resource type="Texture2D" uid="uid://dunsaoktwm0u0" path="res://Sprites/objetos_estadio/PorteriaTrasera.png" id="1_isu6r"]
+
+[node name="Node2D" type="Node2D" unique_id=835803769]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1985533525]
+texture = ExtResource("1_isu6r")
