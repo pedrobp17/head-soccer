@@ -11,6 +11,9 @@ const PREFAB_JUGADOR := preload("res://Escenas/jugador/jugador.tscn")
 func _ready() -> void:
 	aparecer_jugador(local, Jugador.BANDO["local"])
 	aparecer_jugador(visitante, Jugador.BANDO["visitante"])
+	var jugador : Jugador = get_children().filter(func (p): return p is Jugador)[0]
+	jugador.esquema_control = Jugador.ControlScheme.P1
+	jugador.set_imagen_personaje()
 
 func aparecer_jugador( jugador : String, identificador_bando : int) -> void:
 	var datos_jugador := DatosJugadores.get_jugador(jugador)

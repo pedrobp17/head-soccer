@@ -49,7 +49,6 @@ _data = {
 [node name="jugador" type="CharacterBody2D" unique_id=250287789]
 collision_mask = 7
 script = ExtResource("1_pxu2a")
-esquema_control = 1
 
 [node name="cuerpo" type="Sprite2D" parent="." unique_id=5466215]
 unique_name_in_owner = true
