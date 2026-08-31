@@ -15,6 +15,7 @@ position = Vector2(0, -182)
 shape = SubResource("RectangleShape2D_a8ku5")
 
 [node name="Red" type="Area2D" parent="." unique_id=379525519]
+unique_name_in_owner = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Red" unique_id=1699432688]
 polygon = PackedVector2Array(45, -172, 43, 86, -18, 162, -94, 163, -88, -137, -49, -172)

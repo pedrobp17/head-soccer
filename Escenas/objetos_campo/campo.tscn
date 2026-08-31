@@ -39,11 +39,9 @@ texture = ExtResource("2_nihhg")
 [node name="PorteriaTrasDer" parent="." unique_id=835803769 instance=ExtResource("3_gx6bm")]
 position = Vector2(866, 11)
 scale = Vector2(-1, 1)
-script = ExtResource("9_xeo2g")
 
 [node name="PorteriaTrasIzq" parent="." unique_id=111523115 instance=ExtResource("3_gx6bm")]
 position = Vector2(-856, 10)
-script = ExtResource("7_80k0t")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1110244800]
 position = Vector2(-1, -74)
@@ -102,10 +100,12 @@ position = Vector2(0, -536)
 
 [node name="PorteriaDelIzq" parent="." unique_id=119984880 instance=ExtResource("7_5he4p")]
 position = Vector2(-856, 11)
+script = ExtResource("7_80k0t")
 
 [node name="PorteriaDelDer" parent="." unique_id=1513105652 instance=ExtResource("7_5he4p")]
 position = Vector2(866, 11)
 rotation = -3.1415925
 scale = Vector2(1, -1)
+script = ExtResource("9_xeo2g")
 
 [node name="UI" parent="." unique_id=484265681 instance=ExtResource("12_ll4ra")]
