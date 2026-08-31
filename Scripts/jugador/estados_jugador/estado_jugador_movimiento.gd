@@ -30,5 +30,5 @@ func movimiento_player(delta) -> void:
 	if KeyUtils.is_action_just_pressed( jugador.esquema_control, KeyUtils.Accion.PATADA ):
 		jugador.pie.golpear()
 	
-	if jugador.vida == 0:
-		EventBus.peticion_transmision_estado(Jugador.Estado.ATURDIDO)
+	#if jugador.estadisticas.get_estadistica("vida") == 0:
+	#	EventBus.peticion_transmision_estado(Jugador.Estado.ATURDIDO)

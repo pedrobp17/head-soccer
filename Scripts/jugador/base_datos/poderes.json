@@ -1,150 +1,150 @@
 {
-    "poderes": [
-        {
-            "nombre": "mano_magica",
-            "tipo": 1,
-            "estadisticas": {
-                "velocidad": 5,
-                "fuerza": 5
-            }
-            
-        },
-        {
-            "nombre": "cabezazo",
-            "tipo": 1,
-            "estadisticas": {
-                "velocidad": 5,
-                "fuerza": 5
-            }
-        },
-        {
-            "nombre": "tornado_fuego",
-            "tipo": 1,
-            "estadisticas": {
-                "velocidad": 5,
-                "fuerza": 5
-            }
-        },
-        {
-            "nombre": "tornado_dragon",
-            "tipo": 1,
-            "estadisticas": {
-                "velocidad": 5,
-                "fuerza": 5
-            }
-        },
-        {
-            "nombre": "cañon_meteoros",
-            "tipo": 1,
-            "estadisticas": {
-                "velocidad": 5,
-                "fuerza": 5
-            }
-        },
-        {
-            "nombre": "pingüinos_cosmicos",
-            "tipo": 1,
-            "estadisticas": {
-                "velocidad": 5,
-                "fuerza": 5
-            }
-        },
-        {
-            "nombre": "espejismo",
-            "tipo": 1,
-            "estadisticas": {
-                "velocidad": 5,
-                "fuerza": 5
-            }
-        },
-        {
-            "nombre": "pingüino_emperador",
-            "tipo": 1,
-            "estadisticas": {
-                "velocidad": 5,
-                "fuerza": 5
-            }
-        },
-        {
-            "nombre": "tiro_reaccion",
-            "tipo": 1,
-            "estadisticas": {
-                "velocidad": 5,
-                "fuerza": 5
-            }
-        },
-        {
-            "nombre": "default",
-            "tipo": 1,
-            "estadisticas": {
-                "velocidad": 5,
-                "fuerza": 5
-            }
-        },
-        {
-            "nombre": "murcielagos",
-            "tipo": 1,
-            "estadisticas": {
-                "velocidad": 5,
-                "fuerza": 5
-            }
-        },
-        {
-            "nombre": "maldicion",
-            "tipo": 0,
-            "estadisticas": {
-                "velocidad": 5,
-                "fuerza": 5
-            }
-        },
-        {
-            "nombre": "momia",
-            "tipo": 0,
-            "estadisticas": {
-                "velocidad": 5,
-                "fuerza": 5
-            }
-        },
-        {
-            "nombre": "agujero_negro",
-            "tipo": 1,
-            "estadisticas": {
-                "velocidad": 5,
-                "fuerza": 5
-            }
-        },
-        {
-            "nombre": "dron",
-            "tipo": 1,
-            "estadisticas": {
-                "velocidad": 5,
-                "fuerza": 5
-            }
-        },
-        {
-            "nombre": "campo_magnetico",
-            "tipo": 1,
-            "estadisticas": {
-                "velocidad": 5,
-                "fuerza": 5
-            }
-        },
-        {
-            "nombre": "hora_celestial",
-            "tipo": 0,
-            "estadisticas": {
-                "velocidad": 5,
-                "fuerza": 5
-            }
-        },
-        {
-            "nombre": "espada_divina",
-            "tipo": 1,
-            "estadisticas": {
-                "velocidad": 5,
-                "fuerza": 5
-            }
-        }
-        
-    ]
+	"poderes": [
+		{
+			"nombre": "mano_magica",
+			"tipo": 1,
+			"estadisticas": {
+				"velocidad": 5,
+				"fuerza": 5
+			}
+			
+		},
+		{
+			"nombre": "cabezazo",
+			"tipo": 1,
+			"estadisticas": {
+				"velocidad": 5,
+				"fuerza": 5
+			}
+		},
+		{
+			"nombre": "tornado_fuego",
+			"tipo": 1,
+			"estadisticas": {
+				"velocidad": 5,
+				"fuerza": 5
+			}
+		},
+		{
+			"nombre": "tornado_dragon",
+			"tipo": 1,
+			"estadisticas": {
+				"velocidad": 5,
+				"fuerza": 5
+			}
+		},
+		{
+			"nombre": "cañon_meteoros",
+			"tipo": 1,
+			"estadisticas": {
+				"velocidad": 5,
+				"fuerza": 5
+			}
+		},
+		{
+			"nombre": "pingüinos_cosmicos",
+			"tipo": 1,
+			"estadisticas": {
+				"velocidad": 5,
+				"fuerza": 5
+			}
+		},
+		{
+			"nombre": "espejismo",
+			"tipo": 1,
+			"estadisticas": {
+				"velocidad": 5,
+				"fuerza": 5
+			}
+		},
+		{
+			"nombre": "pingüino_emperador",
+			"tipo": 1,
+			"estadisticas": {
+				"velocidad": 5,
+				"fuerza": 5
+			}
+		},
+		{
+			"nombre": "tiro_reaccion",
+			"tipo": 1,
+			"estadisticas": {
+				"velocidad": 5,
+				"fuerza": 5
+			}
+		},
+		{
+			"nombre": "default",
+			"tipo": 1,
+			"estadisticas": {
+				"velocidad": 5,
+				"fuerza": 5
+			}
+		},
+		{
+			"nombre": "murcielagos",
+			"tipo": 1,
+			"estadisticas": {
+				"velocidad": 5,
+				"fuerza": 5
+			}
+		},
+		{
+			"nombre": "maldicion",
+			"tipo": 0,
+			"estadisticas": {
+				"velocidad": 5,
+				"fuerza": 5
+			}
+		},
+		{
+			"nombre": "momia",
+			"tipo": 0,
+			"estadisticas": {
+				"velocidad": 5,
+				"fuerza": 5
+			}
+		},
+		{
+			"nombre": "agujero_negro",
+			"tipo": 1,
+			"estadisticas": {
+				"velocidad": 5,
+				"fuerza": 5
+			}
+		},
+		{
+			"nombre": "dron",
+			"tipo": 1,
+			"estadisticas": {
+				"velocidad": 5,
+				"fuerza": 5
+			}
+		},
+		{
+			"nombre": "campo_magnetico",
+			"tipo": 1,
+			"estadisticas": {
+				"velocidad": 5,
+				"fuerza": 5
+			}
+		},
+		{
+			"nombre": "hora_celestial",
+			"tipo": 0,
+			"estadisticas": {
+				"velocidad": 5,
+				"fuerza": 5
+			}
+		},
+		{
+			"nombre": "espada_divina",
+			"tipo": 1,
+			"estadisticas": {
+				"velocidad": 5,
+				"fuerza": 5
+			}
+		}
+		
+	]
 }

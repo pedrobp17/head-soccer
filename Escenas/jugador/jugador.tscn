@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c4s5i5rrr2rbe"]
 
 [ext_resource type="Texture2D" uid="uid://tpwcjtm583m" path="res://Sprites/jugadores/cabezas/MarkEvans.png" id="1_5ye0k"]
+[ext_resource type="Script" uid="uid://b2tyajr35x3cv" path="res://Scripts/jugador/Player.gd" id="1_pxu2a"]
 [ext_resource type="PackedScene" uid="uid://dn78s2f74s8ik" path="res://Escenas/jugador/Pie.tscn" id="3_3bpyk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_eu64u"]
@@ -45,8 +46,10 @@ _data = {
 &"idle": SubResource("Animation_gllot")
 }
 
-[node name="MarkEvans" type="CharacterBody2D" unique_id=250287789]
+[node name="jugador" type="CharacterBody2D" unique_id=250287789]
 collision_mask = 7
+script = ExtResource("1_pxu2a")
+esquema_control = 1
 
 [node name="cuerpo" type="Sprite2D" parent="." unique_id=5466215]
 unique_name_in_owner = true

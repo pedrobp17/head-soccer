@@ -1,7 +1,6 @@
 extends Area2D
 
 var golpeando = false
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
@@ -13,8 +12,8 @@ func golpear():
 	
 	var tween = create_tween()
 	golpeando = true
-
-	tween.tween_property(self, "rotation", deg_to_rad(90),  0.12)
+	
+	tween.tween_property(self, "rotation", deg_to_rad(scale.x * 90),  0.12)
 	tween.tween_property(self, "rotation", deg_to_rad(0),  0.18)
 	
 	golpeando = false
@@ -25,3 +24,7 @@ func _on_body_entered(body: Node2D) -> void:
 	if body is Pelota:
 		var normal = (body.global_position - global_position).normalized()
 		EventBus.golpear_pelota.emit(normal, true)
+
+func set_sprite( es_visitante : int) -> void:
+	scale.x = es_visitante
+	

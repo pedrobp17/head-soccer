@@ -7,7 +7,9 @@
                 "velocidad": 5,
                 "salto": 5,
                 "golpe": 5,
-                "power": 5
+                "power": 5,
+                "aguante": 5,
+                "vida": 5
             },
             "poderes": [
                 "mano_magica",
@@ -22,7 +24,9 @@
                 "velocidad": 5,
                 "salto": 5,
                 "golpe": 5,
-                "power": 5
+                "power": 5,
+                "aguante": 5,
+                "vida": 5
             },
             "poderes": [
                 "tornado_fuego",
@@ -37,7 +41,9 @@
                 "velocidad": 5,
                 "salto": 5,
                 "golpe": 5,
-                "power": 5
+                "power": 5,
+                "aguante": 5,
+                "vida": 5
             },
             "poderes": [
                 "cañon_meteoros",
@@ -52,7 +58,9 @@
                 "velocidad": 5,
                 "salto": 5,
                 "golpe": 5,
-                "power": 5
+                "power": 5,
+                "aguante": 5,
+                "vida": 5
             },
             "poderes": [
                 "espejismo",
@@ -67,7 +75,9 @@
                 "velocidad": 5,
                 "salto": 5,
                 "golpe": 5,
-                "power": 5
+                "power": 5,
+                "aguante": 5,
+                "vida": 5
             },
             "poderes": [
                 "tiro_reaccion",
@@ -82,7 +92,9 @@
                 "velocidad": 5,
                 "salto": 5,
                 "golpe": 5,
-                "power": 5
+                "power": 5,
+                "aguante": 5,
+                "vida": 5
             },
             "poderes": [
                 "murcielagos",
@@ -97,7 +109,9 @@
                 "velocidad": 5,
                 "salto": 5,
                 "golpe": 5,
-                "power": 5
+                "power": 5,
+                "aguante": 5,
+                "vida": 5
             },
             "poderes": [
                 "momia",
@@ -112,7 +126,9 @@
                 "velocidad": 5,
                 "salto": 5,
                 "golpe": 5,
-                "power": 5
+                "power": 5,
+                "aguante": 5,
+                "vida": 5
             },
             "poderes": [
                 "dron",
@@ -127,7 +143,9 @@
                 "velocidad": 5,
                 "salto": 5,
                 "golpe": 5,
-                "power": 5
+                "power": 5,
+                "aguante": 5,
+                "vida": 5
             },
             "poderes": [
                 "hora_celestial",
