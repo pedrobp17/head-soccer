@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://c825xiggbfduj"]
 
 [ext_resource type="Texture2D" uid="uid://ddpdk6g68cged" path="res://Sprites/objetos_estadio/estadio.png" id="2_nihhg"]
-[ext_resource type="PackedScene" uid="uid://c4s5i5rrr2rbe" path="res://Escenas/jugador/jugador.tscn" id="3_7fw6c"]
 [ext_resource type="PackedScene" uid="uid://drbdxstxvyn5s" path="res://Escenas/objetos_campo/porteriaTrasera.tscn" id="3_gx6bm"]
 [ext_resource type="PackedScene" uid="uid://dva32iy5kutsy" path="res://Escenas/objetos_campo/Pelota.tscn" id="6_fj5fn"]
 [ext_resource type="PackedScene" uid="uid://knjjlr3ll4qq" path="res://Escenas/objetos_campo/porteria.tscn" id="7_5he4p"]
@@ -87,15 +86,6 @@ position = Vector2(1002, -432)
 shape = SubResource("SegmentShape2D_obkv7")
 
 [node name="ContenedorPersonajes" type="Node2D" parent="." unique_id=853365297]
-
-[node name="visitante" parent="ContenedorPersonajes" unique_id=250287789 instance=ExtResource("3_7fw6c")]
-position = Vector2(591, -25)
-esquema_control = 2
-
-[node name="local" parent="ContenedorPersonajes" unique_id=786724751 instance=ExtResource("3_7fw6c")]
-position = Vector2(-584, -27)
-rotation = -3.1415925
-scale = Vector2(1, -1)
 
 [node name="Pelota" parent="ContenedorPersonajes" unique_id=279367134 instance=ExtResource("6_fj5fn")]
 position = Vector2(0, -536)
