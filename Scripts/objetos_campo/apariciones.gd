@@ -4,7 +4,7 @@ const PREFAB_JUGADOR := preload("res://Escenas/jugador/jugador.tscn")
 
 @export var local : String
 @export var visitante : String
-
+@export var pelota : Pelota
 @onready var aparicion : Node2D = %Apariciones
 
 # Called when the node enters the scene tree for the first time.
@@ -23,5 +23,5 @@ func aparecer_jugador( jugador : String, identificador_bando : int) -> void:
 	
 func crear_jugador(posicion_jugador : Vector2, datos_jugadores : RecursosJugador, identificador_bando : int) -> Jugador:
 	var jugador := PREFAB_JUGADOR.instantiate()
-	jugador.inicializar(posicion_jugador, datos_jugadores, identificador_bando )
+	jugador.inicializar(posicion_jugador, datos_jugadores, pelota, identificador_bando )
 	return jugador

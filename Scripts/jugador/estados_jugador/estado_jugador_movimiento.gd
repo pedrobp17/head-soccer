@@ -5,7 +5,7 @@ extends EstadoJugador
 # Called when the node enters the scene tree for the first time.
 func _process(delta: float) -> void:
 	if jugador.esquema_control == Jugador.ControlScheme.IA:
-		pass
+		comportamiento_ia.process_ia()
 	else:
 		movimiento_player(delta)
 	jugador.animacion()

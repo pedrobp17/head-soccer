@@ -54,7 +54,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_ov2su"]
 resource_name = "poder"
-length = 1.9000000000000001
+length = 1.9
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -79,6 +79,7 @@ _data = {
 [node name="jugador" type="CharacterBody2D" unique_id=250287789]
 collision_mask = 7
 script = ExtResource("1_pxu2a")
+esquema_control = null
 
 [node name="Pie" parent="." unique_id=425747068 instance=ExtResource("3_3bpyk")]
 position = Vector2(-11, 7)

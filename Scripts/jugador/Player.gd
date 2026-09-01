@@ -17,6 +17,8 @@ enum ControlScheme {IA, P1, P2}
 @onready var animacion_jugador : AnimationPlayer = %AnimationPlayer
 @onready var pie : Area2D = $Pie
 
+var pelota : Pelota = null
+var comportamiento_ia := ComportamientoIA.new()
 var estadisticas := GestorEstadisticas.new()
 var estado_actual : EstadoJugador = null
 var creador_estados := CreadorEstadoJugador.new()
@@ -27,6 +29,7 @@ var es_visitante : bool = false
 func _ready() -> void:
 	set_imagen_personaje()
 	cambiar_estado(Estado.JUGANDO)
+	setup_comportamiento_ia()
 
 func _physics_process(delta: float) -> void:
 	
@@ -37,7 +40,7 @@ func cambiar_estado( estado : Estado ) -> void:
 	if estado_actual != null:
 		estado_actual.queue_free()
 	estado_actual = creador_estados.get_fresh_state(estado)
-	estado_actual.setup(self, animacion_jugador)
+	estado_actual.setup(self, animacion_jugador, comportamiento_ia)
 	estado_actual.peticion_transmision_estado.connect(cambiar_estado.bind())
 	estado_actual.name = "MaquinaEstadosJugador: " + str(estado)
 	call_deferred("add_child", estado_actual)
@@ -64,12 +67,14 @@ func set_imagen_personaje() -> void:
 	var dar_vuelta = BANDO ["visitante"] if es_visitante else BANDO["local"]
 	pie.set_sprite(dar_vuelta)
 
-func inicializar(jugador_posicion: Vector2, jugador_data : RecursosJugador , identificador_bando) -> void:
+func inicializar(jugador_posicion: Vector2, jugador_data : RecursosJugador , _pelota : Pelota, identificador_bando) -> void:
 	position = Vector2(jugador_posicion.x * identificador_bando, jugador_posicion.y)
 	nombre = jugador_data.nombre
 	estadisticas.inicializar(jugador_data.estadisticas)
 	equipo = jugador_data.equipo
 	es_visitante = bool( BANDO["visitante"] - identificador_bando )
-		
-	
-	
+	pelota = _pelota 
+func setup_comportamiento_ia() -> void:
+	comportamiento_ia.setup(self, pelota)
+	comportamiento_ia.name = "Comportamiento IA"
+	add_child(comportamiento_ia)
