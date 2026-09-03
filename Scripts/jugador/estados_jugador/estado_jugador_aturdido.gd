@@ -18,4 +18,5 @@ func _process(delta: float) -> void:
 
 func knockback() -> void:
 	if not jugador.is_on_floor():
-		jugador.velocity += jugador.get_gravity() * delta
+		#jugador.velocity += jugador.get_gravity() * delta
+		pass

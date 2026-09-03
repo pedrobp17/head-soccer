@@ -34,7 +34,7 @@ func _ready() -> void:
 	cambiar_estado(Estado.JUGANDO)
 	setup_comportamiento_ia()
 	posicion_aparicion = position
-	pie.setup( estadisticas.get_estadistica("golpe"), CAPA_LOCAL if !es_visitante else CAPA_VISITANTE) 
+	pie.setup( estadisticas.get_estadistica("golpe"), CAPA_LOCAL if es_visitante else CAPA_VISITANTE) 
 	 
 func _physics_process(_delta: float) -> void:
 	
@@ -79,7 +79,7 @@ func inicializar(jugador_posicion: Vector2, jugador_data : RecursosJugador , _pe
 	nombre = jugador_data.nombre
 	estadisticas.inicializar(jugador_data.estadisticas)
 	equipo = jugador_data.equipo
-	es_visitante = bool( BANDO["visitante"] - identificador_bando )
+	es_visitante = !bool( BANDO["visitante"] - identificador_bando )
 	pelota = _pelota
 	set_capas_deteccion(es_visitante)
 	
@@ -89,7 +89,7 @@ func setup_comportamiento_ia() -> void:
 	add_child(comportamiento_ia)
 
 func set_capas_deteccion( jugador_es_visitante : bool):
-	if !jugador_es_visitante:
+	if jugador_es_visitante:
 		set_collision_mask_value(CAPA_LOCAL, true)
 		set_collision_layer_value(CAPA_VISITANTE, true)
 	else:
