@@ -15,10 +15,12 @@ var jugador_visitante : Jugador = null
 func _ready() -> void:
 	jugador_local = aparecer_jugador(local, Jugador.BANDO["local"])
 	jugador_visitante = aparecer_jugador(visitante, Jugador.BANDO["visitante"])
-	var jugador : Jugador = get_children().filter(func (p): return p is Jugador)[0]
-	jugador.esquema_control = Jugador.ControlScheme.P1
-	jugador.set_imagen_personaje()
-
+	#var jugador : Jugador = get_children().filter(func (p): return p is Jugador)[0]
+	jugador_local.esquema_control = Jugador.ControlScheme.P1
+	jugador_local.set_imagen_personaje()
+	jugador_visitante.esquema_control = Jugador.ControlScheme.P2
+	jugador_visitante.set_imagen_personaje()
+	
 func aparecer_jugador( jugador : String, identificador_bando : int) -> Jugador:
 	var datos_jugador := DatosJugadores.get_jugador(jugador)
 	var posicion_jugador := aparicion.get_child(0).global_position as Vector2

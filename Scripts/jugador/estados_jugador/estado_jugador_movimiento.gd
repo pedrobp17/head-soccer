@@ -5,7 +5,8 @@ extends EstadoJugador
 # Called when the node enters the scene tree for the first time.
 func _process(delta: float) -> void:
 	if jugador.esquema_control == Jugador.ControlScheme.IA:
-		comportamiento_ia.process_ia()
+		#comportamiento_ia.process_ia()
+		pass
 	else:
 		movimiento_player(delta)
 	jugador.animacion()
@@ -30,5 +31,5 @@ func movimiento_player(delta : float) -> void:
 	if KeyUtils.is_action_just_pressed( jugador.esquema_control, KeyUtils.Accion.PATADA ):
 		jugador.pie.golpear()
 	
-	#if jugador.estadisticas.get_estadistica("vida") == 0:
-	#	EventBus.peticion_transmision_estado(Jugador.Estado.ATURDIDO)
+	if jugador.estadisticas.get_estadistica("vida") <= 0:
+		peticion_transmision_estado.emit(Jugador.Estado.ATURDIDO)

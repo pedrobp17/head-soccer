@@ -7,6 +7,10 @@
 radius = 18.08482
 height = 48.14309
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a8ku5"]
+radius = 20.0797
+height = 52.309166
+
 [node name="Pie" type="Area2D" unique_id=574838392]
 collision_layer = 8
 collision_mask = 3
@@ -23,3 +27,16 @@ rotation = -2.4609141
 scale = Vector2(1.08, 1.08)
 skew = 0.34906584
 shape = SubResource("CapsuleShape2D_j6m78")
+
+[node name="DetectorDaño" type="Area2D" parent="." unique_id=1554871657]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 0
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectorDaño" unique_id=1017046732]
+position = Vector2(-4.000002, 38)
+rotation = -2.4609141
+skew = 0.34906584
+shape = SubResource("CapsuleShape2D_a8ku5")

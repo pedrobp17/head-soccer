@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name  Jugador
 
+const CAPA_VISITANTE := 5
+const CAPA_LOCAL := 1
 const FUERZA_CABEZAZO := 60
 const BANDO : Dictionary = {
 	"visitante" : -1,
@@ -31,10 +33,10 @@ func _ready() -> void:
 	set_imagen_personaje()
 	cambiar_estado(Estado.JUGANDO)
 	setup_comportamiento_ia()
-	pie.setup_fuerza(self.estadisticas.get_estadistica("golpe")) 
 	posicion_aparicion = position
+	pie.setup( estadisticas.get_estadistica("golpe"), CAPA_LOCAL if !es_visitante else CAPA_VISITANTE) 
 	 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	
 	move_and_slide()
 	comprobar_colisiones()
@@ -78,9 +80,22 @@ func inicializar(jugador_posicion: Vector2, jugador_data : RecursosJugador , _pe
 	estadisticas.inicializar(jugador_data.estadisticas)
 	equipo = jugador_data.equipo
 	es_visitante = bool( BANDO["visitante"] - identificador_bando )
-	pelota = _pelota 
+	pelota = _pelota
+	set_capas_deteccion(es_visitante)
 	
 func setup_comportamiento_ia() -> void:
 	comportamiento_ia.setup(self, pelota)
 	comportamiento_ia.name = "Comportamiento IA"
 	add_child(comportamiento_ia)
+
+func set_capas_deteccion( jugador_es_visitante : bool):
+	if !jugador_es_visitante:
+		set_collision_mask_value(CAPA_LOCAL, true)
+		set_collision_layer_value(CAPA_VISITANTE, true)
+	else:
+		set_collision_mask_value(CAPA_VISITANTE, true)
+		set_collision_layer_value(CAPA_LOCAL, true)
+		
+func tomar_daño( daño : float ):
+	estadisticas.modificar("vida", -daño)
+	print("vida" + str(estadisticas.get_estadistica("vida")))
