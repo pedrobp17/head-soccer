@@ -2,8 +2,8 @@ class_name EstadoJugadorAturdido
 extends EstadoJugador
 
 const DURACION_ATURDIMIENTO := 2000
-const DISTANCIA_KNOCK_BACK := 400
-const FUERZA_KNOCK_BACK := Vector2(-2500.0,0)
+const DISTANCIA_KNOCK_BACK := -2500
+const FUERZA_KNOCK_BACK := Vector2(DISTANCIA_KNOCK_BACK, 0)
 var tiempo_inicio_aturdimiento := Time.get_ticks_msec()
 
 func _enter_tree() -> void:

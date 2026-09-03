@@ -39,9 +39,10 @@ position = Vector2(0, -248)
 texture = ExtResource("2_nihhg")
 
 [node name="PorteriaTrasera" type="Node2D" parent="." unique_id=2139735602]
+position = Vector2(-10, 23)
 
 [node name="PorteriaTrasDer" parent="PorteriaTrasera" unique_id=835803769 instance=ExtResource("3_gx6bm")]
-position = Vector2(866, 11)
+position = Vector2(882, 10)
 rotation = 3.1415927
 scale = Vector2(1, -1)
 
@@ -56,7 +57,7 @@ collision_layer = 4
 collision_mask = 11
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="limites/suelo" unique_id=1291733226]
-position = Vector2(1, 183)
+position = Vector2(1, 189)
 shape = SubResource("SegmentShape2D_amyr6")
 
 [node name="limiteIzq" type="StaticBody2D" parent="limites" unique_id=2133072014]
@@ -101,13 +102,14 @@ position = Vector2(0, 50)
 position = Vector2(-584, -77)
 
 [node name="PorteriaDelantera" type="Node2D" parent="." unique_id=1799541095]
+position = Vector2(-9, 22)
 
 [node name="PorteriaDelIzq" parent="PorteriaDelantera" unique_id=119984880 instance=ExtResource("7_5he4p")]
 position = Vector2(-856, 11)
 script = ExtResource("7_80k0t")
 
 [node name="PorteriaDelDer" parent="PorteriaDelantera" unique_id=1513105652 instance=ExtResource("7_5he4p")]
-position = Vector2(866, 11)
+position = Vector2(881, 11)
 rotation = -3.1415925
 scale = Vector2(1, -1)
 script = ExtResource("9_xeo2g")
