@@ -1,6 +1,7 @@
 extends Area2D
 
 var golpeando = false
+var fuerza := 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
@@ -23,8 +24,10 @@ func golpear():
 func _on_body_entered(body: Node2D) -> void:
 	if body is Pelota:
 		var normal = (body.global_position - global_position).normalized()
-		EventBus.golpear_pelota.emit(normal, true)
+		EventBus.golpear_pelota.emit(normal, true, fuerza)
 
 func set_sprite( es_visitante : int) -> void:
 	scale.x = es_visitante
-	
+
+func setup_fuerza(_fuerza : float): 
+	fuerza = _fuerza

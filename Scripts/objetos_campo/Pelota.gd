@@ -16,12 +16,12 @@ func _ready() -> void:
 	EventBus.reposicionar.connect(set_reposicion)
 
 #Move ball in the normal direction of the colision
-func mover(normal: Vector2, isFoot):
+func mover(normal: Vector2, es_pie : bool, fuerza : float):
 	var velocidad = VELOCIDAD
 	
 	#modify variables if the kick is made with the foot
-	if isFoot:
-		velocidad *= 60
+	if es_pie:
+		velocidad *= fuerza
 		normal = Vector2( normal.x, FUERZA_Y).normalized()	#apply thrust along the y-axis if it involves the foot
 		
 	apply_central_force(normal * velocidad)

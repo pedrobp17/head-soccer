@@ -1,8 +1,7 @@
 extends CharacterBody2D
 class_name  Jugador
 
-const VELOCIDAD = 300.0
-const VELOCIDAD_SALTO = -450.0
+const FUERZA_CABEZAZO := 60
 const BANDO : Dictionary = {
 	"visitante" : -1,
 	"local" : 1
@@ -25,12 +24,16 @@ var creador_estados := CreadorEstadoJugador.new()
 var nombre := ""
 var equipo := ""
 var es_visitante : bool = false
+var posicion_aparicion := Vector2.ZERO
+var fuerza_seguimiento_ia := 0.0
 
 func _ready() -> void:
 	set_imagen_personaje()
 	cambiar_estado(Estado.JUGANDO)
 	setup_comportamiento_ia()
-
+	pie.setup_fuerza(self.estadisticas.get_estadistica("golpe")) 
+	posicion_aparicion = position
+	 
 func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
@@ -48,12 +51,14 @@ func cambiar_estado( estado : Estado ) -> void:
 func comprobar_colisiones() -> void:
 	for i in get_slide_collision_count():
 		var collision := get_slide_collision(i)
+		var fuerza := 1.0
 		
 		if collision.get_collider() is Pelota:
 			var direccion := -collision.get_normal()
 			var aumentar_fuerza := direccion.y < -0.5
+			fuerza = FUERZA_CABEZAZO
 			
-			EventBus.golpear_pelota.emit(direccion, aumentar_fuerza)
+			EventBus.golpear_pelota.emit(direccion, aumentar_fuerza, fuerza)
 			
 func animacion() -> void:
 	if velocity.y == 0:
@@ -67,13 +72,14 @@ func set_imagen_personaje() -> void:
 	var dar_vuelta = BANDO ["visitante"] if es_visitante else BANDO["local"]
 	pie.set_sprite(dar_vuelta)
 
-func inicializar(jugador_posicion: Vector2, jugador_data : RecursosJugador , _pelota : Pelota, identificador_bando) -> void:
+func inicializar(jugador_posicion: Vector2, jugador_data : RecursosJugador , _pelota : Pelota, identificador_bando) -> void:	
 	position = Vector2(jugador_posicion.x * identificador_bando, jugador_posicion.y)
 	nombre = jugador_data.nombre
 	estadisticas.inicializar(jugador_data.estadisticas)
 	equipo = jugador_data.equipo
 	es_visitante = bool( BANDO["visitante"] - identificador_bando )
 	pelota = _pelota 
+	
 func setup_comportamiento_ia() -> void:
 	comportamiento_ia.setup(self, pelota)
 	comportamiento_ia.name = "Comportamiento IA"

@@ -1,6 +1,15 @@
 extends Node
 class_name GestorEstadisticas
 
+var base := 5.0
+var constantes : Dictionary = {
+	"velocidad": 300.0,
+	"salto": -450.0,
+	"golpe": 60,
+	"power": 5,
+	"aguante": 5,
+	"vida": 100.0
+}
 var estadisticas_normales : Dictionary = {}
 var estadisticas_modificadas : Dictionary = {}
 
@@ -12,7 +21,7 @@ func modificar( estadistica : String, modificacion : int) -> void:
 		estadisticas_modificadas[estadistica] = 0
 	estadisticas_modificadas[estadistica] = modificacion
 	
-func get_estadistica( estadistica : String) -> int:
+func get_estadistica( estadistica : String) -> float:
 	if estadisticas_modificadas.has(estadistica):
 		return estadisticas_modificadas[estadistica]
-	return estadisticas_normales[estadistica]
+	return (estadisticas_normales[estadistica] / base) * constantes[estadistica]
