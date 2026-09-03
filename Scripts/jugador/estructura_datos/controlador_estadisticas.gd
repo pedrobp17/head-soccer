@@ -5,9 +5,9 @@ var base := 5.0
 var constantes : Dictionary = {
 	"velocidad": 300.0,
 	"salto": -450.0,
-	"golpe": 60,
-	"power": 5,
-	"aguante": 5,
+	"golpe": 60.0,
+	"power": 5.0,
+	"aguante": 5.0,
 	"vida": 100.0
 }
 var estadisticas_normales : Dictionary = {}
@@ -18,7 +18,7 @@ func inicializar( estadisticas_jugador : Dictionary ) -> void:
 	
 func modificar( estadistica : String, modificacion : float) -> void:
 	if not estadisticas_modificadas.has(estadistica):
-		estadisticas_modificadas[estadistica] = estadisticas_normales
+		estadisticas_modificadas[estadistica] = estadisticas_normales[estadistica]
 	estadisticas_modificadas[estadistica] += modificacion
 	
 func get_estadistica( estadistica : String) -> float:

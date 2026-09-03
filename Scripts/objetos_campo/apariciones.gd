@@ -13,8 +13,8 @@ var jugador_visitante : Jugador = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	jugador_local = aparecer_jugador(local, Jugador.BANDO["local"])
-	jugador_visitante = aparecer_jugador(visitante, Jugador.BANDO["visitante"])
+	jugador_local = aparecer_jugador(local, Jugador.BANDO[false])
+	jugador_visitante = aparecer_jugador(visitante, Jugador.BANDO[true])
 	#var jugador : Jugador = get_children().filter(func (p): return p is Jugador)[0]
 	jugador_local.esquema_control = Jugador.ControlScheme.P1
 	jugador_local.set_imagen_personaje()

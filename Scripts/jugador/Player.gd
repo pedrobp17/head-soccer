@@ -5,8 +5,8 @@ const CAPA_VISITANTE := 5
 const CAPA_LOCAL := 1
 const FUERZA_CABEZAZO := 60
 const BANDO : Dictionary = {
-	"visitante" : -1,
-	"local" : 1
+	true : -1,
+	false : 1
 }
 
 enum Estado {JUGANDO, PODER, ATURDIDO}
@@ -71,15 +71,15 @@ func animacion() -> void:
 func set_imagen_personaje() -> void:
 	controlador_sprite.texture = PlayerUtils.obtener_sprite(esquema_control)
 	controlador_sprite.set_flip_h(es_visitante)
-	var dar_vuelta = BANDO ["visitante"] if es_visitante else BANDO["local"]
+	var dar_vuelta = BANDO [es_visitante]
 	pie.set_sprite(dar_vuelta)
 
-func inicializar(jugador_posicion: Vector2, jugador_data : RecursosJugador , _pelota : Pelota, identificador_bando) -> void:	
+func inicializar(jugador_posicion: Vector2, jugador_data : RecursosJugador , _pelota : Pelota, identificador_bando : int) -> void:	
 	position = Vector2(jugador_posicion.x * identificador_bando, jugador_posicion.y)
 	nombre = jugador_data.nombre
 	estadisticas.inicializar(jugador_data.estadisticas)
 	equipo = jugador_data.equipo
-	es_visitante = !bool( BANDO["visitante"] - identificador_bando )
+	es_visitante =  bool(1 - identificador_bando)
 	pelota = _pelota
 	set_capas_deteccion(es_visitante)
 	
@@ -99,3 +99,4 @@ func set_capas_deteccion( jugador_es_visitante : bool):
 func tomar_daño( daño : float ):
 	estadisticas.modificar("vida", -daño)
 	print("vida" + str(estadisticas.get_estadistica("vida")))
+	
