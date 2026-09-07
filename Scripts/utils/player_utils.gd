@@ -10,4 +10,3 @@ var MAPA_PERSONAJES : Dictionary = {
 
 func obtener_sprite(esquema_control : Jugador.ControlScheme) -> Texture2D:
 	return MAPA_PERSONAJES.get(esquema_control, SPRITE_DEFECTO) #busca si esta el sprite y sino otorga uno por defecto
-	

@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://b783ubsh53onv"]
+
+[ext_resource type="Script" uid="uid://6va0k2ljufcw" path="res://Scripts/ui/barra_poder.gd" id="1_8nxw8"]
+
+[sub_resource type="Gradient" id="Gradient_jtwau"]
+offsets = PackedFloat32Array(0.04661017, 0.9533898, 1)
+colors = PackedColorArray(0.9999998, 0.8932255, 0.2478691, 1, 0.7607843, 0.32941177, 0, 1, 0.7867234, 0.39054823, 0.026877373, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_eu64u"]
+gradient = SubResource("Gradient_jtwau")
+width = 170
+
+[node name="TextureProgressBar" type="TextureProgressBar" unique_id=1576363723]
+offset_right = 170.0
+offset_bottom = 64.0
+value = 100.0
+texture_progress = SubResource("GradientTexture2D_eu64u")
+script = ExtResource("1_8nxw8")

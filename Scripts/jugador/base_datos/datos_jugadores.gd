@@ -18,11 +18,14 @@ func _ready() -> void:
 		var poderes := jugador["poderes"] as Array
 		var estadisticas : Dictionary = jugador["estadisticas"] 
 		var equipo := jugador["equipo"] as String
+		var configuracion_pie : Dictionary = jugador["pie"]
+		var configuracion_capsula : Dictionary = jugador["capsula"]
 		
-		var recurso_jugador := RecursosJugador.new(nombre, espiritu, poderes, estadisticas, equipo)
+		var recurso_jugador := RecursosJugador.new(nombre, espiritu, poderes, estadisticas, equipo, configuracion_pie, configuracion_capsula)
 		jugadores.set(nombre, recurso_jugador)
 	
 func get_jugador(jugador: String) -> RecursosJugador:
 	if jugadores.has(jugador):
 		return jugadores[jugador]
 	return null
+	

@@ -3,7 +3,7 @@ class_name  Jugador
 
 const CAPA_VISITANTE := 5
 const CAPA_LOCAL := 1
-const FUERZA_CABEZAZO := 60
+const FUERZA_CABEZAZO := 30
 const BANDO : Dictionary = {
 	true : -1,
 	false : 1
@@ -17,6 +17,7 @@ enum ControlScheme {IA, P1, P2}
 @onready var controlador_sprite : Sprite2D = %cuerpo
 @onready var animacion_jugador : AnimationPlayer = %AnimationPlayer
 @onready var pie : Area2D = $Pie
+@onready var capsula : CollisionShape2D = %capsula
 
 var pelota : Pelota = null
 var comportamiento_ia := ComportamientoIA.new()
@@ -28,14 +29,18 @@ var equipo := ""
 var es_visitante : bool = false
 var posicion_aparicion := Vector2.ZERO
 var fuerza_seguimiento_ia := 0.0
+var velocidad_maxima_subida := 0.0
+var configuracion_posiciones : Dictionary = {}
 
 func _ready() -> void:
 	set_imagen_personaje()
+	setup_elementos_personaje()
 	cambiar_estado(Estado.JUGANDO)
 	setup_comportamiento_ia()
 	posicion_aparicion = position
-	pie.setup( estadisticas.get_estadistica("golpe"), CAPA_LOCAL if es_visitante else CAPA_VISITANTE) 
-	 
+	pie.setup( estadisticas.get_estadistica("golpe"), CAPA_LOCAL if es_visitante else CAPA_VISITANTE)
+	
+	
 func _physics_process(_delta: float) -> void:
 	
 	move_and_slide()
@@ -69,10 +74,7 @@ func animacion() -> void:
 		animacion_jugador.stop()
 		
 func set_imagen_personaje() -> void:
-	controlador_sprite.texture = PlayerUtils.obtener_sprite(esquema_control)
-	controlador_sprite.set_flip_h(es_visitante)
-	var dar_vuelta = BANDO [es_visitante]
-	pie.set_sprite(dar_vuelta)
+	controlador_sprite.texture = load("res://Sprites/jugadores/cabezas/" + nombre + ".png")
 
 func inicializar(jugador_posicion: Vector2, jugador_data : RecursosJugador , _pelota : Pelota, identificador_bando : int) -> void:	
 	position = Vector2(jugador_posicion.x * identificador_bando, jugador_posicion.y)
@@ -82,6 +84,11 @@ func inicializar(jugador_posicion: Vector2, jugador_data : RecursosJugador , _pe
 	es_visitante =  bool(1 - identificador_bando)
 	pelota = _pelota
 	set_capas_deteccion(es_visitante)
+	velocidad_maxima_subida = estadisticas.get_estadistica("salto")
+	configuracion_posiciones = {
+		"pie" : jugador_data.configuracion_pie,
+		"capsula" : jugador_data.configuracion_capsula
+	}
 	
 func setup_comportamiento_ia() -> void:
 	comportamiento_ia.setup(self, pelota)
@@ -98,5 +105,16 @@ func set_capas_deteccion( jugador_es_visitante : bool):
 		
 func tomar_daño( daño : float ):
 	estadisticas.modificar("vida", -daño)
-	print("vida" + str(estadisticas.get_estadistica("vida")))
 	
+func setup_elementos_personaje():
+	capsula.position = Vector2(configuracion_posiciones["capsula"]["x"],configuracion_posiciones["capsula"]["y"])
+	pie.position = Vector2(configuracion_posiciones["pie"]["x"],configuracion_posiciones["pie"]["y"])
+	
+	if capsula.shape:
+		capsula.shape = capsula.shape.duplicate()
+		if capsula.shape is CapsuleShape2D:
+			var nueva_capsula = capsula.shape as CapsuleShape2D
+			nueva_capsula.radius = configuracion_posiciones["capsula"]["radio"]
+			nueva_capsula.height = configuracion_posiciones["capsula"]["altura"]
+	
+	scale.x = BANDO[!es_visitante]

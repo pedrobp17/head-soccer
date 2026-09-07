@@ -30,6 +30,8 @@ func movimiento_player(delta : float) -> void:
 		
 	if KeyUtils.is_action_just_pressed( jugador.esquema_control, KeyUtils.Accion.PATADA ):
 		jugador.pie.golpear()
+		
+	jugador.velocity.y = maxf(jugador.velocity.y, jugador.velocidad_maxima_subida)
 	
 	if jugador.estadisticas.get_estadistica("vida") <= 0:
 		peticion_transmision_estado.emit(Jugador.Estado.ATURDIDO)
