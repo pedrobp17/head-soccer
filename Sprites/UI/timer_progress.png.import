@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://be7tr4m7n7gfd"
-path="res://.godot/imported/barraPoder.png-c81f7f69e171822ac9796fe23203c19a.ctex"
+uid="uid://m4dohfegha4h"
+path="res://.godot/imported/timer_progress.png-db6f3a10404d0fa2c23914771da30d25.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/objetos_estadio/barraPoder.png"
-dest_files=["res://.godot/imported/barraPoder.png-c81f7f69e171822ac9796fe23203c19a.ctex"]
+source_file="res://Sprites/UI/timer_progress.png"
+dest_files=["res://.godot/imported/timer_progress.png-db6f3a10404d0fa2c23914771da30d25.ctex"]
 
 [params]
 

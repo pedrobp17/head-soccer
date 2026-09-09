@@ -4,7 +4,7 @@
 [ext_resource type="FontFile" uid="uid://0vbqxsk2buvn" path="res://Fonts/Teko-Bold.ttf" id="1_qkv3v"]
 [ext_resource type="Texture2D" uid="uid://rffngqyghmri" path="res://Sprites/UI/barraPoder.png" id="2_3homq"]
 [ext_resource type="PackedScene" uid="uid://bg642ffkp47t" path="res://Escenas/ui/barra_vida.tscn" id="2_t2lgg"]
-[ext_resource type="Texture2D" uid="uid://3bkb8bng54xi" path="res://Sprites/banderas/bandera-occult.png" id="4_85ik1"]
+[ext_resource type="PackedScene" uid="uid://b1xms8r7pbs6e" path="res://Escenas/ui/tiempo.tscn" id="5_3homq"]
 
 [node name="UI" type="CanvasLayer" unique_id=484265681]
 script = ExtResource("1_fsw7x")
@@ -14,34 +14,53 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -4.0
-offset_right = -4.0
+offset_left = -41.0
+offset_top = 32.0
+offset_right = -41.0
+offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="Control" unique_id=1358155670]
-z_index = 2
+[node name="BarraVida" parent="Control" unique_id=571574025 instance=ExtResource("2_t2lgg")]
+layout_mode = 0
+offset_left = 372.0
+offset_top = 24.0
+offset_right = 502.0
+offset_bottom = 32.0
+
+[node name="BarraVida2" parent="Control" unique_id=505981868 instance=ExtResource("2_t2lgg")]
+layout_mode = 0
+offset_left = 863.0
+offset_top = 24.0
+offset_right = 995.0
+offset_bottom = 32.0
+scale = Vector2(-1, 1)
+
+[node name="base" type="TextureRect" parent="Control" unique_id=1265776125]
+z_index = 1
+layout_mode = 0
+offset_left = 100.0
+offset_top = -42.0
+offset_right = 1137.0
+offset_bottom = 98.0
+texture = ExtResource("2_3homq")
+
+[node name="marcador" type="TextureRect" parent="Control" unique_id=2004346085]
+z_index = 1
+custom_minimum_size = Vector2(60, 0)
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_top = 21.0
-offset_right = 8.0
-offset_bottom = 176.0
+offset_left = 556.0
+offset_top = -18.0
+offset_right = -473.675
+offset_bottom = 50.300003
 grow_horizontal = 2
-
-[node name="base" type="TextureRect" parent="Control/TextureRect" unique_id=2004346085]
-custom_minimum_size = Vector2(60, 0)
-layout_mode = 0
-offset_left = 45.0
-offset_top = -9.0
-offset_right = 1115.0
-offset_bottom = 164.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("2_3homq")
 stretch_mode = 5
 
-[node name="marcador" type="HBoxContainer" parent="Control/TextureRect" unique_id=1578881831]
+[node name="marcador" type="HBoxContainer" parent="Control/marcador" unique_id=1578881831]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -50,23 +69,24 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="marcador1" type="Label" parent="Control/TextureRect/marcador" unique_id=1172498914]
+[node name="marcador1" type="Label" parent="Control/marcador/marcador" unique_id=1172498914]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(132, 0)
+custom_minimum_size = Vector2(96.2, 0)
 layout_mode = 2
+size_flags_horizontal = 0
 theme_override_colors/font_color = Color(1, 0.84313726, 0.4627451, 1)
 theme_override_colors/font_outline_color = Color(0.9098039, 0.40784314, 0.078431375, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 3
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("1_qkv3v")
-theme_override_font_sizes/font_size = 100
+theme_override_font_sizes/font_size = 60
 text = "0 "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="marcador2" type="Label" parent="Control/TextureRect/marcador" unique_id=2004136430]
-custom_minimum_size = Vector2(132, 0)
+[node name="marcador2" type="Label" parent="Control/marcador/marcador" unique_id=2004136430]
+custom_minimum_size = Vector2(71.72, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(1, 0.84313726, 0.4627451, 1)
@@ -75,28 +95,82 @@ theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 3
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("1_qkv3v")
-theme_override_font_sizes/font_size = 100
+theme_override_font_sizes/font_size = 60
 text = "0 "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="equipo1" type="Sprite2D" parent="Control/TextureRect" unique_id=1169252225]
-position = Vector2(328, 75)
-texture = ExtResource("4_85ik1")
+[node name="Nombres" type="TextureRect" parent="Control" unique_id=255611109]
+layout_mode = 0
+offset_left = 313.0
+offset_top = -30.0
+offset_right = 921.2
+offset_bottom = 1.2000008
 
-[node name="equipo2" type="Sprite2D" parent="Control/TextureRect" unique_id=2094488865]
-position = Vector2(822, 75)
-texture = ExtResource("4_85ik1")
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Nombres" unique_id=889651694]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="BarraVida1" parent="." unique_id=571574025 instance=ExtResource("2_t2lgg")]
-offset_left = 972.0
-offset_top = 65.0
-offset_right = 1080.0
-offset_bottom = 85.0
+[node name="Nombre1" type="Label" parent="Control/Nombres/HBoxContainer" unique_id=1018630758]
+z_index = 1
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 20
+text = "Mark Evans"
+vertical_alignment = 1
 
-[node name="BarraVida2" parent="." unique_id=1643908267 instance=ExtResource("2_t2lgg")]
-offset_left = 171.0
-offset_top = 65.0
-offset_right = 279.0
-offset_bottom = 85.0
-scale = Vector2(-1, 1)
+[node name="Nombre2" type="Label" parent="Control/Nombres/HBoxContainer" unique_id=626959777]
+z_index = 1
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 20
+text = "Mark Evans"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="vidas" type="TextureRect" parent="Control" unique_id=513615989]
+z_index = 1
+layout_mode = 0
+offset_left = 281.0
+offset_top = 48.0
+offset_right = 953.72
+offset_bottom = 65.115
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/vidas" unique_id=843479116]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Vida1" type="Label" parent="Control/vidas/HBoxContainer" unique_id=760975394]
+z_index = 1
+custom_minimum_size = Vector2(330, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "100/100
+    "
+vertical_alignment = 1
+
+[node name="Vida2" type="Label" parent="Control/vidas/HBoxContainer" unique_id=811609420]
+z_index = 1
+custom_minimum_size = Vector2(330, 0)
+layout_mode = 2
+text = "100/100
+    "
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Tiempo" parent="Control" unique_id=842547143 instance=ExtResource("5_3homq")]
+z_index = 1
+layout_mode = 0
+offset_left = 592.0
+offset_top = 39.0
+offset_right = 632.0
+offset_bottom = 79.0

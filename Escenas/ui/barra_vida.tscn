@@ -5,7 +5,7 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j6m78"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tvkqe"]
-bg_color = Color(0.31764707, 0.78039217, 0.24705882, 1)
+bg_color = Color(0, 0.8980392, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hbo8u"]
 bg_color = Color(0.76862746, 0.76862746, 0.76862746, 1)
@@ -15,8 +15,8 @@ bg_color = Color(0.891977, 0, 0.21736595, 1)
 
 [node name="BarraVida" type="ProgressBar" unique_id=571574025]
 z_index = 1
-offset_right = 108.0
-offset_bottom = 20.0
+offset_right = 143.0
+offset_bottom = 9.0
 theme_override_styles/background = SubResource("StyleBoxEmpty_j6m78")
 theme_override_styles/fill = SubResource("StyleBoxFlat_tvkqe")
 value = 60.0

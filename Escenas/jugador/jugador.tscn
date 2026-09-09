@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c4s5i5rrr2rbe"]
 
 [ext_resource type="Script" uid="uid://b2tyajr35x3cv" path="res://Scripts/jugador/Player.gd" id="1_pxu2a"]
-[ext_resource type="Texture2D" uid="uid://tpwcjtm583m" path="res://Sprites/jugadores/cabezas/MarkEvans.png" id="2_pxu2a"]
+[ext_resource type="Texture2D" uid="uid://udqftbqthko6" path="res://Sprites/jugadores/cabezas/JonasDemetrius.png" id="2_pxu2a"]
 [ext_resource type="PackedScene" uid="uid://dn78s2f74s8ik" path="res://Escenas/jugador/Pie.tscn" id="3_3bpyk"]
 
 [sub_resource type="Animation" id="Animation_2nfyr"]

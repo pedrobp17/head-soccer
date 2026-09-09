@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://be7tr4m7n7gfd"
-path="res://.godot/imported/barraPoder.png-c81f7f69e171822ac9796fe23203c19a.ctex"
+uid="uid://ck8uimodwow4n"
+path="res://.godot/imported/NathanJones.png-bced170971be983d135a1bde805773e8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/objetos_estadio/barraPoder.png"
-dest_files=["res://.godot/imported/barraPoder.png-c81f7f69e171822ac9796fe23203c19a.ctex"]
+source_file="res://Sprites/jugadores/personajes/NathanJones.png"
+dest_files=["res://.godot/imported/NathanJones.png-bced170971be983d135a1bde805773e8.ctex"]
 
 [params]
 

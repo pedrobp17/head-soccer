@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://be7tr4m7n7gfd"
-path="res://.godot/imported/barraPoder.png-c81f7f69e171822ac9796fe23203c19a.ctex"
+uid="uid://b568deydww5aq"
+path="res://.godot/imported/AdrianSpeed.png-0ea27e49ee85a7ca4eeb72910da7b2d4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/objetos_estadio/barraPoder.png"
-dest_files=["res://.godot/imported/barraPoder.png-c81f7f69e171822ac9796fe23203c19a.ctex"]
+source_file="res://Sprites/jugadores/personajes/AdrianSpeed.png"
+dest_files=["res://.godot/imported/AdrianSpeed.png-0ea27e49ee85a7ca4eeb72910da7b2d4.ctex"]
 
 [params]
 
