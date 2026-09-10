@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://knjjlr3ll4qq"]
 
+[ext_resource type="Script" uid="uid://c83lkn02l8yxh" path="res://Scripts/objetos_campo/porteria.gd" id="1_o5ebp"]
 [ext_resource type="Texture2D" uid="uid://dcofhonfg7rdg" path="res://Sprites/objetos_estadio/PorteriaDelantera.png" id="2_pjuxr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a8ku5"]
 size = Vector2(176, 20)
 
 [node name="PorteriaDelantera" type="StaticBody2D" unique_id=119984880]
+script = ExtResource("1_o5ebp")
 
 [node name="Delantera" type="Sprite2D" parent="." unique_id=975149162]
 texture = ExtResource("2_pjuxr")
@@ -16,6 +18,11 @@ shape = SubResource("RectangleShape2D_a8ku5")
 
 [node name="Red" type="Area2D" parent="." unique_id=379525519]
 unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 2
+monitorable = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Red" unique_id=1699432688]
 polygon = PackedVector2Array(45, -172, 43, 86, -18, 162, -94, 163, -88, -137, -49, -172)
+
+[connection signal="body_entered" from="Red" to="." method="_on_red_body_entered"]

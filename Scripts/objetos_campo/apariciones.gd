@@ -2,8 +2,8 @@ extends Node2D
 
 const PREFAB_JUGADOR := preload("res://Escenas/jugador/jugador.tscn")
 
-@export var local : String
-@export var visitante : String
+@export var porteria_local : Porteria
+@export var porteria_visitante : Porteria
 
 @onready var pelota : Pelota = $Pelota
 @onready var aparicion : Node2D = %Apariciones
@@ -13,8 +13,10 @@ var jugador_visitante : Jugador = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	jugador_local = aparecer_jugador(local, Jugador.BANDO[false])
-	jugador_visitante = aparecer_jugador(visitante, Jugador.BANDO[true])
+	jugador_local = aparecer_jugador(ControladorPartido.jugadores[0], Jugador.BANDO[false])
+	porteria_local.inicializar(ControladorPartido.jugadores[0])
+	jugador_visitante = aparecer_jugador(ControladorPartido.jugadores[1], Jugador.BANDO[true])
+	porteria_visitante.inicializar(ControladorPartido.jugadores[1])
 	#var jugador : Jugador = get_children().filter(func (p): return p is Jugador)[0]
 	jugador_local.esquema_control = Jugador.ControlScheme.P1
 	jugador_visitante.esquema_control = Jugador.ControlScheme.P2

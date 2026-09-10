@@ -4,9 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://drbdxstxvyn5s" path="res://Escenas/objetos_campo/porteriaTrasera.tscn" id="3_gx6bm"]
 [ext_resource type="PackedScene" uid="uid://c8m027jxyqtr1" path="res://Escenas/objetos_campo/pelota.tscn" id="6_fj5fn"]
 [ext_resource type="PackedScene" uid="uid://knjjlr3ll4qq" path="res://Escenas/objetos_campo/porteria.tscn" id="7_5he4p"]
-[ext_resource type="Script" uid="uid://dvdilwe5lutnx" path="res://Scripts/objetos_campo/Porteria1.gd" id="7_80k0t"]
 [ext_resource type="Script" uid="uid://dvs5fmmrtgo2t" path="res://Scripts/objetos_campo/apariciones.gd" id="7_fv5s3"]
-[ext_resource type="Script" uid="uid://blb2fjfjf3xb1" path="res://Scripts/objetos_campo/Porteria2.gd" id="9_xeo2g"]
 [ext_resource type="PackedScene" uid="uid://byigg0fdudfr6" path="res://Escenas/ui/ui.tscn" id="12_ll4ra"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_amyr6"]
@@ -84,10 +82,10 @@ collision_mask = 11
 position = Vector2(1002, -432)
 shape = SubResource("SegmentShape2D_obkv7")
 
-[node name="ContenedorPersonajes" type="Node2D" parent="." unique_id=853365297]
+[node name="ContenedorPersonajes" type="Node2D" parent="." unique_id=853365297 node_paths=PackedStringArray("porteria_local", "porteria_visitante")]
 script = ExtResource("7_fv5s3")
-local = "MarkEvans"
-visitante = "MarkEvans"
+porteria_local = NodePath("../PorteriaDelantera/PorteriaDelIzq")
+porteria_visitante = NodePath("../PorteriaDelantera/PorteriaDelDer")
 
 [node name="Pelota" parent="ContenedorPersonajes" unique_id=279367134 instance=ExtResource("6_fj5fn")]
 position = Vector2(-6, -536)
@@ -104,12 +102,10 @@ position = Vector2(-9, 22)
 
 [node name="PorteriaDelIzq" parent="PorteriaDelantera" unique_id=119984880 instance=ExtResource("7_5he4p")]
 position = Vector2(-856, 11)
-script = ExtResource("7_80k0t")
 
 [node name="PorteriaDelDer" parent="PorteriaDelantera" unique_id=1513105652 instance=ExtResource("7_5he4p")]
 position = Vector2(881, 11)
 rotation = -3.1415925
 scale = Vector2(1, -1)
-script = ExtResource("9_xeo2g")
 
 [node name="UI" parent="." unique_id=484265681 instance=ExtResource("12_ll4ra")]
