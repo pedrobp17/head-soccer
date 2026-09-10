@@ -6,7 +6,7 @@ const VELOCIDAD_MAXIMA: float = 3000.0
 
 const VELOCIDAD = 300
 const FUERZA_Y = -0.5
-const POSICION_INICIAL = Vector2(0, -604)
+const POSICION_INICIAL = Vector2(-6.0, -536.0)
 
 enum Estado {NORMAL, PODER} #para en el futuro controlar la pelota
 
@@ -46,7 +46,7 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	estaFuera = true
 	
 func set_reposicion():
-	estaFuera  = true
+	estaFuera = true
 	
 #stop movement of the ball
 func _integrate_forces(state: PhysicsDirectBodyState2D):

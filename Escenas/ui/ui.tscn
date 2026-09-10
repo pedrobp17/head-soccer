@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://byigg0fdudfr6"]
 
-[ext_resource type="Script" uid="uid://bwyjhpbs53u28" path="res://Scripts/ui/Marcador.gd" id="1_fsw7x"]
 [ext_resource type="FontFile" uid="uid://0vbqxsk2buvn" path="res://Fonts/Teko-Bold.ttf" id="1_qkv3v"]
 [ext_resource type="Texture2D" uid="uid://rffngqyghmri" path="res://Sprites/UI/barraPoder.png" id="2_3homq"]
 [ext_resource type="PackedScene" uid="uid://bg642ffkp47t" path="res://Escenas/ui/barra_vida.tscn" id="2_t2lgg"]
 [ext_resource type="PackedScene" uid="uid://b1xms8r7pbs6e" path="res://Escenas/ui/tiempo.tscn" id="5_3homq"]
+[ext_resource type="Texture2D" uid="uid://df4gfehaq78x4" path="res://Sprites/jugadores/icono_marcador/ByronLove.png" id="5_t2lgg"]
+[ext_resource type="Texture2D" uid="uid://cdb73m0s15a16" path="res://Sprites/jugadores/icono_marcador/AxelBlaze.png" id="6_yabib"]
 
 [node name="UI" type="CanvasLayer" unique_id=484265681]
-script = ExtResource("1_fsw7x")
 
 [node name="Control" type="Control" parent="." unique_id=1147488785]
 layout_mode = 3
@@ -174,3 +174,14 @@ offset_left = 589.0
 offset_top = 23.0
 offset_right = 629.0
 offset_bottom = 63.0
+
+[node name="jugador1" type="Sprite2D" parent="Control" unique_id=643510403]
+z_index = 1
+position = Vector2(205, 18)
+texture = ExtResource("5_t2lgg")
+
+[node name="jugador2" type="Sprite2D" parent="Control" unique_id=1587734864]
+z_index = 1
+position = Vector2(1028, 18)
+scale = Vector2(-1, 1)
+texture = ExtResource("6_yabib")
