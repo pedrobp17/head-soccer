@@ -23,9 +23,9 @@ grow_vertical = 2
 
 [node name="BarraVida" parent="Control" unique_id=571574025 instance=ExtResource("2_t2lgg")]
 layout_mode = 0
-offset_left = 372.0
+offset_left = 370.0
 offset_top = 24.0
-offset_right = 502.0
+offset_right = 500.0
 offset_bottom = 32.0
 
 [node name="BarraVida2" parent="Control" unique_id=505981868 instance=ExtResource("2_t2lgg")]

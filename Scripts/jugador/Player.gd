@@ -9,7 +9,7 @@ const BANDO : Dictionary = {
 	false : 1
 }
 
-enum Estado {JUGANDO, PODER, ATURDIDO}
+enum Estado {JUGANDO, PODER, ATURDIDO, REINICIO}
 enum ControlScheme {IA, P1, P2}
 
 @export var esquema_control : ControlScheme
@@ -24,6 +24,9 @@ var comportamiento_ia := ComportamientoIA.new()
 var estadisticas := GestorEstadisticas.new()
 var estado_actual : EstadoJugador = null
 var creador_estados := CreadorEstadoJugador.new()
+var asignador_poder := CreadorPoderes.new()
+var poder : Poder = null
+var nombre_poder_activo := ""
 var nombre := ""
 var equipo := ""
 var es_visitante : bool = false
@@ -35,17 +38,13 @@ var configuracion_posiciones : Dictionary = {}
 func _ready() -> void:
 	set_imagen_personaje()
 	setup_elementos_personaje()
+	setup_poder()
 	cambiar_estado(Estado.JUGANDO)
 	setup_comportamiento_ia()
 	posicion_aparicion = position
 	pie.setup( estadisticas.get_estadistica("golpe"), CAPA_LOCAL if es_visitante else CAPA_VISITANTE)
 	
 	
-func _physics_process(_delta: float) -> void:
-	
-	move_and_slide()
-	comprobar_colisiones()
-
 func cambiar_estado( estado : Estado ) -> void:
 	if estado_actual != null:
 		estado_actual.queue_free()
@@ -55,30 +54,38 @@ func cambiar_estado( estado : Estado ) -> void:
 	estado_actual.name = "MaquinaEstadosJugador: " + str(estado)
 	call_deferred("add_child", estado_actual)
 	
-func comprobar_colisiones() -> void:
+func comprobar_colisiones( esperando_ejecutar_poder : bool) -> bool:
 	for i in get_slide_collision_count():
 		var collision := get_slide_collision(i)
 		var fuerza := 1.0
 		
 		if collision.get_collider() is Pelota:
-			var direccion := -collision.get_normal()
-			var aumentar_fuerza := direccion.y < -0.5
-			fuerza = FUERZA_CABEZAZO
+			if esperando_ejecutar_poder:
+				return true
 			
-			EventBus.golpear_pelota.emit(direccion, aumentar_fuerza, fuerza)
-			
-func animacion() -> void:
-	if velocity.y == 0:
-		animacion_jugador.play("idle")
+			else:
+				var direccion := -collision.get_normal()
+				var aumentar_fuerza := direccion.y < -0.5
+				fuerza = FUERZA_CABEZAZO
+				
+				EventBus.golpear_pelota.emit(direccion, aumentar_fuerza, fuerza)
+	return false
+
+func animacion( nombre_animacion : String) -> void:
+	if animacion_jugador.has_animation(nombre_animacion):
+		if nombre_animacion == "idle" and velocity.y != 0:
+			animacion_jugador.stop()
+		animacion_jugador.play(nombre_animacion)
 	else:
-		animacion_jugador.stop()
+		printerr("La animación no existe: ", nombre_animacion)
 		
 func set_imagen_personaje() -> void:
 	controlador_sprite.texture = load("res://Sprites/jugadores/cabezas/" + nombre + ".png")
 
-func inicializar(jugador_posicion: Vector2, jugador_data : RecursosJugador , _pelota : Pelota, identificador_bando : int) -> void:	
+func inicializar(jugador_posicion: Vector2, jugador_data : RecursosJugador , _pelota : Pelota, identificador_bando : int, poder : String) -> void:	
 	position = Vector2(jugador_posicion.x * identificador_bando, jugador_posicion.y)
 	nombre = jugador_data.nombre
+	nombre_poder_activo = poder
 	estadisticas.inicializar(jugador_data.estadisticas)
 	equipo = jugador_data.equipo
 	es_visitante =  bool(1 - identificador_bando)
@@ -118,3 +125,8 @@ func setup_elementos_personaje():
 			nueva_capsula.height = configuracion_posiciones["capsula"]["altura"]
 	
 	scale.x = BANDO[!es_visitante]
+
+func setup_poder() -> void:
+	poder = asignador_poder.get_script_poder(nombre_poder_activo)
+	var datos_poder = DatosPoderes.get_poder(nombre_poder_activo)
+	poder.setup(self, pelota, datos_poder )

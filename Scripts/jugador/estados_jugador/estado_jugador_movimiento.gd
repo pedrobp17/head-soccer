@@ -1,7 +1,7 @@
 class_name EstadoJugadorMoviendo
 extends EstadoJugador
 
-
+var activacion_poder := false
 # Called when the node enters the scene tree for the first time.
 func _process(delta: float) -> void:
 	if jugador.esquema_control == Jugador.ControlScheme.IA:
@@ -9,7 +9,7 @@ func _process(delta: float) -> void:
 		pass
 	else:
 		movimiento_player(delta)
-	jugador.animacion()
+	#jugador.animacion("idle")
 
 func movimiento_player(delta : float) -> void:
 	# Add the gravity.
@@ -35,3 +35,11 @@ func movimiento_player(delta : float) -> void:
 	
 	if jugador.estadisticas.get_estadistica("vida") <= 0:
 		peticion_transmision_estado.emit(Jugador.Estado.ATURDIDO)
+	
+	if KeyUtils.is_action_just_pressed(jugador.esquema_control, KeyUtils.Accion.PODER):
+		activacion_poder = true
+		jugador.animacion("poder")
+	
+	jugador.move_and_slide()
+	if jugador.comprobar_colisiones(activacion_poder):
+		peticion_transmision_estado.emit(Jugador.Estado.PODER)

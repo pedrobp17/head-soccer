@@ -3,7 +3,7 @@ class_name CargadorDatos
 
 static func cargar(ruta: String) -> Variant:
 	var archivo_json := FileAccess.open(ruta, FileAccess.READ)
-	
+	print("¿Existe el archivo?: ", FileAccess.file_exists("res://Scripts/poderes/base_datos/poderes.json"))
 	if archivo_json == null:
 		printerr("no se ha podido leer el archivo .json: ", ruta)
 		return null

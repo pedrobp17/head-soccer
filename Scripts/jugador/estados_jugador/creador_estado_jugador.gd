@@ -6,6 +6,7 @@ func _init() -> void:
 	estados = {
 		Jugador.Estado.JUGANDO: EstadoJugadorMoviendo,
 		Jugador.Estado.ATURDIDO: EstadoJugadorAturdido,
+		Jugador.Estado.PODER: EstadoJugadorPoder,
 	}
 
 func get_fresh_state( estado : Jugador.Estado ) -> EstadoJugador:

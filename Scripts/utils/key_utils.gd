@@ -1,7 +1,7 @@
 extends Node
 
 
-enum Accion {DERECHA, IZQUIERDA, SALTO, PATADA}
+enum Accion {DERECHA, IZQUIERDA, SALTO, PATADA, PODER}
 
 const MAPA_ACCIONES : Dictionary = {
 	Jugador.ControlScheme.P1: {
@@ -9,12 +9,14 @@ const MAPA_ACCIONES : Dictionary = {
 		Accion.IZQUIERDA: "p1_left",
 		Accion.SALTO: "p1_jump",
 		Accion.PATADA: "p1_kick",
+		Accion.PODER: "p1_poder",
 	},
 	Jugador.ControlScheme.P2: {
 		Accion.DERECHA: "p2_right",
 		Accion.IZQUIERDA: "p2_left",
 		Accion.SALTO: "p2_jump",
 		Accion.PATADA: "p2_kick",
+		Accion.PODER: "p2_poder",
 	},
 }
 

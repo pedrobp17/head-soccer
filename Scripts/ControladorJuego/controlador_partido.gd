@@ -8,6 +8,7 @@ var creador_estados := CreadorEstadoJuego.new()
 var estado_actual : EstadoJuego = null
 var tiempo_restante : float
 var jugadores : Array[String] = ["MarkEvans", "AxelBlaze"]
+var poderes : Array[String] = ["mano_magica", "mano_magica"]
 var marcador : Array[int] = [0,0]
 
 func _ready() -> void:
