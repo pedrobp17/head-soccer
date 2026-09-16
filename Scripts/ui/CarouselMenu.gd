@@ -1,223 +1,410 @@
-# Copyright (C) 2023, Meowing Cat
-# 23.12.2023
-# Meowed by Meowing Cat
-# 	<meowingcate@gmail.com>
-#	(https://github.com/rohanrhu)
-# Licensed under MIT.
 
 extends Control
 
-@export var animation_duration = 0.5
+@export var duracion_animacion: float = 0.5
+@export var escala_inicial: float = 0.75
+@export var reduccion_escala: float = 0.15
+@export var escala_minima: float = 0.1
 
-@onready var nPlaceholders = %Placeholders
-@onready var nItems = %Items
-@onready var nPlacements = %Placements
+@onready var contenedor_posiciones: Control = %Placeholders
+@onready var contenedor_elementos: Control = %Items
+@onready var contenedor_ubicaciones: Control = %Placements
 
-var current_index = 3
+var indice_actual: int = 0
+var animacion_activa: Tween
+var esta_animando: bool = false
 
-@onready var tween = get_tree().create_tween()
-
-var is_busy = false
 
 func _ready() -> void:
-	nPlaceholders.hide()
-	nItems.hide()
+	contenedor_posiciones.hide()
+	contenedor_elementos.hide()
 	
-	var diff = 8 - nItems.get_child_count()
-	
-	if diff > 0:
-		for i in range(diff):
-			var index = (nItems.get_child_count() + i) % nItems.get_child_count()
-			var nSource = nItems.get_child(index)
-			var nItem = nSource.duplicate()
-			nItems.add_child(nItem)
-	
-	for i in nItems.get_child_count():
-		var nItem = nItems.get_child(i)
-		nItem.identifier = i
-		nItem.animation_duration = animation_duration
-	
-	init_placements()
+	_asegurar_elementos_minimos()
+	_configurar_identificadores()
+	inicializar_posiciones()
 
-func init_placements() -> void:
-	var source_items = nPlacements.get_children()
-	var new_items = []
-	
-	var ci
-	var nCurrent
-	
-	ci = current_index - 3
-	for i in range(4):
-		var aci = ci
-		if aci < 0:
-			aci = nItems.get_child_count() + ci
-		if aci == nItems.get_child_count():
-			aci = 0
-		var nItem = nItems.get_child(ci)
-		var nToPlace = nItem.duplicate()
-		nCurrent = nToPlace
-		var nPlaceholder = nPlaceholders.get_child(i)
-		nPlacements.add_child(nToPlace)
-		new_items.append(nToPlace)
-		_move_item_to_other(nToPlace, nPlaceholder)
-		
-		ci += 1
-	
-	nCurrent.set_is_current(true)
-	
-	ci = current_index
-	for i in range(3):
-		ci = (ci + 1) % nItems.get_child_count()
-		var nItem = nItems.get_child(ci)
-		var nToPlace = nItem.duplicate()
-		var nPlaceholder = nPlaceholders.get_child(4 + i)
-		nPlacements.add_child(nToPlace)
-		new_items.append(nToPlace)
-		_move_item_to_other(nToPlace, nPlaceholder)
-	
-	for node in source_items:
-		node.queue_free()
-	
-	for i in range(new_items.size()):
-		var nItem = new_items[i]
-		if i in [0, 6]:
-			nItem.modulate.a = 0
-		else:
-			nItem.modulate.a = 1
 
-func go_left() -> void:
-	if is_busy:
+func _input(evento: InputEvent) -> void:
+	if evento.is_action_pressed("ui_left"):
+		ir_izquierda()
+	elif evento.is_action_pressed("ui_right"):
+		ir_derecha()
+	elif evento.is_action_pressed("ui_accept"):
+		confirmar_seleccion()
+
+
+func confirmar_seleccion() -> void:
+	if esta_animando:
 		return
 	
-	current_index -= 1
-	if current_index < 0:
-		current_index = nItems.get_child_count() + current_index
-	if current_index == nItems.get_child_count():
-		current_index = 0
-	tween_items(current_index)
+	var total_elementos: int = contenedor_elementos.get_child_count()
+	var indice_modo_seleccionado: int = posmod(indice_actual, total_elementos)
+	
+	print("Modo de juego seleccionado: ", indice_modo_seleccionado)
+	
+	# get_tree().change_scene_to_file(
+	# 	"res://escenas/modo_" + str(indice_modo_seleccionado) + ".tscn"
+	# )
 
-func go_right() -> void:
-	if is_busy:
+
+func inicializar_posiciones() -> void:
+	var posiciones_anteriores: Array[Node] = contenedor_ubicaciones.get_children()
+	var posiciones_nuevas: Array[ElementoMenuCarrusel] = []
+	
+	var total_elementos: int = contenedor_elementos.get_child_count()
+	var total_posiciones: int = contenedor_posiciones.get_child_count()
+	var casilla_central: int = int(total_posiciones / 2.0)
+	
+	var elemento_activo: ElementoMenuCarrusel = null
+	
+	for indice_casilla in range(total_posiciones):
+		var desplazamiento: int = indice_casilla - casilla_central
+		var indice_elemento: int = posmod(
+			indice_actual + desplazamiento,
+			total_elementos
+		)
+		
+		var elemento_origen: ElementoMenuCarrusel = contenedor_elementos.get_child(indice_elemento)
+		var clon_elemento: ElementoMenuCarrusel = elemento_origen.duplicate()
+		var posicion_objetivo: ElementoMenuCarrusel = contenedor_posiciones.get_child(indice_casilla)
+		var escala_objetivo: float = obtener_escala_por_distancia(
+			indice_casilla,
+			casilla_central
+		)
+		clon_elemento.scale = Vector2.ONE * escala_objetivo
+		
+		if indice_casilla == casilla_central:
+			elemento_activo = clon_elemento
+		
+		contenedor_ubicaciones.add_child(clon_elemento)
+		posiciones_nuevas.append(clon_elemento)
+		
+		_copiar_transformacion_diseno(
+			clon_elemento,
+			posicion_objetivo
+		)
+	
+	if elemento_activo:
+		elemento_activo.establecer_es_actual(true)
+	
+	for nodo in posiciones_anteriores:
+		nodo.queue_free()
+	
+	_actualizar_visibilidad_elementos(
+		posiciones_nuevas,
+		casilla_central
+	)
+
+
+func ir_izquierda() -> void:
+	if esta_animando:
 		return
 	
-	current_index = (current_index + 1) % nItems.get_child_count()
-	tween_items(current_index)
+	var total_elementos: int = contenedor_elementos.get_child_count()
+	indice_actual = posmod(indice_actual - 1, total_elementos)
+	animar_elementos(indice_actual)
 
-func tween_items(p_current_index: int = current_index, p_animation_duration: float = animation_duration, p_reversed = false):
-	init_placements()
-	
-	is_busy = true
-	
-	var placeholder_indexes = range(nPlaceholders.get_child_count())
-	var item_indexes = []
-	
-	var ci
-	
-	ci = p_current_index - 3
-	for i in range(4):
-		var aci = ci
-		if aci < 0:
-			aci = nItems.get_child_count() + ci
-		if aci == nItems.get_child_count():
-			aci = 0
-		if aci == 7:
-			pass
-		item_indexes.append(aci)
-		ci += 1
-	
-	ci = p_current_index
-	for i in range(3):
-		ci = (ci + 1) % nItems.get_child_count()
-		if ci == 7:
-			pass
-		item_indexes.append(ci)
-	
-	var new_items = _tween_by_indexes(placeholder_indexes, item_indexes, p_animation_duration, p_reversed)
-	var ad_tween = get_tree().create_tween()
-	
-	for i in range(new_items.size()):
-		var nItem = new_items[i]
-		if i in [0, nPlaceholders.get_child_count() - 1]:
-			ad_tween.parallel().tween_property(nItem, "modulate:a", 0, animation_duration)
-		else:
-			ad_tween.parallel().tween_property(nItem, "modulate:a", 1, animation_duration)
-	
-	await tween.finished
-	
-	is_busy = false
 
-func _tween_by_indexes(p_placeholder_indexes: Array, p_item_indexes: Array, p_animation_duration: float = animation_duration, p_reversed = false) -> Array[CarouselMenuItem]:
-	var source_items = nPlacements.get_children()
-	var new_items: Array[CarouselMenuItem] = []
+func ir_derecha() -> void:
+	if esta_animando:
+		return
 	
-	tween = get_tree().create_tween()
+	var total_elementos: int = contenedor_elementos.get_child_count()
+	indice_actual = posmod(indice_actual + 1, total_elementos)
+	animar_elementos(indice_actual)
+
+
+func animar_elementos(
+	indice_objetivo: int = indice_actual,
+	duracion: float = duracion_animacion,
+	es_inverso: bool = false
+) -> void:
+	inicializar_posiciones()
+	esta_animando = true
 	
-	var ircs = {}
+	var total_posiciones: int = contenedor_posiciones.get_child_count()
+	var casilla_central: int = int(total_posiciones / 2.0)
+	var total_elementos: int = contenedor_elementos.get_child_count()
 	
-	for i in p_placeholder_indexes.size():
-		var placeholder_index = i
-		var item_index = p_item_indexes[i]
+	var indices_posiciones: Array = range(total_posiciones)
+	var indices_elementos: Array = []
+	
+	for indice_casilla in range(total_posiciones):
+		var desplazamiento: int = indice_casilla - casilla_central
 		
-		var nPlaceholder: CarouselMenuItem = nPlaceholders.get_child(placeholder_index)
-		if not ircs.has(item_index):
-			ircs[item_index] = 0
-		var nStatic = nItems.get_child(item_index)
-		var nSource: CarouselMenuItem = _get_placement_by_item(nStatic, ircs[item_index], p_reversed)
-		ircs[item_index] = ircs[item_index] + 1
-		var nItem: CarouselMenuItem = nSource.duplicate()
-		nItem.set_is_current(false)
-		nPlacements.add_child(nItem)
-		new_items.append(nItem)
-		_move_item_to_other(nItem, nSource)
+		var indice_elemento_mapeado: int = posmod(
+			indice_objetivo + desplazamiento,
+			total_elementos
+		)
 		
-		tween.parallel().tween_property(nItem, "position", nPlaceholder.position, p_animation_duration)
-		tween.parallel().tween_property(nItem, "anchor_left", nPlaceholder.anchor_left, p_animation_duration)
-		tween.parallel().tween_property(nItem, "anchor_right", nPlaceholder.anchor_right, p_animation_duration)
-		tween.parallel().tween_property(nItem, "anchor_top", nPlaceholder.anchor_top, p_animation_duration)
-		tween.parallel().tween_property(nItem, "anchor_bottom", nPlaceholder.anchor_bottom, p_animation_duration)
-		tween.parallel().tween_property(nItem, "offset_left", nPlaceholder.offset_left, p_animation_duration)
-		tween.parallel().tween_property(nItem, "offset_right", nPlaceholder.offset_right, p_animation_duration)
-		tween.parallel().tween_property(nItem, "offset_top", nPlaceholder.offset_top, p_animation_duration)
-		tween.parallel().tween_property(nItem, "offset_bottom", nPlaceholder.offset_bottom, p_animation_duration)
-		tween.parallel().tween_property(nItem, "z_index", nPlaceholder.z_index, p_animation_duration)
+		indices_elementos.append(indice_elemento_mapeado)
 	
-	for node in source_items:
-		node.queue_free()
+	var elementos_animados: Array[ElementoMenuCarrusel] = _animar_elementos_a_posiciones(
+		indices_posiciones,
+		indices_elementos,
+		duracion,
+		es_inverso
+	)
 	
-	var nCurrent = new_items[3]
-	nCurrent.set_is_current(true)
+	var animacion_desvanecimiento: Tween = get_tree().create_tween()
 	
-	return new_items
+	for indice_casilla in range(elementos_animados.size()):
+		var nodo_elemento: ElementoMenuCarrusel = elementos_animados[indice_casilla]
+		
+		var es_casilla_visible: bool = (
+			indice_casilla >= casilla_central - 2
+			and indice_casilla <= casilla_central + 2
+		)
+		
+		var opacidad_objetivo: float = 1.0 if es_casilla_visible else 0.0
+		
+		animacion_desvanecimiento.parallel().tween_property(
+			nodo_elemento,
+			"modulate:a",
+			opacidad_objetivo,
+			duracion
+		)
+	
+	await animacion_activa.finished
+	esta_animando = false
 
-func _get_placement_by_item(nItem: CarouselMenuItem, irc: int = 0, reversed = false) -> CarouselMenuItem:
-	var items = nPlacements.get_children()
-	if reversed:
-		items.reverse()
+
+func _animar_elementos_a_posiciones(
+	indices_posiciones: Array,
+	indices_elementos: Array,
+	duracion: float,
+	es_inverso: bool
+) -> Array[ElementoMenuCarrusel]:
+	var posiciones_anteriores: Array[Node] = contenedor_ubicaciones.get_children()
+	var elementos_nuevos: Array[ElementoMenuCarrusel] = []
 	
-	var irc_i = 0
+	var casilla_central: int = int(
+		contenedor_posiciones.get_child_count() / 2.0
+	)
 	
-	for node in items:
-		if nItem.identifier == node.identifier:
-			if irc_i >= irc:
-				return node
-			irc_i += 1
+	animacion_activa = get_tree().create_tween()
+	
+	var rastreador_uso_elementos: Dictionary = {}
+	
+	for i in range(indices_posiciones.size()):
+		var indice_posicion: int = i
+		var indice_elemento: int = indices_elementos[i]
+		
+		var posicion_objetivo: ElementoMenuCarrusel = (
+			contenedor_posiciones.get_child(indice_posicion)
+		)
+		var escala_objetivo: float = obtener_escala_por_distancia(
+			indice_posicion,
+			casilla_central
+		)
+		
+		if not rastreador_uso_elementos.has(indice_elemento):
+			rastreador_uso_elementos[indice_elemento] = 0
+		
+		var plantilla_estatica: ElementoMenuCarrusel = (
+			contenedor_elementos.get_child(indice_elemento)
+		)
+		
+		var ocurrencia_uso: int = rastreador_uso_elementos[indice_elemento]
+		
+		var posicion_origen: ElementoMenuCarrusel = _buscar_posicion_por_elemento(
+			plantilla_estatica,
+			ocurrencia_uso,
+			es_inverso
+		)
+		
+		rastreador_uso_elementos[indice_elemento] += 1
+		
+		if posicion_origen == null:
+			continue
+		
+		var clon_elemento: ElementoMenuCarrusel = posicion_origen.duplicate()
+		
+		clon_elemento.establecer_es_actual(false)
+		
+		contenedor_ubicaciones.add_child(clon_elemento)
+		elementos_nuevos.append(clon_elemento)
+		
+		_copiar_transformacion_diseno(
+			clon_elemento,
+			posicion_origen
+		)
+		
+		animacion_activa.parallel().tween_property(
+			clon_elemento,
+			"position",
+			posicion_objetivo.position,
+			duracion
+		)
+		
+		animacion_activa.parallel().tween_property(
+			clon_elemento,
+			"anchor_left",
+			posicion_objetivo.anchor_left,
+			duracion
+		)
+		
+		animacion_activa.parallel().tween_property(
+			clon_elemento,
+			"anchor_right",
+			posicion_objetivo.anchor_right,
+			duracion
+		)
+		
+		animacion_activa.parallel().tween_property(
+			clon_elemento,
+			"anchor_top",
+			posicion_objetivo.anchor_top,
+			duracion
+		)
+		
+		animacion_activa.parallel().tween_property(
+			clon_elemento,
+			"anchor_bottom",
+			posicion_objetivo.anchor_bottom,
+			duracion
+		)
+		
+		animacion_activa.parallel().tween_property(
+			clon_elemento,
+			"offset_left",
+			posicion_objetivo.offset_left,
+			duracion
+		)
+		
+		animacion_activa.parallel().tween_property(
+			clon_elemento,
+			"offset_right",
+			posicion_objetivo.offset_right,
+			duracion
+		)
+		
+		animacion_activa.parallel().tween_property(
+			clon_elemento,
+			"offset_top",
+			posicion_objetivo.offset_top,
+			duracion
+		)
+		
+		animacion_activa.parallel().tween_property(
+			clon_elemento,
+			"offset_bottom",
+			posicion_objetivo.offset_bottom,
+			duracion
+		)
+		
+		animacion_activa.parallel().tween_property(
+			clon_elemento,
+			"z_index",
+			posicion_objetivo.z_index,
+			duracion
+		)
+		
+		animacion_activa.parallel().tween_property(
+			clon_elemento,
+			"scale",
+			Vector2.ONE * escala_objetivo,
+			duracion
+		)
+		
+	for nodo in posiciones_anteriores:
+		nodo.queue_free()
+	
+	if elementos_nuevos.size() > casilla_central:
+		elementos_nuevos[casilla_central].establecer_es_actual(true)
+	
+	return elementos_nuevos
+
+
+func _buscar_posicion_por_elemento(
+	elemento_objetivo: ElementoMenuCarrusel,
+	ocurrencia_uso: int,
+	es_inverso: bool
+) -> ElementoMenuCarrusel:
+	var posiciones_existentes: Array[Node] = (
+		contenedor_ubicaciones.get_children()
+	)
+	
+	if es_inverso:
+		posiciones_existentes.reverse()
+	
+	var ocurrencia_actual: int = 0
+	
+	for nodo in posiciones_existentes:
+		if (
+			nodo is ElementoMenuCarrusel
+			and nodo.identificador == elemento_objetivo.identificador
+		):
+			if ocurrencia_actual >= ocurrencia_uso:
+				return nodo
+			
+			ocurrencia_actual += 1
 	
 	return null
 
-func _move_item_to_other(p_nItem: CarouselMenuItem, p_nDest: CarouselMenuItem) -> void:
-	p_nItem.position = p_nDest.position
-	p_nItem.anchor_left = p_nDest.anchor_left
-	p_nItem.anchor_right = p_nDest.anchor_right
-	p_nItem.anchor_top = p_nDest.anchor_top
-	p_nItem.anchor_bottom = p_nDest.anchor_bottom
-	p_nItem.offset_left = p_nDest.offset_left
-	p_nItem.offset_right = p_nDest.offset_right
-	p_nItem.offset_top = p_nDest.offset_top
-	p_nItem.offset_bottom = p_nDest.offset_bottom
-	p_nItem.z_index = p_nDest.z_index
 
-func _on_LeftButton_pressed() -> void:
-	go_left()
+func _copiar_transformacion_diseno(
+	nodo_objetivo: ElementoMenuCarrusel,
+	nodo_origen: ElementoMenuCarrusel
+) -> void:
+	nodo_objetivo.position = nodo_origen.position
+	nodo_objetivo.anchor_left = nodo_origen.anchor_left
+	nodo_objetivo.anchor_right = nodo_origen.anchor_right
+	nodo_objetivo.anchor_top = nodo_origen.anchor_top
+	nodo_objetivo.anchor_bottom = nodo_origen.anchor_bottom
+	nodo_objetivo.offset_left = nodo_origen.offset_left
+	nodo_objetivo.offset_right = nodo_origen.offset_right
+	nodo_objetivo.offset_top = nodo_origen.offset_top
+	nodo_objetivo.offset_bottom = nodo_origen.offset_bottom
+	nodo_objetivo.z_index = nodo_origen.z_index
 
-func _on_RightButton_pressed() -> void:
-	go_right()
+
+func _asegurar_elementos_minimos() -> void:
+	var total_posiciones: int = contenedor_posiciones.get_child_count()
+	var elementos_minimos_requeridos: int = total_posiciones + 1
+	var cantidad_elementos_faltantes: int = (
+		elementos_minimos_requeridos
+		- contenedor_elementos.get_child_count()
+	)
+	
+	if cantidad_elementos_faltantes > 0:
+		var conteo_inicial: int = contenedor_elementos.get_child_count()
+		
+		for i in range(cantidad_elementos_faltantes):
+			var indice_origen: int = i % conteo_inicial
+			var nodo_origen: Node = contenedor_elementos.get_child(indice_origen)
+			
+			contenedor_elementos.add_child(
+				nodo_origen.duplicate()
+			)
+
+
+func _configurar_identificadores() -> void:
+	for i in range(contenedor_elementos.get_child_count()):
+		var nodo_elemento: ElementoMenuCarrusel = (
+			contenedor_elementos.get_child(i)
+		)
+		
+		nodo_elemento.identificador = i
+		nodo_elemento.duracion_animacion = duracion_animacion
+
+func obtener_escala_por_distancia(indice_placeholder: int, centro: int) -> float:
+	var distancia: int = abs(indice_placeholder - centro)
+	
+	return max(
+		escala_inicial - distancia * reduccion_escala,
+		escala_minima
+	)
+	
+	
+func _actualizar_visibilidad_elementos(
+	lista_elementos: Array,
+	casilla_central: int
+) -> void:
+	for i in range(lista_elementos.size()):
+		var nodo_elemento: ElementoMenuCarrusel = lista_elementos[i]
+		
+		if i >= casilla_central - 2 and i <= casilla_central + 2:
+			nodo_elemento.modulate.a = 1.0
+		else:
+			nodo_elemento.modulate.a = 0.0

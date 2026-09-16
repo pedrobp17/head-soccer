@@ -5,8 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://dyl0wuwreaqd2" path="res://Escenas/ui/CarouselMenuItem.tscn" id="3_0bai0"]
 [ext_resource type="Texture2D" uid="uid://ckcb2pnwcdclk" path="res://Sprites/UI/ModoPelea.png" id="4_c8rsx"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8cgwp"]
-
 [node name="CarouselMenu" type="Control" unique_id=1871232871]
 layout_mode = 3
 anchors_preset = 15
@@ -64,100 +62,106 @@ offset_right = 3.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CarouselMenuItem1" parent="VBoxContainer/Middle/Placeholders" unique_id=2131417797 instance=ExtResource("3_0bai0")]
+[node name="CarouselMenuItem1" parent="VBoxContainer/Middle/Placeholders" unique_id=1118037793 instance=ExtResource("3_0bai0")]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -0.0144444
-anchor_top = 0.412114
-anchor_right = 0.134444
-anchor_bottom = 0.578385
-offset_left = -162.82005
-offset_top = 8.137856
-offset_right = -58.338882
-offset_bottom = 272.52747
+anchor_left = 0.4175347
+anchor_top = 1.0102954
+anchor_right = 0.4175347
+anchor_bottom = 1.0102954
+offset_left = 435.0
+offset_top = 117.91002
+offset_right = 806.625
+offset_bottom = 486.08057
+scale = Vector2(0.3, 0.3)
 metadata/_edit_use_anchors_ = true
 
-[node name="CarouselMenuItem2" parent="VBoxContainer/Middle/Placeholders" unique_id=1178845856 instance=ExtResource("3_0bai0")]
+[node name="CarouselMenuItem2" parent="VBoxContainer/Middle/Placeholders" unique_id=1951677157 instance=ExtResource("3_0bai0")]
 z_index = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.113889
-anchor_top = 0.372922
-anchor_right = 0.332222
-anchor_bottom = 0.617577
-offset_left = -81.01514
-offset_top = 6.935837
-offset_right = -56.53476
-offset_bottom = 260.19485
+anchor_left = 0.3064236
+anchor_top = 0.6999506
+anchor_right = 0.3064236
+anchor_bottom = 0.6999506
+offset_left = 434.99997
+offset_top = 117.91
+offset_right = 806.625
+offset_bottom = 486.08057
+scale = Vector2(0.45, 0.45)
 metadata/_edit_use_anchors_ = true
 
-[node name="CarouselMenuItem3" parent="VBoxContainer/Middle/Placeholders" unique_id=781182003 instance=ExtResource("3_0bai0")]
+[node name="CarouselMenuItem3" parent="VBoxContainer/Middle/Placeholders" unique_id=1164868413 instance=ExtResource("3_0bai0")]
 z_index = 2
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.242222
-anchor_top = 0.345606
-anchor_right = 0.485
-anchor_bottom = 0.647268
-offset_left = -17.27472
-offset_top = 4.84198
-offset_right = -20.958313
-offset_bottom = 250.00597
+anchor_left = 0.16840275
+anchor_top = 0.35019687
+anchor_right = 0.16840278
+anchor_bottom = 0.35019687
+offset_left = 435.00003
+offset_top = 117.91
+offset_right = 806.625
+offset_bottom = 486.08057
+scale = Vector2(0.6, 0.6)
 metadata/_edit_use_anchors_ = true
 
 [node name="CarouselMenuItem4" parent="VBoxContainer/Middle/Placeholders" unique_id=716573368 instance=ExtResource("3_0bai0")]
 z_index = 3
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.360556
-anchor_top = 0.308789
-anchor_right = 0.647778
-anchor_bottom = 0.684085
-offset_left = 24.455475
-offset_top = -0.00017166138
-offset_right = -30.43335
-offset_bottom = 234.7078
+anchor_left = 0.35763893
+anchor_top = 0.22167566
+anchor_right = 0.69063884
+anchor_bottom = 2.0507615
+offset_left = 22.99997
+offset_top = 72.90984
+offset_right = 11.009033
+offset_bottom = 69.776
 metadata/_edit_use_anchors_ = true
 
-[node name="CarouselMenuItem5" parent="VBoxContainer/Middle/Placeholders" unique_id=629428356 instance=ExtResource("3_0bai0")]
+[node name="CarouselMenuItem5" parent="VBoxContainer/Middle/Placeholders" unique_id=1155664326 instance=ExtResource("3_0bai0")]
 z_index = 2
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.518333
-anchor_top = 0.357482
-anchor_right = 0.77
-anchor_bottom = 0.646081
-offset_left = 20.620361
-offset_top = 2.43116
-offset_right = 6.700012
-offset_bottom = 249.45012
+anchor_left = -0.118923634
+anchor_top = 0.37975353
+anchor_right = -0.11892361
+anchor_bottom = 0.37975353
+offset_left = 435.00003
+offset_top = 111.91
+offset_right = 806.625
+offset_bottom = 480.08057
+scale = Vector2(0.6, 0.6)
 metadata/_edit_use_anchors_ = true
 
-[node name="CarouselMenuItem6" parent="VBoxContainer/Middle/Placeholders" unique_id=164658227 instance=ExtResource("3_0bai0")]
+[node name="CarouselMenuItem6" parent="VBoxContainer/Middle/Placeholders" unique_id=1023158546 instance=ExtResource("3_0bai0")]
 z_index = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.683889
-anchor_top = 0.374109
-anchor_right = 0.899444
-anchor_bottom = 0.619952
-offset_left = 40.569885
-offset_top = 6.69487
-offset_right = 68.25012
-offset_bottom = 259.78522
+anchor_left = -0.20486113
+anchor_top = -0.29512316
+anchor_right = -0.2048611
+anchor_bottom = -0.295123
+offset_left = 435.00003
+offset_top = 319.91
+offset_right = 806.625
+offset_bottom = 688.0805
+scale = Vector2(0.45, 0.45)
 metadata/_edit_use_anchors_ = true
 
-[node name="CarouselMenuItem7" parent="VBoxContainer/Middle/Placeholders" unique_id=282736438 instance=ExtResource("3_0bai0")]
+[node name="CarouselMenuItem7" parent="VBoxContainer/Middle/Placeholders" unique_id=584661855 instance=ExtResource("3_0bai0")]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.88
-anchor_top = 0.409739
-anchor_right = 1.01333
-anchor_bottom = 0.583135
-offset_left = 37.954956
-offset_top = 8.61998
-offset_right = 160.35889
-offset_bottom = 271.99774
+anchor_left = -0.27256945
+anchor_top = 1.0250738
+anchor_right = -0.27256945
+anchor_bottom = 1.0250738
+offset_left = 435.0
+offset_top = 114.91
+offset_right = 806.625
+offset_bottom = 483.08057
+scale = Vector2(0.3, 0.3)
 metadata/_edit_use_anchors_ = true
 
 [node name="Items" type="Control" parent="VBoxContainer/Middle" unique_id=454084889]
@@ -187,36 +191,31 @@ size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 25
 text = "Item 1"
 
-[node name="CarouselMenuItem3" parent="VBoxContainer/Middle/Items" unique_id=1003418396 instance=ExtResource("3_0bai0")]
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 434.0
-offset_top = 94.0
-offset_right = -131.0
-offset_bottom = 49.0
-grow_horizontal = 1
-grow_vertical = 1
-
-[node name="Label2" type="Label" parent="VBoxContainer/Middle/Items/CarouselMenuItem3" unique_id=1345648130]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 25
-text = "Item 2"
-
 [node name="CarouselMenuItem2" parent="VBoxContainer/Middle/Items" unique_id=1507619149 instance=ExtResource("3_0bai0")]
 layout_mode = 1
 offset_left = 217.0
 offset_top = 47.0
-offset_right = -348.0
-offset_bottom = 2.0
+offset_right = 294.0
+offset_bottom = 82.0
 
 [node name="Label2" type="Label" parent="VBoxContainer/Middle/Items/CarouselMenuItem2" unique_id=2052008133]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 25
 text = "Item 3"
+
+[node name="CarouselMenuItem3" parent="VBoxContainer/Middle/Items" unique_id=1003418396 instance=ExtResource("3_0bai0")]
+layout_mode = 0
+offset_left = 434.0
+offset_top = 94.0
+offset_right = -131.0
+offset_bottom = 49.0
+
+[node name="Label2" type="Label" parent="VBoxContainer/Middle/Items/CarouselMenuItem3" unique_id=1345648130]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 25
+text = "Item 2"
 
 [node name="CarouselMenuItem4" parent="VBoxContainer/Middle/Items" unique_id=649858585 instance=ExtResource("3_0bai0")]
 layout_mode = 1
@@ -244,7 +243,7 @@ size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 25
 text = "Item 5"
 
-[node name="CarouselMenuItem6" parent="VBoxContainer/Middle/Items" unique_id=633689417 instance=ExtResource("3_0bai0")]
+[node name="CarouselMenuItem6" parent="VBoxContainer/Middle/Items" unique_id=2020704322 instance=ExtResource("3_0bai0")]
 layout_mode = 1
 offset_left = 217.0
 offset_top = 47.0
@@ -307,39 +306,6 @@ offset_right = -17.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="LeftButton" type="Button" parent="VBoxContainer/Middle" unique_id=1729096088]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.361111
-anchor_bottom = 1.0
-offset_right = 1.19209e-05
-grow_vertical = 2
-mouse_default_cursor_shape = 2
-theme_override_styles/normal = SubResource("StyleBoxEmpty_8cgwp")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_8cgwp")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_8cgwp")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_8cgwp")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_8cgwp")
-flat = true
-metadata/_edit_use_anchors_ = true
-
-[node name="RightButton" type="Button" parent="VBoxContainer/Middle" unique_id=860786111]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.648889
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 0
-grow_vertical = 2
-mouse_default_cursor_shape = 2
-theme_override_styles/normal = SubResource("StyleBoxEmpty_8cgwp")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_8cgwp")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_8cgwp")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_8cgwp")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_8cgwp")
-flat = true
-metadata/_edit_use_anchors_ = true
-
 [node name="Bottom" type="Control" parent="VBoxContainer" unique_id=2146535668]
 custom_minimum_size = Vector2(2.08165e-12, 200)
 layout_mode = 2
@@ -347,6 +313,7 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 1.16
 
 [node name="Label" type="Label" parent="VBoxContainer/Bottom" unique_id=1501689373]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -360,6 +327,3 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Bottom"
-
-[connection signal="pressed" from="VBoxContainer/Middle/LeftButton" to="." method="_on_LeftButton_pressed"]
-[connection signal="pressed" from="VBoxContainer/Middle/RightButton" to="." method="_on_RightButton_pressed"]

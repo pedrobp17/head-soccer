@@ -1,33 +1,32 @@
 extends PanelContainer
-class_name CarouselMenuItem
+class_name ElementoMenuCarrusel
 
-@export var identifier = 0
-@export var animation_duration = 0.5
-@export var modo_juego : String
-@export var textura_modo_juego : Texture2D
+@export var identificador: int = 0
+@export var numero_placeholder : int
+@export var duracion_animacion: float = 0.5
+@export var modo_juego: String = "1VS1"
+@export var textura_modo_juego: Texture2D
 
-var is_current = false
+var es_actual: bool = false
 
-@onready var nBackground_NotCurrent = $Background/NotCurrent
-@onready var nBackground_Current = $Background/Current
-@onready var nCurrentLayer = $CurrentLayer
-@onready var nombre = %Label
-@onready var texture_rect : TextureRect = %TextureRect
+@onready var fondo_no_actual: Control = $Background/NotCurrent
+@onready var fondo_actual: Control = $Background/Current
+@onready var nombre: Label = %Nombre
+@onready var textura_rect: TextureRect = %TextureRect
 
 func _ready() -> void:
-	set_is_current(is_current)
+	establecer_es_actual(es_actual)
 	nombre.text = modo_juego
-	if textura_modo_juego and texture_rect:
-		texture_rect.texture = textura_modo_juego
-		
-func set_is_current(p_is_current: bool) -> void:
-	is_current = p_is_current
+	if textura_modo_juego and textura_rect:
+		textura_rect.texture = textura_modo_juego
+
+func establecer_es_actual(p_es_actual: bool) -> void:
+	es_actual = p_es_actual
 	
 	if not is_visible_in_tree():
 		return
 	
-	var tween = get_tree().create_tween()
+	var animacion = get_tree().create_tween()
 	
-	tween.parallel().tween_property(nBackground_NotCurrent, "modulate:a", int(not p_is_current), animation_duration * 2)
-	tween.parallel().tween_property(nBackground_Current, "modulate:a", int(p_is_current), animation_duration * 2)
-	tween.parallel().tween_property(nCurrentLayer, "modulate:a", int(p_is_current), animation_duration * 2)
+	animacion.parallel().tween_property(fondo_no_actual, "modulate:a", int(not p_es_actual), duracion_animacion * 2)
+	animacion.parallel().tween_property(fondo_actual, "modulate:a", int(p_es_actual), duracion_animacion * 2)
