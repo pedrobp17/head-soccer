@@ -8,15 +8,15 @@ const VELOCIDAD = 300
 const FUERZA_Y = -0.5
 const POSICION_INICIAL = Vector2(-6.0, -536.0)
 
-enum Estado {NORMAL, PODER} #para en el futuro controlar la pelota
+enum Estado {NORMAL, PODER, REINICIO} #para en el futuro controlar la pelota
 
+var angulo_aparicion : float = 0.0
 var estaFuera = false
 var estado_actual : EstadoPelota = null
 var creador_estados := CreadorEstadoPelota.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	EventBus.reposicionar.connect(set_reposicion)
 	cambiar_estado(Estado.NORMAL)
 	
 
@@ -45,15 +45,13 @@ func mover(normal: Vector2, es_pie : bool, fuerza : float):
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	estaFuera = true
 	
-func set_reposicion():
-	estaFuera = true
-	
+
 #stop movement of the ball
 func _integrate_forces(state: PhysicsDirectBodyState2D):
 	if estaFuera:
 		state.transform.origin = POSICION_INICIAL
-		state.linear_velocity = Vector2.ZERO
 		state.angular_velocity = 0
+		state.linear_velocity = Vector2.DOWN.rotated((angulo_aparicion)) * VELOCIDAD
 		estaFuera = false
 
 

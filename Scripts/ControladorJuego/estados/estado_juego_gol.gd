@@ -12,4 +12,4 @@ func _enter_tree() -> void:
 
 func _process(delta: float) -> void:
 	if Time.get_ticks_msec() - tiempo > DURACION_CELEBRACION_GOL:
-		peticion_transmitir_estado.emit(ControladorPartido.Estado.RESETEO)
+		cambiar_estado(ControladorPartido.Estado.RESETEO,  datos_juego)

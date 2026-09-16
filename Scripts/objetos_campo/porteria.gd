@@ -5,13 +5,10 @@ class_name Porteria
 
 var jugador := ""
  
-func _ready() -> void:
-	pass
-
 func inicializar( _jugador: String ) -> void:
 	jugador = _jugador
 
 
 func _on_red_body_entered(body: Node2D) -> void:
-	EventBus.gol.emit( jugador )
+	EventBus.gol.emit(jugador)
 	print("gol:" + jugador)

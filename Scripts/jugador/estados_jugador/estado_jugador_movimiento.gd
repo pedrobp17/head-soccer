@@ -2,6 +2,10 @@ class_name EstadoJugadorMoviendo
 extends EstadoJugador
 
 var activacion_poder := false
+
+func _enter_tree() -> void:
+	EventBus.reposicionar.connect(reset_posicion)
+
 # Called when the node enters the scene tree for the first time.
 func _process(delta: float) -> void:
 	if jugador.esquema_control == Jugador.ControlScheme.IA:
@@ -36,10 +40,13 @@ func movimiento_player(delta : float) -> void:
 	if jugador.estadisticas.get_estadistica("vida") <= 0:
 		peticion_transmision_estado.emit(Jugador.Estado.ATURDIDO)
 	
-	if KeyUtils.is_action_just_pressed(jugador.esquema_control, KeyUtils.Accion.PODER):
+	if KeyUtils.is_action_just_pressed(jugador.esquema_control, KeyUtils.Accion.PODER) and !activacion_poder:
 		activacion_poder = true
 		jugador.animacion("poder")
 	
 	jugador.move_and_slide()
 	if jugador.comprobar_colisiones(activacion_poder):
 		peticion_transmision_estado.emit(Jugador.Estado.PODER)
+		
+func reset_posicion(jugador : String) -> void:
+	cambiar_estado(Jugador.Estado.REINICIO, DatosEstadoJugador.build().set_jugador_anotador(jugador))

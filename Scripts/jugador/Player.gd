@@ -45,11 +45,11 @@ func _ready() -> void:
 	pie.setup( estadisticas.get_estadistica("golpe"), CAPA_LOCAL if es_visitante else CAPA_VISITANTE)
 	
 	
-func cambiar_estado( estado : Estado ) -> void:
+func cambiar_estado( estado : Estado, datos : DatosEstadoJugador = DatosEstadoJugador.new() ) -> void:
 	if estado_actual != null:
 		estado_actual.queue_free()
 	estado_actual = creador_estados.get_fresh_state(estado)
-	estado_actual.setup(self, animacion_jugador, comportamiento_ia)
+	estado_actual.setup(self, animacion_jugador, comportamiento_ia, datos)
 	estado_actual.peticion_transmision_estado.connect(cambiar_estado.bind())
 	estado_actual.name = "MaquinaEstadosJugador: " + str(estado)
 	call_deferred("add_child", estado_actual)
