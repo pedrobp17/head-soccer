@@ -4,6 +4,17 @@
 [ext_resource type="Texture2D" uid="uid://cwl3ulb72speo" path="res://Sprites/MenuPrincipal.png" id="2_jyypx"]
 [ext_resource type="PackedScene" uid="uid://dyl0wuwreaqd2" path="res://Escenas/ui/CarouselMenuItem.tscn" id="3_0bai0"]
 [ext_resource type="Texture2D" uid="uid://ckcb2pnwcdclk" path="res://Sprites/UI/ModoPelea.png" id="4_c8rsx"]
+[ext_resource type="Texture2D" uid="uid://duphmby7x2qp8" path="res://Sprites/UI/Modo1VS1.png" id="4_ddfxc"]
+[ext_resource type="Texture2D" uid="uid://cdxwejyn1ijal" path="res://Sprites/UI/Modo1VS1Actual.png" id="5_d5qqi"]
+[ext_resource type="Texture2D" uid="uid://ybv56krrakqe" path="res://Sprites/UI/ModoArcade.png" id="5_vf8nl"]
+[ext_resource type="Texture2D" uid="uid://b718r2py7qo30" path="res://Sprites/UI/ModoMundial.png" id="6_ajxvj"]
+[ext_resource type="Texture2D" uid="uid://ctve3xu2hofy5" path="res://Sprites/UI/ModoTorneo.png" id="6_vf8nl"]
+[ext_resource type="Texture2D" uid="uid://24046prso03d" path="res://Sprites/UI/ModoSupervivencia.png" id="7_1mk7u"]
+[ext_resource type="Texture2D" uid="uid://b6r3xoi3hromq" path="res://Sprites/UI/ModoArcadeActual.png" id="7_gyo31"]
+[ext_resource type="Texture2D" uid="uid://ddec320cmerl8" path="res://Sprites/UI/ModoTorneoActual.png" id="9_qm5xk"]
+[ext_resource type="Texture2D" uid="uid://dil6ae0v3lgfc" path="res://Sprites/UI/ModoMundialActual.png" id="11_ffnlw"]
+[ext_resource type="Texture2D" uid="uid://pmyteemgq2bp" path="res://Sprites/UI/ModoSupervivenciaActual.png" id="13_kyi8o"]
+[ext_resource type="Texture2D" uid="uid://bbyvl0ck4s8q0" path="res://Sprites/UI/ModoPeleaActual.png" id="15_fkvj1"]
 
 [node name="CarouselMenu" type="Control" unique_id=1871232871]
 layout_mode = 3
@@ -74,6 +85,7 @@ offset_top = 117.91002
 offset_right = 806.625
 offset_bottom = 486.08057
 scale = Vector2(0.3, 0.3)
+textura_modo_juego = ExtResource("4_ddfxc")
 metadata/_edit_use_anchors_ = true
 
 [node name="CarouselMenuItem2" parent="VBoxContainer/Middle/Placeholders" unique_id=1951677157 instance=ExtResource("3_0bai0")]
@@ -176,29 +188,17 @@ offset_bottom = 206.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CarouselMenuItem1" parent="VBoxContainer/Middle/Items" unique_id=594318930 instance=ExtResource("3_0bai0")]
-layout_mode = 1
-offset_left = 217.0
-offset_top = 47.0
-offset_right = -348.0
-offset_bottom = 2.0
-modo_juego = "Pelea"
-textura_modo_juego = ExtResource("4_c8rsx")
-
-[node name="Label2" type="Label" parent="VBoxContainer/Middle/Items/CarouselMenuItem1" unique_id=323280754]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 25
-text = "Item 1"
-
 [node name="CarouselMenuItem2" parent="VBoxContainer/Middle/Items" unique_id=1507619149 instance=ExtResource("3_0bai0")]
 layout_mode = 1
 offset_left = 217.0
 offset_top = 47.0
 offset_right = 294.0
 offset_bottom = 82.0
+textura_modo_juego = ExtResource("4_ddfxc")
+textura_modo_juego_actual = ExtResource("5_d5qqi")
 
 [node name="Label2" type="Label" parent="VBoxContainer/Middle/Items/CarouselMenuItem2" unique_id=2052008133]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 25
@@ -210,8 +210,10 @@ offset_left = 434.0
 offset_top = 94.0
 offset_right = -131.0
 offset_bottom = 49.0
+modo_juego = "ONLINE"
 
 [node name="Label2" type="Label" parent="VBoxContainer/Middle/Items/CarouselMenuItem3" unique_id=1345648130]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 25
@@ -223,8 +225,12 @@ offset_left = 217.0
 offset_top = 47.0
 offset_right = -348.0
 offset_bottom = 2.0
+modo_juego = "ARCADE"
+textura_modo_juego = ExtResource("5_vf8nl")
+textura_modo_juego_actual = ExtResource("7_gyo31")
 
 [node name="Label2" type="Label" parent="VBoxContainer/Middle/Items/CarouselMenuItem4" unique_id=224148481]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 25
@@ -236,8 +242,12 @@ offset_left = 217.0
 offset_top = 47.0
 offset_right = -348.0
 offset_bottom = 2.0
+modo_juego = "TORNEO"
+textura_modo_juego = ExtResource("6_vf8nl")
+textura_modo_juego_actual = ExtResource("9_qm5xk")
 
 [node name="Label2" type="Label" parent="VBoxContainer/Middle/Items/CarouselMenuItem5" unique_id=1699474012]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 25
@@ -249,8 +259,10 @@ offset_left = 217.0
 offset_top = 47.0
 offset_right = -348.0
 offset_bottom = 2.0
+modo_juego = "LIGA"
 
 [node name="Label2" type="Label" parent="VBoxContainer/Middle/Items/CarouselMenuItem6" unique_id=1025045037]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 25
@@ -262,8 +274,12 @@ offset_left = 217.0
 offset_top = 47.0
 offset_right = -348.0
 offset_bottom = 2.0
+modo_juego = "MUNDIAL"
+textura_modo_juego = ExtResource("6_ajxvj")
+textura_modo_juego_actual = ExtResource("11_ffnlw")
 
 [node name="Label2" type="Label" parent="VBoxContainer/Middle/Items/CarouselMenuItem7" unique_id=909276564]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 25
@@ -275,8 +291,12 @@ offset_left = 217.0
 offset_top = 47.0
 offset_right = -348.0
 offset_bottom = 2.0
+modo_juego = "SUPERVIVENCIA"
+textura_modo_juego = ExtResource("7_1mk7u")
+textura_modo_juego_actual = ExtResource("13_kyi8o")
 
 [node name="Label2" type="Label" parent="VBoxContainer/Middle/Items/CarouselMenuItem8" unique_id=1604542982]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 25
@@ -288,8 +308,12 @@ offset_left = 217.0
 offset_top = 47.0
 offset_right = -348.0
 offset_bottom = 2.0
+modo_juego = "PELEA"
+textura_modo_juego = ExtResource("4_c8rsx")
+textura_modo_juego_actual = ExtResource("15_fkvj1")
 
 [node name="Label2" type="Label" parent="VBoxContainer/Middle/Items/CarouselMenuItem9" unique_id=1218776271]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 25

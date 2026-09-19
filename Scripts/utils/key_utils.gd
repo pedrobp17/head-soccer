@@ -1,5 +1,4 @@
-extends Node
-
+class_name KeyUtils
 
 enum Accion {DERECHA, IZQUIERDA, SALTO, PATADA, PODER}
 
@@ -20,15 +19,15 @@ const MAPA_ACCIONES : Dictionary = {
 	},
 }
 
-func get_input_vector( esquema: Jugador.ControlScheme) -> float:
+static func get_input_vector( esquema: Jugador.ControlScheme) -> float:
 	var mapa : Dictionary = MAPA_ACCIONES[esquema]
 	return Input.get_axis(mapa[Accion.IZQUIERDA], mapa[Accion.DERECHA] )
 	
-func is_action_pressed(esquema: Jugador.ControlScheme, accion: Accion) -> bool:
+static func is_action_pressed(esquema: Jugador.ControlScheme, accion: Accion) -> bool:
 	return Input.is_action_pressed(MAPA_ACCIONES[esquema][accion])
 
-func is_action_just_pressed(esquema: Jugador.ControlScheme, accion: Accion) -> bool:
+static func is_action_just_pressed(esquema: Jugador.ControlScheme, accion: Accion) -> bool:
 	return Input.is_action_just_pressed(MAPA_ACCIONES[esquema][accion])
 
-func is_action_just_released(esquema: Jugador.ControlScheme, accion: Accion) -> bool:
+static func is_action_just_released(esquema: Jugador.ControlScheme, accion: Accion) -> bool:
 	return Input.is_action_just_released(MAPA_ACCIONES[esquema][accion])

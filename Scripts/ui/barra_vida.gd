@@ -1,4 +1,5 @@
 extends ProgressBar
+class_name BarraVida
 
 @onready var tiempo = %Timer
 @onready var barra_daño = %"BarraDaño"

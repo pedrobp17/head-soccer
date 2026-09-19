@@ -17,7 +17,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 EventBus="*uid://dch54ygkrfq5v"
-KeyUtils="*uid://bs7j46nr44ron"
 PlayerUtils="*uid://dbsm22docac1m"
 DatosJugadores="*uid://c00v8pj1hjxah"
 DatosPoderes="*uid://cwpcaloqrslju"
@@ -27,6 +26,10 @@ ControladorPartido="*uid://fj550w84n6nb"
 
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+
+[gui]
+
+theme/custom_font="uid://dokicgb57bija"
 
 [input]
 

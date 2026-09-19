@@ -25,9 +25,9 @@ func _ready() -> void:
 
 
 func _input(evento: InputEvent) -> void:
-	if evento.is_action_pressed("ui_left"):
+	if evento.is_action_pressed("ui_right"):
 		ir_izquierda()
-	elif evento.is_action_pressed("ui_right"):
+	elif evento.is_action_pressed("ui_left"):
 		ir_derecha()
 	elif evento.is_action_pressed("ui_accept"):
 		confirmar_seleccion()

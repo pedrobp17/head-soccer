@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b1xms8r7pbs6e"]
 
 [ext_resource type="Texture2D" uid="uid://b3bg52lavb3yy" path="res://Sprites/UI/timer_back.png" id="1_pwlwp"]
+[ext_resource type="Script" uid="uid://7gggfqf88bq7" path="res://Scripts/ui/Reloj.gd" id="1_r6us1"]
 [ext_resource type="Texture2D" uid="uid://cjtag5i3jv4h" path="res://Sprites/UI/timer_front.png" id="2_r6us1"]
 [ext_resource type="Texture2D" uid="uid://m4dohfegha4h" path="res://Sprites/UI/timer_progress.png" id="3_o184u"]
 
@@ -9,8 +10,10 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("1_r6us1")
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=1613833745]
+[node name="BarraTiempo" type="TextureProgressBar" parent="." unique_id=1613833745]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 3.0
 offset_top = 16.0
@@ -21,3 +24,15 @@ fill_mode = 4
 texture_under = ExtResource("1_pwlwp")
 texture_over = ExtResource("2_r6us1")
 texture_progress = ExtResource("3_o184u")
+
+[node name="Numero" type="Label" parent="BarraTiempo" unique_id=976205792]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "60"
+horizontal_alignment = 1
+vertical_alignment = 1

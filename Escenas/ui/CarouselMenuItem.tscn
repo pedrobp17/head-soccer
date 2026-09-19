@@ -17,6 +17,7 @@ metadata/_custom_type_script = "uid://brbrttbc05onw"
 layout_mode = 2
 
 [node name="NotCurrent" type="TextureRect" parent="Background" unique_id=685213310]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,6 +27,7 @@ grow_vertical = 2
 texture = ExtResource("2_mqn74")
 
 [node name="Current" type="TextureRect" parent="Background" unique_id=770492793]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

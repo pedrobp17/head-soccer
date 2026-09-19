@@ -17,7 +17,6 @@ func _ready() -> void:
 	porteria_local.inicializar(ControladorPartido.jugadores[1])
 	jugador_visitante = aparecer_jugador(ControladorPartido.jugadores[1], Jugador.BANDO[true], ControladorPartido.poderes[1])
 	porteria_visitante.inicializar(ControladorPartido.jugadores[0])
-	#var jugador : Jugador = get_children().filter(func (p): return p is Jugador)[0]
 	set_controladores_personajes()
 	
 func aparecer_jugador( jugador : String, identificador_bando : int, poder : String) -> Jugador:

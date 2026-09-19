@@ -7,21 +7,17 @@
 [ext_resource type="Script" uid="uid://dvs5fmmrtgo2t" path="res://Scripts/objetos_campo/apariciones.gd" id="7_fv5s3"]
 [ext_resource type="PackedScene" uid="uid://byigg0fdudfr6" path="res://Escenas/ui/ui.tscn" id="12_ll4ra"]
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_amyr6"]
-a = Vector2(-960, -182)
-b = Vector2(960, -182)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b84b7"]
+size = Vector2(1961, 191)
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_tvkqe"]
-a = Vector2(25.5, -357)
-b = Vector2(26.5, 576)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1yeoj"]
+size = Vector2(189, 1014)
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_m3b2f"]
-a = Vector2(962, 33)
-b = Vector2(-958, 33)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nxxv2"]
+size = Vector2(2001, 158)
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_obkv7"]
-a = Vector2(-41, -356.5)
-b = Vector2(-41, 574)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7o1am"]
+size = Vector2(178, 1028)
 
 [node name="Campo" type="Node2D" unique_id=1716950898]
 
@@ -53,8 +49,8 @@ collision_layer = 4
 collision_mask = 11
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="limites/suelo" unique_id=1291733226]
-position = Vector2(1, 189)
-shape = SubResource("SegmentShape2D_amyr6")
+position = Vector2(-1.5, 103.5)
+shape = SubResource("RectangleShape2D_b84b7")
 
 [node name="limiteIzq" type="StaticBody2D" parent="limites" unique_id=2133072014]
 position = Vector2(-1, -74)
@@ -62,8 +58,8 @@ collision_layer = 4
 collision_mask = 11
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="limites/limiteIzq" unique_id=53154439]
-position = Vector2(-985.5, -357)
-shape = SubResource("SegmentShape2D_tvkqe")
+position = Vector2(-1046.5, -242)
+shape = SubResource("RectangleShape2D_1yeoj")
 
 [node name="cielo" type="StaticBody2D" parent="limites" unique_id=1042363777]
 position = Vector2(-1, -74)
@@ -71,16 +67,16 @@ collision_layer = 4
 collision_mask = 11
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="limites/cielo" unique_id=470450164]
-position = Vector2(-1, -748)
-shape = SubResource("SegmentShape2D_m3b2f")
+position = Vector2(-15.5, -788)
+shape = SubResource("RectangleShape2D_nxxv2")
 
 [node name="limiteDerecho" type="StaticBody2D" parent="limites" unique_id=854698909]
 collision_layer = 4
 collision_mask = 11
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="limites/limiteDerecho" unique_id=918166331]
-position = Vector2(1002, -432)
-shape = SubResource("SegmentShape2D_obkv7")
+position = Vector2(1039, -327)
+shape = SubResource("RectangleShape2D_7o1am")
 
 [node name="ContenedorPersonajes" type="Node2D" parent="." unique_id=853365297 node_paths=PackedStringArray("porteria_local", "porteria_visitante")]
 script = ExtResource("7_fv5s3")

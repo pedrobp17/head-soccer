@@ -1,6 +1,6 @@
 extends Node
 
-const DURACION_JUEGO_SEGUNDOS :=  1 * 600
+const DURACION_JUEGO_SEGUNDOS :=  1 * 60
 
 enum Estado {JUGANDO, GOL, RESETEO, INICIALIZANDO, TIEMPO_EXTRA, FIN}
 
@@ -11,6 +11,7 @@ var jugadores : Array[String] = ["MarkEvans", "AxelBlaze"]
 var setup_jugador : Array[String] = ["MarkEvans","AxelBlaze"] # "" = jugando contra IA , "nombre" = jugando contra jugador 2 
 var poderes : Array[String] = ["mano_magica", "mano_magica"]
 var marcador : Array[int] = [0,0]
+
 
 func _ready() -> void:
 	tiempo_restante = DURACION_JUEGO_SEGUNDOS
