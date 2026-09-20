@@ -10,6 +10,7 @@ size = Vector2(176, 20)
 size = Vector2(164, 23)
 
 [node name="PorteriaDelantera" type="StaticBody2D" unique_id=119984880]
+collision_layer = 4
 collision_mask = 19
 script = ExtResource("1_o5ebp")
 

@@ -56,7 +56,8 @@ func set_barra_vida(valor : float, es_visitante : bool ) -> void:
 	porcentaje_vida[indice_jugador].text = barras_vida[indice_jugador].get_texto_vida_restante()
 	
 func on_gol(jugador_anotador : String) -> void:
-	animacion_gol.animar()
+	if not ControladorPartido.fin_partido():
+		animacion_gol.animar()
 	
 func on_cambio_marcador( indice_jugdor_anotador : int) -> void:
 	marcador[indice_jugdor_anotador].text = str(ControladorPartido.marcador[indice_jugdor_anotador])

@@ -24,7 +24,7 @@ func _process(delta: float) -> void:
 		EventBus.golpear_pelota.emit(direccion, false, 1.0)
 		
 func _on_red_body_entered(body: Node2D) -> void:
-	if ControladorPartido.estado_partido == ControladorPartido.Estado.JUGANDO:
+	if ControladorPartido.estado_actual.gol_valido():
 		EventBus.gol.emit(jugador)
 	
 func _on_area_larguero_body_entered(body: Node2D) -> void:

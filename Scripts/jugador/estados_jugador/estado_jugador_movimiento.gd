@@ -5,6 +5,7 @@ var activacion_poder := false
 
 func _enter_tree() -> void:
 	jugador.estadisticas.reset_estadistica("vida")
+	EventBus.cambiar_barra_vida.emit( jugador.estadisticas.get_estadistica("vida"), jugador.es_visitante)
 	print(jugador.name + "recuperado")
 	
 # Called when the node enters the scene tree for the first time.

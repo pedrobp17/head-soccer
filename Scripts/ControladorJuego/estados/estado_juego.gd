@@ -12,3 +12,6 @@ func setup( _controlador: ControladorPartido, datos : DatosEstadoJuego) -> void:
 	
 func cambiar_estado(nuevo_estado : ControladorPartido.Estado, datos : DatosEstadoJuego = DatosEstadoJuego.new()) -> void:
 	peticion_transmitir_estado.emit(nuevo_estado, datos)
+
+func gol_valido() -> bool:
+	return false
