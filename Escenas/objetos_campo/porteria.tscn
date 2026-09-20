@@ -6,6 +6,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a8ku5"]
 size = Vector2(176, 20)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eu64u"]
+size = Vector2(164, 23)
+
 [node name="PorteriaDelantera" type="StaticBody2D" unique_id=119984880]
 collision_mask = 19
 script = ExtResource("1_o5ebp")
@@ -16,6 +19,16 @@ texture = ExtResource("2_pjuxr")
 [node name="Larguero2" type="CollisionShape2D" parent="." unique_id=1314862098]
 position = Vector2(0, -182)
 shape = SubResource("RectangleShape2D_a8ku5")
+
+[node name="AreaLarguero" type="Area2D" parent="." unique_id=91760979]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaLarguero" unique_id=1887140560]
+position = Vector2(-6, -190.5)
+shape = SubResource("RectangleShape2D_eu64u")
 
 [node name="Red" type="Area2D" parent="." unique_id=379525519]
 unique_name_in_owner = true

@@ -31,7 +31,9 @@ func animar() -> void:
 	
 	for i in range( letras.get_child_count()):
 		letras.get_child(i).position = posicion_inicio_letras.get_child(i).position
-		
+	
+	EventBus.fin_animacion_gol.emit()
+	
 func tween_con_intervalo( animacion_activa : Tween , indice : int, destino : Posicion, intervalo : float, duracion_movimiento : float) -> void:
 	var letra_origen = letras.get_child(indice)
 	var letra_destino = get_posicion_destino(destino).get_child(indice)
@@ -50,16 +52,3 @@ func get_posicion_destino(destino : Posicion) -> Control:
 		return posicion_medio_letras
 	else:
 		return posicion_fin_letras
-
-		
-func crear_duplicados(nodo_objetivo: Label, nodo_origen: Label ) -> void:
-	nodo_objetivo.global_position = nodo_origen.global_position
-	nodo_objetivo.anchor_left = nodo_origen.anchor_left
-	nodo_objetivo.anchor_right = nodo_origen.anchor_right
-	nodo_objetivo.anchor_top = nodo_origen.anchor_top
-	nodo_objetivo.anchor_bottom = nodo_origen.anchor_bottom
-	nodo_objetivo.offset_left = nodo_origen.offset_left
-	nodo_objetivo.offset_right = nodo_origen.offset_right
-	nodo_objetivo.offset_top = nodo_origen.offset_top
-	nodo_objetivo.offset_bottom = nodo_origen.offset_bottom
-	nodo_objetivo.z_index = nodo_origen.z_index

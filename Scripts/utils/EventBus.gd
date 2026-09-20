@@ -7,3 +7,5 @@ signal reposicionar_pelota(jugador_anotador : String)
 signal inicio_poder()
 signal fin_poder()
 signal cambiar_barra_vida( vida : float, es_visitante : bool)
+signal cambio_marcador( indice : int)
+signal fin_animacion_gol

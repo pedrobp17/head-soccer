@@ -157,9 +157,9 @@ vertical_alignment = 1
 z_index = 1
 layout_mode = 0
 offset_left = 281.0
-offset_top = 48.0
+offset_top = 39.0
 offset_right = 953.72
-offset_bottom = 65.115
+offset_bottom = 56.114998
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/vidas" unique_id=843479116]
 layout_mode = 1

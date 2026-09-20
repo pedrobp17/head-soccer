@@ -4,8 +4,9 @@ extends EstadoJugador
 var activacion_poder := false
 
 func _enter_tree() -> void:
-	EventBus.reposicionar.connect(reset_posicion)
-
+	jugador.estadisticas.reset_estadistica("vida")
+	print(jugador.name + "recuperado")
+	
 # Called when the node enters the scene tree for the first time.
 func _process(delta: float) -> void:
 	if jugador.esquema_control == Jugador.ControlScheme.IA:
@@ -48,5 +49,5 @@ func movimiento_player(delta : float) -> void:
 	if jugador.comprobar_colisiones(activacion_poder):
 		peticion_transmision_estado.emit(Jugador.Estado.PODER)
 		
-func reset_posicion(jugador : String) -> void:
-	cambiar_estado(Jugador.Estado.REINICIO, DatosEstadoJugador.build().set_jugador_anotador(jugador))
+func puede_recibir_daño() -> bool:
+	return true

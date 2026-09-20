@@ -8,9 +8,9 @@ var vida = 0.0 : set = set_vida
 
 func set_vida(nueva_vida : float = max_value) -> void:
 	var vida_previa = vida
-	vida = min(nueva_vida, 0)
+	vida = max(nueva_vida, 0)
 	value = vida
-
+	
 	if vida < vida_previa:
 		tiempo.start()
 	else:
@@ -27,3 +27,6 @@ func inicializar_vida(vida_jugador : float) -> void:
 
 func _on_timer_timeout() -> void:
 	barra_daño.value = vida
+
+func get_texto_vida_restante() -> String:
+	return str(int(value)) + "/" + str(int(max_value))

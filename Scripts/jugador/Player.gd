@@ -110,10 +110,19 @@ func set_capas_deteccion( jugador_es_visitante : bool):
 		set_collision_mask_value(CAPA_VISITANTE, true)
 		set_collision_layer_value(CAPA_LOCAL, true)
 		
-func tomar_daño( daño : float ):
+func puede_tomar_daño() -> bool:
+	if estado_actual == null:
+		return false
+		
+	return estado_actual.puede_recibir_daño()
+
+func tomar_daño( daño : float ) -> void:
+	if not puede_tomar_daño():
+		return 
+	
 	estadisticas.modificar("vida", -daño)
 	EventBus.cambiar_barra_vida.emit( estadisticas.get_estadistica("vida"), es_visitante)
-	
+
 func setup_elementos_personaje():
 	capsula.position = Vector2(configuracion_posiciones["capsula"]["x"],configuracion_posiciones["capsula"]["y"])
 	pie.position = Vector2(configuracion_posiciones["pie"]["x"],configuracion_posiciones["pie"]["y"])

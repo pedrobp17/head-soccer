@@ -10,7 +10,8 @@ func _enter_tree() -> void:
 	#animacion_jugador.play("aturdimiento")
 	knockback()
 	tiempo_inicio_aturdimiento = Time.get_ticks_msec()
-
+	print(jugador.name + "herido")
+	
 func _process(delta: float) -> void:
 	if not jugador.is_on_floor():
 		jugador.velocity += jugador.get_gravity() * delta
@@ -19,7 +20,6 @@ func _process(delta: float) -> void:
 	jugador.move_and_slide()
 	
 	if Time.get_ticks_msec() - tiempo_inicio_aturdimiento > DURACION_ATURDIMIENTO:
-		jugador.estadisticas.reset_estadistica("vida")
 		peticion_transmision_estado.emit(Jugador.Estado.JUGANDO)
 
 func knockback() -> void:

@@ -20,6 +20,7 @@ func set_inicio_poder() -> void:
 
 
 func set_reposicion(jugador_anotador : String):
-	pelota.angulo_aparicion = (randf_range(-20.0, -10.0) if jugador_anotador == ControladorPartido.jugadores[0] else randf_range(10.0, 20.0))
+	pelota.angulo_aparicion = (randf_range(-20.0, -10.0) if jugador_anotador == ControladorPartido.jugadores[1] else randf_range(10.0, 20.0))
+	print( jugador_anotador )
 	cambiar_estado(Pelota.Estado.REINICIO)
 	
