@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ybv56krrakqe"
-path="res://.godot/imported/ModoArcade.png-0c9ae88fbca3803a589c16c30b8ebf08.ctex"
+uid="uid://ckcb2pnwcdclk"
+path="res://.godot/imported/ModoPelea.png-4478d4d97f399539c354f5d7295c60ba.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/UI/ModoArcade.png"
-dest_files=["res://.godot/imported/ModoArcade.png-0c9ae88fbca3803a589c16c30b8ebf08.ctex"]
+source_file="res://Sprites/UI/modos_juego/normal/ModoPelea.png"
+dest_files=["res://.godot/imported/ModoPelea.png-4478d4d97f399539c354f5d7295c60ba.ctex"]
 
 [params]
 

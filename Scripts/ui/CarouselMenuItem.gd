@@ -13,7 +13,6 @@ var es_actual: bool = false
 @onready var fondo_no_actual: Control = %NotCurrent
 @onready var fondo_actual: Control = %Current
 @onready var nombre: Label = %Nombre
-@onready var textura_rect: TextureRect = %TextureRect
 
 func _ready() -> void:
 	establecer_es_actual(es_actual)

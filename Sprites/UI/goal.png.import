@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckcb2pnwcdclk"
-path="res://.godot/imported/ModoPelea.png-f2d94c977260b757ab2a733fcc51f1a3.ctex"
+uid="uid://dp0kynjmg18oo"
+path="res://.godot/imported/goal.png-4695989347242a4cb13e43b1d4f1b4cf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/UI/ModoPelea.png"
-dest_files=["res://.godot/imported/ModoPelea.png-f2d94c977260b757ab2a733fcc51f1a3.ctex"]
+source_file="res://Sprites/UI/goal.png"
+dest_files=["res://.godot/imported/goal.png-4695989347242a4cb13e43b1d4f1b4cf.ctex"]
 
 [params]
 

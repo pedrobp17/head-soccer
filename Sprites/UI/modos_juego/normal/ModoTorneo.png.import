@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6r3xoi3hromq"
-path="res://.godot/imported/ModoArcadeActual.png-068c8c0592319cd37073dcef0097f30e.ctex"
+uid="uid://ctve3xu2hofy5"
+path="res://.godot/imported/ModoTorneo.png-c78d979fadeceddb9df07214c338e73b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/UI/ModoArcadeActual.png"
-dest_files=["res://.godot/imported/ModoArcadeActual.png-068c8c0592319cd37073dcef0097f30e.ctex"]
+source_file="res://Sprites/UI/modos_juego/normal/ModoTorneo.png"
+dest_files=["res://.godot/imported/ModoTorneo.png-c78d979fadeceddb9df07214c338e73b.ctex"]
 
 [params]
 

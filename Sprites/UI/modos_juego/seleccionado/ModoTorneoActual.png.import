@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ddec320cmerl8"
-path="res://.godot/imported/ModoTorneoActual.png-c82e558d4e8439d1cbb10bd2240138f2.ctex"
+path="res://.godot/imported/ModoTorneoActual.png-193aa354337d125ef2f7b84039a2d7e4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/UI/ModoTorneoActual.png"
-dest_files=["res://.godot/imported/ModoTorneoActual.png-c82e558d4e8439d1cbb10bd2240138f2.ctex"]
+source_file="res://Sprites/UI/modos_juego/seleccionado/ModoTorneoActual.png"
+dest_files=["res://.godot/imported/ModoTorneoActual.png-193aa354337d125ef2f7b84039a2d7e4.ctex"]
 
 [params]
 

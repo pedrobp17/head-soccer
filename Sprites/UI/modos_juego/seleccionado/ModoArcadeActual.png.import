@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnjmhahhhi037"
-path="res://.godot/imported/unnamed.png-470e12fdbb595be82497bad3a9587c19.ctex"
+uid="uid://b6r3xoi3hromq"
+path="res://.godot/imported/ModoArcadeActual.png-0e9ce3d899750a179fcd0e7cbcbd5064.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scripts/unnamed.png"
-dest_files=["res://.godot/imported/unnamed.png-470e12fdbb595be82497bad3a9587c19.ctex"]
+source_file="res://Sprites/UI/modos_juego/seleccionado/ModoArcadeActual.png"
+dest_files=["res://.godot/imported/ModoArcadeActual.png-0e9ce3d899750a179fcd0e7cbcbd5064.ctex"]
 
 [params]
 

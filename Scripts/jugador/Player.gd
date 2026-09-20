@@ -112,6 +112,7 @@ func set_capas_deteccion( jugador_es_visitante : bool):
 		
 func tomar_daño( daño : float ):
 	estadisticas.modificar("vida", -daño)
+	EventBus.cambiar_barra_vida.emit( estadisticas.get_estadistica("vida"), es_visitante)
 	
 func setup_elementos_personaje():
 	capsula.position = Vector2(configuracion_posiciones["capsula"]["x"],configuracion_posiciones["capsula"]["y"])

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://24046prso03d"
-path="res://.godot/imported/ModoSupervivencia.png-1b1ccfaefd3f6718a7468013cea2f53b.ctex"
+uid="uid://bbyvl0ck4s8q0"
+path="res://.godot/imported/ModoPeleaActual.png-711cfc8756a33e48b563074539fc5853.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/UI/ModoSupervivencia.png"
-dest_files=["res://.godot/imported/ModoSupervivencia.png-1b1ccfaefd3f6718a7468013cea2f53b.ctex"]
+source_file="res://Sprites/UI/modos_juego/seleccionado/ModoPeleaActual.png"
+dest_files=["res://.godot/imported/ModoPeleaActual.png-711cfc8756a33e48b563074539fc5853.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctve3xu2hofy5"
-path="res://.godot/imported/ModoTorneo.png-7f46932159ff7e05cf2c95d35bfa26b8.ctex"
+uid="uid://b718r2py7qo30"
+path="res://.godot/imported/ModoMundial.png-f755bb42f96b19291f755d159b107126.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/UI/ModoTorneo.png"
-dest_files=["res://.godot/imported/ModoTorneo.png-7f46932159ff7e05cf2c95d35bfa26b8.ctex"]
+source_file="res://Sprites/UI/modos_juego/normal/ModoMundial.png"
+dest_files=["res://.godot/imported/ModoMundial.png-f755bb42f96b19291f755d159b107126.ctex"]
 
 [params]
 
