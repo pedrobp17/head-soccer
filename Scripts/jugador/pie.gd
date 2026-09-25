@@ -2,7 +2,8 @@ extends Area2D
 
 const DAÑO_VIDA := 10.0
 
-@onready var detector_daño : Area2D = %"DetectorDaño"
+@onready var detector_daño : Area2D = %DetectorDaño
+@onready var detector_poder: Area2D = %DetectorPoder
 
 var golpeando = false
 var fuerza := 0.0
@@ -10,6 +11,7 @@ var fuerza := 0.0
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 	detector_daño.body_entered.connect(_on_body_entered_detector_daño)
+	detector_poder.body_entered.connect(on_pie_contacto_pelota_en_poder)
 #Make the action of rotation of the foot
 func golpear():
 	if golpeando: 
@@ -28,7 +30,7 @@ func golpear():
 
 #Transmit the contact signal
 func _on_body_entered(body: Node2D) -> void:
-	if body is Pelota:
+	if body is Pelota and not detector_poder.monitoring:
 		var normal = (body.global_position - global_position).normalized()
 		EventBus.golpear_pelota.emit(normal, true, fuerza)
 
@@ -42,3 +44,9 @@ func set_sprite( es_visitante : int) -> void:
 func setup(_fuerza : float, capa_enemigo : int): 
 	fuerza = _fuerza
 	detector_daño.set_collision_mask_value(capa_enemigo, true) 
+
+func set_monitoring_detector_poder(modo : bool) -> void:
+	detector_poder.monitoring = modo
+
+func on_pie_contacto_pelota_en_poder() -> void:
+	EventBus.pie_contacto_pelota_en_poder.emit()

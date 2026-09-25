@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dlawg7jtga6r7"]
 
 [ext_resource type="Script" uid="uid://ch2iieds7wytg" path="res://Scripts/ui/CarouselMenu.gd" id="1_tb2mb"]
-[ext_resource type="Texture2D" uid="uid://cwl3ulb72speo" path="res://Sprites/MenuPrincipal.png" id="2_1wo1t"]
+[ext_resource type="Texture2D" uid="uid://cf8qh6n8d1teo" path="res://Sprites/pantallas/PantallaEleccionModos.png" id="2_tb2mb"]
 [ext_resource type="PackedScene" uid="uid://dyl0wuwreaqd2" path="res://Escenas/ui/CarouselMenuItem.tscn" id="3_oowyd"]
 [ext_resource type="Texture2D" uid="uid://duphmby7x2qp8" path="res://Sprites/UI/modos_juego/normal/Modo1VS1.png" id="4_tb2mb"]
 [ext_resource type="Texture2D" uid="uid://cdxwejyn1ijal" path="res://Sprites/UI/modos_juego/seleccionado/Modo1VS1Actual.png" id="5_tb2mb"]
@@ -40,7 +40,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_1wo1t")
+texture = ExtResource("2_tb2mb")
 expand_mode = 1
 stretch_mode = 6
 

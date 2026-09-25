@@ -15,3 +15,6 @@ func cambiar_estado(nuevo_estado : ControladorPartido.Estado, datos : DatosEstad
 
 func gol_valido() -> bool:
 	return false
+
+func cargar_poder() -> bool:
+	return false

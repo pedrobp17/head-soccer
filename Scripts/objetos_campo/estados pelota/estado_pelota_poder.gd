@@ -20,7 +20,7 @@ func desactivar_fisicas() -> void:
 	pelota.freeze = true
 	
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not ejecutando_poder:
 		peticion_transmision_estado.emit(Pelota.Estado.NORMAL)
 

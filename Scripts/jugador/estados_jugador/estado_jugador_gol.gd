@@ -1,0 +1,2 @@
+extends EstadoJugador
+class_name EstadoJugadorGol

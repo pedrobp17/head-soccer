@@ -3,7 +3,8 @@ class_name  EstadoJuegoTiempoExtra
 
 func _enter_tree() -> void:
 	EventBus.gol.connect(on_gol)
-
+	EventBus.en_tiempo_extra.emit()
+	
 func gol_valido() -> bool:
 	return true
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://n0vwk4tk15l"
-path="res://.godot/imported/Recuadro2.png-56ab2b3d9eb04db340d5b7b6cc3a4da0.ctex"
+uid="uid://bmpwexwc6otuo"
+path="res://.godot/imported/MarkEvans.png-f658ece7a345fb216597f2126c0ddb36.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/UI/Recuadro2.png"
-dest_files=["res://.godot/imported/Recuadro2.png-56ab2b3d9eb04db340d5b7b6cc3a4da0.ctex"]
+source_file="res://Sprites/jugadores/modo_arcade/MarkEvans.png"
+dest_files=["res://.godot/imported/MarkEvans.png-f658ece7a345fb216597f2126c0ddb36.ctex"]
 
 [params]
 

@@ -3,7 +3,8 @@ class_name EstadoPelotaNormal
 
 
 func _ready() -> void:
-	EventBus.golpear_pelota.connect(pelota.mover)
+	if not EventBus.golpear_pelota.is_connected(pelota.mover):
+		EventBus.golpear_pelota.connect(pelota.mover)
 	EventBus.inicio_poder.connect(set_inicio_poder)
 	EventBus.reposicionar_pelota.connect(set_reposicion)
 	

@@ -6,7 +6,7 @@ class_name BarraVida
 
 var vida = 0.0 : set = set_vida
 
-func set_vida(nueva_vida : float = max_value) -> void:
+func set_vida(nueva_vida : float) -> void:
 	var vida_previa = vida
 	vida = max(nueva_vida, 0)
 	value = vida

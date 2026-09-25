@@ -7,6 +7,8 @@ func _init() -> void:
 		Jugador.Estado.JUGANDO: EstadoJugadorMoviendo,
 		Jugador.Estado.ATURDIDO: EstadoJugadorAturdido,
 		Jugador.Estado.PODER: EstadoJugadorPoder,
+		Jugador.Estado.ESPERANDO_PODER: EstadoJugadorEsperandoPoder,
+		Jugador.Estado.GOL: EstadoJugadorGol,
 		Jugador.Estado.REINICIO : EstadoJugadorReinicio,
 	}
 

@@ -19,3 +19,6 @@ func on_juegador_marcado ( jugador : String) -> void:
 
 func gol_valido() -> bool:
 	return true
+
+func cargar_poder()-> bool:
+	return true

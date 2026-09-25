@@ -15,7 +15,7 @@ var constantes : Dictionary = {
 	"velocidad": 300.0,
 	"salto": -450.0,
 	"golpe": 60.0,
-	"power": 5.0,
+	"power": 100.0,
 	"aguante": 5.0,
 	"vida": 100.0
 }

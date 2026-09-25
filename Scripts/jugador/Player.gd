@@ -9,7 +9,7 @@ const BANDO : Dictionary = {
 	false : 1
 }
 
-enum Estado {JUGANDO, PODER, ATURDIDO, REINICIO}
+enum Estado {JUGANDO, ESPERANDO_PODER, GOL, PODER, ATURDIDO, REINICIO}
 enum ControlScheme {IA, P1, P2}
 
 @export var esquema_control : ControlScheme
@@ -82,10 +82,10 @@ func animacion( nombre_animacion : String) -> void:
 func set_imagen_personaje() -> void:
 	controlador_sprite.texture = load("res://Sprites/jugadores/cabezas/" + nombre + ".png")
 
-func inicializar(jugador_posicion: Vector2, jugador_data : RecursosJugador , _pelota : Pelota, identificador_bando : int, poder : String) -> void:	
+func inicializar(jugador_posicion: Vector2, jugador_data : RecursosJugador , _pelota : Pelota, identificador_bando : int, _poder : String) -> void:	
 	position = Vector2(jugador_posicion.x * identificador_bando, jugador_posicion.y)
 	nombre = jugador_data.nombre
-	nombre_poder_activo = poder
+	nombre_poder_activo = _poder
 	estadisticas.inicializar(jugador_data.estadisticas)
 	equipo = jugador_data.equipo
 	es_visitante =  bool(1 - identificador_bando)

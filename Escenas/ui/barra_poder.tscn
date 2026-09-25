@@ -1,18 +1,18 @@
 [gd_scene format=3 uid="uid://b783ubsh53onv"]
 
-[ext_resource type="Script" uid="uid://6va0k2ljufcw" path="res://Scripts/ui/barra_poder.gd" id="1_8nxw8"]
+[ext_resource type="Script" uid="uid://b8l001emqin0b" path="res://Scripts/ui/barra_poder.gd" id="1_8nxw8"]
 
-[sub_resource type="Gradient" id="Gradient_jtwau"]
-offsets = PackedFloat32Array(0.04661017, 0.9533898, 1)
-colors = PackedColorArray(0.9999998, 0.8932255, 0.2478691, 1, 0.7607843, 0.32941177, 0, 1, 0.7867234, 0.39054823, 0.026877373, 1)
+[sub_resource type="Gradient" id="Gradient_y5enq"]
+offsets = PackedFloat32Array(0, 0.084645666, 0.8282572, 0.92301184, 0.9890017)
+colors = PackedColorArray(0.07450981, 0.72156864, 0, 1, 0.78039217, 0.8039216, 0.0627451, 1, 1, 0.72156864, 0, 1, 1, 0.27058825, 0, 1, 1, 0, 0, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_eu64u"]
-gradient = SubResource("Gradient_jtwau")
-width = 170
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_a8ku5"]
+gradient = SubResource("Gradient_y5enq")
 
-[node name="TextureProgressBar" type="TextureProgressBar" unique_id=1576363723]
-offset_right = 170.0
-offset_bottom = 64.0
+[node name="TextureProgressBar" type="TextureProgressBar" unique_id=1198373130]
+offset_right = 213.0
+offset_bottom = 30.0
 value = 100.0
-texture_progress = SubResource("GradientTexture2D_eu64u")
+nine_patch_stretch = true
+texture_progress = SubResource("GradientTexture2D_a8ku5")
 script = ExtResource("1_8nxw8")
