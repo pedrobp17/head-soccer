@@ -121,6 +121,7 @@ func tomar_daño( daño : float ) -> void:
 		return 
 	
 	estadisticas.modificar("vida", -daño)
+	ReproductorAudio.play(ReproductorAudio.Sonidos.DAÑO)
 	EventBus.cambiar_barra_vida.emit( estadisticas.get_estadistica("vida"), es_visitante)
 
 func setup_elementos_personaje():

@@ -21,6 +21,7 @@ PlayerUtils="*uid://dbsm22docac1m"
 DatosJugadores="*uid://c00v8pj1hjxah"
 DatosPoderes="*uid://cwpcaloqrslju"
 ControladorPartido="*uid://fj550w84n6nb"
+ReproductorAudio="*uid://bqmxfqvyrgych"
 
 [display]
 

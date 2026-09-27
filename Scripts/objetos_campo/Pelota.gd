@@ -41,7 +41,7 @@ func mover(normal: Vector2, es_pie : bool, fuerza : float):
 		normal = Vector2( normal.x, FUERZA_Y).normalized()	#apply thrust along the y-axis if it involves the foot
 		
 	apply_central_force(normal * velocidad)
-	
+	ReproductorAudio.play(ReproductorAudio.Sonidos.DISPARO)
 
 #transmit that the ball go out of the camara
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
