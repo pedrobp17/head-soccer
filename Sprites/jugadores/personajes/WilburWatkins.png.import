@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8ilvpu4il3qy"
-valid=false
+uid="uid://n50h308u1mrm"
+path="res://.godot/imported/WilburWatkins.png-bbac2b6d14efbc1b2ca258295a7b727d.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://Sprites/jugadores/personajes/WilburWatkins.png"
+dest_files=["res://.godot/imported/WilburWatkins.png-bbac2b6d14efbc1b2ca258295a7b727d.ctex"]
 
 [params]
 

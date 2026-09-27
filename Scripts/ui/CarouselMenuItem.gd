@@ -5,8 +5,8 @@ class_name ElementoMenuCarrusel
 @export var numero_placeholder : int
 @export var duracion_animacion: float = 0.5
 @export var modo_juego: String = "1VS1"
-@export var textura_modo_juego: Texture2D
-@export var textura_modo_juego_actual: Texture2D
+@export var textura_no_actual: Texture2D
+@export var textura_actual: Texture2D
 
 var es_actual: bool = false
 
@@ -18,20 +18,19 @@ func _ready() -> void:
 	establecer_es_actual(es_actual)
 	nombre.text = modo_juego
 
-	if textura_modo_juego and fondo_no_actual:
-		fondo_no_actual.texture = textura_modo_juego
+	if textura_no_actual and fondo_no_actual:
+		fondo_no_actual.texture = textura_no_actual
 	
-	if textura_modo_juego_actual and fondo_actual:
-		fondo_actual.texture = textura_modo_juego_actual
+	if textura_actual and fondo_actual:
+		fondo_actual.texture = textura_actual
 
 func establecer_es_actual(p_es_actual: bool) -> void:
 	es_actual = p_es_actual
 	
 	if not is_visible_in_tree():
 		return
-		
 	if p_es_actual:
-		nombre.add_theme_color_override("font_color", Color.BLACK)
+		nombre.add_theme_color_override("font_color", Color("ffd700"))
 	else:
 		nombre.add_theme_color_override("font_color", Color.WHITE)
 	

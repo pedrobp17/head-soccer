@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dicn5rrkwcwcs"
-valid=false
+uid="uid://kp5bcmlw186w"
+path="res://.godot/imported/KatieBrown.png-630d1ac920545c933a33e2250404aac1.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://Sprites/jugadores/personajes/KatieBrown.png"
+dest_files=["res://.godot/imported/KatieBrown.png-630d1ac920545c933a33e2250404aac1.ctex"]
 
 [params]
 

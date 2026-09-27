@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ddvuq5t3i40sf"
-valid=false
+uid="uid://ddyws4i6k735x"
+path="res://.godot/imported/HarleyKane.png-deb4921d3ba58ea677a7d751bd3a7c30.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://Sprites/jugadores/personajes/HarleyKane.png"
+dest_files=["res://.godot/imported/HarleyKane.png-deb4921d3ba58ea677a7d751bd3a7c30.ctex"]
 
 [params]
 

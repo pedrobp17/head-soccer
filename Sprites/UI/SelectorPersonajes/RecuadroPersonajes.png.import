@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbyvl0ck4s8q0"
-path="res://.godot/imported/ModoPeleaActual.png-711cfc8756a33e48b563074539fc5853.ctex"
+uid="uid://b1cijc2mky0f1"
+path="res://.godot/imported/RecuadroPersonajes.png-d98af35dcf91401b5feeb021df0995a5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/UI/modos_juego/seleccionado/ModoPeleaActual.png"
-dest_files=["res://.godot/imported/ModoPeleaActual.png-711cfc8756a33e48b563074539fc5853.ctex"]
+source_file="res://Sprites/UI/SelectorPersonajes/RecuadroPersonajes.png"
+dest_files=["res://.godot/imported/RecuadroPersonajes.png-d98af35dcf91401b5feeb021df0995a5.ctex"]
 
 [params]
 

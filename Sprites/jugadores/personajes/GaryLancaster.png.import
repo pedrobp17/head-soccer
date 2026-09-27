@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ddh024p6gebp1"
-valid=false
+uid="uid://dbobhv73uqenx"
+path="res://.godot/imported/GaryLancaster.png-51081938c6c761e28c6c5ba5bec26754.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://Sprites/jugadores/personajes/GaryLancaster.png"
+dest_files=["res://.godot/imported/GaryLancaster.png-51081938c6c761e28c6c5ba5bec26754.ctex"]
 
 [params]
 

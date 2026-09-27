@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwku65suxdpdq"
-valid=false
+uid="uid://qu588n6m0git"
+path="res://.godot/imported/SteveEagle.png-5f93cac8235ab3a99c0e08ac7b6ec6ae.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://Sprites/jugadores/personajes/SteveEagle.png"
+dest_files=["res://.godot/imported/SteveEagle.png-5f93cac8235ab3a99c0e08ac7b6ec6ae.ctex"]
 
 [params]
 

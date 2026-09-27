@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://pmyteemgq2bp"
-path="res://.godot/imported/ModoSupervivenciaActual.png-7b50c352e64fb12d99e6c9005905e537.ctex"
+uid="uid://b1xjn3lgy4c0e"
+path="res://.godot/imported/Poder.png-7dcffc48ab20cb9e8f3c16b692c61482.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/UI/modos_juego/seleccionado/ModoSupervivenciaActual.png"
-dest_files=["res://.godot/imported/ModoSupervivenciaActual.png-7b50c352e64fb12d99e6c9005905e537.ctex"]
+source_file="res://Sprites/UI/SelectorPersonajes/Poder.png"
+dest_files=["res://.godot/imported/Poder.png-7dcffc48ab20cb9e8f3c16b692c61482.ctex"]
 
 [params]
 

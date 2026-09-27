@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2favwcc2nxy0"
-path="res://.godot/imported/NathanJones.png-bced170971be983d135a1bde805773e8.ctex"
+uid="uid://bs7bayxc6vdv3"
+path="res://.godot/imported/RecuadroPersonajesActual.png-a60b73f2dbcfd330c9427d23c002cf9b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/jugadores/personajes/NathanJones.png"
-dest_files=["res://.godot/imported/NathanJones.png-bced170971be983d135a1bde805773e8.ctex"]
+source_file="res://Sprites/UI/SelectorPersonajes/RecuadroPersonajesActual.png"
+dest_files=["res://.godot/imported/RecuadroPersonajesActual.png-a60b73f2dbcfd330c9427d23c002cf9b.ctex"]
 
 [params]
 

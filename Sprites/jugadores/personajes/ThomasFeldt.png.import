@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpuocmdim02i1"
-valid=false
+uid="uid://bg2jv5thw5exo"
+path="res://.godot/imported/ThomasFeldt.png-57b093455eb7d3ed63400d0da7903e31.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://Sprites/jugadores/personajes/ThomasFeldt.png"
+dest_files=["res://.godot/imported/ThomasFeldt.png-57b093455eb7d3ed63400d0da7903e31.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2favwcc2nxy0"
-path="res://.godot/imported/NathanJones.png-bced170971be983d135a1bde805773e8.ctex"
+uid="uid://cv3xbc55awcll"
+path="res://.godot/imported/ModoTorneo.png-3e2e0b1310590460f2fc90978b727566.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/jugadores/personajes/NathanJones.png"
-dest_files=["res://.godot/imported/NathanJones.png-bced170971be983d135a1bde805773e8.ctex"]
+source_file="res://Sprites/UI/modos_juego/seleccionado/ModoTorneo.png"
+dest_files=["res://.godot/imported/ModoTorneo.png-3e2e0b1310590460f2fc90978b727566.ctex"]
 
 [params]
 

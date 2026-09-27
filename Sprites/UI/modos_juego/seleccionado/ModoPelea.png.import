@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dil6ae0v3lgfc"
-path="res://.godot/imported/ModoMundialActual.png-f1d049a7a07b51b8f6cab14180abf222.ctex"
+uid="uid://b7ln50krgiqbs"
+path="res://.godot/imported/ModoPelea.png-77bdbc3aadc64b3473be0e667a17a258.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/UI/modos_juego/seleccionado/ModoMundialActual.png"
-dest_files=["res://.godot/imported/ModoMundialActual.png-f1d049a7a07b51b8f6cab14180abf222.ctex"]
+source_file="res://Sprites/UI/modos_juego/seleccionado/ModoPelea.png"
+dest_files=["res://.godot/imported/ModoPelea.png-77bdbc3aadc64b3473be0e667a17a258.ctex"]
 
 [params]
 

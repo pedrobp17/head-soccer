@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwwc08sl7rc3m"
-valid=false
+uid="uid://c3u85fs2umgum"
+path="res://.godot/imported/NelsonRockwell.png-a1e6feafd526f4e17707c744e98301a3.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://Sprites/jugadores/personajes/NelsonRockwell.png"
+dest_files=["res://.godot/imported/NelsonRockwell.png-a1e6feafd526f4e17707c744e98301a3.ctex"]
 
 [params]
 

@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brx6ul6qhw5dt"
-valid=false
+uid="uid://cliw4n60xjx8f"
+path="res://.godot/imported/AxelBlaze.png-c5e39fe3e26c33b6c64ab920ee9b4368.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://Sprites/jugadores/personajes/AxelBlaze.png"
+dest_files=["res://.godot/imported/AxelBlaze.png-c5e39fe3e26c33b6c64ab920ee9b4368.ctex"]
 
 [params]
 
