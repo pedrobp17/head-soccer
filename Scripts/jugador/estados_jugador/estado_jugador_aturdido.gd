@@ -11,6 +11,7 @@ func _enter_tree() -> void:
 	knockback()
 	tiempo_inicio_aturdimiento = Time.get_ticks_msec()
 	print(jugador.name + "herido")
+	nombre_estado = Jugador.Estado.ATURDIDO
 	
 func _process(delta: float) -> void:
 	if not jugador.is_on_floor():

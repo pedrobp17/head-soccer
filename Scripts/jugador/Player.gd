@@ -71,14 +71,14 @@ func comprobar_colisiones( esperando_ejecutar_poder : bool) -> bool:
 				EventBus.golpear_pelota.emit(direccion, aumentar_fuerza, fuerza)
 	return false
 
-func animacion( nombre_animacion : String) -> void:
+func set_animacion( nombre_animacion : String) -> void:
 	if animacion_jugador.has_animation(nombre_animacion):
 		if nombre_animacion == "idle" and velocity.y != 0:
 			animacion_jugador.stop()
 		animacion_jugador.play(nombre_animacion)
 	else:
 		printerr("La animación no existe: ", nombre_animacion)
-		
+	
 func set_imagen_personaje() -> void:
 	controlador_sprite.texture = load("res://Sprites/jugadores/cabezas/" + nombre + ".png")
 

@@ -71,7 +71,6 @@ texture = ExtResource("2_pxu2a")
 centered = false
 hframes = 19
 vframes = 2
-frame = 19
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=790947609]
 

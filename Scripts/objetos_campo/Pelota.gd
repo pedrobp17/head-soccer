@@ -10,6 +10,8 @@ const POSICION_INICIAL = Vector2(-6.0, -536.0)
 
 enum Estado {NORMAL, PODER, REINICIO} #para en el futuro controlar la pelota
 
+#@onready var particulas: GPUParticles2D = $Particulas
+
 var angulo_aparicion : float = 0.0
 var estaFuera = false
 var estado_actual : EstadoPelota = null

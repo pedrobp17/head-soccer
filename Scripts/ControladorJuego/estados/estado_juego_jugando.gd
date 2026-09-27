@@ -22,3 +22,6 @@ func gol_valido() -> bool:
 
 func cargar_poder()-> bool:
 	return true
+
+func uso_poder() -> bool:
+	return true

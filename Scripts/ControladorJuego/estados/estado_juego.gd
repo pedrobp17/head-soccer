@@ -18,3 +18,6 @@ func gol_valido() -> bool:
 
 func cargar_poder() -> bool:
 	return false
+
+func uso_poder() -> bool:
+	return false

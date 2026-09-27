@@ -6,9 +6,10 @@ var barra_poder_maximo = false
 func _enter_tree() -> void:
 	jugador.pie.set_monitoring_detector_poder(true)
 	EventBus.pie_contacto_pelota_en_poder.connect(on_pie_contacto_pelota_en_poder)
-	jugador.animacion("poder")
+	jugador.set_animacion("poder")
 	EventBus.poder_cargado.connect(on_poder_cargado)
-
+	nombre_estado = Jugador.Estado.ESPERANDO_PODER
+	
 func _process(delta: float) -> void:
 	if jugador.esquema_control == Jugador.ControlScheme.IA:
 		#comportamiento_ia.process_ia()
@@ -31,7 +32,7 @@ func movimiento_player(delta : float) -> void:
 		EventBus.gastar_poder.emit(jugador.es_visitante)
 			
 	jugador.move_and_slide()
-	if jugador.comprobar_colisiones(true):
+	if jugador.comprobar_colisiones(true) and ControladorPartido.estado_actual.uso_poder():
 		peticion_transmision_estado.emit(Jugador.Estado.PODER)
 	
 func puede_recibir_daño() -> bool:
@@ -41,7 +42,8 @@ func on_poder_cargado() -> void:
 	barra_poder_maximo = true
 
 func on_pie_contacto_pelota_en_poder() -> void:
-	peticion_transmision_estado.emit(Jugador.Estado.PODER)
+	if ControladorPartido.estado_actual.uso_poder():
+		peticion_transmision_estado.emit(Jugador.Estado.PODER)
 	
 func _exit_tree() -> void:
 	jugador.pie.set_monitoring_detector_poder(false)

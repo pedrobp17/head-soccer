@@ -7,6 +7,7 @@ var animacion_jugador : AnimationPlayer = null
 var jugador : Jugador = null
 var comportamiento_ia : ComportamientoIA = null 
 var datos_juego : DatosEstadoJugador = null
+var nombre_estado : Jugador.Estado
 
 func _ready() -> void:
 	EventBus.reposicionar.connect(reset_posicion)
@@ -16,7 +17,6 @@ func setup( jugador_entrada : Jugador, animacion_entrada : AnimationPlayer, _com
 	animacion_jugador = animacion_entrada
 	comportamiento_ia = _comportamiento_ia
 	datos_juego = _datos
-
 func movimiento_general(delta: float) -> void:
 	if not jugador.is_on_floor():
 		jugador.velocity += jugador.get_gravity() * delta
@@ -38,7 +38,7 @@ func cambiar_estado(nuevo_estado : Jugador.Estado, datos : DatosEstadoJugador = 
 	peticion_transmision_estado.emit(nuevo_estado, datos)
 
 func reset_posicion(_jugador : String) -> void:
-	cambiar_estado(Jugador.Estado.REINICIO, DatosEstadoJugador.build().set_jugador_anotador(_jugador))
+	cambiar_estado(Jugador.Estado.REINICIO, DatosEstadoJugador.build().set_jugador_anotador(_jugador).set_nombre_estado(nombre_estado))
 
 func puede_recibir_daño() -> bool:
 	return false

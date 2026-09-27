@@ -11,3 +11,6 @@ func gol_valido() -> bool:
 func on_gol( jugador_anotador : String ) -> void:
 	controlador.incrementar_marcador(jugador_anotador)
 	cambiar_estado(ControladorPartido.Estado.FIN)
+	
+func uso_poder() -> bool:
+	return false

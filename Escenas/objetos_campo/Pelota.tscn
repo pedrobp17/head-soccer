@@ -2,9 +2,26 @@
 
 [ext_resource type="Texture2D" uid="uid://c1ds1psp24x1c" path="res://Sprites/objetos_estadio/pelota.png" id="1_duk3h"]
 [ext_resource type="Script" uid="uid://dsw4lenyfy7b2" path="res://Scripts/objetos_campo/Pelota.gd" id="1_rvfdg"]
+[ext_resource type="Texture2D" uid="uid://bh61ryossub4r" path="res://Sprites/particulas/white-circle.png" id="2_tgrf4"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rvfdg"]
 bounce = 0.6
+
+[sub_resource type="Curve" id="Curve_tuny4"]
+_data = [Vector2(0, 0.2678572), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_eu64u"]
+curve = SubResource("Curve_tuny4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a8ku5"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 1.0
+gravity = Vector3(0, 27, 0)
+scale_min = 0.5
+scale_curve = SubResource("CurveTexture_eu64u")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_eu64u"]
 radius = 27.0
@@ -16,6 +33,15 @@ mass = 0.3
 physics_material_override = SubResource("PhysicsMaterial_rvfdg")
 continuous_cd = 2
 script = ExtResource("1_rvfdg")
+
+[node name="Particulas" type="GPUParticles2D" parent="." unique_id=1179422576]
+visible = false
+position = Vector2(-3, 9)
+emitting = false
+amount = 30
+texture = ExtResource("2_tgrf4")
+lifetime = 0.3
+process_material = SubResource("ParticleProcessMaterial_a8ku5")
 
 [node name="Pelota" type="Sprite2D" parent="." unique_id=506253773]
 position = Vector2(7, 0)

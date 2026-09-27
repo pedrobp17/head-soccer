@@ -7,6 +7,8 @@ func _enter_tree() -> void:
 	jugador.estadisticas.reset_estadistica("vida")
 	EventBus.cambiar_barra_vida.emit( jugador.estadisticas.get_estadistica("vida"), jugador.es_visitante)
 	EventBus.poder_cargado.connect(on_poder_cargado)
+	nombre_estado = Jugador.Estado.JUGANDO
+	
 # Called when the node enters the scene tree for the first time.
 func _process(delta: float) -> void:
 	if jugador.esquema_control == Jugador.ControlScheme.IA:
@@ -32,6 +34,7 @@ func movimiento_player(delta : float) -> void:
 		
 	jugador.move_and_slide()
 	jugador.comprobar_colisiones(false)
+	jugador.set_animacion("idle")
 	
 func puede_recibir_daño() -> bool:
 	return true
@@ -39,3 +42,5 @@ func puede_recibir_daño() -> bool:
 func on_poder_cargado() -> void:
 	barra_poder_maximo = true
 	
+func get_animacion() -> String:
+	return "idle"
