@@ -13,6 +13,7 @@ var indice_actual: int = 0
 var animacion_activa: Tween
 var esta_animando: bool = false
 var esta_activo: bool = true # Controla si este menú recibe inputs y el estado visual del centro
+var tiene_foco := true
 
 func _ready() -> void:
 	contenedor_posiciones.hide()
@@ -22,17 +23,25 @@ func _ready() -> void:
 	_configurar_identificadores()
 	inicializar_posiciones()
 
-func _input(evento: InputEvent) -> void:
-	if not esta_activo:
+func _input(event):
+	if !tiene_foco:
 		return
-		
-	if evento.is_action_pressed("ui_right"):
-		ir_izquierda()
-	elif evento.is_action_pressed("ui_left"):
-		ir_derecha()
-	elif evento.is_action_pressed("ui_accept"):
-		confirmar_seleccion()
 
+	if event.is_action_pressed("ui_right"):
+		ir_izquierda()
+
+	elif event.is_action_pressed("ui_left"):
+		ir_derecha()
+
+func cambiar_estado_foco(valor: bool):
+	tiene_foco = valor
+	
+	var centro := int(contenedor_ubicaciones.get_child_count() / 2.0)
+
+	if contenedor_ubicaciones.get_child_count() > 0:
+		var elemento_central = contenedor_ubicaciones.get_child(centro) as ElementoMenuCarrusel
+		elemento_central.establecer_es_actual(valor)
+		
 func confirmar_seleccion() -> void:
 	if esta_animando:
 		return
@@ -238,17 +247,3 @@ func _actualizar_visibilidad_elementos(lista_elementos: Array, casilla_central: 
 			nodo_elemento.modulate.a = 1.0
 		else:
 			nodo_elemento.modulate.a = 0.0
-
-# === NUEVA FUNCIÓN PARA CAMBIAR EL FOCO ===
-func cambiar_estado_foco(enfocado: bool) -> void:
-	esta_activo = enfocado
-	var total_ubicaciones: int = contenedor_ubicaciones.get_child_count()
-	
-	# Si ya hay elementos cargados, buscamos el del medio y lo actualizamos visualmente
-	if total_ubicaciones > 0:
-		var casilla_central: int = int(total_ubicaciones / 2.0)
-		var elemento_central: Node = contenedor_ubicaciones.get_child(casilla_central)
-		
-		# Verificamos que no sea nulo antes de aplicarle el cambio visual
-		if elemento_central and elemento_central is ElementoMenuCarrusel:
-			elemento_central.establecer_es_actual(enfocado)
