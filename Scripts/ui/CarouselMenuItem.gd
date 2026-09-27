@@ -29,6 +29,11 @@ func establecer_es_actual(p_es_actual: bool) -> void:
 	
 	if not is_visible_in_tree():
 		return
+		
+	if p_es_actual:
+		nombre.add_theme_color_override("font_color", Color.BLACK)
+	else:
+		nombre.add_theme_color_override("font_color", Color.WHITE)
 	
 	var animacion = get_tree().create_tween()
 	
