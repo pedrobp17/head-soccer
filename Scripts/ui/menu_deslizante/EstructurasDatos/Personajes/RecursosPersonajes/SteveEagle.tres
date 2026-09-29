@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="DatosSeleccionPersonajes" format=3 uid="uid://d3pjv81gagyjo"]
+
+[ext_resource type="Texture2D" uid="uid://cgmr1bd2tfdfr" path="res://Sprites/UI/SelectorPersonajes/Personajes/NoActual/SteveEagle.png" id="1_44vj3"]
+[ext_resource type="Script" uid="uid://dj3paw1yyav35" path="res://Scripts/ui/menu_deslizante/EstructurasDatos/Personajes/DatosSeleccionPersonajes.gd" id="1_rkmob"]
+[ext_resource type="Texture2D" uid="uid://0ditjkge5l5j" path="res://Sprites/UI/SelectorPersonajes/Personajes/Actual/SteveEagle.png" id="3_okfxi"]
+
+[resource]
+script = ExtResource("1_rkmob")
+name = "SteveEagle"
+normal_texture = ExtResource("1_44vj3")
+selected_texture = ExtResource("3_okfxi")
+metadata/_custom_type_script = "uid://dj3paw1yyav35"
