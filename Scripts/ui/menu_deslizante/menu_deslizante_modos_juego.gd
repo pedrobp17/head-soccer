@@ -5,7 +5,7 @@ class_name MenuDeslizanteModosJuego
 
 func _ready():
 
-	card_scene = preload("res://Escenas/ui/CartasModoJuego.tscn")
+	card_scene = preload("res://Escenas/ui/Cartas/CartasModoJuego.tscn")
 
 	use_scaling = true
 	use_fade = true
