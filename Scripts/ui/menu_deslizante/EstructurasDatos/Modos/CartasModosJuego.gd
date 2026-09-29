@@ -1,0 +1,40 @@
+extends Control
+
+@export var duracion_animacion: float = 0.5
+
+var es_actual: bool = false
+var tween_transicion: Tween # Guardamos la animación para detenerla si se pulsa muy rápido
+
+@onready var fondo_no_actual: Control = %NotCurrent
+@onready var fondo_actual: Control = %Current
+@onready var nombre: Label = %Nombre
+
+
+func set_mode(data, selected: bool):
+	nombre.text = data.name
+	fondo_no_actual.texture = data.normal_texture
+	fondo_actual.texture = data.selected_texture
+	
+	fondo_no_actual.modulate.a = 1.0 
+	
+	establecer_es_actual(selected)
+
+func establecer_es_actual(p_es_actual: bool) -> void:
+	es_actual = p_es_actual
+	
+	if not is_visible_in_tree():
+		return
+		
+	if p_es_actual:
+		nombre.add_theme_color_override("font_color", Color("ffd700"))
+	else:
+		nombre.add_theme_color_override("font_color", Color.WHITE)
+	
+	# Si ya había una animación a medias, la paramos para evitar que choquen
+	if tween_transicion and tween_transicion.is_valid():
+		tween_transicion.kill()
+		
+	tween_transicion = get_tree().create_tween()
+	
+	var alpha_objetivo: float = 1.0 if p_es_actual else 0.0
+	tween_transicion.tween_property(fondo_actual, "modulate:a", alpha_objetivo, duracion_animacion * 2)

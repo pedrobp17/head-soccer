@@ -3,10 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://bsc2cvf8ergrn" path="res://Sprites/pantallas/PantallaEleccionPersonajes.png" id="1_ixov3"]
 [ext_resource type="Texture2D" uid="uid://dqntmcxubwk0q" path="res://Sprites/UI/SelectorPersonajes/Captura de pantalla 2026-09-27 172241.png" id="2_rub24"]
 [ext_resource type="Texture2D" uid="uid://b8t8huql1dh7e" path="res://Sprites/UI/SelectorPersonajes/MarcoObjetos.png" id="3_hnj5y"]
-[ext_resource type="Script" uid="uid://ch2iieds7wytg" path="res://Scripts/ui/CarouselMenu.gd" id="4_bqu6e"]
-[ext_resource type="PackedScene" uid="uid://dyl0wuwreaqd2" path="res://Escenas/ui/CarouselMenuItem.tscn" id="5_ttw5l"]
-[ext_resource type="Texture2D" uid="uid://b1cijc2mky0f1" path="res://Sprites/UI/SelectorPersonajes/RecuadroPersonajes.png" id="6_bqu6e"]
-[ext_resource type="Texture2D" uid="uid://bs7bayxc6vdv3" path="res://Sprites/UI/SelectorPersonajes/RecuadroPersonajesActual.png" id="7_ttw5l"]
+[ext_resource type="Script" uid="uid://ch2iieds7wytg" path="res://Scripts/ui/menu_deslizante/CarouselMenu.gd" id="4_bqu6e"]
+[ext_resource type="PackedScene" uid="uid://dyl0wuwreaqd2" path="res://Escenas/ui/CartasModoJuego.tscn" id="5_ttw5l"]
 [ext_resource type="Texture2D" uid="uid://dl08eju76dfcg" path="res://Sprites/jugadores/personajes/XavierFoster.png" id="8_ttw5l"]
 [ext_resource type="Texture2D" uid="uid://crwvbnux7o5t" path="res://Sprites/banderas/bandera-raimon.png" id="9_okwvm"]
 [ext_resource type="PackedScene" uid="uid://cngxu7umd34tr" path="res://Escenas/ui/barra_estadisticas.tscn" id="10_uv8nf"]
@@ -94,8 +92,6 @@ offset_top = 7.9999847
 offset_right = 421.625
 offset_bottom = 376.17053
 scale = Vector2(0.35, 0.35)
-textura_no_actual = ExtResource("6_bqu6e")
-textura_actual = ExtResource("7_ttw5l")
 metadata/_edit_use_anchors_ = true
 
 [node name="CarouselMenuItem1" parent="HBoxContainer/Left/Placeholders" unique_id=1499650501 instance=ExtResource("5_ttw5l")]
@@ -110,8 +106,6 @@ offset_top = 117.91002
 offset_right = 806.625
 offset_bottom = 486.08057
 scale = Vector2(0.35, 0.35)
-textura_no_actual = ExtResource("6_bqu6e")
-textura_actual = ExtResource("7_ttw5l")
 metadata/_edit_use_anchors_ = true
 
 [node name="CarouselMenuItem2" parent="HBoxContainer/Left/Placeholders" unique_id=1429486563 instance=ExtResource("5_ttw5l")]
@@ -127,8 +121,6 @@ offset_top = 117.91002
 offset_right = 806.625
 offset_bottom = 486.08057
 scale = Vector2(0.35, 0.35)
-textura_no_actual = ExtResource("6_bqu6e")
-textura_actual = ExtResource("7_ttw5l")
 metadata/_edit_use_anchors_ = true
 
 [node name="CarouselMenuItem3" parent="HBoxContainer/Left/Placeholders" unique_id=908534603 instance=ExtResource("5_ttw5l")]
@@ -144,8 +136,6 @@ offset_top = 117.91002
 offset_right = 806.625
 offset_bottom = 486.08057
 scale = Vector2(0.35, 0.35)
-textura_no_actual = ExtResource("6_bqu6e")
-textura_actual = ExtResource("7_ttw5l")
 metadata/_edit_use_anchors_ = true
 
 [node name="CarouselMenuItem4" parent="HBoxContainer/Left/Placeholders" unique_id=792142802 instance=ExtResource("5_ttw5l")]
@@ -161,8 +151,6 @@ offset_top = 117.91002
 offset_right = 806.625
 offset_bottom = 486.08057
 scale = Vector2(0.35, 0.35)
-textura_no_actual = ExtResource("6_bqu6e")
-textura_actual = ExtResource("7_ttw5l")
 metadata/_edit_use_anchors_ = true
 
 [node name="CarouselMenuItem5" parent="HBoxContainer/Left/Placeholders" unique_id=194142049 instance=ExtResource("5_ttw5l")]
@@ -177,8 +165,6 @@ offset_top = 117.91002
 offset_right = 806.625
 offset_bottom = 486.08057
 scale = Vector2(0.35, 0.35)
-textura_no_actual = ExtResource("6_bqu6e")
-textura_actual = ExtResource("7_ttw5l")
 metadata/_edit_use_anchors_ = true
 
 [node name="CarouselMenuItem6" parent="HBoxContainer/Left/Placeholders" unique_id=1627566889 instance=ExtResource("5_ttw5l")]
@@ -193,8 +179,6 @@ offset_top = 117.91002
 offset_right = 806.625
 offset_bottom = 486.08057
 scale = Vector2(0.35, 0.35)
-textura_no_actual = ExtResource("6_bqu6e")
-textura_actual = ExtResource("7_ttw5l")
 metadata/_edit_use_anchors_ = true
 
 [node name="Items" type="Control" parent="HBoxContainer/Left" unique_id=1923543980]
@@ -219,8 +203,6 @@ offset_top = 117.91002
 offset_right = 806.625
 offset_bottom = 486.08057
 scale = Vector2(0.35, 0.35)
-textura_no_actual = ExtResource("6_bqu6e")
-textura_actual = ExtResource("7_ttw5l")
 metadata/_edit_use_anchors_ = true
 
 [node name="CarouselMenuItem2" parent="HBoxContainer/Left/Items" unique_id=1163950222 instance=ExtResource("5_ttw5l")]
@@ -236,8 +218,6 @@ offset_top = 117.91002
 offset_right = 806.625
 offset_bottom = 486.08057
 scale = Vector2(0.35, 0.35)
-textura_no_actual = ExtResource("6_bqu6e")
-textura_actual = ExtResource("7_ttw5l")
 metadata/_edit_use_anchors_ = true
 
 [node name="CarouselMenuItem3" parent="HBoxContainer/Left/Items" unique_id=292722077 instance=ExtResource("5_ttw5l")]
@@ -253,8 +233,6 @@ offset_top = 117.91002
 offset_right = 806.625
 offset_bottom = 486.08057
 scale = Vector2(0.35, 0.35)
-textura_no_actual = ExtResource("6_bqu6e")
-textura_actual = ExtResource("7_ttw5l")
 metadata/_edit_use_anchors_ = true
 
 [node name="CarouselMenuItem4" parent="HBoxContainer/Left/Items" unique_id=1212458589 instance=ExtResource("5_ttw5l")]
@@ -270,8 +248,6 @@ offset_top = 117.91002
 offset_right = 806.625
 offset_bottom = 486.08057
 scale = Vector2(0.35, 0.35)
-textura_no_actual = ExtResource("6_bqu6e")
-textura_actual = ExtResource("7_ttw5l")
 metadata/_edit_use_anchors_ = true
 
 [node name="CarouselMenuItem5" parent="HBoxContainer/Left/Items" unique_id=1050785467 instance=ExtResource("5_ttw5l")]
@@ -286,8 +262,6 @@ offset_top = 117.91002
 offset_right = 806.625
 offset_bottom = 486.08057
 scale = Vector2(0.35, 0.35)
-textura_no_actual = ExtResource("6_bqu6e")
-textura_actual = ExtResource("7_ttw5l")
 metadata/_edit_use_anchors_ = true
 
 [node name="Placements" type="Control" parent="HBoxContainer/Left" unique_id=76197970]

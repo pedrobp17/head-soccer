@@ -1,4 +1,4 @@
-extends Node
+extends Control
 
 const mapa_escenas : Dictionary ={
 	"menu" : preload("res://Escenas/pantallas/Menu.tscn"),
@@ -62,7 +62,9 @@ func cambiar_escena(escena : PackedScene, dar_foco : bool):
 	cambiar_foco_escena(dar_foco)
 	
 func cambiar_foco_escena(tiene_foco: bool) -> void:
+	print("cambiando foco")
 	if escena_actual and escena_actual.has_method("cambiar_estado_foco"):
+		print("tiene metodo")
 		escena_actual.cambiar_estado_foco(tiene_foco)
 
 func actualizar_selector(id : int):

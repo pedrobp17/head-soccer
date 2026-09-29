@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DatosModoJuego" format=3 uid="uid://dobgn2gx6ayb2"]
+
+[ext_resource type="Script" uid="uid://cnyrrymgnuu3n" path="res://Scripts/ui/menu_deslizante/EstructurasDatos/Modos/DatosModosJuego.gd" id="1_bc6qw"]
+
+[resource]
+script = ExtResource("1_bc6qw")
+name = "Liga"
+metadata/_custom_type_script = "uid://cnyrrymgnuu3n"
