@@ -6,12 +6,14 @@ const ESCUDO_PREDEFINIDO = preload("res://Sprites/banderas/bandera-raimon.png")
 const PODERES_PREDEFINIDO = preload("res://Sprites/poderes/Poder.png")
 const ESTADISTICA_PREDEFINIDA = 5
 
-@onready var selector_personajes: MenuDeslizanteSeleccionPersonajes = get_parent()
+@onready var selector_personajes: MenuDeslizanteSeleccionPersonajes = $"../SelectorPersonajes"
 @onready var cuerpo_entero: TextureRect = %CuerpoEntero
 @onready var estadisticas: Array[BarraEstadisticas] = []
 @onready var poderes: Array[TextureRect] = []
 @onready var nombre: Label = %Nombre
 @onready var escudo: TextureRect = %Escudo
+
+var tiene_foco := false
 
 func _ready() -> void:
 	inicializar_estadisticas()
@@ -47,6 +49,8 @@ func set_personaje_default() -> void:
 	for i in poderes.size():
 		poderes[i].texture = PODERES_PREDEFINIDO
 	
+func cambiar_estado_foco( foco : bool) -> void:
+	tiene_foco = foco
 	
 func inicializar_estadisticas() -> void:
 	for hijo in %Estadisticas.get_children():

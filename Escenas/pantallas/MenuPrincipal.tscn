@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://dlawg7jtga6r7"]
 
 [ext_resource type="Script" uid="uid://d1gpkshmrhi8g" path="res://Scripts/pantallas/menu_principal.gd" id="1_iqy7g"]
+[ext_resource type="PackedScene" uid="uid://dga5wgg7qmxof" path="res://Escenas/pantallas/SelectorPersonajes.tscn" id="2_4wd47"]
+[ext_resource type="PackedScene" uid="uid://cnne7mybolqk" path="res://Escenas/pantallas/Menu.tscn" id="3_vnpos"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a8ku5"]
 bg_color = Color(1, 1, 1, 1)
@@ -233,6 +235,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="SelectorPersonajes" parent="Contenido" unique_id=882551169 instance=ExtResource("2_4wd47")]
+unique_name_in_owner = true
+layout_mode = 1
+
+[node name="MenuDeslizante" parent="Contenido" unique_id=2104744245 instance=ExtResource("3_vnpos")]
+unique_name_in_owner = true
+layout_mode = 1
 
 [node name="Fps" type="Label" parent="." unique_id=1533829200]
 unique_name_in_owner = true

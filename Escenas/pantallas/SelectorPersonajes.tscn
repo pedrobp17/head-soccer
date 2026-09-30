@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bsc2cvf8ergrn" path="res://Sprites/pantallas/PantallaEleccionPersonajes.png" id="1_ixov3"]
 [ext_resource type="Script" uid="uid://dha7yolumpo6w" path="res://Scripts/ui/menu_deslizante/menu_deslizante_personajes.gd" id="1_rub24"]
+[ext_resource type="Script" uid="uid://djl4p88cvs0cx" path="res://Scripts/ui/menu_deslizante/EstructurasDatos/Personajes/manejador_menu_personajes.gd" id="1_vro4h"]
 [ext_resource type="Script" uid="uid://dj3paw1yyav35" path="res://Scripts/ui/menu_deslizante/EstructurasDatos/Personajes/DatosSeleccionPersonajes.gd" id="2_hnj5y"]
 [ext_resource type="Texture2D" uid="uid://dqntmcxubwk0q" path="res://Sprites/UI/SelectorPersonajes/Captura de pantalla 2026-09-27 172241.png" id="2_rub24"]
 [ext_resource type="Resource" uid="uid://dyqqbjigw5r7a" path="res://Scripts/ui/menu_deslizante/EstructurasDatos/Personajes/RecursosPersonajes/MarkEvans.tres" id="3_2pgxr"]
@@ -35,20 +36,28 @@
 [ext_resource type="Texture2D" uid="uid://c4nd3jqhnbv5p" path="res://Sprites/UI/SelectorPersonajes/poder.png" id="31_l1uw8"]
 [ext_resource type="Texture2D" uid="uid://bj1dwtu33p5bh" path="res://Sprites/UI/SelectorPersonajes/aguante.png" id="32_tb116"]
 [ext_resource type="Texture2D" uid="uid://df7gg6m20feto" path="res://Sprites/UI/SelectorPersonajes/salud.png" id="33_8d61v"]
+[ext_resource type="Script" uid="uid://d2gof43682v0e" path="res://Scripts/ui/menu_deslizante/EstructurasDatos/Personajes/boton_seleccion_personaje.gd" id="36_08jok"]
 
-[node name="SelectorPersonajes" type="Control" unique_id=882551169]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a8ku5"]
+bg_color = Color(1, 0.84313726, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[node name="MenuPersonajes" type="Control" unique_id=882551169]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_rub24")
-modes = Array[ExtResource("2_hnj5y")]([ExtResource("3_2pgxr"), ExtResource("4_ixhsm"), ExtResource("5_ptf4e"), ExtResource("6_5hy0c"), ExtResource("7_tyrni"), ExtResource("8_7cer4"), ExtResource("9_ia51c"), ExtResource("10_0d2f1"), ExtResource("11_7lib7"), ExtResource("12_hkpbk"), ExtResource("13_yntdo"), ExtResource("14_eed3h"), ExtResource("15_08jok"), ExtResource("16_b2v7a"), ExtResource("17_l1uw8"), ExtResource("18_tb116"), ExtResource("19_8d61v"), ExtResource("20_n523y")])
-left = "ui_up"
-right = "ui_down"
-use_scaling = false
-use_fade = false
+script = ExtResource("1_vro4h")
 
 [node name="fondo" type="TextureRect" parent="." unique_id=434523076]
 layout_mode = 1
@@ -83,7 +92,18 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_hnj5y")
 
-[node name="PlaceholderContainer" type="Control" parent="." unique_id=793799856]
+[node name="SelectorPersonajes" type="Control" parent="." unique_id=302878797]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_rub24")
+modes = Array[ExtResource("2_hnj5y")]([ExtResource("20_n523y"), ExtResource("19_8d61v"), ExtResource("18_tb116"), ExtResource("17_l1uw8"), ExtResource("16_b2v7a"), ExtResource("15_08jok"), ExtResource("14_eed3h"), ExtResource("13_yntdo"), ExtResource("12_hkpbk"), ExtResource("11_7lib7"), ExtResource("10_0d2f1"), ExtResource("9_ia51c"), ExtResource("8_7cer4"), ExtResource("7_tyrni"), ExtResource("6_5hy0c"), ExtResource("5_ptf4e"), ExtResource("4_ixhsm"), ExtResource("3_2pgxr")])
+left = "ui_up"
+right = "ui_down"
+use_scaling = false
+use_fade = false
+
+[node name="PlaceholderContainer" type="Control" parent="SelectorPersonajes" unique_id=793799856]
 unique_name_in_owner = true
 visible = false
 anchors_preset = 0
@@ -92,62 +112,63 @@ offset_top = -10.0
 offset_right = -41.0
 offset_bottom = 30.0
 
-[node name="CartasSeleccionPersonaje6" parent="PlaceholderContainer" unique_id=1793961674 instance=ExtResource("9_x4pbw")]
+[node name="CartasSeleccionPersonaje6" parent="SelectorPersonajes/PlaceholderContainer" unique_id=1793961674 instance=ExtResource("9_x4pbw")]
 layout_mode = 0
 offset_left = -95.0
 offset_top = -201.0
 offset_right = -95.0
 offset_bottom = -201.0
 
-[node name="CartasSeleccionPersonaje" parent="PlaceholderContainer" unique_id=1167218596 instance=ExtResource("9_x4pbw")]
+[node name="CartasSeleccionPersonaje" parent="SelectorPersonajes/PlaceholderContainer" unique_id=1167218596 instance=ExtResource("9_x4pbw")]
 layout_mode = 0
 offset_left = 51.0
 offset_top = 8.0
 offset_right = 51.0
 offset_bottom = 8.0
 
-[node name="CartasSeleccionPersonaje2" parent="PlaceholderContainer" unique_id=673817388 instance=ExtResource("9_x4pbw")]
+[node name="CartasSeleccionPersonaje2" parent="SelectorPersonajes/PlaceholderContainer" unique_id=673817388 instance=ExtResource("9_x4pbw")]
 layout_mode = 0
 offset_left = 102.0
 offset_top = 123.0
 offset_right = 102.0
 offset_bottom = 123.0
 
-[node name="CartasSeleccionPersonaje3" parent="PlaceholderContainer" unique_id=2057305953 instance=ExtResource("9_x4pbw")]
+[node name="CartasSeleccionPersonaje3" parent="SelectorPersonajes/PlaceholderContainer" unique_id=2057305953 instance=ExtResource("9_x4pbw")]
 layout_mode = 0
 offset_left = 126.0
 offset_top = 252.0
 offset_right = 126.0
 offset_bottom = 252.0
 
-[node name="CartasSeleccionPersonaje4" parent="PlaceholderContainer" unique_id=1215952224 instance=ExtResource("9_x4pbw")]
+[node name="CartasSeleccionPersonaje4" parent="SelectorPersonajes/PlaceholderContainer" unique_id=1215952224 instance=ExtResource("9_x4pbw")]
 layout_mode = 0
 offset_left = 102.0
 offset_top = 381.0
 offset_right = 102.0
 offset_bottom = 381.0
 
-[node name="CartasSeleccionPersonaje5" parent="PlaceholderContainer" unique_id=2057736040 instance=ExtResource("9_x4pbw")]
+[node name="CartasSeleccionPersonaje5" parent="SelectorPersonajes/PlaceholderContainer" unique_id=2057736040 instance=ExtResource("9_x4pbw")]
 layout_mode = 0
 offset_left = 50.0
 offset_top = 502.0
 offset_right = 50.0
 offset_bottom = 502.0
 
-[node name="CartasSeleccionPersonaje7" parent="PlaceholderContainer" unique_id=1716275204 instance=ExtResource("9_x4pbw")]
+[node name="CartasSeleccionPersonaje7" parent="SelectorPersonajes/PlaceholderContainer" unique_id=1716275204 instance=ExtResource("9_x4pbw")]
 layout_mode = 0
 offset_left = -95.0
 offset_top = 724.0
 offset_right = -95.0
 offset_bottom = 724.0
 
-[node name="CardContainer" type="Control" parent="." unique_id=1480681053]
+[node name="CardContainer" type="Control" parent="SelectorPersonajes" unique_id=1480681053]
 unique_name_in_owner = true
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="EstadisticasPersonajeSeleccionado" type="Control" parent="." unique_id=813171942]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(710.005, 648)
 anchors_preset = 0
 offset_left = 448.0
@@ -164,13 +185,39 @@ offset_right = 505.0
 offset_bottom = 664.0
 texture = ExtResource("8_ttw5l")
 
+[node name="Informacion" type="VBoxContainer" parent="EstadisticasPersonajeSeleccionado" unique_id=462750193]
+custom_minimum_size = Vector2(233.935, 217.705)
+layout_mode = 0
+offset_left = 469.0
+offset_top = 23.0
+offset_right = 702.935
+offset_bottom = 240.705
+theme_override_constants/separation = -12
+
+[node name="Nombre" type="Label" parent="EstadisticasPersonajeSeleccionado/Informacion" unique_id=1282961632]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 37
+text = "Xavier 
+Foster"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Escudo" type="TextureRect" parent="EstadisticasPersonajeSeleccionado/Informacion" unique_id=2065910500]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("9_okwvm")
+stretch_mode = 4
+
 [node name="Estadisticas" type="VBoxContainer" parent="EstadisticasPersonajeSeleccionado" unique_id=48733640]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 387.0
-offset_top = 237.0
+offset_top = 219.0
 offset_right = 687.0
-offset_bottom = 530.0
+offset_bottom = 512.0
 theme_override_constants/separation = 8
 
 [node name="BarraEstadisticas" parent="EstadisticasPersonajeSeleccionado/Estadisticas" unique_id=232663729 instance=ExtResource("10_uv8nf")]
@@ -200,10 +247,10 @@ textura_estadistica = ExtResource("33_8d61v")
 [node name="Poderes" type="HBoxContainer" parent="EstadisticasPersonajeSeleccionado" unique_id=1463609120]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 421.0
-offset_top = 515.0
-offset_right = 677.0
-offset_bottom = 645.0
+offset_left = 410.0
+offset_top = 512.0
+offset_right = 666.0
+offset_bottom = 642.0
 theme_override_constants/separation = 1
 
 [node name="TextureRect" type="TextureRect" parent="EstadisticasPersonajeSeleccionado/Poderes" unique_id=1162696855]
@@ -214,24 +261,62 @@ texture = ExtResource("11_7siq0")
 layout_mode = 2
 texture = ExtResource("11_7siq0")
 
-[node name="Nombre" type="Label" parent="EstadisticasPersonajeSeleccionado" unique_id=1282961632]
+[node name="Boton" type="Control" parent="EstadisticasPersonajeSeleccionado" unique_id=1451887938]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 505.0
-offset_top = 30.0
-offset_right = 671.0
-offset_bottom = 95.0
-theme_override_font_sizes/font_size = 30
-text = "Xavier 
-Foster"
-horizontal_alignment = 1
-vertical_alignment = 1
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("36_08jok")
 
-[node name="Escudo" type="TextureRect" parent="EstadisticasPersonajeSeleccionado" unique_id=2065910500]
+[node name="Seleccion" type="TextureRect" parent="EstadisticasPersonajeSeleccionado/Boton" unique_id=615252584]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(256, 72)
 layout_mode = 0
-offset_left = 512.0
-offset_top = 101.0
-offset_right = 640.0
-offset_bottom = 229.0
-texture = ExtResource("9_okwvm")
+offset_top = 561.0
+offset_right = 40.0
+offset_bottom = 601.0
+
+[node name="Panel" type="Panel" parent="EstadisticasPersonajeSeleccionado/Boton/Seleccion" unique_id=1314564306]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_a8ku5")
+
+[node name="Label" type="Label" parent="EstadisticasPersonajeSeleccionado/Boton/Seleccion" unique_id=2087749666]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -8.5
+offset_right = 20.0
+offset_bottom = 8.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 27
+text = "seleccionar"
+
+[node name="Bloqueado" type="TextureRect" parent="EstadisticasPersonajeSeleccionado/Boton" unique_id=1112565588]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(256, 72)
+layout_mode = 0
+offset_left = -448.0
+offset_top = 561.0
+offset_right = -192.0
+offset_bottom = 633.0
+
+[node name="Panel" type="Panel" parent="EstadisticasPersonajeSeleccionado/Boton/Bloqueado" unique_id=1294550095]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

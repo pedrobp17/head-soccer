@@ -2,9 +2,7 @@
 
 [ext_resource type="Script" uid="uid://w4a8fvj6tjls" path="res://Scripts/ui/menu_deslizante/EstructurasDatos/Personajes/barra_estadisticas.gd" id="1_wnus8"]
 [ext_resource type="Texture2D" uid="uid://4jpb2rl2iomm" path="res://Sprites/UI/SelectorPersonajes/holder.png" id="2_wnus8"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a8ku5"]
-bg_color = Color(0, 0, 0, 1)
+[ext_resource type="Texture2D" uid="uid://brwjrwrlnx48k" path="res://Sprites/UI/SelectorPersonajes/barra_estadisticas.png" id="2_xptl3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j6m78"]
 bg_color = Color(0.2627451, 0.2627451, 0.30980393, 1)
@@ -32,15 +30,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="NoSeleccionada" type="Panel" parent="NoSeleccionada" unique_id=115170989]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_a8ku5")
-
 [node name="ParteCentral" type="Control" parent="NoSeleccionada" unique_id=1933058714]
 custom_minimum_size = Vector2(220, 0)
 anchors_preset = 0
@@ -48,31 +37,40 @@ offset_left = 64.0
 offset_right = 104.0
 offset_bottom = 40.0
 
-[node name="nombreEstadistica" type="Label" parent="NoSeleccionada/ParteCentral" unique_id=2085865019]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(118, 17)
-layout_mode = 0
-offset_left = -9.0
-offset_top = -8.0
-offset_right = 211.0
-offset_bottom = 16.0
-theme_override_colors/font_color = Color(1, 1, 0.28627452, 1)
-theme_override_font_sizes/font_size = 23
-text = "velocidad"
-vertical_alignment = 1
-
 [node name="BarraProgreso" type="ProgressBar" parent="NoSeleccionada/ParteCentral" unique_id=1945343272]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(191.805, 0)
 layout_mode = 0
 offset_left = 9.0
-offset_top = 17.0
-offset_right = 229.0
-offset_bottom = 31.0
+offset_top = 16.0
+offset_right = 223.0
+offset_bottom = 32.0
 theme_override_styles/background = SubResource("StyleBoxFlat_j6m78")
 theme_override_styles/fill = SubResource("StyleBoxFlat_jtwau")
-value = 60.0
+value = 50.0
 show_percentage = false
+
+[node name="NoSeleccionada" type="TextureRect" parent="NoSeleccionada" unique_id=1835433030]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_xptl3")
+
+[node name="nombreEstadistica" type="Label" parent="NoSeleccionada" unique_id=2085865019]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(118, 17)
+layout_mode = 0
+offset_left = 55.0
+offset_top = -8.0
+offset_right = 275.0
+offset_bottom = 16.0
+theme_override_colors/font_color = Color(1, 1, 0.28627452, 1)
+theme_override_font_sizes/font_size = 23
+text = "velocidad"
+vertical_alignment = 1
 
 [node name="Seleccionada" type="Control" parent="." unique_id=702831633]
 unique_name_in_owner = true
