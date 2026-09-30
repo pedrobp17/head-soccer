@@ -29,6 +29,12 @@
 [ext_resource type="Resource" uid="uid://dggh4mw37bikl" path="res://Scripts/ui/menu_deslizante/EstructurasDatos/Personajes/RecursosPersonajes/JonasDemetrius.tres" id="19_8d61v"]
 [ext_resource type="Resource" uid="uid://v8p00h7lbpgm" path="res://Scripts/ui/menu_deslizante/EstructurasDatos/Personajes/RecursosPersonajes/NelsonRockwell.tres" id="20_n523y"]
 [ext_resource type="Script" uid="uid://c8747tjvcncpx" path="res://Scripts/ui/menu_deslizante/EstructurasDatos/Personajes/estadisticas_personaje_seleccionado.gd" id="25_7cer4"]
+[ext_resource type="Texture2D" uid="uid://ce54h1bc1dfde" path="res://Sprites/UI/SelectorPersonajes/velocidad.png" id="28_eed3h"]
+[ext_resource type="Texture2D" uid="uid://dmjtu5lv0crc1" path="res://Sprites/UI/SelectorPersonajes/salto.png" id="29_08jok"]
+[ext_resource type="Texture2D" uid="uid://cswid84ccpdrl" path="res://Sprites/UI/SelectorPersonajes/golpe.png" id="30_b2v7a"]
+[ext_resource type="Texture2D" uid="uid://c4nd3jqhnbv5p" path="res://Sprites/UI/SelectorPersonajes/poder.png" id="31_l1uw8"]
+[ext_resource type="Texture2D" uid="uid://bj1dwtu33p5bh" path="res://Sprites/UI/SelectorPersonajes/aguante.png" id="32_tb116"]
+[ext_resource type="Texture2D" uid="uid://df7gg6m20feto" path="res://Sprites/UI/SelectorPersonajes/salud.png" id="33_8d61v"]
 
 [node name="SelectorPersonajes" type="Control" unique_id=882551169]
 layout_mode = 3
@@ -169,21 +175,27 @@ theme_override_constants/separation = 8
 
 [node name="BarraEstadisticas" parent="EstadisticasPersonajeSeleccionado/Estadisticas" unique_id=232663729 instance=ExtResource("10_uv8nf")]
 layout_mode = 2
+textura_estadistica = ExtResource("28_eed3h")
 
 [node name="BarraEstadisticas2" parent="EstadisticasPersonajeSeleccionado/Estadisticas" unique_id=596204633 instance=ExtResource("10_uv8nf")]
 layout_mode = 2
+textura_estadistica = ExtResource("29_08jok")
 
 [node name="BarraEstadisticas3" parent="EstadisticasPersonajeSeleccionado/Estadisticas" unique_id=1580626334 instance=ExtResource("10_uv8nf")]
 layout_mode = 2
+textura_estadistica = ExtResource("30_b2v7a")
 
 [node name="BarraEstadisticas4" parent="EstadisticasPersonajeSeleccionado/Estadisticas" unique_id=163947349 instance=ExtResource("10_uv8nf")]
 layout_mode = 2
+textura_estadistica = ExtResource("31_l1uw8")
 
 [node name="BarraEstadisticas5" parent="EstadisticasPersonajeSeleccionado/Estadisticas" unique_id=485220012 instance=ExtResource("10_uv8nf")]
 layout_mode = 2
+textura_estadistica = ExtResource("32_tb116")
 
 [node name="BarraEstadisticas6" parent="EstadisticasPersonajeSeleccionado/Estadisticas" unique_id=1071104180 instance=ExtResource("10_uv8nf")]
 layout_mode = 2
+textura_estadistica = ExtResource("33_8d61v")
 
 [node name="Poderes" type="HBoxContainer" parent="EstadisticasPersonajeSeleccionado" unique_id=1463609120]
 unique_name_in_owner = true
