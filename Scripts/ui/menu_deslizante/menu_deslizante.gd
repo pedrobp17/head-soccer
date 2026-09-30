@@ -8,6 +8,11 @@ class_name MenuDeslizante
 @export var transition: Tween.TransitionType = Tween.TRANS_SINE
 @export var ease: Tween.EaseType = Tween.EASE_OUT
 
+@export_group("Input")
+@export var left : String = "ui_left"
+@export var right : String = "ui_right"
+@export var accept : String = "ui_accept"
+
 @export_group("Animación")
 @export var use_scaling: bool = true
 @export var use_fade: bool = true
@@ -54,27 +59,25 @@ func _ready() -> void:
 	refresh()
 
 
-# --- NUEVA FUNCIÓN PARA DETECTAR TECLAS ---
+func get_center_slot() -> int:
+	return visible_slots / 2
+
+
 func _input(event: InputEvent) -> void:
-	# Si no tiene el foco, ignoramos cualquier pulsación
 	if not is_foco:
 		return
-		
-	# Flecha Derecha / D-pad Derecha
-	if event.is_action_pressed("ui_right"):
+
+	if event.is_action_pressed(right):
 		move_right()
-		get_viewport().set_input_as_handled() # Marca el evento como procesado
-		
-	# Flecha Izquierda / D-pad Izquierda
-	elif event.is_action_pressed("ui_left"):
+		get_viewport().set_input_as_handled()
+
+	elif event.is_action_pressed(left):
 		move_left()
 		get_viewport().set_input_as_handled()
-		
-	# Enter / Espacio / Botón A del mando
-	elif event.is_action_pressed("ui_accept"):
+
+	elif event.is_action_pressed(accept):
 		select_current()
 		get_viewport().set_input_as_handled()
-# ------------------------------------------
 
 
 func set_items(new_items: Array) -> void:
@@ -89,6 +92,9 @@ func set_items(new_items: Array) -> void:
 
 
 func cambiar_estado_foco(tiene_foco: bool) -> void:
+	if is_foco == tiene_foco:
+		return
+
 	is_foco = tiene_foco
 	refresh()
 
@@ -152,7 +158,7 @@ func refresh() -> void:
 	if items.is_empty() or placeholders.is_empty() or cards.size() != visible_slots:
 		return
 
-	var center := visible_slots / 2
+	var center := get_center_slot()
 
 	for slot in range(visible_slots):
 		var item_index := _wrap(current_index + slot - center)
@@ -161,7 +167,7 @@ func refresh() -> void:
 		var card := cards[slot]
 		var ph := placeholders[slot]
 
-		configure_card(card, items[item_index], is_current)
+		configure_card(card, items[item_index], is_current, false)
 		_apply_placeholder(card, ph)
 
 	item_changed.emit(current_index, items[current_index])
@@ -173,7 +179,7 @@ func _animate(old_index: int) -> void:
 
 	animating = true
 
-	var center := visible_slots / 2
+	var center := get_center_slot()
 	var delta := current_index - old_index
 
 	if circular and items.size() > 0:
@@ -211,10 +217,21 @@ func _animate(old_index: int) -> void:
 			old_cards_to_free.append(old_card)
 
 			if use_fade:
-				tween.parallel().tween_property(old_card, "modulate:a", 0.0, animation_time)
+				tween.parallel().tween_property(
+					old_card,
+					"modulate:a",
+					0.0,
+					animation_time
+				)
 
 			var edge_ph := placeholders[0] if dest_slot < 0 else placeholders[visible_slots - 1]
-			tween.parallel().tween_property(old_card, "global_position", edge_ph.global_position, animation_time)
+
+			tween.parallel().tween_property(
+				old_card,
+				"global_position",
+				edge_ph.global_position,
+				animation_time
+			)
 		else:
 			old_card.queue_free()
 
@@ -226,7 +243,7 @@ func _animate(old_index: int) -> void:
 		container.add_child(card)
 		cards.append(card)
 
-		configure_card(card, items[item_index], is_current)
+		configure_card(card, items[item_index], is_current, false)
 
 		var source_slot := slot + delta
 		var target_ph := placeholders[slot]
@@ -251,6 +268,7 @@ func _animate(old_index: int) -> void:
 			old_card.queue_free()
 
 	animating = false
+
 	item_changed.emit(current_index, items[current_index])
 	animation_finished.emit(current_index)
 
@@ -279,23 +297,64 @@ func _apply_placeholder(card: Control, ph: Control) -> void:
 
 
 func _animar_tarjeta_a_placeholder(tween: Tween, card: Control, ph: Control) -> void:
-	tween.parallel().tween_property(card, "pivot_offset", ph.pivot_offset, animation_time)
-	tween.parallel().tween_property(card, "global_position", ph.global_position, animation_time)
+	tween.parallel().tween_property(
+		card,
+		"pivot_offset",
+		ph.pivot_offset,
+		animation_time
+	)
+
+	tween.parallel().tween_property(
+		card,
+		"global_position",
+		ph.global_position,
+		animation_time
+	)
 
 	if use_scaling:
-		tween.parallel().tween_property(card, "scale", ph.scale, animation_time)
+		tween.parallel().tween_property(
+			card,
+			"scale",
+			ph.scale,
+			animation_time
+		)
 	else:
-		tween.parallel().tween_property(card, "scale", Vector2.ONE, animation_time)
+		tween.parallel().tween_property(
+			card,
+			"scale",
+			Vector2.ONE,
+			animation_time
+		)
 
 	if use_rotation:
-		tween.parallel().tween_property(card, "rotation", ph.rotation, animation_time)
+		tween.parallel().tween_property(
+			card,
+			"rotation",
+			ph.rotation,
+			animation_time
+		)
 	else:
-		tween.parallel().tween_property(card, "rotation", 0.0, animation_time)
+		tween.parallel().tween_property(
+			card,
+			"rotation",
+			0.0,
+			animation_time
+		)
 
 	if use_fade:
-		tween.parallel().tween_property(card, "modulate:a", ph.modulate.a, animation_time)
+		tween.parallel().tween_property(
+			card,
+			"modulate:a",
+			ph.modulate.a,
+			animation_time
+		)
 	else:
-		tween.parallel().tween_property(card, "modulate:a", 1.0, animation_time)
+		tween.parallel().tween_property(
+			card,
+			"modulate:a",
+			1.0,
+			animation_time
+		)
 
 	if use_depth:
 		card.z_index = ph.z_index
@@ -308,6 +367,15 @@ func _wrap(index: int) -> int:
 	return posmod(index, items.size())
 
 
-func configure_card(card: Control, data: Variant, is_current: bool) -> void:
+func configure_card(
+	card: Control,
+	data: Variant,
+	is_current: bool,
+	animar_seleccion: bool = false
+) -> void:
 	if card.has_method("establecer_es_actual"):
-		card.call("establecer_es_actual", is_current)
+		card.call(
+			"establecer_es_actual",
+			is_current,
+			animar_seleccion
+	)

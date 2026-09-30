@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cngxu7umd34tr"]
 
 [ext_resource type="Texture2D" uid="uid://m4dohfegha4h" path="res://Sprites/UI/timer_progress.png" id="1_71mbt"]
+[ext_resource type="Script" uid="uid://w4a8fvj6tjls" path="res://Scripts/ui/menu_deslizante/EstructurasDatos/Personajes/barra_estadisticas.gd" id="1_wnus8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a8ku5"]
 bg_color = Color(0, 0, 0, 1)
@@ -20,8 +21,10 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("1_wnus8")
 
 [node name="NoSeleccionada" type="Control" parent="." unique_id=860136759]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -39,6 +42,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_a8ku5")
 
 [node name="BarraProgreso" type="ProgressBar" parent="NoSeleccionada" unique_id=1945343272]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(191.805, 0)
 layout_mode = 0
 offset_left = 64.0
@@ -50,16 +54,8 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_jtwau")
 value = 60.0
 show_percentage = false
 
-[node name="numeroEstadistica" type="Label" parent="NoSeleccionada" unique_id=1207253107]
-layout_mode = 0
-offset_left = 265.0
-offset_top = 9.0
-offset_right = 305.0
-offset_bottom = 33.0
-theme_override_font_sizes/font_size = 23
-text = "3"
-
 [node name="Seleccionada" type="Control" parent="." unique_id=702831633]
+unique_name_in_owner = true
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -77,20 +73,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_eu64u")
 
-[node name="numeroEstadistica" type="Label" parent="Seleccionada" unique_id=215889098]
-layout_mode = 0
-offset_left = 256.0
-offset_top = 9.0
-offset_right = 296.0
-offset_bottom = 60.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 23
-text = "3
-"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="nombreEstadistica" type="Label" parent="Seleccionada" unique_id=2085865019]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(118, 17)
 layout_mode = 0
 offset_left = 67.0
@@ -103,7 +87,17 @@ text = "velocidad"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1740508068]
+[node name="numeroEstadistica" type="Label" parent="." unique_id=1207253107]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 265.0
+offset_top = 9.0
+offset_right = 305.0
+offset_bottom = 33.0
+theme_override_font_sizes/font_size = 23
+text = "3"
+
+[node name="DibujoEstadistica" type="TextureRect" parent="." unique_id=1740508068]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5

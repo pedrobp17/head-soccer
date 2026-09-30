@@ -24,6 +24,7 @@ func _ready():
 	actualizar_selector(mapa_seleccion["neutro"])
 	cambiar_escena(mapa_escenas["menu"], true)
 
+
 func _input(event):
 
 	# Cambiar el foco entre arriba y abajo.

@@ -38,3 +38,13 @@ func reset_estadistica( estadistica : String) ->void:
 	if estadisticas_modificadas.has(estadistica):
 		estadisticas_modificadas.erase(estadistica)
 	
+func get_estadisticas_normalizadas_con_nombre():
+	var estadisticas_normallizadas_con_nombre : Array = []
+	for i in estadisticas_normales.size():
+		estadisticas_normallizadas_con_nombre.append(transformacion_estadistica_array(i))
+	return estadisticas_normallizadas_con_nombre
+
+func transformacion_estadistica_array(indice : int) -> Array:
+	var estadistica = estadisticas_normales.keys()[indice]
+	var array = [estadistica, estadisticas_normales[estadistica]]
+	return array

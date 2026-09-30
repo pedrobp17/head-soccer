@@ -1,26 +1,35 @@
 [gd_scene format=3 uid="uid://bucl2yhywlrrs"]
 
+[ext_resource type="Script" uid="uid://dfpkgd4o4mb3x" path="res://Scripts/ui/menu_deslizante/EstructurasDatos/Personajes/CartasSeleccionPersonajes.gd" id="1_7r2on"]
 [ext_resource type="Texture2D" uid="uid://b1cijc2mky0f1" path="res://Sprites/UI/SelectorPersonajes/RecuadroPersonajes.png" id="1_ffrvp"]
 [ext_resource type="Texture2D" uid="uid://bs7bayxc6vdv3" path="res://Sprites/UI/SelectorPersonajes/RecuadroPersonajesActual.png" id="2_7r2on"]
 
 [node name="CartasSeleccionPersonaje" type="Control" unique_id=1793961674]
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("1_7r2on")
 
 [node name="NotCurrent" type="TextureRect" parent="." unique_id=530884011]
+unique_name_in_owner = true
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("1_ffrvp")
 
 [node name="Current" type="TextureRect" parent="." unique_id=227277216]
-visible = false
+unique_name_in_owner = true
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("2_7r2on")
 
-[node name="Label" type="Label" parent="." unique_id=161782680]
+[node name="Nombre" type="Label" parent="Current" unique_id=161782680]
+unique_name_in_owner = true
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 17.0
+offset_left = 208.0
+offset_top = 88.0
+offset_right = 273.0
+offset_bottom = 125.0
+theme_override_colors/font_color = Color(1, 0.84313726, 0, 1)
+text = "Adrian
+Speed"
