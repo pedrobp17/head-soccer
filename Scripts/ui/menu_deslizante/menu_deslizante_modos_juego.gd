@@ -3,10 +3,11 @@ class_name MenuDeslizanteModosJuego
 
 @export var modes : Array[DatosModoJuego]
 
+@onready var personaje_seleccion: Sprite2D = %PersonajeSeleccion
 
 func _ready():
 	card_scene = preload("res://Escenas/ui/Cartas/CartasModoJuego.tscn")
-
+	EventBus.item_selected.connect(on_item_selected)
 	use_scaling = true
 	use_fade = true
 	use_rotation = false
@@ -27,3 +28,7 @@ func configure_card(
 		is_selected,
 		animar_seleccion
 	)
+
+func on_item_selected( datos : Variant) -> void:
+	personaje_seleccion.texture = ImagenJugadorEnteroHelper.get_icono(datos.name)
+	

@@ -1,6 +1,7 @@
 extends Control
 class_name MenuDeslizante
 
+
 @export_group("Carousel")
 @export var visible_slots: int = 7
 @export var circular: bool = true
@@ -8,10 +9,12 @@ class_name MenuDeslizante
 @export var transition: Tween.TransitionType = Tween.TRANS_SINE
 @export var ease: Tween.EaseType = Tween.EASE_OUT
 
+
 @export_group("Input")
-@export var left : String = "ui_left"
-@export var right : String = "ui_right"
-@export var accept : String = "ui_accept"
+@export var left: String = "ui_left"
+@export var right: String = "ui_right"
+@export var accept: String = "ui_accept"
+
 
 @export_group("Animación")
 @export var use_scaling: bool = true
@@ -19,15 +22,18 @@ class_name MenuDeslizante
 @export var use_rotation: bool = false
 @export var use_depth: bool = true
 
+
 @export_group("Tarjetas")
 @export var card_scene: PackedScene
 
+
 signal item_changed(index: int, data: Variant)
-signal item_selected(index: int, data: Variant)
 signal animation_finished(index: int)
+
 
 @onready var placeholder_container: Control = $PlaceholderContainer
 @onready var card_container: Control = $CardContainer
+
 
 var items: Array = []
 var placeholders: Array[Control] = []
@@ -51,7 +57,10 @@ func _ready() -> void:
 			if child is Control:
 				placeholders.append(child as Control)
 
-	assert(placeholders.size() == visible_slots, "El número de placeholders debe coincidir con visible_slots")
+	assert(
+		placeholders.size() == visible_slots,
+		"El número de placeholders debe coincidir con visible_slots"
+	)
 
 	await get_tree().process_frame
 
@@ -91,11 +100,26 @@ func set_items(new_items: Array) -> void:
 	refresh()
 
 
+func get_current_item() -> Variant:
+	if items.is_empty():
+		return null
+
+	return items[current_index]
+
+
 func cambiar_estado_foco(tiene_foco: bool) -> void:
 	if is_foco == tiene_foco:
 		return
 
 	is_foco = tiene_foco
+	refresh()
+
+
+func set_elemento_central(index: int) -> void:
+	if items.is_empty():
+		return
+
+	current_index = _wrap(index)
 	refresh()
 
 
@@ -127,10 +151,7 @@ func go_to(index: int) -> void:
 
 
 func select_current() -> void:
-	if !is_foco or animating or items.is_empty():
-		return
-
-	item_selected.emit(current_index, items[current_index])
+	pass
 
 
 func _create_card_pool() -> void:
@@ -167,10 +188,19 @@ func refresh() -> void:
 		var card := cards[slot]
 		var ph := placeholders[slot]
 
-		configure_card(card, items[item_index], is_current, false)
+		configure_card(
+			card,
+			items[item_index],
+			is_current,
+			false
+		)
+
 		_apply_placeholder(card, ph)
 
-	item_changed.emit(current_index, items[current_index])
+	item_changed.emit(
+		current_index,
+		items[current_index]
+	)
 
 
 func _animate(old_index: int) -> void:
@@ -199,6 +229,7 @@ func _animate(old_index: int) -> void:
 	cards.clear()
 
 	var tween := create_tween()
+
 	tween.set_parallel(true)
 	tween.set_trans(transition)
 	tween.set_ease(ease)
@@ -224,7 +255,11 @@ func _animate(old_index: int) -> void:
 					animation_time
 				)
 
-			var edge_ph := placeholders[0] if dest_slot < 0 else placeholders[visible_slots - 1]
+			var edge_ph := (
+				placeholders[0]
+				if dest_slot < 0
+				else placeholders[visible_slots - 1]
+			)
 
 			tween.parallel().tween_property(
 				old_card,
@@ -232,18 +267,27 @@ func _animate(old_index: int) -> void:
 				edge_ph.global_position,
 				animation_time
 			)
+
 		else:
 			old_card.queue_free()
 
 	for slot in range(visible_slots):
-		var item_index := _wrap(current_index + slot - center)
+		var item_index := _wrap(
+			current_index + slot - center
+		)
+
 		var is_current := slot == center and is_foco
 
 		var card := card_scene.instantiate() as Control
 		container.add_child(card)
 		cards.append(card)
 
-		configure_card(card, items[item_index], is_current, false)
+		configure_card(
+			card,
+			items[item_index],
+			is_current,
+			false
+		)
 
 		var source_slot := slot + delta
 		var target_ph := placeholders[slot]
@@ -251,15 +295,25 @@ func _animate(old_index: int) -> void:
 		if source_slot >= 0 and source_slot < visible_slots:
 			var source_ph := placeholders[source_slot]
 			_apply_placeholder(card, source_ph)
+
 		else:
-			var edge_slot := visible_slots - 1 if delta > 0 else 0
+			var edge_slot := (
+				visible_slots - 1
+				if delta > 0
+				else 0
+			)
+
 			var edge_ph := placeholders[edge_slot]
 			_apply_placeholder(card, edge_ph)
 
 		if use_fade:
 			card.modulate.a = 0.0
 
-		_animar_tarjeta_a_placeholder(tween, card, target_ph)
+		_animar_tarjeta_a_placeholder(
+			tween,
+			card,
+			target_ph
+		)
 
 	await tween.finished
 
@@ -269,11 +323,19 @@ func _animate(old_index: int) -> void:
 
 	animating = false
 
-	item_changed.emit(current_index, items[current_index])
+	item_changed.emit(
+		current_index,
+		items[current_index]
+	)
+
 	animation_finished.emit(current_index)
 
 
-func _apply_placeholder(card: Control, ph: Control) -> void:
+func _apply_placeholder(
+	card: Control,
+	ph: Control
+) -> void:
+
 	card.pivot_offset = ph.pivot_offset
 	card.global_position = ph.global_position
 
@@ -296,7 +358,12 @@ func _apply_placeholder(card: Control, ph: Control) -> void:
 		card.z_index = ph.z_index
 
 
-func _animar_tarjeta_a_placeholder(tween: Tween, card: Control, ph: Control) -> void:
+func _animar_tarjeta_a_placeholder(
+	tween: Tween,
+	card: Control,
+	ph: Control
+) -> void:
+
 	tween.parallel().tween_property(
 		card,
 		"pivot_offset",
@@ -373,9 +440,10 @@ func configure_card(
 	is_current: bool,
 	animar_seleccion: bool = false
 ) -> void:
+
 	if card.has_method("establecer_es_actual"):
 		card.call(
 			"establecer_es_actual",
 			is_current,
 			animar_seleccion
-	)
+		)

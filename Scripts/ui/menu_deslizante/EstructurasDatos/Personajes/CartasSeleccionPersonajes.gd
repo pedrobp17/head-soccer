@@ -5,10 +5,12 @@ extends Control
 var es_actual: bool = false
 var tween_transicion: Tween
 
+@onready var selected: TextureRect = $Selected
 @onready var fondo_no_actual: Control = %NotCurrent
 @onready var fondo_actual: Control = %Current
 @onready var nombre: Label = %Nombre
 
+var is_seleccionado = false
 
 func set_mode(data, selected: bool, animar_seleccion: bool = false):
 	nombre.text = NombresPersonajesHelper.get_nombre(data.name)

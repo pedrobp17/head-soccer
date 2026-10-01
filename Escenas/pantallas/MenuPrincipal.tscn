@@ -246,6 +246,7 @@ layout_mode = 1
 
 [node name="Fps" type="Label" parent="." unique_id=1533829200]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
 offset_left = 559.0
 offset_top = 73.0

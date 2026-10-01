@@ -14,7 +14,6 @@
 [ext_resource type="Resource" uid="uid://chwg5d26wnyj2" path="res://Scripts/ui/menu_deslizante/EstructurasDatos/Personajes/RecursosPersonajes/KatieBrown.tres" id="8_7cer4"]
 [ext_resource type="Texture2D" uid="uid://dl08eju76dfcg" path="res://Sprites/jugadores/personajes/XavierFoster.png" id="8_ttw5l"]
 [ext_resource type="Resource" uid="uid://d3pjv81gagyjo" path="res://Scripts/ui/menu_deslizante/EstructurasDatos/Personajes/RecursosPersonajes/SteveEagle.tres" id="9_ia51c"]
-[ext_resource type="Texture2D" uid="uid://crwvbnux7o5t" path="res://Sprites/banderas/bandera-raimon.png" id="9_okwvm"]
 [ext_resource type="PackedScene" uid="uid://bucl2yhywlrrs" path="res://Escenas/ui/Cartas/CartasSeleccionPersonaje.tscn" id="9_x4pbw"]
 [ext_resource type="Resource" uid="uid://cc3t360j4y110" path="res://Scripts/ui/menu_deslizante/EstructurasDatos/Personajes/RecursosPersonajes/AdrianSpeed.tres" id="10_0d2f1"]
 [ext_resource type="PackedScene" uid="uid://cngxu7umd34tr" path="res://Escenas/ui/barra_estadisticas.tscn" id="10_uv8nf"]
@@ -30,6 +29,7 @@
 [ext_resource type="Resource" uid="uid://dggh4mw37bikl" path="res://Scripts/ui/menu_deslizante/EstructurasDatos/Personajes/RecursosPersonajes/JonasDemetrius.tres" id="19_8d61v"]
 [ext_resource type="Resource" uid="uid://v8p00h7lbpgm" path="res://Scripts/ui/menu_deslizante/EstructurasDatos/Personajes/RecursosPersonajes/NelsonRockwell.tres" id="20_n523y"]
 [ext_resource type="Script" uid="uid://c8747tjvcncpx" path="res://Scripts/ui/menu_deslizante/EstructurasDatos/Personajes/estadisticas_personaje_seleccionado.gd" id="25_7cer4"]
+[ext_resource type="Texture2D" uid="uid://dims23mtskl1p" path="res://Sprites/banderas/bandera-royalacademy.png" id="28_b2v7a"]
 [ext_resource type="Texture2D" uid="uid://ce54h1bc1dfde" path="res://Sprites/UI/SelectorPersonajes/velocidad.png" id="28_eed3h"]
 [ext_resource type="Texture2D" uid="uid://dmjtu5lv0crc1" path="res://Sprites/UI/SelectorPersonajes/salto.png" id="29_08jok"]
 [ext_resource type="Texture2D" uid="uid://cswid84ccpdrl" path="res://Sprites/UI/SelectorPersonajes/golpe.png" id="30_b2v7a"]
@@ -39,7 +39,7 @@
 [ext_resource type="Script" uid="uid://d2gof43682v0e" path="res://Scripts/ui/menu_deslizante/EstructurasDatos/Personajes/boton_seleccion_personaje.gd" id="36_08jok"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a8ku5"]
-bg_color = Color(1, 0.84313726, 0, 1)
+bg_color = Color(0.2627451, 0.2627451, 0.30980393, 1)
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
@@ -93,6 +93,7 @@ grow_vertical = 2
 texture = ExtResource("3_hnj5y")
 
 [node name="SelectorPersonajes" type="Control" parent="." unique_id=302878797]
+unique_name_in_owner = true
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -185,30 +186,36 @@ offset_right = 505.0
 offset_bottom = 664.0
 texture = ExtResource("8_ttw5l")
 
-[node name="Informacion" type="VBoxContainer" parent="EstadisticasPersonajeSeleccionado" unique_id=462750193]
-custom_minimum_size = Vector2(233.935, 217.705)
+[node name="MarginContainer" type="MarginContainer" parent="EstadisticasPersonajeSeleccionado" unique_id=142683985]
+custom_minimum_size = Vector2(235.335, 128.715)
 layout_mode = 0
-offset_left = 469.0
-offset_top = 23.0
-offset_right = 702.935
-offset_bottom = 240.705
-theme_override_constants/separation = -12
+offset_left = 455.0
+offset_right = 690.335
+offset_bottom = 128.715
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 14
 
-[node name="Nombre" type="Label" parent="EstadisticasPersonajeSeleccionado/Informacion" unique_id=1282961632]
+[node name="Nombre" type="Label" parent="EstadisticasPersonajeSeleccionado/MarginContainer" unique_id=1282961632]
 unique_name_in_owner = true
+custom_maximum_size = Vector2(242, 79)
 layout_mode = 2
 theme_override_font_sizes/font_size = 37
-text = "Xavier 
-Foster"
+text = "Caleb
+stonwall"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Escudo" type="TextureRect" parent="EstadisticasPersonajeSeleccionado/Informacion" unique_id=2065910500]
+[node name="Escudo" type="TextureRect" parent="EstadisticasPersonajeSeleccionado" unique_id=2065910500]
 unique_name_in_owner = true
-layout_mode = 2
+layout_mode = 0
+offset_left = 513.0
+offset_top = 84.0
+offset_right = 641.0
+offset_bottom = 212.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("9_okwvm")
+texture = ExtResource("28_b2v7a")
 stretch_mode = 4
 
 [node name="Estadisticas" type="VBoxContainer" parent="EstadisticasPersonajeSeleccionado" unique_id=48733640]
@@ -264,8 +271,9 @@ texture = ExtResource("11_7siq0")
 [node name="Boton" type="Control" parent="EstadisticasPersonajeSeleccionado" unique_id=1451887938]
 unique_name_in_owner = true
 anchors_preset = 0
+offset_top = -2.0
 offset_right = 40.0
-offset_bottom = 40.0
+offset_bottom = 38.0
 script = ExtResource("36_08jok")
 
 [node name="Seleccion" type="TextureRect" parent="EstadisticasPersonajeSeleccionado/Boton" unique_id=615252584]
@@ -287,6 +295,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_a8ku5")
 
 [node name="Label" type="Label" parent="EstadisticasPersonajeSeleccionado/Boton/Seleccion" unique_id=2087749666]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

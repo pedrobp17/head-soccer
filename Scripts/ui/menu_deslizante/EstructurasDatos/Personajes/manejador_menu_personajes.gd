@@ -49,3 +49,5 @@ func _input(event):
 		boton.cambiar_estado_foco(true)
 		return
 	
+func set_item_central( indice : int) -> void:
+	selector_personajes.set_elemento_central(indice)

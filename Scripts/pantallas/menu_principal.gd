@@ -14,12 +14,13 @@ const mapa_seleccion_opciones : Dictionary ={
 
 var en_menu_superior := false
 var escena_actual := mapa_seleccion_opciones["menu"] 
+var item_seleccionado_personajes := IndiceRecursosJugadoresHelper.get_indice("MarkEvans")
 
 func _ready():
 	show_escena_menu()
 	cambiar_foco_escena(true)
 	actualizar_selector(mapa_seleccion_opciones["neutro"])
-
+	EventBus.item_selected.connect(on_item_selected)
 
 func _input(event):
 
@@ -60,6 +61,7 @@ func _input(event):
 		escena_actual = mapa_seleccion_opciones["menu"]
 		actualizar_selector(escena_actual)
 		show_escena_menu()
+		selector_personajes.set_item_central(item_seleccionado_personajes)
 	
 	#TRANSICION: panel_superior_menu -> panel_superior_personajes
 	elif event.is_action_pressed("ui_right") and escena_actual != mapa_seleccion_opciones["personajes"] :
@@ -75,6 +77,8 @@ func cambiar_foco_escena(tiene_foco: bool) -> void:
 	elif escena_actual == mapa_seleccion_opciones["personajes"]:
 		selector_personajes.cambiar_estado_foco(tiene_foco)
 
+func _process(_delta: float) -> void:
+	$Fps.text = str(Engine.get_frames_per_second()) + " FPS"
 		
 func actualizar_selector(id : int):
 	if id == mapa_seleccion_opciones["menu"]:
@@ -90,7 +94,10 @@ func actualizar_selector(id : int):
 		personajes_sel.hide()
 		menu_sel.hide()
 
-
+func on_item_selected(datos : Variant) -> void:
+	if escena_actual == mapa_seleccion_opciones["personajes"]:
+		item_seleccionado_personajes = IndiceRecursosJugadoresHelper.get_indice(datos.name)
+		
 func show_escena_menu() -> void:
 	selector_personajes.hide()
 	menu_deslizante.show()

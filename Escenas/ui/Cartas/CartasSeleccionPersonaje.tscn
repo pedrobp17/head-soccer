@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dfpkgd4o4mb3x" path="res://Scripts/ui/menu_deslizante/EstructurasDatos/Personajes/CartasSeleccionPersonajes.gd" id="1_7r2on"]
 [ext_resource type="Texture2D" uid="uid://b1cijc2mky0f1" path="res://Sprites/UI/SelectorPersonajes/RecuadroPersonajes.png" id="1_ffrvp"]
 [ext_resource type="Texture2D" uid="uid://bs7bayxc6vdv3" path="res://Sprites/UI/SelectorPersonajes/RecuadroPersonajesActual.png" id="2_7r2on"]
+[ext_resource type="Texture2D" uid="uid://cdrxbia6pw3vj" path="res://Sprites/UI/SelectorPersonajes/RecuadroPersonajesSeleccionado.png" id="4_pptuy"]
 
 [node name="CartasSeleccionPersonaje" type="Control" unique_id=1793961674]
 layout_mode = 3
@@ -33,3 +34,11 @@ offset_bottom = 125.0
 theme_override_colors/font_color = Color(1, 0.84313726, 0, 1)
 text = "Adrian
 Speed"
+
+[node name="Selected" type="TextureRect" parent="." unique_id=1179634481]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_pptuy")
