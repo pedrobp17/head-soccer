@@ -36,6 +36,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	actualizar_reloj()
 	incrementar_poder(delta)
+	%Fps.text = str(Engine.get_frames_per_second()) + " FPS"
 	
 func actualizar_marcador() -> void:
 	for i in NUM_JUGADORES:

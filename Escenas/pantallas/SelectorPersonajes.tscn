@@ -98,7 +98,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_rub24")
-modes = Array[ExtResource("2_hnj5y")]([ExtResource("20_n523y"), ExtResource("19_8d61v"), ExtResource("18_tb116"), ExtResource("17_l1uw8"), ExtResource("16_b2v7a"), ExtResource("15_08jok"), ExtResource("14_eed3h"), ExtResource("13_yntdo"), ExtResource("12_hkpbk"), ExtResource("11_7lib7"), ExtResource("10_0d2f1"), ExtResource("9_ia51c"), ExtResource("8_7cer4"), ExtResource("7_tyrni"), ExtResource("6_5hy0c"), ExtResource("5_ptf4e"), ExtResource("4_ixhsm"), ExtResource("3_2pgxr")])
+modes = Array[ExtResource("2_hnj5y")]([ExtResource("10_0d2f1"), ExtResource("13_yntdo"), ExtResource("4_ixhsm"), ExtResource("5_ptf4e"), ExtResource("20_n523y"), ExtResource("19_8d61v"), ExtResource("18_tb116"), ExtResource("17_l1uw8"), ExtResource("16_b2v7a"), ExtResource("15_08jok"), ExtResource("14_eed3h"), ExtResource("12_hkpbk"), ExtResource("11_7lib7"), ExtResource("9_ia51c"), ExtResource("8_7cer4"), ExtResource("7_tyrni"), ExtResource("6_5hy0c"), ExtResource("3_2pgxr")])
 left = "ui_up"
 right = "ui_down"
 use_scaling = false
@@ -268,15 +268,16 @@ texture = ExtResource("11_7siq0")
 layout_mode = 2
 texture = ExtResource("11_7siq0")
 
-[node name="Boton" type="Control" parent="EstadisticasPersonajeSeleccionado" unique_id=1451887938]
+[node name="Boton" type="Control" parent="." unique_id=1451887938]
 unique_name_in_owner = true
 anchors_preset = 0
+offset_left = 448.0
 offset_top = -2.0
-offset_right = 40.0
+offset_right = 488.0
 offset_bottom = 38.0
 script = ExtResource("36_08jok")
 
-[node name="Seleccion" type="TextureRect" parent="EstadisticasPersonajeSeleccionado/Boton" unique_id=615252584]
+[node name="Seleccion" type="TextureRect" parent="Boton" unique_id=615252584]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(256, 72)
 layout_mode = 0
@@ -284,7 +285,7 @@ offset_top = 561.0
 offset_right = 40.0
 offset_bottom = 601.0
 
-[node name="Panel" type="Panel" parent="EstadisticasPersonajeSeleccionado/Boton/Seleccion" unique_id=1314564306]
+[node name="Panel" type="Panel" parent="Boton/Seleccion" unique_id=1314564306]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -294,7 +295,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_a8ku5")
 
-[node name="Label" type="Label" parent="EstadisticasPersonajeSeleccionado/Boton/Seleccion" unique_id=2087749666]
+[node name="Label" type="Label" parent="Boton/Seleccion" unique_id=2087749666]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -312,7 +313,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 27
 text = "seleccionar"
 
-[node name="Bloqueado" type="TextureRect" parent="EstadisticasPersonajeSeleccionado/Boton" unique_id=1112565588]
+[node name="Bloqueado" type="TextureRect" parent="Boton" unique_id=1112565588]
 unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(256, 72)
@@ -322,7 +323,7 @@ offset_top = 561.0
 offset_right = -192.0
 offset_bottom = 633.0
 
-[node name="Panel" type="Panel" parent="EstadisticasPersonajeSeleccionado/Boton/Bloqueado" unique_id=1294550095]
+[node name="Panel" type="Panel" parent="Boton/Bloqueado" unique_id=1294550095]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

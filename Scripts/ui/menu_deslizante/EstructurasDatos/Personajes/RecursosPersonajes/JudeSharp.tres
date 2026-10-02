@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="DatosSeleccionPersonajes" format=3 uid="uid://byp4mbmy8fnxo"]
 
+[ext_resource type="Texture2D" uid="uid://thw6tm4im8yk" path="res://Sprites/UI/SelectorPersonajes/Personajes/Seleccionado/JudeSharp.png" id="1_ai161"]
 [ext_resource type="Texture2D" uid="uid://duqqule1qwldl" path="res://Sprites/UI/SelectorPersonajes/Personajes/NoActual/JudeSharp.png" id="1_r7by6"]
 [ext_resource type="Script" uid="uid://dj3paw1yyav35" path="res://Scripts/ui/menu_deslizante/EstructurasDatos/Personajes/DatosSeleccionPersonajes.gd" id="1_yuqpl"]
 [ext_resource type="Texture2D" uid="uid://c8yqim3arm5he" path="res://Sprites/UI/SelectorPersonajes/Personajes/Actual/JudeSharp.png" id="3_ai161"]
@@ -9,4 +10,6 @@ script = ExtResource("1_yuqpl")
 name = "JudeSharp"
 normal_texture = ExtResource("1_r7by6")
 selected_texture = ExtResource("3_ai161")
+normal_seleccionado_texture = ExtResource("1_ai161")
+indice = 16
 metadata/_custom_type_script = "uid://dj3paw1yyav35"

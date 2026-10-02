@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://buvhn4hdwcg6o" path="res://Sprites/UI/SelectorPersonajes/Personajes/NoActual/ThomasFeldt.png" id="1_74gxv"]
 [ext_resource type="Script" uid="uid://dj3paw1yyav35" path="res://Scripts/ui/menu_deslizante/EstructurasDatos/Personajes/DatosSeleccionPersonajes.gd" id="1_p6a48"]
+[ext_resource type="Texture2D" uid="uid://cgrv6t4kbs3on" path="res://Sprites/UI/SelectorPersonajes/Personajes/Seleccionado/ThomasFeldt.png" id="1_pvtie"]
 [ext_resource type="Texture2D" uid="uid://c568sf0xj77gg" path="res://Sprites/UI/SelectorPersonajes/Personajes/Actual/ThomasFeldt.png" id="3_pvtie"]
 
 [resource]
@@ -9,4 +10,6 @@ script = ExtResource("1_p6a48")
 name = "ThomasFeldt"
 normal_texture = ExtResource("1_74gxv")
 selected_texture = ExtResource("3_pvtie")
+normal_seleccionado_texture = ExtResource("1_pvtie")
+indice = 11
 metadata/_custom_type_script = "uid://dj3paw1yyav35"

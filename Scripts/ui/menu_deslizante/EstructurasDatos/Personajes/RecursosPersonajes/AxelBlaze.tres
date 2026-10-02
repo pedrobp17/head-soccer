@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="DatosSeleccionPersonajes" format=3 uid="uid://6jnwr6oj78n4"]
 
 [ext_resource type="Texture2D" uid="uid://5t7nvimm3b6e" path="res://Sprites/UI/SelectorPersonajes/Personajes/NoActual/AxelBlaze.png" id="1_aukfn"]
+[ext_resource type="Texture2D" uid="uid://bxpvrk0fqu5pc" path="res://Sprites/UI/SelectorPersonajes/Personajes/Seleccionado/AxelBlaze.png" id="1_h0weu"]
 [ext_resource type="Script" uid="uid://dj3paw1yyav35" path="res://Scripts/ui/menu_deslizante/EstructurasDatos/Personajes/DatosSeleccionPersonajes.gd" id="1_wb2lc"]
 [ext_resource type="Texture2D" uid="uid://bunhgyeca20sr" path="res://Sprites/UI/SelectorPersonajes/Personajes/Actual/AxelBlaze.png" id="3_h0weu"]
 
@@ -9,4 +10,6 @@ script = ExtResource("1_wb2lc")
 name = "AxelBlaze"
 normal_texture = ExtResource("1_aukfn")
 selected_texture = ExtResource("3_h0weu")
+normal_seleccionado_texture = ExtResource("1_h0weu")
+indice = 2
 metadata/_custom_type_script = "uid://dj3paw1yyav35"

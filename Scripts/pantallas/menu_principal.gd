@@ -14,7 +14,7 @@ const mapa_seleccion_opciones : Dictionary ={
 
 var en_menu_superior := false
 var escena_actual := mapa_seleccion_opciones["menu"] 
-var item_seleccionado_personajes := IndiceRecursosJugadoresHelper.get_indice("MarkEvans")
+var item_seleccionado_personajes := -1
 
 func _ready():
 	show_escena_menu()
@@ -96,7 +96,7 @@ func actualizar_selector(id : int):
 
 func on_item_selected(datos : Variant) -> void:
 	if escena_actual == mapa_seleccion_opciones["personajes"]:
-		item_seleccionado_personajes = IndiceRecursosJugadoresHelper.get_indice(datos.name)
+		item_seleccionado_personajes = datos.indice
 		
 func show_escena_menu() -> void:
 	selector_personajes.hide()

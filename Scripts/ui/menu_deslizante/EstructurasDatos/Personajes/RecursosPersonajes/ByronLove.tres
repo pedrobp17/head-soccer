@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dj3paw1yyav35" path="res://Scripts/ui/menu_deslizante/EstructurasDatos/Personajes/DatosSeleccionPersonajes.gd" id="1_81hbc"]
 [ext_resource type="Texture2D" uid="uid://c5h0cj6gmr6ut" path="res://Sprites/UI/SelectorPersonajes/Personajes/NoActual/ByronLove.png" id="1_fe5q3"]
+[ext_resource type="Texture2D" uid="uid://bys66iaad8rvy" path="res://Sprites/UI/SelectorPersonajes/Personajes/Seleccionado/ByronLove.png" id="1_gb3q1"]
 [ext_resource type="Texture2D" uid="uid://rvbcucpeo1vp" path="res://Sprites/UI/SelectorPersonajes/Personajes/Actual/ByronLove.png" id="3_gb3q1"]
 
 [resource]
@@ -9,4 +10,6 @@ script = ExtResource("1_81hbc")
 name = "ByronLove"
 normal_texture = ExtResource("1_fe5q3")
 selected_texture = ExtResource("3_gb3q1")
+normal_seleccionado_texture = ExtResource("1_gb3q1")
+indice = 3
 metadata/_custom_type_script = "uid://dj3paw1yyav35"
