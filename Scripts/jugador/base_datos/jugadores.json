@@ -269,6 +269,222 @@
 				"altura" : 116.0
 			},
 			"espiritu": 0
+		},
+		{
+			"nombre": "ArtieMishman",
+			"equipo": "zeus",
+			"estadisticas": {
+				"velocidad": 5,
+				"salto": 5,
+				"golpe": 5,
+				"power": 5,
+				"aguante": 5,
+				"vida": 5
+			},
+			"poderes": [
+				"",
+				""
+			],
+			"pie": {
+				"x": 0.0,
+				"y": 0.0
+			},
+			"capsula": {
+				"x": 0.0,
+				"y": 0.0,
+				"radio": 0.0,
+				"altura": 0.0
+			},
+			"espiritu": 0
+		},
+		{
+			"nombre": "GaryLancaster",
+			"equipo": "wild",
+			"estadisticas": {
+				"velocidad": 5,
+				"salto": 5,
+				"golpe": 5,
+				"power": 5,
+				"aguante": 5,
+				"vida": 5
+			},
+			"poderes": [
+				"",
+				""
+			],
+			"pie": {
+				"x": 0.0,
+				"y": 0.0
+			},
+			"capsula": {
+				"x": 0.0,
+				"y": 0.0,
+				"radio": 0.0,
+				"altura": 0.0
+			},
+			"espiritu": 0
+		},
+		{
+			"nombre": "HarleyKane",
+			"equipo": "raimon",
+			"estadisticas": {
+				"velocidad": 5,
+				"salto": 5,
+				"golpe": 5,
+				"power": 5,
+				"aguante": 5,
+				"vida": 5
+			},
+			"poderes": [
+				"",
+				""
+			],
+			"pie": {
+				"x": 0.0,
+				"y": 0.0
+			},
+			"capsula": {
+				"x": 0.0,
+				"y": 0.0,
+				"radio": 0.0,
+				"altura": 0.0
+			},
+			"espiritu": 0
+		},
+		{
+			"nombre": "JonasDemetrius",
+			"equipo": "zeus",
+			"estadisticas": {
+				"velocidad": 5,
+				"salto": 5,
+				"golpe": 5,
+				"power": 5,
+				"aguante": 5,
+				"vida": 5
+			},
+			"poderes": [
+				"",
+				""
+			],
+			"pie": {
+				"x": 0.0,
+				"y": 0.0
+			},
+			"capsula": {
+				"x": 0.0,
+				"y": 0.0,
+				"radio": 0.0,
+				"altura": 0.0
+			},
+			"espiritu": 0
+		},
+		{
+			"nombre": "KatieBrown",
+			"equipo": "raimon",
+			"estadisticas": {
+				"velocidad": 5,
+				"salto": 5,
+				"golpe": 5,
+				"power": 5,
+				"aguante": 5,
+				"vida": 5
+			},
+			"poderes": [
+				"",
+				""
+			],
+			"pie": {
+				"x": 0.0,
+				"y": 0.0
+			},
+			"capsula": {
+				"x": 0.0,
+				"y": 0.0,
+				"radio": 0.0,
+				"altura": 0.0
+			},
+			"espiritu": 0
+		},
+		{
+			"nombre": "NelsonRockwell",
+			"equipo": "raimon",
+			"estadisticas": {
+				"velocidad": 5,
+				"salto": 5,
+				"golpe": 5,
+				"power": 5,
+				"aguante": 5,
+				"vida": 5
+			},
+			"poderes": [
+				"",
+				""
+			],
+			"pie": {
+				"x": 0.0,
+				"y": 0.0
+			},
+			"capsula": {
+				"x": 0.0,
+				"y": 0.0,
+				"radio": 0.0,
+				"altura": 0.0
+			},
+			"espiritu": 0
+		},
+		{
+			"nombre": "SteveEagle",
+			"equipo": "wild",
+			"estadisticas": {
+				"velocidad": 5,
+				"salto": 5,
+				"golpe": 5,
+				"power": 5,
+				"aguante": 5,
+				"vida": 5
+			},
+			"poderes": [
+				"",
+				""
+			],
+			"pie": {
+				"x": 0.0,
+				"y": 0.0
+			},
+			"capsula": {
+				"x": 0.0,
+				"y": 0.0,
+				"radio": 0.0,
+				"altura": 0.0
+			},
+			"espiritu": 0
+		},
+		{
+			"nombre": "WilburWatkins",
+			"equipo": "raimon",
+			"estadisticas": {
+				"velocidad": 5,
+				"salto": 5,
+				"golpe": 5,
+				"power": 5,
+				"aguante": 5,
+				"vida": 5
+			},
+			"poderes": [
+				"",
+				""
+			],
+			"pie": {
+				"x": 0.0,
+				"y": 0.0
+			},
+			"capsula": {
+				"x": 0.0,
+				"y": 0.0,
+				"radio": 0.0,
+				"altura": 0.0
+			},
+			"espiritu": 0
 		}
 		
 	]

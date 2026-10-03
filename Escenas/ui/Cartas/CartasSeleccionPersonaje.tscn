@@ -10,20 +10,6 @@ layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_7r2on")
 
-[node name="NotCurrent" type="TextureRect" parent="." unique_id=530884011]
-unique_name_in_owner = true
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("1_ffrvp")
-
-[node name="Selected" type="TextureRect" parent="." unique_id=1179634481]
-unique_name_in_owner = true
-layout_mode = 0
-offset_right = 290.0
-offset_bottom = 150.0
-texture = ExtResource("4_pptuy")
-
 [node name="Current" type="TextureRect" parent="." unique_id=227277216]
 unique_name_in_owner = true
 layout_mode = 0
@@ -41,3 +27,31 @@ offset_bottom = 125.0
 theme_override_colors/font_color = Color(1, 0.84313726, 0, 1)
 text = "Adrian
 Speed"
+
+[node name="NotCurrentBloq" type="TextureRect" parent="." unique_id=1637403796]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_ffrvp")
+
+[node name="CurrentBloq" type="TextureRect" parent="." unique_id=1535481035]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_7r2on")
+
+[node name="NotCurrent" type="TextureRect" parent="." unique_id=530884011]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 290.0
+offset_bottom = 150.0
+texture = ExtResource("1_ffrvp")
+
+[node name="Selected" type="TextureRect" parent="." unique_id=1179634481]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 290.0
+offset_bottom = 150.0
+texture = ExtResource("4_pptuy")

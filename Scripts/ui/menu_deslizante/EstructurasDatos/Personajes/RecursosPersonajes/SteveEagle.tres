@@ -1,15 +1,19 @@
 [gd_resource type="Resource" script_class="DatosSeleccionPersonajes" format=3 uid="uid://d3pjv81gagyjo"]
 
-[ext_resource type="Texture2D" uid="uid://cgmr1bd2tfdfr" path="res://Sprites/UI/SelectorPersonajes/Personajes/NoActual/SteveEagle.png" id="1_44vj3"]
-[ext_resource type="Texture2D" uid="uid://cmy0suyy8xvqt" path="res://Sprites/UI/SelectorPersonajes/Personajes/Seleccionado/SteveEagle.png" id="1_okfxi"]
+[ext_resource type="Texture2D" uid="uid://dh2g1n7i36g6w" path="res://Sprites/UI/SelectorPersonajes/Personajes/Seleccionado/SteveEagle.png" id="1_okfxi"]
+[ext_resource type="Texture2D" uid="uid://0f7hcwy5hbxm" path="res://Sprites/UI/SelectorPersonajes/Personajes/NoActualBloq/SteveEagle.png" id="1_oybu6"]
 [ext_resource type="Script" uid="uid://dj3paw1yyav35" path="res://Scripts/ui/menu_deslizante/EstructurasDatos/Personajes/DatosSeleccionPersonajes.gd" id="1_rkmob"]
-[ext_resource type="Texture2D" uid="uid://0ditjkge5l5j" path="res://Sprites/UI/SelectorPersonajes/Personajes/Actual/SteveEagle.png" id="3_okfxi"]
+[ext_resource type="Texture2D" uid="uid://qb4xh6nve0rr" path="res://Sprites/UI/SelectorPersonajes/Personajes/NoActual/SteveEagle.png" id="3_oybu6"]
+[ext_resource type="Texture2D" uid="uid://c7aksm4f27rl0" path="res://Sprites/UI/SelectorPersonajes/Personajes/ActualBloq/SteveEagle.png" id="5_vk1q2"]
+[ext_resource type="Texture2D" uid="uid://c8uw7kcax4x5e" path="res://Sprites/UI/SelectorPersonajes/Personajes/Actual/SteveEagle.png" id="6_vk1q2"]
 
 [resource]
 script = ExtResource("1_rkmob")
 name = "SteveEagle"
-normal_texture = ExtResource("1_44vj3")
-selected_texture = ExtResource("3_okfxi")
+normal_texture = ExtResource("3_oybu6")
+selected_texture = ExtResource("6_vk1q2")
 normal_seleccionado_texture = ExtResource("1_okfxi")
+normal_bloqueado_texture = ExtResource("1_oybu6")
+selected_bloqueado_texture = ExtResource("5_vk1q2")
 indice = 13
 metadata/_custom_type_script = "uid://dj3paw1yyav35"

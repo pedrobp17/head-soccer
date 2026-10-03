@@ -1,15 +1,19 @@
 [gd_resource type="Resource" script_class="DatosSeleccionPersonajes" format=3 uid="uid://dggh4mw37bikl"]
 
 [ext_resource type="Script" uid="uid://dj3paw1yyav35" path="res://Scripts/ui/menu_deslizante/EstructurasDatos/Personajes/DatosSeleccionPersonajes.gd" id="1_76stt"]
-[ext_resource type="Texture2D" uid="uid://cwvl1nnnqwtmj" path="res://Sprites/UI/SelectorPersonajes/Personajes/NoActual/JonasDemetrius.png" id="1_pt8e1"]
-[ext_resource type="Texture2D" uid="uid://cwkfaw3mady70" path="res://Sprites/UI/SelectorPersonajes/Personajes/Seleccionado/JonasDemetrius.png" id="1_xjop4"]
-[ext_resource type="Texture2D" uid="uid://waiesme3xfss" path="res://Sprites/UI/SelectorPersonajes/Personajes/Actual/JonasDemetrius.png" id="3_xjop4"]
+[ext_resource type="Texture2D" uid="uid://ck5c7kfl0krrl" path="res://Sprites/UI/SelectorPersonajes/Personajes/NoActualBloq/JonasDemetrius.png" id="1_pt8e1"]
+[ext_resource type="Texture2D" uid="uid://br3ie2ocx2ci3" path="res://Sprites/UI/SelectorPersonajes/Personajes/Seleccionado/JonasDemetrius.png" id="1_xjop4"]
+[ext_resource type="Texture2D" uid="uid://y570fok011aa" path="res://Sprites/UI/SelectorPersonajes/Personajes/NoActual/JonasDemetrius.png" id="3_72u7s"]
+[ext_resource type="Texture2D" uid="uid://dk5ko77waugnb" path="res://Sprites/UI/SelectorPersonajes/Personajes/ActualBloq/JonasDemetrius.png" id="5_nkvsi"]
+[ext_resource type="Texture2D" uid="uid://bfdriejtvjrnx" path="res://Sprites/UI/SelectorPersonajes/Personajes/Actual/JonasDemetrius.png" id="6_nkvsi"]
 
 [resource]
 script = ExtResource("1_76stt")
 name = "JonasDemetrius"
-normal_texture = ExtResource("1_pt8e1")
-selected_texture = ExtResource("3_xjop4")
+normal_texture = ExtResource("3_72u7s")
+selected_texture = ExtResource("6_nkvsi")
 normal_seleccionado_texture = ExtResource("1_xjop4")
+normal_bloqueado_texture = ExtResource("1_pt8e1")
+selected_bloqueado_texture = ExtResource("5_nkvsi")
 indice = 5
 metadata/_custom_type_script = "uid://dj3paw1yyav35"

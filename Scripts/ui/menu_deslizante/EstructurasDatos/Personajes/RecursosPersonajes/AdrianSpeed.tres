@@ -1,14 +1,18 @@
 [gd_resource type="Resource" script_class="DatosSeleccionPersonajes" format=3 uid="uid://cc3t360j4y110"]
 
 [ext_resource type="Script" uid="uid://dj3paw1yyav35" path="res://Scripts/ui/menu_deslizante/EstructurasDatos/Personajes/DatosSeleccionPersonajes.gd" id="1_63p3l"]
-[ext_resource type="Texture2D" uid="uid://cuewj3vbwdfog" path="res://Sprites/UI/SelectorPersonajes/Personajes/Seleccionado/AdrianSpeed.png" id="1_7557b"]
-[ext_resource type="Texture2D" uid="uid://02sxjou0sov3" path="res://Sprites/UI/SelectorPersonajes/Personajes/NoActual/AdrianSpeed.png" id="1_o8bkf"]
-[ext_resource type="Texture2D" uid="uid://d3i8e5xp1lpcy" path="res://Sprites/UI/SelectorPersonajes/Personajes/Actual/AdrianSpeed.png" id="3_7557b"]
+[ext_resource type="Texture2D" uid="uid://dx6gukbfv6ach" path="res://Sprites/UI/SelectorPersonajes/Personajes/Seleccionado/AdrianSpeed.png" id="1_7557b"]
+[ext_resource type="Texture2D" uid="uid://dn02b7gyfc2o0" path="res://Sprites/UI/SelectorPersonajes/Personajes/NoActualBloq/AdrianSpeed.png" id="1_rpj1b"]
+[ext_resource type="Texture2D" uid="uid://c1vdo0qvwvvqv" path="res://Sprites/UI/SelectorPersonajes/Personajes/NoActual/AdrianSpeed.png" id="3_rpj1b"]
+[ext_resource type="Texture2D" uid="uid://cv8b5mhoxxljm" path="res://Sprites/UI/SelectorPersonajes/Personajes/ActualBloq/AdrianSpeed.png" id="5_ym8kj"]
+[ext_resource type="Texture2D" uid="uid://dqcd5km5fqmtt" path="res://Sprites/UI/SelectorPersonajes/Personajes/Actual/AdrianSpeed.png" id="6_ym8kj"]
 
 [resource]
 script = ExtResource("1_63p3l")
 name = "AdrianSpeed"
-normal_texture = ExtResource("1_o8bkf")
-selected_texture = ExtResource("3_7557b")
+normal_texture = ExtResource("3_rpj1b")
+selected_texture = ExtResource("6_ym8kj")
 normal_seleccionado_texture = ExtResource("1_7557b")
+normal_bloqueado_texture = ExtResource("1_rpj1b")
+selected_bloqueado_texture = ExtResource("5_ym8kj")
 metadata/_custom_type_script = "uid://dj3paw1yyav35"

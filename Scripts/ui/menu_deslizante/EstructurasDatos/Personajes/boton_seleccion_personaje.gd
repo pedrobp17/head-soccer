@@ -13,16 +13,18 @@ const COLOR_ACTIVO_TEXTO = Color("ffd700")
 @onready var texto: Label = %Label
 
 var tiene_foco : bool = false
+var jugador_central : String = ""
 
 func _ready() -> void:
 	cambiar_color_borde(COLOR_NORMAL_BORDE)
-	cambiar_color_texto(COLOR_NORMAL_TEXTO)	
+	cambiar_color_texto(COLOR_NORMAL_TEXTO)
+	selector_personajes.item_changed.connect(on_item_changed)
 
 func _input(event):
 	if !tiene_foco:
 		return 
 	
-	if event.is_action_pressed("ui_accept"):
+	if event.is_action_pressed("ui_accept") and ProgresoPartida.is_personaje_desbloqueado(jugador_central):
 		EventBus.item_selected.emit(selector_personajes.get_current_item())
 		
 func  cambiar_color_borde( color : Color) -> void:
@@ -42,3 +44,6 @@ func cambiar_estado_foco( foco : bool) -> void:
 		cambiar_color_borde(COLOR_NORMAL_BORDE)
 		cambiar_color_texto(COLOR_NORMAL_TEXTO)
 	
+func on_item_changed( indice ,datos : Variant) -> void:
+	jugador_central = datos.name
+	print( jugador_central)

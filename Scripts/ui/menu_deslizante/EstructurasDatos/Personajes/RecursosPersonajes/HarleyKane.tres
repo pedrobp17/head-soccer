@@ -1,15 +1,19 @@
 [gd_resource type="Resource" script_class="DatosSeleccionPersonajes" format=3 uid="uid://ck7a25rvscgd4"]
 
-[ext_resource type="Texture2D" uid="uid://6auon8roqs4m" path="res://Sprites/UI/SelectorPersonajes/Personajes/NoActual/HarleyKane.png" id="1_dmeip"]
-[ext_resource type="Texture2D" uid="uid://bnn0wthnlj50i" path="res://Sprites/UI/SelectorPersonajes/Personajes/Seleccionado/HarleyKane.png" id="1_pjqp2"]
+[ext_resource type="Texture2D" uid="uid://cqxg52gx3vh0h" path="res://Sprites/UI/SelectorPersonajes/Personajes/NoActualBloq/HarleyKane.png" id="1_fccdo"]
+[ext_resource type="Texture2D" uid="uid://blgjn3c6iyx6e" path="res://Sprites/UI/SelectorPersonajes/Personajes/Seleccionado/HarleyKane.png" id="1_pjqp2"]
 [ext_resource type="Script" uid="uid://dj3paw1yyav35" path="res://Scripts/ui/menu_deslizante/EstructurasDatos/Personajes/DatosSeleccionPersonajes.gd" id="1_v0db1"]
-[ext_resource type="Texture2D" uid="uid://dyf304hwhs84a" path="res://Sprites/UI/SelectorPersonajes/Personajes/Actual/HarleyKane.png" id="3_pjqp2"]
+[ext_resource type="Texture2D" uid="uid://bdxsqlm6i7ch2" path="res://Sprites/UI/SelectorPersonajes/Personajes/NoActual/HarleyKane.png" id="3_fccdo"]
+[ext_resource type="Texture2D" uid="uid://dw1dtrlnw4gkc" path="res://Sprites/UI/SelectorPersonajes/Personajes/ActualBloq/HarleyKane.png" id="5_kdgxu"]
+[ext_resource type="Texture2D" uid="uid://b42w51i4x1nuj" path="res://Sprites/UI/SelectorPersonajes/Personajes/Actual/HarleyKane.png" id="6_kdgxu"]
 
 [resource]
 script = ExtResource("1_v0db1")
 name = "HarleyKane"
-normal_texture = ExtResource("1_dmeip")
-selected_texture = ExtResource("3_pjqp2")
+normal_texture = ExtResource("3_fccdo")
+selected_texture = ExtResource("6_kdgxu")
 normal_seleccionado_texture = ExtResource("1_pjqp2")
+normal_bloqueado_texture = ExtResource("1_fccdo")
+selected_bloqueado_texture = ExtResource("5_kdgxu")
 indice = 15
 metadata/_custom_type_script = "uid://dj3paw1yyav35"

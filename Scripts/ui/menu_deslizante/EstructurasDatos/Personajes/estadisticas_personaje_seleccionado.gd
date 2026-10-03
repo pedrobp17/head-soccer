@@ -26,7 +26,7 @@ func on_item_changed(index: int, data: Variant) -> void:
 		set_personaje_default()
 		return
 	
-	nombre.text = NombresPersonajesHelper.get_nombre(datos_personaje.nombre)
+	nombre.text = NombresPersonajesHelper.get_nombre_normal_to_salto_linea(datos_personaje.nombre)
 	escudo.texture = BanderasHelper.get_sprite(datos_personaje.equipo)
 	cuerpo_entero.texture = ImagenJugadorEnteroHelper.get_icono(datos_personaje.nombre)
 	
