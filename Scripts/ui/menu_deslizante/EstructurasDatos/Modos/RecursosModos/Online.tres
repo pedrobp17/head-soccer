@@ -1,8 +1,12 @@
 [gd_resource type="Resource" script_class="DatosModoJuego" format=3 uid="uid://bwqhdt88dtj46"]
 
 [ext_resource type="Script" uid="uid://cnyrrymgnuu3n" path="res://Scripts/ui/menu_deslizante/EstructurasDatos/Modos/DatosModosJuego.gd" id="1_0kk0o"]
+[ext_resource type="Texture2D" uid="uid://wpsrf33li8t5" path="res://Sprites/UI/modos_juego/normal/ModoOnline.png" id="1_vfyu5"]
+[ext_resource type="Texture2D" uid="uid://lri8gxsqydkn" path="res://Sprites/UI/modos_juego/seleccionado/ModoOnline.png" id="3_5aiim"]
 
 [resource]
 script = ExtResource("1_0kk0o")
 name = "Online"
+normal_texture = ExtResource("1_vfyu5")
+selected_texture = ExtResource("3_5aiim")
 metadata/_custom_type_script = "uid://cnyrrymgnuu3n"

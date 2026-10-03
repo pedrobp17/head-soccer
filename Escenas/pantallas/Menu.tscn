@@ -12,7 +12,7 @@
 [ext_resource type="Resource" uid="uid://dobgn2gx6ayb2" path="res://Scripts/ui/menu_deslizante/EstructurasDatos/Modos/RecursosModos/Liga.tres" id="9_f5nau"]
 [ext_resource type="Resource" uid="uid://c4tc14oykjd8u" path="res://Scripts/ui/menu_deslizante/EstructurasDatos/Modos/RecursosModos/Mundial.tres" id="10_4n33b"]
 [ext_resource type="Resource" uid="uid://hobjdgud5qxy" path="res://Scripts/ui/menu_deslizante/EstructurasDatos/Modos/RecursosModos/Pelea.tres" id="11_c7igs"]
-[ext_resource type="Texture2D" uid="uid://n50h308u1mrm" path="res://Sprites/jugadores/personajes/WilburWatkins.png" id="13_u06ut"]
+[ext_resource type="Texture2D" uid="uid://dancky1dnowvr" path="res://Sprites/jugadores/personajesNoBloq/MarkEvans.png" id="13_u06ut"]
 
 [node name="MenuDeslizante" type="Control" unique_id=2104744245]
 layout_mode = 3
@@ -103,5 +103,5 @@ grow_vertical = 2
 
 [node name="PersonajeSeleccion" type="Sprite2D" parent="." unique_id=923300106]
 unique_name_in_owner = true
-position = Vector2(250, 345)
+position = Vector2(250, 295)
 texture = ExtResource("13_u06ut")

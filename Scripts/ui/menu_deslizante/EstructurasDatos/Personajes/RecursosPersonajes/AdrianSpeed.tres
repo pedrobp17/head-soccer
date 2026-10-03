@@ -15,4 +15,5 @@ selected_texture = ExtResource("6_ym8kj")
 normal_seleccionado_texture = ExtResource("1_7557b")
 normal_bloqueado_texture = ExtResource("1_rpj1b")
 selected_bloqueado_texture = ExtResource("5_ym8kj")
+indice = 17
 metadata/_custom_type_script = "uid://dj3paw1yyav35"

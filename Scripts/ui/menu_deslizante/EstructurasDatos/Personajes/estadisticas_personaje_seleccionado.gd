@@ -1,7 +1,7 @@
 extends Control
 class_name EstadisticasPersonajeSeleccionado
 
-const CUERPO_PREDEFINIDO = preload("res://Sprites/jugadores/personajes/MarkEvans.png")
+const CUERPO_PREDEFINIDO = preload("res://Sprites/jugadores/personajesNoBloq/MarkEvans.png")
 const ESCUDO_PREDEFINIDO = preload("res://Sprites/banderas/bandera-raimon.png")
 const PODERES_PREDEFINIDO = preload("res://Sprites/poderes/Poder.png")
 const ESTADISTICA_PREDEFINIDA = 5
