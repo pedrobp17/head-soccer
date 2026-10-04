@@ -1,8 +1,45 @@
 [gd_scene format=3 uid="uid://cmur33aolhglx"]
 
 [ext_resource type="Texture2D" uid="uid://emvdemyc862y" path="res://Sprites/pantallas/PantallaTorneo.png" id="1_p660u"]
+[ext_resource type="Script" uid="uid://cp8p3o3qgejbd" path="res://Scripts/pantallas/torneo/torneo.gd" id="1_v7tjj"]
+[ext_resource type="Texture2D" uid="uid://dswx1ri2v2tsf" path="res://Sprites/pantallas/Captura de pantalla 2026-10-04 122547.png" id="2_5gpbi"]
+[ext_resource type="Texture2D" uid="uid://bl85djy8uj8om" path="res://Sprites/UI/Copa.png" id="3_7f8ow"]
+[ext_resource type="Texture2D" uid="uid://clgm1yytehk23" path="res://Sprites/UI/torneo/Braquets.png" id="4_tp2ac"]
+[ext_resource type="Texture2D" uid="uid://dcuef0gm4m78r" path="res://Sprites/UI/torneo/Cuartos1_Win1.png" id="5_oyqmp"]
+[ext_resource type="Texture2D" uid="uid://bbvf1d1rq2rp" path="res://Sprites/UI/torneo/Cuartos1_Win2.png" id="6_v7tjj"]
+[ext_resource type="Texture2D" uid="uid://bhxafk6ikqmts" path="res://Sprites/UI/torneo/Cuartos2_Win1.png" id="7_vq41w"]
+[ext_resource type="Texture2D" uid="uid://68eldsevgamq" path="res://Sprites/UI/torneo/Cuartos2_Win2.png" id="8_0vg5m"]
+[ext_resource type="Texture2D" uid="uid://c0rs7h00hxyvv" path="res://Sprites/UI/torneo/Cuartos3_Win1.png" id="9_2tiiq"]
+[ext_resource type="Texture2D" uid="uid://d0eawhh01a8ma" path="res://Sprites/UI/torneo/Cuartos3_Win2.png" id="10_6wy7o"]
+[ext_resource type="Texture2D" uid="uid://yahl2nj8ytjm" path="res://Sprites/UI/torneo/Cuartos4_Win1.png" id="11_l3hj8"]
+[ext_resource type="Texture2D" uid="uid://cw4y1bj8gym5b" path="res://Sprites/UI/torneo/Cuartos4_Win2.png" id="12_sco7c"]
+[ext_resource type="Texture2D" uid="uid://cbnb5fxrnackc" path="res://Sprites/UI/torneo/Semis1_Win1.png" id="13_xocfs"]
+[ext_resource type="Texture2D" uid="uid://byrxvbvqguhyf" path="res://Sprites/UI/torneo/Semis1_Win2.png" id="14_5omy3"]
+[ext_resource type="Texture2D" uid="uid://cgog6ry0s6sf8" path="res://Sprites/UI/torneo/Semis2_Win1.png" id="15_3okjq"]
+[ext_resource type="Texture2D" uid="uid://djv4v6piv814w" path="res://Sprites/UI/torneo/Semis2_Win2.png" id="16_fea6j"]
+[ext_resource type="PackedScene" uid="uid://bajeoiubckdh3" path="res://Escenas/ui/Cartas/cartas_seleccion_torneo.tscn" id="18_vq41w"]
 
-[node name="Control" type="Control" unique_id=220551738]
+[node name="Torneo" type="Node" unique_id=1569456997]
+script = ExtResource("1_v7tjj")
+
+[node name="Base" type="TextureRect" parent="." unique_id=1857616346]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_p660u")
+
+[node name="Ayuda" type="TextureRect" parent="." unique_id=1660467735]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_5gpbi")
+
+[node name="PlaceholdersPosiciones" type="Control" parent="." unique_id=972757629]
+unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -10,11 +47,230 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Base" type="TextureRect" parent="." unique_id=1857616346]
+[node name="Cuartos1" type="Node2D" parent="PlaceholdersPosiciones" unique_id=1842840284]
+position = Vector2(156, 128)
+
+[node name="Cuartos2" type="Node2D" parent="PlaceholdersPosiciones" unique_id=337054732]
+position = Vector2(156, 256)
+
+[node name="Cuartos3" type="Node2D" parent="PlaceholdersPosiciones" unique_id=427161391]
+position = Vector2(156, 384)
+
+[node name="Cuartos4" type="Node2D" parent="PlaceholdersPosiciones" unique_id=1190514083]
+position = Vector2(156, 512)
+
+[node name="Cuartos5" type="Node2D" parent="PlaceholdersPosiciones" unique_id=2014418464]
+position = Vector2(996, 128)
+
+[node name="Cuartos6" type="Node2D" parent="PlaceholdersPosiciones" unique_id=1208077881]
+position = Vector2(996, 256)
+
+[node name="Cuartos7" type="Node2D" parent="PlaceholdersPosiciones" unique_id=1568791418]
+position = Vector2(996, 384)
+
+[node name="Cuartos8" type="Node2D" parent="PlaceholdersPosiciones" unique_id=252216418]
+position = Vector2(996, 512)
+
+[node name="Semis1" type="Node2D" parent="PlaceholdersPosiciones" unique_id=630307469]
+position = Vector2(376, 256)
+
+[node name="Semis2" type="Node2D" parent="PlaceholdersPosiciones" unique_id=2083111521]
+position = Vector2(376, 384)
+
+[node name="Semis3" type="Node2D" parent="PlaceholdersPosiciones" unique_id=2026193422]
+position = Vector2(777, 256)
+
+[node name="Semis4" type="Node2D" parent="PlaceholdersPosiciones" unique_id=683409848]
+position = Vector2(777, 384)
+
+[node name="Final1" type="Node2D" parent="PlaceholdersPosiciones" unique_id=1851889838]
+position = Vector2(576, 128)
+
+[node name="Final2" type="Node2D" parent="PlaceholdersPosiciones" unique_id=28476686]
+position = Vector2(592, 595)
+
+[node name="Trofeo" type="TextureRect" parent="." unique_id=1855355685]
+visible = false
+offset_left = 439.0
+offset_top = 182.0
+offset_right = 739.0
+offset_bottom = 495.0
+texture = ExtResource("3_7f8ow")
+
+[node name="Braquets" type="Control" parent="." unique_id=375320724]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Base" type="TextureRect" parent="Braquets" unique_id=1346210027]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_tp2ac")
+
+[node name="IndicadoresGanadores" type="Control" parent="Braquets" unique_id=18947043]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_p660u")
+
+[node name="Cuartos1_Win1" type="TextureProgressBar" parent="Braquets/IndicadoresGanadores" unique_id=45440603]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_progress = ExtResource("5_oyqmp")
+
+[node name="Cuartos1_Win2" type="TextureProgressBar" parent="Braquets/IndicadoresGanadores" unique_id=2028512610]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_progress = ExtResource("6_v7tjj")
+
+[node name="Cuartos2_Win1" type="TextureProgressBar" parent="Braquets/IndicadoresGanadores" unique_id=1332288475]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_progress = ExtResource("7_vq41w")
+
+[node name="Cuartos2_Win2" type="TextureProgressBar" parent="Braquets/IndicadoresGanadores" unique_id=66199750]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_progress = ExtResource("8_0vg5m")
+
+[node name="Cuartos3_Win1" type="TextureProgressBar" parent="Braquets/IndicadoresGanadores" unique_id=581159102]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+fill_mode = 1
+texture_progress = ExtResource("9_2tiiq")
+
+[node name="Cuartos3_Win2" type="TextureProgressBar" parent="Braquets/IndicadoresGanadores" unique_id=1916153090]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+fill_mode = 1
+texture_progress = ExtResource("10_6wy7o")
+
+[node name="Cuartos4_Win1" type="TextureProgressBar" parent="Braquets/IndicadoresGanadores" unique_id=1705883729]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+fill_mode = 1
+texture_progress = ExtResource("11_l3hj8")
+
+[node name="Cuartos4_Win2" type="TextureProgressBar" parent="Braquets/IndicadoresGanadores" unique_id=1594489921]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+fill_mode = 1
+texture_progress = ExtResource("12_sco7c")
+
+[node name="Semis1_Win1" type="TextureProgressBar" parent="Braquets/IndicadoresGanadores" unique_id=290879189]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_progress = ExtResource("13_xocfs")
+
+[node name="Semis1_Win2" type="TextureProgressBar" parent="Braquets/IndicadoresGanadores" unique_id=1509148556]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_progress = ExtResource("14_5omy3")
+
+[node name="Semis2_Win1" type="TextureProgressBar" parent="Braquets/IndicadoresGanadores" unique_id=1694556112]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+fill_mode = 1
+texture_progress = ExtResource("15_3okjq")
+
+[node name="Semis2_Win2" type="TextureProgressBar" parent="Braquets/IndicadoresGanadores" unique_id=251515326]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+fill_mode = 1
+texture_progress = ExtResource("16_fea6j")
+
+[node name="Participantes" type="Control" parent="." unique_id=1737392959]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Participante1" parent="Participantes" unique_id=105413155 instance=ExtResource("18_vq41w")]
+layout_mode = 0
+
+[node name="Participante2" parent="Participantes" unique_id=1874907020 instance=ExtResource("18_vq41w")]
+layout_mode = 0
+
+[node name="Participante3" parent="Participantes" unique_id=116795537 instance=ExtResource("18_vq41w")]
+layout_mode = 0
+
+[node name="Participante4" parent="Participantes" unique_id=244713700 instance=ExtResource("18_vq41w")]
+layout_mode = 0
+
+[node name="Participante5" parent="Participantes" unique_id=626008241 instance=ExtResource("18_vq41w")]
+layout_mode = 0
+
+[node name="Participante6" parent="Participantes" unique_id=553723905 instance=ExtResource("18_vq41w")]
+layout_mode = 0
+
+[node name="Participante7" parent="Participantes" unique_id=820030948 instance=ExtResource("18_vq41w")]
+layout_mode = 0
+
+[node name="Participante8" parent="Participantes" unique_id=221982332 instance=ExtResource("18_vq41w")]
+layout_mode = 0

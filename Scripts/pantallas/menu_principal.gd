@@ -1,4 +1,5 @@
-extends Control
+extends Pantallas
+class_name MenuPrincipal
 	
 const mapa_seleccion_opciones : Dictionary ={
 	"neutro" : -1,
@@ -21,8 +22,8 @@ func _ready():
 	show_escena_menu()
 	cambiar_foco_escena(true)
 	actualizar_selector(mapa_seleccion_opciones["neutro"])
-	EventBus.item_selected.connect(on_item_selected)
-
+	EventBus.item_selected_personajes.connect(on_item_selected_personajes)
+	EventBus.item_selected_modos.connect(on_item_selected_modos)
 func _input(event):
 
 	#TRANSICION: menu -> panel_superior
@@ -95,11 +96,14 @@ func actualizar_selector(id : int):
 		personajes_sel.hide()
 		menu_sel.hide()
 
-func on_item_selected(datos : Variant) -> void:
-	if escena_actual == mapa_seleccion_opciones["personajes"]:
-		item_seleccionado_personajes = datos.indice
-		nombre_personaje_seleccionado = datos.name
-		
+func on_item_selected_personajes(datos : Variant) -> void:
+	item_seleccionado_personajes = datos.indice
+	nombre_personaje_seleccionado = datos.name
+	
+func on_item_selected_modos( datos : Variant) -> void:
+	ControladorPartido.jugadores[0] = DatosJugadores.get_jugador(nombre_personaje_seleccionado).nombre
+	transicion_pantallas(datos.pantalla)
+	
 func show_escena_menu() -> void:
 	selector_personajes.hide()
 	menu_deslizante.show()

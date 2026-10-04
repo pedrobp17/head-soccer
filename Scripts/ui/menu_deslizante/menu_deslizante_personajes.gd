@@ -15,7 +15,7 @@ func _ready():
 	super()
 
 	set_items(modes)
-	EventBus.item_selected.connect(_al_confirmar_personaje)
+	EventBus.item_selected_personajes.connect(_al_confirmar_personaje)
 
 func get_center_slot() -> int:
 	return visible_slots / 2

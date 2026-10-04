@@ -52,17 +52,12 @@ corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
-[node name="MenuPrincipal" type="Control" unique_id=1871232871]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="MenuPrincipal" type="Node" unique_id=619859490]
 script = ExtResource("1_iqy7g")
 
 [node name="MenuSeleccionado_Personajes" type="Control" parent="." unique_id=1263790870]
 z_index = 1
+layout_mode = 3
 anchors_preset = 0
 offset_left = 448.0
 offset_right = 704.0
@@ -121,6 +116,7 @@ text = "SKIN"
 [node name="Menu_Personajes" type="Control" parent="." unique_id=674685957]
 visible = false
 z_index = 1
+layout_mode = 3
 anchors_preset = 0
 offset_left = 448.0
 offset_right = 704.0
@@ -177,6 +173,7 @@ text = "SKIN"
 [node name="Menu_PersonajesSeleccionado" type="Control" parent="." unique_id=1585765720]
 visible = false
 z_index = 1
+layout_mode = 3
 anchors_preset = 0
 offset_left = 448.0
 offset_right = 704.0
@@ -229,7 +226,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "SKIN"
 
 [node name="Contenido" type="Control" parent="." unique_id=1165322715]
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -247,7 +244,6 @@ layout_mode = 1
 [node name="Fps" type="Label" parent="." unique_id=1533829200]
 unique_name_in_owner = true
 visible = false
-layout_mode = 0
 offset_left = 559.0
 offset_top = 73.0
 offset_right = 599.0

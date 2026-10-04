@@ -9,4 +9,5 @@ script = ExtResource("1_bc6qw")
 name = "Liga"
 normal_texture = ExtResource("1_arjay")
 selected_texture = ExtResource("3_v6kjl")
+pantalla = 3
 metadata/_custom_type_script = "uid://cnyrrymgnuu3n"

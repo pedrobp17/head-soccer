@@ -9,4 +9,5 @@ script = ExtResource("2_htlrp")
 name = "Survival"
 normal_texture = ExtResource("1_yeefb")
 selected_texture = ExtResource("3_l48fe")
+pantalla = 3
 metadata/_custom_type_script = "uid://cnyrrymgnuu3n"

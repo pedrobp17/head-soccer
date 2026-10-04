@@ -1,6 +1,6 @@
 class_name KeyUtils
 
-enum Accion {DERECHA, IZQUIERDA, SALTO, PATADA, PODER}
+enum Accion {DERECHA, IZQUIERDA, SALTO, PATADA, PODER, BACK}
 
 const MAPA_ACCIONES : Dictionary = {
 	Jugador.ControlScheme.P1: {
@@ -9,6 +9,7 @@ const MAPA_ACCIONES : Dictionary = {
 		Accion.SALTO: "p1_jump",
 		Accion.PATADA: "p1_kick",
 		Accion.PODER: "p1_poder",
+		Accion.BACK: "p1_back",
 	},
 	Jugador.ControlScheme.P2: {
 		Accion.DERECHA: "p2_right",

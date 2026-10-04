@@ -29,7 +29,7 @@ func _input(event):
 	
 	if event.is_action_pressed("ui_accept"):
 		if ProgresoPartida.is_personaje_desbloqueado(jugador_central.name):
-			EventBus.item_selected.emit(selector_personajes.get_current_item())
+			EventBus.item_selected_personajes.emit(selector_personajes.get_current_item())
 		else:
 			pass
 			

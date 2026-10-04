@@ -15,7 +15,6 @@ var marcador : Array[int] = [0,0]
 
 func _ready() -> void:
 	tiempo_restante = DURACION_JUEGO_SEGUNDOS
-	cambiar_estado(Estado.JUGANDO)
 	
 func cambiar_estado(estado : Estado, datos : DatosEstadoJuego = DatosEstadoJuego.new()) -> void:
 	if estado_actual != null:
@@ -25,6 +24,9 @@ func cambiar_estado(estado : Estado, datos : DatosEstadoJuego = DatosEstadoJuego
 	estado_actual.peticion_transmitir_estado.connect(cambiar_estado.bind())
 	estado_actual.name = "MaquinaEstadoJuego: " + str(estado)
 	call_deferred("add_child", estado_actual)
+
+func empezar_juego() -> void:
+	cambiar_estado(Estado.RESETEO)
 
 func jugando_solitario() -> bool:
 	return setup_jugador[1].is_empty()

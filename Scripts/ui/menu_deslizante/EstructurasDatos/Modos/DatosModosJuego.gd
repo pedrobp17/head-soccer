@@ -5,3 +5,5 @@ class_name DatosModoJuego
 
 @export var normal_texture : Texture2D
 @export var selected_texture : Texture2D
+
+@export var pantalla : HeadSoccer.Pantalla 

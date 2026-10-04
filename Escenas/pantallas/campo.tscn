@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://c825xiggbfduj"]
 
+[ext_resource type="Script" uid="uid://b7q4yihmyw2d3" path="res://Scripts/pantallas/campo.gd" id="1_cya7r"]
 [ext_resource type="Texture2D" uid="uid://ddpdk6g68cged" path="res://Sprites/objetos_estadio/estadio.png" id="2_nihhg"]
 [ext_resource type="PackedScene" uid="uid://drbdxstxvyn5s" path="res://Escenas/objetos_campo/porteriaTrasera.tscn" id="3_gx6bm"]
 [ext_resource type="PackedScene" uid="uid://c8m027jxyqtr1" path="res://Escenas/objetos_campo/pelota.tscn" id="6_fj5fn"]
@@ -19,7 +20,8 @@ size = Vector2(2001, 158)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7o1am"]
 size = Vector2(178, 1028)
 
-[node name="Campo" type="Node2D" unique_id=1716950898]
+[node name="Campo" type="Node" unique_id=675299582]
+script = ExtResource("1_cya7r")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1110244800]
 position = Vector2(-1, -74)

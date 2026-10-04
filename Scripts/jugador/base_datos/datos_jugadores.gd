@@ -29,3 +29,6 @@ func get_jugador(jugador: String) -> RecursosJugador:
 		return jugadores[jugador]
 	return null
 	
+
+func get_array_jugadores() -> Array[RecursosJugador]:
+	return jugadores.values()

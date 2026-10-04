@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bajeoiubckdh3"]
 
 [ext_resource type="Texture2D" uid="uid://bvyukfs0xlhif" path="res://Sprites/jugadores/iconos_torneos/AdrianSpeed.png" id="1_amvha"]
+[ext_resource type="Script" uid="uid://bqiin32k3xn00" path="res://Scripts/pantallas/torneo/cartas_torneo.gd" id="1_d3u8b"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eu64u"]
 bg_color = Color(0.2627451, 0.2627451, 0.30980393, 1)
@@ -28,6 +29,8 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+pivot_offset = Vector2(96, 64)
+script = ExtResource("1_d3u8b")
 
 [node name="Panel" type="Panel" parent="." unique_id=2136148697]
 layout_mode = 1
@@ -39,6 +42,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_eu64u")
 
 [node name="Personaje" type="TextureRect" parent="." unique_id=478685556]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -48,6 +52,7 @@ grow_vertical = 2
 texture = ExtResource("1_amvha")
 
 [node name="Marco" type="Panel" parent="." unique_id=1702469657]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

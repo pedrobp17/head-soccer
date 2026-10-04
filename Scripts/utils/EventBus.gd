@@ -14,4 +14,5 @@ signal cambio_marcador( indice : int)
 signal fin_animacion_gol
 signal fin_partido( jugador_ganador : String , marcador : Array[int])
 signal en_tiempo_extra()
-signal item_selected(data: Variant)
+signal item_selected_personajes(data: Variant)
+signal item_selected_modos(data: Variant)
