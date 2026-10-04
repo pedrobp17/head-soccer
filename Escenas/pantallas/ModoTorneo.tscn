@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cmur33aolhglx"]
 
 [ext_resource type="Texture2D" uid="uid://emvdemyc862y" path="res://Sprites/pantallas/PantallaTorneo.png" id="1_p660u"]
-[ext_resource type="Script" uid="uid://cp8p3o3qgejbd" path="res://Scripts/pantallas/torneo/torneo.gd" id="1_v7tjj"]
+[ext_resource type="Script" uid="uid://cp8p3o3qgejbd" path="res://Scripts/pantallas/torneo/Pantallatorneo.gd" id="1_v7tjj"]
 [ext_resource type="Texture2D" uid="uid://dswx1ri2v2tsf" path="res://Sprites/pantallas/Captura de pantalla 2026-10-04 122547.png" id="2_5gpbi"]
 [ext_resource type="Texture2D" uid="uid://bl85djy8uj8om" path="res://Sprites/UI/Copa.png" id="3_7f8ow"]
 [ext_resource type="Texture2D" uid="uid://clgm1yytehk23" path="res://Sprites/UI/torneo/Braquets.png" id="4_tp2ac"]
@@ -31,65 +31,13 @@ grow_vertical = 2
 texture = ExtResource("1_p660u")
 
 [node name="Ayuda" type="TextureRect" parent="." unique_id=1660467735]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_5gpbi")
-
-[node name="PlaceholdersPosiciones" type="Control" parent="." unique_id=972757629]
-unique_name_in_owner = true
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 32.0
-offset_bottom = 32.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Cuartos1" type="Node2D" parent="PlaceholdersPosiciones" unique_id=1842840284]
-position = Vector2(156, 128)
-
-[node name="Cuartos2" type="Node2D" parent="PlaceholdersPosiciones" unique_id=337054732]
-position = Vector2(156, 256)
-
-[node name="Cuartos3" type="Node2D" parent="PlaceholdersPosiciones" unique_id=427161391]
-position = Vector2(156, 384)
-
-[node name="Cuartos4" type="Node2D" parent="PlaceholdersPosiciones" unique_id=1190514083]
-position = Vector2(156, 512)
-
-[node name="Cuartos5" type="Node2D" parent="PlaceholdersPosiciones" unique_id=2014418464]
-position = Vector2(996, 128)
-
-[node name="Cuartos6" type="Node2D" parent="PlaceholdersPosiciones" unique_id=1208077881]
-position = Vector2(996, 256)
-
-[node name="Cuartos7" type="Node2D" parent="PlaceholdersPosiciones" unique_id=1568791418]
-position = Vector2(996, 384)
-
-[node name="Cuartos8" type="Node2D" parent="PlaceholdersPosiciones" unique_id=252216418]
-position = Vector2(996, 512)
-
-[node name="Semis1" type="Node2D" parent="PlaceholdersPosiciones" unique_id=630307469]
-position = Vector2(376, 256)
-
-[node name="Semis2" type="Node2D" parent="PlaceholdersPosiciones" unique_id=2083111521]
-position = Vector2(376, 384)
-
-[node name="Semis3" type="Node2D" parent="PlaceholdersPosiciones" unique_id=2026193422]
-position = Vector2(777, 256)
-
-[node name="Semis4" type="Node2D" parent="PlaceholdersPosiciones" unique_id=683409848]
-position = Vector2(777, 384)
-
-[node name="Final1" type="Node2D" parent="PlaceholdersPosiciones" unique_id=1851889838]
-position = Vector2(576, 160)
-
-[node name="Final2" type="Node2D" parent="PlaceholdersPosiciones" unique_id=28476686]
-position = Vector2(576, 480)
 
 [node name="Trofeo" type="TextureRect" parent="." unique_id=1855355685]
 visible = false
@@ -248,53 +196,134 @@ grow_vertical = 2
 fill_mode = 1
 texture_progress = ExtResource("16_fea6j")
 
-[node name="Participantes" type="Control" parent="." unique_id=1737392959]
-unique_name_in_owner = true
+[node name="PlaceholdersPosiciones" type="Control" parent="." unique_id=972757629]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 offset_top = 32.0
-offset_right = 40.0
-offset_bottom = 72.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Participante1" parent="Participantes" unique_id=105413155 instance=ExtResource("18_vq41w")]
-layout_mode = 0
+[node name="Cuartos" type="Control" parent="PlaceholdersPosiciones" unique_id=421678669]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Participante2" parent="Participantes" unique_id=1874907020 instance=ExtResource("18_vq41w")]
-layout_mode = 0
-
-[node name="Participante3" parent="Participantes" unique_id=116795537 instance=ExtResource("18_vq41w")]
-layout_mode = 0
-
-[node name="Participante4" parent="Participantes" unique_id=244713700 instance=ExtResource("18_vq41w")]
-layout_mode = 0
-
-[node name="Participante5" parent="Participantes" unique_id=626008241 instance=ExtResource("18_vq41w")]
-layout_mode = 0
-offset_left = 480.0
-offset_top = 426.0
-offset_right = 672.0
-offset_bottom = 554.0
-
-[node name="Participante6" parent="Participantes" unique_id=553723905 instance=ExtResource("18_vq41w")]
-layout_mode = 0
-offset_left = 480.0
-offset_top = 96.0
-offset_right = 672.0
-offset_bottom = 224.0
-
-[node name="Participante7" parent="Participantes" unique_id=820030948 instance=ExtResource("18_vq41w")]
+[node name="Participante1" parent="PlaceholdersPosiciones/Cuartos" unique_id=550289483 instance=ExtResource("18_vq41w")]
 layout_mode = 0
 offset_left = 60.0
 offset_top = 64.0
 offset_right = 252.0
 offset_bottom = 192.0
 
-[node name="Paticipante8" parent="Participantes" unique_id=221982332 instance=ExtResource("18_vq41w")]
+[node name="Participante2" parent="PlaceholdersPosiciones/Cuartos" unique_id=1617517682 instance=ExtResource("18_vq41w")]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 192.0
+offset_right = 252.0
+offset_bottom = 320.0
+
+[node name="Participante3" parent="PlaceholdersPosiciones/Cuartos" unique_id=1684205308 instance=ExtResource("18_vq41w")]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 320.0
+offset_right = 252.0
+offset_bottom = 448.0
+
+[node name="Participante4" parent="PlaceholdersPosiciones/Cuartos" unique_id=927435444 instance=ExtResource("18_vq41w")]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 448.0
+offset_right = 252.0
+offset_bottom = 576.0
+
+[node name="Participante5" parent="PlaceholdersPosiciones/Cuartos" unique_id=700415446 instance=ExtResource("18_vq41w")]
+layout_mode = 0
+offset_left = 900.0
+offset_top = 64.0
+offset_right = 1092.0
+offset_bottom = 192.0
+
+[node name="Participante6" parent="PlaceholdersPosiciones/Cuartos" unique_id=1159492377 instance=ExtResource("18_vq41w")]
+layout_mode = 0
+offset_left = 900.0
+offset_top = 192.0
+offset_right = 1092.0
+offset_bottom = 320.0
+
+[node name="Participante7" parent="PlaceholdersPosiciones/Cuartos" unique_id=937731008 instance=ExtResource("18_vq41w")]
+layout_mode = 0
+offset_left = 900.0
+offset_top = 320.0
+offset_right = 1092.0
+offset_bottom = 448.0
+
+[node name="Participante8" parent="PlaceholdersPosiciones/Cuartos" unique_id=891105647 instance=ExtResource("18_vq41w")]
 layout_mode = 0
 offset_left = 900.0
 offset_top = 448.0
 offset_right = 1092.0
 offset_bottom = 576.0
+
+[node name="Semis" type="Control" parent="PlaceholdersPosiciones" unique_id=425561353]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Participante1" parent="PlaceholdersPosiciones/Semis" unique_id=1985073030 instance=ExtResource("18_vq41w")]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 192.0
+offset_right = 472.0
+offset_bottom = 320.0
+
+[node name="Participante2" parent="PlaceholdersPosiciones/Semis" unique_id=851486275 instance=ExtResource("18_vq41w")]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 320.0
+offset_right = 472.0
+offset_bottom = 448.0
+
+[node name="Participante3" parent="PlaceholdersPosiciones/Semis" unique_id=128781222 instance=ExtResource("18_vq41w")]
+layout_mode = 0
+offset_left = 681.0
+offset_top = 192.0
+offset_right = 873.0
+offset_bottom = 320.0
+
+[node name="Participante4" parent="PlaceholdersPosiciones/Semis" unique_id=608012093 instance=ExtResource("18_vq41w")]
+layout_mode = 0
+offset_left = 681.0
+offset_top = 320.0
+offset_right = 873.0
+offset_bottom = 448.0
+
+[node name="Final" type="Control" parent="PlaceholdersPosiciones" unique_id=1048594281]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Participante1" parent="PlaceholdersPosiciones/Final" unique_id=1379403920 instance=ExtResource("18_vq41w")]
+layout_mode = 0
+offset_left = 480.0
+offset_top = 96.0
+offset_right = 672.0
+offset_bottom = 224.0
+
+[node name="Participante2" parent="PlaceholdersPosiciones/Final" unique_id=636901020 instance=ExtResource("18_vq41w")]
+layout_mode = 0
+offset_left = 480.0
+offset_top = 416.0
+offset_right = 672.0
+offset_bottom = 544.0
 
 [node name="Indicador" type="Label" parent="." unique_id=386682290]
 offset_left = 638.0
@@ -311,8 +340,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -207.0
+offset_top = 19.0
 offset_right = 527.0
-offset_bottom = 76.0
+offset_bottom = 95.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 0.84313726, 0, 1)
 theme_override_constants/outline_size = 10

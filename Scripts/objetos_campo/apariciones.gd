@@ -13,16 +13,16 @@ var jugador_visitante : Jugador = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	jugador_local = aparecer_jugador(ControladorPartido.enfrentamiento.jugador_local, Jugador.BANDO[false], ControladorPartido.enfrentamiento.poder_local)
-	porteria_local.inicializar(ControladorPartido.enfrentamiento.jugador_visitante)
-	jugador_visitante = aparecer_jugador(ControladorPartido.enfrentamiento.jugador_visitante, Jugador.BANDO[true], ControladorPartido.enfrentamiento.poder_visitante)
-	porteria_visitante.inicializar(ControladorPartido.enfrentamiento.jugador_local)
+	jugador_local = aparecer_jugador(ControladorPartido.enfrentamiento.config_jugador_local, Jugador.BANDO[false])
+	porteria_local.inicializar(ControladorPartido.enfrentamiento.config_jugador_visitante.jugador)
+	jugador_visitante = aparecer_jugador(ControladorPartido.enfrentamiento.config_jugador_visitante, Jugador.BANDO[true])
+	porteria_visitante.inicializar(ControladorPartido.enfrentamiento.config_jugador_local.jugador)
 	set_controladores_personajes()
 	
-func aparecer_jugador( jugador : String, identificador_bando : int, poder : String) -> Jugador:
-	var datos_jugador := DatosJugadores.get_jugador(jugador)
+func aparecer_jugador( config_jugador : ConfiguracionJugadorPartido, identificador_bando : int) -> Jugador:
+	var datos_jugador := DatosJugadores.get_jugador(config_jugador.jugador)
 	var posicion_jugador := aparicion.get_child(0).global_position as Vector2
-	var instancia_jugador := crear_jugador(posicion_jugador, datos_jugador, identificador_bando, poder)
+	var instancia_jugador := crear_jugador(posicion_jugador, datos_jugador, identificador_bando, config_jugador.poder)
 	add_child(instancia_jugador)
 	return instancia_jugador
 	

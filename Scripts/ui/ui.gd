@@ -43,8 +43,8 @@ func actualizar_marcador() -> void:
 	marcador[1].text = str(ControladorPartido.enfrentamiento.goles_visitante)
 
 func actualizar_nombres_personajes() -> void:
-	nombres_personajes[0].text = ControladorPartido.enfrentamiento.jugador_local
-	nombres_personajes[1].text = ControladorPartido.enfrentamiento.jugador_visitante
+	nombres_personajes[0].text = ControladorPartido.enfrentamiento.config_jugador_local.jugador
+	nombres_personajes[1].text = ControladorPartido.enfrentamiento.config_jugador_visitante.jugador
 	
 func actualizar_estadisticas_jugadores() -> void: 
 	for i in NUM_JUGADORES:
@@ -61,8 +61,8 @@ func actualizar_poder() -> void:
 		barras_poder[i].inicializar_poder(estadisticas_jugadores[i].get_estadistica("power"))
 		
 func actualizar_imagenes_personajes() -> void:
-	imagenes_personajes[0].texture = ImagenesJugadoresHelper.get_icono(ControladorPartido.enfrentamiento.jugador_local)
-	imagenes_personajes[1].texture = ImagenesJugadoresHelper.get_icono(ControladorPartido.enfrentamiento.jugador_visitante)
+	imagenes_personajes[0].texture = ImagenesJugadoresHelper.get_icono(ControladorPartido.enfrentamiento.config_jugador_local.jugador)
+	imagenes_personajes[1].texture = ImagenesJugadoresHelper.get_icono(ControladorPartido.enfrentamiento.config_jugador_visitante.jugador)
 
 func actualizar_reloj() -> void:
 	temporizador.set_valor( ControladorPartido.tiempo_restante)
@@ -86,7 +86,7 @@ func on_gol(_jugador_anotador : String) -> void:
 		animacion_gol.animar()
 	
 func on_cambio_marcador( jugador_anotador : String) -> void: 
-	var indice_jugador_anotador = 0 if jugador_anotador == ControladorPartido.enfrentamiento.jugador_local else 1
+	var indice_jugador_anotador = 0 if jugador_anotador == ControladorPartido.enfrentamiento.config_jugador_local.jugador else 1
 	marcador[indice_jugador_anotador].text = str(ControladorPartido.enfrentamiento.goles_jugador(jugador_anotador))
 	barras_poder[posmod(indice_jugador_anotador + 1, NUM_JUGADORES)].incremento_gol()
 	

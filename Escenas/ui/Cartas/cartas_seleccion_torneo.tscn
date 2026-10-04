@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://bajeoiubckdh3"]
 
-[ext_resource type="Texture2D" uid="uid://bvyukfs0xlhif" path="res://Sprites/jugadores/iconos_torneos/AdrianSpeed.png" id="1_amvha"]
 [ext_resource type="Script" uid="uid://bqiin32k3xn00" path="res://Scripts/pantallas/torneo/cartas_torneo.gd" id="1_d3u8b"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eu64u"]
@@ -49,7 +48,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_amvha")
 
 [node name="Marco" type="Panel" parent="." unique_id=1702469657]
 unique_name_in_owner = true
