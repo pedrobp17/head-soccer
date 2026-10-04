@@ -14,7 +14,8 @@ const mapa_seleccion_opciones : Dictionary ={
 
 var en_menu_superior := false
 var escena_actual := mapa_seleccion_opciones["menu"] 
-var item_seleccionado_personajes := -1
+var item_seleccionado_personajes := 0
+var nombre_personaje_seleccionado := "MarkEvans"
 
 func _ready():
 	show_escena_menu()
@@ -97,6 +98,7 @@ func actualizar_selector(id : int):
 func on_item_selected(datos : Variant) -> void:
 	if escena_actual == mapa_seleccion_opciones["personajes"]:
 		item_seleccionado_personajes = datos.indice
+		nombre_personaje_seleccionado = datos.name
 		
 func show_escena_menu() -> void:
 	selector_personajes.hide()

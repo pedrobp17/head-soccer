@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://bajeoiubckdh3"]
+
+[ext_resource type="Texture2D" uid="uid://bvyukfs0xlhif" path="res://Sprites/jugadores/iconos_torneos/AdrianSpeed.png" id="1_amvha"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eu64u"]
+bg_color = Color(0.2627451, 0.2627451, 0.30980393, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.8, 0.8, 0.8, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a8ku5"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[node name="CartasSeleccionTorneo" type="Control" unique_id=105413155]
+custom_minimum_size = Vector2(192, 128)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="." unique_id=2136148697]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_eu64u")
+
+[node name="Personaje" type="TextureRect" parent="." unique_id=478685556]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_amvha")
+
+[node name="Marco" type="Panel" parent="." unique_id=1702469657]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_a8ku5")

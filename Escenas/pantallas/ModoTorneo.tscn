@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cmur33aolhglx"]
+
+[ext_resource type="Texture2D" uid="uid://emvdemyc862y" path="res://Sprites/pantallas/PantallaTorneo.png" id="1_p660u"]
+
+[node name="Control" type="Control" unique_id=220551738]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Base" type="TextureRect" parent="." unique_id=1857616346]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_p660u")

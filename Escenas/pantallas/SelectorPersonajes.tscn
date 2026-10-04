@@ -11,7 +11,6 @@
 [ext_resource type="Resource" uid="uid://byp4mbmy8fnxo" path="res://Scripts/ui/menu_deslizante/EstructurasDatos/Personajes/RecursosPersonajes/JudeSharp.tres" id="6_5hy0c"]
 [ext_resource type="Resource" uid="uid://ck7a25rvscgd4" path="res://Scripts/ui/menu_deslizante/EstructurasDatos/Personajes/RecursosPersonajes/HarleyKane.tres" id="7_tyrni"]
 [ext_resource type="Resource" uid="uid://chwg5d26wnyj2" path="res://Scripts/ui/menu_deslizante/EstructurasDatos/Personajes/RecursosPersonajes/KatieBrown.tres" id="8_7cer4"]
-[ext_resource type="Texture2D" path="res://Sprites/jugadores/personajes/XavierFoster.png" id="8_ttw5l"]
 [ext_resource type="Resource" uid="uid://d3pjv81gagyjo" path="res://Scripts/ui/menu_deslizante/EstructurasDatos/Personajes/RecursosPersonajes/SteveEagle.tres" id="9_ia51c"]
 [ext_resource type="PackedScene" uid="uid://bucl2yhywlrrs" path="res://Escenas/ui/Cartas/CartasSeleccionPersonaje.tscn" id="9_x4pbw"]
 [ext_resource type="Resource" uid="uid://cc3t360j4y110" path="res://Scripts/ui/menu_deslizante/EstructurasDatos/Personajes/RecursosPersonajes/AdrianSpeed.tres" id="10_0d2f1"]
@@ -28,6 +27,7 @@
 [ext_resource type="Resource" uid="uid://dggh4mw37bikl" path="res://Scripts/ui/menu_deslizante/EstructurasDatos/Personajes/RecursosPersonajes/JonasDemetrius.tres" id="19_8d61v"]
 [ext_resource type="Resource" uid="uid://v8p00h7lbpgm" path="res://Scripts/ui/menu_deslizante/EstructurasDatos/Personajes/RecursosPersonajes/NelsonRockwell.tres" id="20_n523y"]
 [ext_resource type="Script" uid="uid://c8747tjvcncpx" path="res://Scripts/ui/menu_deslizante/EstructurasDatos/Personajes/estadisticas_personaje_seleccionado.gd" id="25_7cer4"]
+[ext_resource type="Texture2D" uid="uid://dancky1dnowvr" path="res://Sprites/jugadores/personajesNoBloq/MarkEvans.png" id="26_08jok"]
 [ext_resource type="Texture2D" uid="uid://dims23mtskl1p" path="res://Sprites/banderas/bandera-royalacademy.png" id="28_b2v7a"]
 [ext_resource type="Texture2D" uid="uid://ce54h1bc1dfde" path="res://Sprites/UI/SelectorPersonajes/velocidad.png" id="28_eed3h"]
 [ext_resource type="Texture2D" uid="uid://dmjtu5lv0crc1" path="res://Sprites/UI/SelectorPersonajes/salto.png" id="29_08jok"]
@@ -180,7 +180,7 @@ offset_left = -245.0
 offset_top = -86.0
 offset_right = 505.0
 offset_bottom = 664.0
-texture = ExtResource("8_ttw5l")
+texture = ExtResource("26_08jok")
 
 [node name="MarginContainer" type="MarginContainer" parent="EstadisticasPersonajeSeleccionado" unique_id=142683985]
 custom_minimum_size = Vector2(235.335, 128.715)

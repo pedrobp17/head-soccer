@@ -16,7 +16,7 @@ const COLOR_ACTIVO_TEXTO = Color("ffd700")
 
 
 var tiene_foco : bool = false
-var jugador_central : String = ""
+var jugador_central : DatosSeleccionPersonajes = null
 
 func _ready() -> void:
 	cambiar_color_borde(COLOR_NORMAL_BORDE, seleccion_panel)
@@ -28,7 +28,7 @@ func _input(event):
 		return 
 	
 	if event.is_action_pressed("ui_accept"):
-		if ProgresoPartida.is_personaje_desbloqueado(jugador_central):
+		if ProgresoPartida.is_personaje_desbloqueado(jugador_central.name):
 			EventBus.item_selected.emit(selector_personajes.get_current_item())
 		else:
 			pass
@@ -43,8 +43,8 @@ func cambiar_color_texto( color : Color, texto : Label) -> void:
 	
 func cambiar_estado_foco( foco : bool) -> void:
 	tiene_foco = foco
-	var panel = seleccion_panel if ProgresoPartida.is_personaje_desbloqueado(jugador_central) else bloqueado_panel
-	var texto = nombre_seleccion if ProgresoPartida.is_personaje_desbloqueado(jugador_central) else nombre_bloqueado
+	var panel = seleccion_panel if ProgresoPartida.is_personaje_desbloqueado(jugador_central.name) else bloqueado_panel
+	var texto = nombre_seleccion if ProgresoPartida.is_personaje_desbloqueado(jugador_central.name) else nombre_bloqueado
 	if tiene_foco:
 		cambiar_color_borde(COLOR_ACTIVO_BORDE, panel)
 		cambiar_color_texto(COLOR_ACTIVO_TEXTO, texto)
@@ -53,11 +53,11 @@ func cambiar_estado_foco( foco : bool) -> void:
 		cambiar_color_texto(COLOR_NORMAL_TEXTO, texto)
 	
 func on_item_changed( indice ,datos : Variant) -> void:
-	jugador_central = datos.name
+	jugador_central = datos
 	set_panel()
 
 func set_panel() -> void:
-	if ProgresoPartida.is_personaje_desbloqueado(jugador_central):
+	if ProgresoPartida.is_personaje_desbloqueado(jugador_central.name):
 		cambiar_color_borde(COLOR_NORMAL_BORDE, seleccion_panel)
 		cambiar_color_texto(COLOR_NORMAL_TEXTO, nombre_seleccion)
 		show_seleccionar()

@@ -536,6 +536,7 @@ text = "FIN"
 
 [node name="Fps" type="Label" parent="Control" unique_id=1882080779]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
 offset_left = 493.0
 offset_top = 68.0
