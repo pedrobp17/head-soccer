@@ -44,6 +44,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 32.0
+offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -84,10 +86,10 @@ position = Vector2(777, 256)
 position = Vector2(777, 384)
 
 [node name="Final1" type="Node2D" parent="PlaceholdersPosiciones" unique_id=1851889838]
-position = Vector2(576, 128)
+position = Vector2(576, 160)
 
 [node name="Final2" type="Node2D" parent="PlaceholdersPosiciones" unique_id=28476686]
-position = Vector2(592, 595)
+position = Vector2(576, 480)
 
 [node name="Trofeo" type="TextureRect" parent="." unique_id=1855355685]
 visible = false
@@ -102,6 +104,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 32.0
+offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -248,8 +252,9 @@ texture_progress = ExtResource("16_fea6j")
 unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 0
+offset_top = 32.0
 offset_right = 40.0
-offset_bottom = 40.0
+offset_bottom = 72.0
 
 [node name="Participante1" parent="Participantes" unique_id=105413155 instance=ExtResource("18_vq41w")]
 layout_mode = 0
@@ -265,12 +270,53 @@ layout_mode = 0
 
 [node name="Participante5" parent="Participantes" unique_id=626008241 instance=ExtResource("18_vq41w")]
 layout_mode = 0
+offset_left = 480.0
+offset_top = 426.0
+offset_right = 672.0
+offset_bottom = 554.0
 
 [node name="Participante6" parent="Participantes" unique_id=553723905 instance=ExtResource("18_vq41w")]
 layout_mode = 0
+offset_left = 480.0
+offset_top = 96.0
+offset_right = 672.0
+offset_bottom = 224.0
 
 [node name="Participante7" parent="Participantes" unique_id=820030948 instance=ExtResource("18_vq41w")]
 layout_mode = 0
+offset_left = 60.0
+offset_top = 64.0
+offset_right = 252.0
+offset_bottom = 192.0
 
-[node name="Participante8" parent="Participantes" unique_id=221982332 instance=ExtResource("18_vq41w")]
+[node name="Paticipante8" parent="Participantes" unique_id=221982332 instance=ExtResource("18_vq41w")]
 layout_mode = 0
+offset_left = 900.0
+offset_top = 448.0
+offset_right = 1092.0
+offset_bottom = 576.0
+
+[node name="Indicador" type="Label" parent="." unique_id=386682290]
+offset_left = 638.0
+offset_top = 616.0
+offset_right = 1144.0
+offset_bottom = 639.0
+theme_override_colors/font_color = Color(1, 0.84313726, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 22
+text = "Pulsa ENTER para continuar..."
+
+[node name="NombreModo" type="Label" parent="." unique_id=1651548048]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -207.0
+offset_right = 527.0
+offset_bottom = 76.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.84313726, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 75
+text = "TORNEO     "
+horizontal_alignment = 1
+vertical_alignment = 1

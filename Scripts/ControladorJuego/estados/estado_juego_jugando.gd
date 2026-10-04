@@ -7,7 +7,7 @@ func _enter_tree() -> void:
 func _process(delta: float) -> void:
 	controlador.tiempo_restante -= delta
 	if controlador.fin_partido():
-		if controlador.empate():
+		if controlador.enfrentamiento.empate():
 			peticion_transmitir_estado.emit(ControladorPartido.Estado.TIEMPO_EXTRA)
 		else:
 			peticion_transmitir_estado.emit(ControladorPartido.Estado.FIN)

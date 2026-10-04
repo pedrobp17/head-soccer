@@ -17,6 +17,7 @@ var en_menu_superior := false
 var escena_actual := mapa_seleccion_opciones["menu"] 
 var item_seleccionado_personajes := 0
 var nombre_personaje_seleccionado := "MarkEvans"
+var indice_poder_personaje_seleccionado := 0
 
 func _ready():
 	show_escena_menu()
@@ -101,7 +102,8 @@ func on_item_selected_personajes(datos : Variant) -> void:
 	nombre_personaje_seleccionado = datos.name
 	
 func on_item_selected_modos( datos : Variant) -> void:
-	ControladorPartido.jugadores[0] = DatosJugadores.get_jugador(nombre_personaje_seleccionado).nombre
+	var datos_personaje = DatosJugadores.get_jugador(nombre_personaje_seleccionado)
+	ControladorPartido.enfrentamiento.set_jugador_local(datos_personaje.nombre, "mano_magica")#datos_personaje.poderes[indice_poder_personaje_seleccionado])
 	transicion_pantallas(datos.pantalla)
 	
 func show_escena_menu() -> void:

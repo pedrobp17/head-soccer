@@ -19,7 +19,7 @@ func inicializar( _jugador: String ) -> void:
 func _process(_delta: float) -> void:
 	if tiempo_pelota_sobre_larguero != 0.0 && Time.get_ticks_msec() - tiempo_pelota_sobre_larguero > MAX_PELOTA_SOBRE_LARGUERO:
 		var direccion = Vector2.RIGHT
-		if jugador == ControladorPartido.jugadores[0]:
+		if jugador == ControladorPartido.enfrentamiento.jugador_local:
 			direccion = Vector2.LEFT
 		EventBus.golpear_pelota.emit(direccion, false, 1.0)
 		

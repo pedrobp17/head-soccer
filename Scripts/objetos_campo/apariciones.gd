@@ -13,10 +13,10 @@ var jugador_visitante : Jugador = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	jugador_local = aparecer_jugador(ControladorPartido.jugadores[0], Jugador.BANDO[false], ControladorPartido.poderes[0])
-	porteria_local.inicializar(ControladorPartido.jugadores[1])
-	jugador_visitante = aparecer_jugador(ControladorPartido.jugadores[1], Jugador.BANDO[true], ControladorPartido.poderes[1])
-	porteria_visitante.inicializar(ControladorPartido.jugadores[0])
+	jugador_local = aparecer_jugador(ControladorPartido.enfrentamiento.jugador_local, Jugador.BANDO[false], ControladorPartido.enfrentamiento.poder_local)
+	porteria_local.inicializar(ControladorPartido.enfrentamiento.jugador_visitante)
+	jugador_visitante = aparecer_jugador(ControladorPartido.enfrentamiento.jugador_visitante, Jugador.BANDO[true], ControladorPartido.enfrentamiento.poder_visitante)
+	porteria_visitante.inicializar(ControladorPartido.enfrentamiento.jugador_local)
 	set_controladores_personajes()
 	
 func aparecer_jugador( jugador : String, identificador_bando : int, poder : String) -> Jugador:
