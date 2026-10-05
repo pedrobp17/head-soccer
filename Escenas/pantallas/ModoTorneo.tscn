@@ -72,63 +72,77 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Cuartos1_Win1" type="TextureProgressBar" parent="Braquets/IndicadoresGanadores" unique_id=45440603]
+[node name="Cuartos" type="Control" parent="Braquets/IndicadoresGanadores" unique_id=493916758]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Cuartos1_Win1" type="TextureProgressBar" parent="Braquets/IndicadoresGanadores/Cuartos" unique_id=45440603]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 100.0
 texture_progress = ExtResource("5_oyqmp")
 
-[node name="Cuartos1_Win2" type="TextureProgressBar" parent="Braquets/IndicadoresGanadores" unique_id=2028512610]
+[node name="Cuartos1_Win2" type="TextureProgressBar" parent="Braquets/IndicadoresGanadores/Cuartos" unique_id=2028512610]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+value = 100.0
 texture_progress = ExtResource("6_v7tjj")
 
-[node name="Cuartos2_Win1" type="TextureProgressBar" parent="Braquets/IndicadoresGanadores" unique_id=1332288475]
+[node name="Cuartos2_Win1" type="TextureProgressBar" parent="Braquets/IndicadoresGanadores/Cuartos" unique_id=1332288475]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+value = 100.0
 texture_progress = ExtResource("7_vq41w")
 
-[node name="Cuartos2_Win2" type="TextureProgressBar" parent="Braquets/IndicadoresGanadores" unique_id=66199750]
+[node name="Cuartos2_Win2" type="TextureProgressBar" parent="Braquets/IndicadoresGanadores/Cuartos" unique_id=66199750]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+value = 100.0
 texture_progress = ExtResource("8_0vg5m")
 
-[node name="Cuartos3_Win1" type="TextureProgressBar" parent="Braquets/IndicadoresGanadores" unique_id=581159102]
+[node name="Cuartos3_Win1" type="TextureProgressBar" parent="Braquets/IndicadoresGanadores/Cuartos" unique_id=581159102]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+value = 100.0
 fill_mode = 1
 texture_progress = ExtResource("9_2tiiq")
 
-[node name="Cuartos3_Win2" type="TextureProgressBar" parent="Braquets/IndicadoresGanadores" unique_id=1916153090]
+[node name="Cuartos3_Win2" type="TextureProgressBar" parent="Braquets/IndicadoresGanadores/Cuartos" unique_id=1916153090]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+value = 100.0
 fill_mode = 1
 texture_progress = ExtResource("10_6wy7o")
 
-[node name="Cuartos4_Win1" type="TextureProgressBar" parent="Braquets/IndicadoresGanadores" unique_id=1705883729]
+[node name="Cuartos4_Win1" type="TextureProgressBar" parent="Braquets/IndicadoresGanadores/Cuartos" unique_id=1705883729]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -137,20 +151,30 @@ offset_left = 1.0
 offset_right = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+value = 100.0
 fill_mode = 1
 texture_progress = ExtResource("11_l3hj8")
 
-[node name="Cuartos4_Win2" type="TextureProgressBar" parent="Braquets/IndicadoresGanadores" unique_id=1594489921]
+[node name="Cuartos4_Win2" type="TextureProgressBar" parent="Braquets/IndicadoresGanadores/Cuartos" unique_id=1594489921]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+value = 100.0
 fill_mode = 1
 texture_progress = ExtResource("12_sco7c")
 
-[node name="Semis1_Win1" type="TextureProgressBar" parent="Braquets/IndicadoresGanadores" unique_id=290879189]
+[node name="Semis" type="Control" parent="Braquets/IndicadoresGanadores" unique_id=1609181575]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Semis1_Win1" type="TextureProgressBar" parent="Braquets/IndicadoresGanadores/Semis" unique_id=290879189]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -159,9 +183,10 @@ offset_top = -2.0
 offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
+value = 100.0
 texture_progress = ExtResource("13_xocfs")
 
-[node name="Semis1_Win2" type="TextureProgressBar" parent="Braquets/IndicadoresGanadores" unique_id=1509148556]
+[node name="Semis1_Win2" type="TextureProgressBar" parent="Braquets/IndicadoresGanadores/Semis" unique_id=1509148556]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -170,9 +195,10 @@ offset_top = -2.0
 offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
+value = 100.0
 texture_progress = ExtResource("14_5omy3")
 
-[node name="Semis2_Win1" type="TextureProgressBar" parent="Braquets/IndicadoresGanadores" unique_id=1694556112]
+[node name="Semis2_Win1" type="TextureProgressBar" parent="Braquets/IndicadoresGanadores/Semis" unique_id=1694556112]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -181,10 +207,11 @@ offset_top = -2.0
 offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
+value = 100.0
 fill_mode = 1
 texture_progress = ExtResource("15_3okjq")
 
-[node name="Semis2_Win2" type="TextureProgressBar" parent="Braquets/IndicadoresGanadores" unique_id=251515326]
+[node name="Semis2_Win2" type="TextureProgressBar" parent="Braquets/IndicadoresGanadores/Semis" unique_id=251515326]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -193,6 +220,7 @@ offset_top = -2.0
 offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
+value = 100.0
 fill_mode = 1
 texture_progress = ExtResource("16_fea6j")
 
@@ -324,6 +352,22 @@ offset_left = 480.0
 offset_top = 416.0
 offset_right = 672.0
 offset_bottom = 544.0
+
+[node name="Ganador" type="Control" parent="PlaceholdersPosiciones" unique_id=349207366]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Participante1" parent="PlaceholdersPosiciones/Ganador" unique_id=105413155 instance=ExtResource("18_vq41w")]
+layout_mode = 0
+offset_left = 480.0
+offset_top = 256.0
+offset_right = 672.0
+offset_bottom = 384.0
 
 [node name="Indicador" type="Label" parent="." unique_id=386682290]
 offset_left = 638.0

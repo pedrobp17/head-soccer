@@ -12,7 +12,7 @@ signal fin_poder()
 signal cambiar_barra_vida( vida : float, es_visitante : bool)
 signal cambio_marcador(jugador_anotador : String)
 signal fin_animacion_gol
-signal fin_partido( jugador_ganador : String , marcador : Array[int])
+signal fin_partido()
 signal en_tiempo_extra()
 signal item_selected_personajes(data: Variant)
 signal item_selected_modos(data: Variant)

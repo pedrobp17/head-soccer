@@ -107,3 +107,8 @@ rotation = -3.1415925
 scale = Vector2(1, -1)
 
 [node name="UI" parent="." unique_id=484265681 instance=ExtResource("12_ll4ra")]
+
+[node name="FinTimer" type="Timer" parent="." unique_id=1668477601]
+unique_name_in_owner = true
+wait_time = 3.0
+one_shot = true

@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://bqiin32k3xn00" path="res://Scripts/pantallas/torneo/cartas_torneo.gd" id="1_d3u8b"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jtwau"]
+bg_color = Color(0, 0, 0, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eu64u"]
 bg_color = Color(0.2627451, 0.2627451, 0.30980393, 1)
 border_width_left = 5
@@ -11,7 +14,7 @@ border_width_bottom = 5
 border_color = Color(0.8, 0.8, 0.8, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a8ku5"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
+bg_color = Color(0, 0, 0, 0)
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
@@ -30,6 +33,32 @@ offset_right = 40.0
 offset_bottom = 40.0
 pivot_offset = Vector2(96, 64)
 script = ExtResource("1_d3u8b")
+
+[node name="JugadorSeleccionado" type="Panel" parent="." unique_id=1356200676]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -32.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jtwau")
+
+[node name="Label" type="Label" parent="JugadorSeleccionado" unique_id=136461494]
+custom_minimum_size = Vector2(0, 36.73)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = -5.0
+offset_bottom = 36.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 40
+text = "tu"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Panel" type="Panel" parent="." unique_id=2136148697]
 layout_mode = 1
@@ -58,3 +87,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_a8ku5")
+
+[node name="Marcador" type="Label" parent="Marco" unique_id=1741666328]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "9"
+horizontal_alignment = 1
+vertical_alignment = 1

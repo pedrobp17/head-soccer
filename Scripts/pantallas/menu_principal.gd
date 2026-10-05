@@ -104,7 +104,8 @@ func on_item_selected_personajes(datos : Variant) -> void:
 func on_item_selected_modos( datos : Variant) -> void:
 	var datos_personaje = DatosJugadores.get_jugador(nombre_personaje_seleccionado)
 	ControladorPartido.enfrentamiento.set_jugador_local(datos_personaje.nombre, "mano_magica")#datos_personaje.poderes[indice_poder_personaje_seleccionado])
-	transicion_pantallas(datos.pantalla, DatosPantallas.build().set_config_jugador(ControladorPartido.enfrentamiento.config_jugador_local))
+	var torneo = Torneo.new(ControladorPartido.enfrentamiento.config_jugador_local)
+	transicion_pantallas(datos.pantalla, DatosPantallas.build().set_config_jugador(ControladorPartido.enfrentamiento.config_jugador_local).set_torneo(torneo))
 	
 func show_escena_menu() -> void:
 	selector_personajes.hide()

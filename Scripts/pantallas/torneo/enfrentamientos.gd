@@ -4,8 +4,8 @@ var config_jugador_local := ConfiguracionJugadorPartido.new()
 var config_jugador_visitante := ConfiguracionJugadorPartido.new().setup("AxelBlaze", "mano_magica")
 var goles_local : int
 var goles_visitante : int
-var marcador_final : Array[int]
-var ganador : String
+var marcador_final : Array
+var ganador : String = ""
 
 func set_jugador_local(_jugador_local : String, _poder_local : String) -> void:
 	config_jugador_local.setup(_jugador_local, _poder_local)
@@ -34,3 +34,14 @@ func goles_jugador( jugador_anotador : String) -> int:
 func refresh_info_enfrentamiento() -> void:
 	ganador = config_jugador_local.jugador if goles_local > goles_visitante else config_jugador_visitante.jugador
 	marcador_final = [goles_local, goles_visitante]
+
+func get_random_marcador() -> void:
+	while empate():
+		goles_local = randi_range(0,7)
+		goles_visitante = randi_range(0,7)
+	refresh_info_enfrentamiento()
+
+func get_ganador() -> ConfiguracionJugadorPartido:
+	if ganador == config_jugador_local.jugador:
+		return config_jugador_local
+	return config_jugador_visitante

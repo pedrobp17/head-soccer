@@ -1,6 +1,6 @@
 extends Node
 
-const DURACION_JUEGO_SEGUNDOS :=  1 * 30
+const DURACION_JUEGO_SEGUNDOS :=  1 * 10
 
 enum Estado {JUGANDO, GOL, RESETEO, INICIALIZANDO, TIEMPO_EXTRA, FIN}
 
@@ -26,6 +26,7 @@ func cambiar_estado(estado : Estado, datos : DatosEstadoJuego = DatosEstadoJuego
 	call_deferred("add_child", estado_actual)
 
 func empezar_juego() -> void:
+	tiempo_restante = DURACION_JUEGO_SEGUNDOS
 	cambiar_estado(Estado.RESETEO)
 
 func jugando_solitario() -> bool:
