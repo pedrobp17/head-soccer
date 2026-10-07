@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bestiario de Jugadores</title>
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Barlow+Condensed:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#06143a;--blue:#0b3fcf;--sky:#27a8ff;--orange:#ff7a00;--yellow:#ffd400;--white:#f7faff}
+*{box-sizing:border-box}
+body{margin:0;padding:0 14px 70px;color:var(--white);font-family:'Barlow Condensed',Arial Narrow,sans-serif;font-size:19px;
+background:repeating-linear-gradient(90deg,#0a1f55 0 90px,#08194a 90px 180px),var(--navy);background-attachment:fixed}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle at 50% 50%,transparent 120px,#fff1 121px 124px,transparent 125px),linear-gradient(#fff1,#fff1) center/4px 100% no-repeat,radial-gradient(ellipse at top,#27a8ff55,transparent 60%)}
+header{position:relative;text-align:center;padding:50px 10px 30px;max-width:820px;margin:auto}
+.bolt{width:70px;height:90px;filter:drop-shadow(0 0 14px var(--yellow))}
+h1{font-family:'Russo One',Impact,sans-serif;font-weight:400;font-size:clamp(34px,7vw,64px);margin:6px 0 0;font-style:italic;text-transform:uppercase;letter-spacing:.02em;background:linear-gradient(#fff,var(--yellow) 55%,var(--orange));-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(3px 4px 0 #0b3fcf)}
+header p{margin:8px 0 0;color:#bcd6ff;font-style:italic}
+main{position:relative;max-width:1000px;margin:auto;display:grid;gap:42px}
+.sheet{--t:#ffd400;position:relative;display:grid;grid-template-columns:240px 1fr;gap:0;background:var(--white);color:#0a1840;clip-path:polygon(0 0,calc(100% - 28px) 0,100% 28px,100% 100%,28px 100%,0 calc(100% - 28px));box-shadow:0 0 0 4px var(--t)}
+.sheet:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 60%,#0b3fcf10 60% 62%,transparent 62%)}
+.art{background:linear-gradient(160deg,var(--blue),var(--navy));padding:18px 16px 18px;display:grid;gap:12px;align-content:start;border-right:6px solid var(--t)}
+.slot{aspect-ratio:3/4;position:relative;cursor:pointer;background:#ffffff14 center/contain no-repeat;border:2px solid #ffffff55;clip-path:polygon(0 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%);display:flex;align-items:flex-end;overflow:hidden}
+.slot.game{aspect-ratio:16/10}
+.slot span{width:100%;text-align:center;font-family:'Russo One',sans-serif;font-size:12px;text-transform:uppercase;background:var(--orange);color:#fff;padding:3px 0;font-style:italic}
+.slot.empty:before{content:"＋ imagen";position:absolute;top:42%;left:0;right:0;text-align:center;color:#ffffffaa}
+.num{position:absolute;top:0;left:0;z-index:2;min-width:74px;text-align:center;background:var(--orange);color:#fff;font-family:'Russo One',sans-serif;font-size:20px;padding:6px 16px 6px 12px;font-style:italic;clip-path:polygon(0 0,100% 0,85% 100%,0 100%)}
+.body{padding:20px 38px 22px 24px}
+h2{font-family:'Russo One',sans-serif;font-weight:400;font-style:italic;text-transform:uppercase;margin:6px 0 2px;font-size:clamp(26px,4vw,38px);color:var(--blue);line-height:1}
+.team{display:inline-block;background:var(--t);color:#0a1840;font-weight:700;padding:1px 14px 1px 10px;clip-path:polygon(0 0,100% 0,calc(100% - 10px) 100%,0 100%);text-transform:uppercase;font-size:15px;letter-spacing:.05em}
+.stats{display:grid;gap:7px;margin:16px 0 18px}
+.st{display:grid;grid-template-columns:92px 1fr 32px;align-items:center;gap:10px}
+.st i{font-style:normal;font-weight:700;text-transform:uppercase;font-size:16px;color:#33508f}
+.st u{height:14px;background:#0b3fcf1f;transform:skewX(-20deg);display:block;overflow:hidden;text-decoration:none}
+.st u em{display:block;height:100%;background:linear-gradient(90deg,var(--sky),var(--blue))}
+.st.hi u em{background:linear-gradient(90deg,var(--yellow),var(--orange))}
+.st b{font-family:'Russo One',sans-serif;font-size:21px;text-align:right}
+h3{font-family:'Russo One',sans-serif;font-weight:400;font-style:italic;text-transform:uppercase;font-size:15px;margin:14px 0 7px;color:var(--orange)}
+.unlock{background:#0b3fcf14;border-left:6px solid var(--orange);padding:8px 14px;font-size:20px}
+.stars{color:var(--orange);font-size:22px;margin-right:8px;text-shadow:0 0 1px #000}
+.pw{display:flex;flex-wrap:wrap;gap:10px}
+.pw>span{background:linear-gradient(135deg,var(--blue),var(--sky));color:#fff;padding:5px 18px 5px 14px;font-weight:700;font-style:italic;text-transform:uppercase;clip-path:polygon(0 0,100% 0,calc(100% - 12px) 100%,0 100%)}
+.pw>span.lock{background:#0b3fcf1f;color:#5f78b3;font-weight:500}
+@media(max-width:720px){.sheet{grid-template-columns:1fr}.art{grid-template-columns:1fr 1fr;border-right:0;border-bottom:6px solid var(--t);padding-top:44px}.body{padding:16px}.st{grid-template-columns:78px 1fr 28px}}
+.pw{display:grid;gap:10px}
+.power{display:grid;grid-template-columns:96px 1fr;gap:14px;background:#0b3fcf14;border-left:6px solid var(--blue);padding:10px 12px}
+.pimg{aspect-ratio:1;background-color:#0b3fcf33;border-color:var(--blue)}
+.pn{font-family:'Russo One',sans-serif;font-style:italic;text-transform:uppercase;font-size:19px;color:var(--blue);font-weight:400}
+.tx{cursor:pointer;line-height:1.2;margin-top:4px;border-bottom:1px dashed transparent}
+.tx:hover{border-bottom-color:var(--orange)}
+.tx.ph{color:#6d82b5;font-style:italic}
+.ul{font-weight:700;color:#a34e00}
+.tools{margin-top:12px}.tools button{font:inherit;font-weight:700;background:var(--orange);color:#fff;border:0;padding:6px 16px;margin:0 4px;cursor:pointer;clip-path:polygon(0 0,100% 0,calc(100% - 8px) 100%,0 100%)}
+@media(max-width:720px){.power{grid-template-columns:76px 1fr}}
+</style></head><body>
+<header><svg class="bolt" viewBox="0 0 70 90"><path d="M42 0 8 52h22L22 90 64 34H40z" fill="#ffd400" stroke="#ff7a00" stroke-width="3" stroke-linejoin="round"/></svg>
+<h1>Registro de Jugadores</h1><p>Desbloqueos, estadísticas y supertécnicas</p>
+<p style="font-size:15px">Toca un recuadro para pegar la URL de una imagen o subir una. Se guarda en este navegador. En los poderes también puedes editar descripción y desbloqueo.</p><div class="tools"><button onclick="exportar()">Exportar datos</button><button onclick="importar()">Importar datos</button></div></header>
+<main id="m"></main>
+<script>
+// Orden de la lista. [nombre, equipo, estrellas, desbloqueo, [vel,salto,golpe,power,aguante,vida], [poderes]]
+const P=[
+["Artie Mishman","zeus",1,"Juega 3 partidos",[5,5,4,5,5,5],[]],
+["Johan Tassman","occult",1,"Marca 5 goles",[6,5,5,8,5,5],["murcielagos","maldicion"]],
+["Jonas Demetrius","zeus",2,"Gana 3 partidos",[6,7,7,6,7,7],[]],
+["Katie Brown","genesis",2,"Marca 10 goles",[7,6,6,8,6,6],[]],
+["Thomas Feldt","brain",2,"Gana un partido usando una técnica",[5,5,4,9,6,6],["dron","campo_magnetico"]],
+["Wilbur Watkins","genesis",3,"Gana 5 partidos",[6,8,7,6,8,8],[]],
+["Harley Kane","marytimes",3,"Consigue 10 goles en total",[7,6,8,8,7,7],[]],
+["Steve Eagle","wild",3,"Gana 3 partidos seguidos",[10,9,5,5,5,5],[]],
+["Nathan Jones","occult",4,"Gana un partido sin recibir ningún gol",[10,6,6,6,6,5],["momia","agujero_negro"]],
+["Gary Lancaster","wild",4,"Realiza 20 saltos/acciones aéreas",[8,9,7,6,8,8],[]],
+["Adrian Speed","wild",4,"Gana 5 partidos seguidos",[10,8,6,5,4,5],[]],
+["Jude Sharp","royalacademy",5,"Gana un torneo",[7,6,6,9,7,7],["espejismo","pingüino_emperador"]],
+["Caleb Stonewall","royalacademy",5,"Gana un torneo sin perder",[6,8,9,8,10,9],["tiro_reaccion"]],
+["Axel Blaze","raimon",6,"Marca 30 goles",[7,7,10,10,6,7],["tornado_fuego","tornado_dragon"]],
+["Xavier Foster","raimon",6,"Gana 3 torneos",[8,8,9,10,7,8],["cañon_meteoros","pingüinos_cosmicos"]],
+["Byron Love","zeus",7,"Completa todos los logros principales",[8,8,9,10,7,8],["hora_celestial","espada_divina"]],
+// Presentes en el JSON pero sin entrada en la lista de desbloqueo
+["Mark Evans","raimon",0,null,[6,7,6,6,9,10],["mano_magica","cabezazo"]],
+["Nelson Rockwell","genesis",0,null,[5,9,8,7,9,9],[]]
+];
+const L=["Velocidad","Salto","Golpe","Power","Aguante","Vida"];
+// Rellena aquí URLs si quieres precargarlas: IMG["Mark Evans"]={full:"https://...",game:"https://..."}
+const IMG={};
+const TC={raimon:"#ffd400",royalacademy:"#3b6dff",occult:"#9b6bd6",brain:"#9aa3b5",zeus:"#ffe45c",wild:"#ff9a2e",marytimes:"#25c4c4",genesis:"#ff5a4d"};
+const pretty=s=>s.replace(/_/g," ").replace(/^./,c=>c.toUpperCase());
+let store={};try{store=JSON.parse(localStorage.getItem("bestiario")||"{}")}catch(e){}
+const save=()=>{try{localStorage.setItem("bestiario",JSON.stringify(store))}catch(e){}};
+const get=(n,k)=>(store[n]&&store[n][k])||(IMG[n]&&IMG[n][k])||"";
+const esc=t=>String(t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function pcard(k){const n="p:"+k,im=get(n,"img"),d=get(n,"desc"),u=get(n,"unlock");
+  return `<div class="power"><div class="slot pimg ${im?'':'empty'}" data-n="${n}" data-k="img" style="${im?`background-image:url('${im}')`:''}"><span>Imagen</span></div>
+  <div><b class="pn">${pretty(k)}</b>
+  <div class="tx ${d?'':'ph'}" data-n="${n}" data-k="desc" data-l="qué hace ${pretty(k)}">${d?esc(d):'Toca para añadir qué hace…'}</div>
+  <div class="tx ul ${u?'':'ph'}" data-n="${n}" data-k="unlock" data-l="cómo se desbloquea ${pretty(k)}">🔓 ${u?esc(u):'Toca para añadir el desbloqueo…'}</div></div></div>`}
+function slot(n,k,label){
+  const u=get(n,k);
+  return `<div class="slot ${k==='game'?'game':''} ${u?'':'empty'}" data-n="${n}" data-k="${k}" style="${u?`background-image:url('${u}')`:''}"><span>${label}</span></div>`;
+}
+function render(){document.getElementById("m").innerHTML=P.map((p,i)=>{
+  const [n,t,s,u,st,pw]=p;
+  const powers=[0,1].map(j=>pw[j]?pcard(pw[j]):`<span class="lock">??? sin registrar</span>`).join("");
+  return `<article class="sheet" style="--t:${TC[t]||'#ffd400'}">
+  ${s?`<div class="num">#${i+1}</div>`:`<div class="num">Extra</div>`}
+  <div class="art">${slot(n,"full","Cuerpo entero")}${slot(n,"game","En el juego")}</div>
+  <div class="body"><h2>${n}</h2><span class="team">${pretty(t)}</span>
+  <div class="stats">${st.map((v,j)=>`<div class="st ${v>=9?'hi':''}"><i>${L[j]}</i><u><em style="width:${v*10}%"></em></u><b>${v}</b></div>`).join("")}</div>
+  <h3>⚡ Desbloqueo</h3>
+  ${u?`<div class="unlock"><span class="stars">${"★".repeat(s)}</span> &nbsp;${u}</div>`:`<div class="unlock">Sin entrada en la lista de desbloqueo.</div>`}
+  <h3>⚡ Supertécnicas</h3><div class="pw">${powers}</div>
+  </div></article>`}).join("")}render();
+function exportar(){const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([JSON.stringify(store)],{type:"application/json"}));a.download="bestiario_datos.json";a.click()}
+function importar(){const f=document.createElement("input");f.type="file";f.accept=".json";f.onchange=()=>{const r=new FileReader();r.onload=()=>{try{const d=JSON.parse(r.result);for(const n in d)store[n]=Object.assign(store[n]||{},d[n]);save();render()}catch(e){alert("Archivo no válido")}};r.readAsText(f.files[0])};f.click()}
+document.addEventListener("click",e=>{
+  const tx=e.target.closest(".tx");
+  if(tx){const n=tx.dataset.n,k=tx.dataset.k;const v=prompt("Escribe "+tx.dataset.l,get(n,k));if(v===null)return;store[n]=store[n]||{};store[n][k]=v.trim();save();render();return}
+  const el=e.target.closest(".slot");if(!el)return;
+  const n=el.dataset.n,k=el.dataset.k;
+  const v=prompt(`URL de imagen para ${n.startsWith('p:')?pretty(n.slice(2)):n} (${k==='full'?'cuerpo entero':k==='game'?'en el juego':'poder'}).\nDeja vacío para subir un archivo, o escribe "borrar".`,get(n,k));
+  if(v===null)return;
+  const set=u=>{store[n]=store[n]||{};store[n][k]=u;save();el.style.backgroundImage=u?`url('${u}')`:"";el.classList.toggle("empty",!u)};
+  if(v==="borrar")return set("");
+  if(v.trim())return set(v.trim());
+  const f=document.createElement("input");f.type="file";f.accept="image/*";
+  f.onchange=()=>{const r=new FileReader();r.onload=()=>set(r.result);r.readAsDataURL(f.files[0])};f.click();
+});
+</script></body></html>

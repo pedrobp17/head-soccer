@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://babbch154lix8"
-path="res://.godot/imported/ArtieMishman.png-345498bcf09b1a1303dee67323dea2ea.ctex"
+path="res://.godot/imported/ArtieMishman_C.png-3142f3fb42ab3a50ec31aec478303cd6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/jugadores/cabezas/ArtieMishman.png"
-dest_files=["res://.godot/imported/ArtieMishman.png-345498bcf09b1a1303dee67323dea2ea.ctex"]
+source_file="res://Sprites/jugadores/cabezas/ArtieMishman_C.png"
+dest_files=["res://.godot/imported/ArtieMishman_C.png-3142f3fb42ab3a50ec31aec478303cd6.ctex"]
 
 [params]
 

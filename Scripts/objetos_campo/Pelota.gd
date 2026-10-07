@@ -20,6 +20,8 @@ var creador_estados := CreadorEstadoPelota.new()
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	cambiar_estado(Estado.NORMAL)
+	EventBus.esconder_personajes.connect(on_esconder_personajes)
+	EventBus.mostrar_personajes.connect(on_mostrar_personajes)
 	
 
 func cambiar_estado( estado : Estado ) -> void:
@@ -57,4 +59,10 @@ func _integrate_forces(state: PhysicsDirectBodyState2D):
 		estaFuera = false
 
 
-	
+func on_esconder_personajes() -> void:
+	print("La pelota recibió la señal de ocultarse")
+	self.hide()
+
+func on_mostrar_personajes() -> void:
+	print("La pelota recibió la señal de no ocultarse")
+	self.show()

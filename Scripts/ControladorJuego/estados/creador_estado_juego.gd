@@ -7,7 +7,7 @@ var estados : Dictionary ={
 	ControladorPartido.Estado.TIEMPO_EXTRA : EstadoJuegoTiempoExtra,
 	ControladorPartido.Estado.GOL : EstadoJuegoGol,
 	ControladorPartido.Estado.RESETEO : EstadoJuegoReseteo,
-	
+	ControladorPartido.Estado.INICIALIZANDO : EstadoJuegoInicializando,
 }
 
 func get_fresh_state(estado : ControladorPartido.Estado) -> EstadoJuego:

@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c8m027jxyqtr1" path="res://Escenas/objetos_campo/pelota.tscn" id="6_fj5fn"]
 [ext_resource type="PackedScene" uid="uid://knjjlr3ll4qq" path="res://Escenas/objetos_campo/porteria.tscn" id="7_5he4p"]
 [ext_resource type="Script" uid="uid://dvs5fmmrtgo2t" path="res://Scripts/objetos_campo/apariciones.gd" id="7_fv5s3"]
+[ext_resource type="PackedScene" uid="uid://cadgqm3bt8qjc" path="res://Escenas/objetos_campo/animacion_enfrentamiento.tscn" id="8_x6mmg"]
 [ext_resource type="PackedScene" uid="uid://byigg0fdudfr6" path="res://Escenas/ui/ui.tscn" id="12_ll4ra"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b84b7"]
@@ -112,3 +113,10 @@ scale = Vector2(1, -1)
 unique_name_in_owner = true
 wait_time = 3.0
 one_shot = true
+
+[node name="AnimacionEnfrentamiento" parent="." unique_id=1952057774 instance=ExtResource("8_x6mmg")]
+unique_name_in_owner = true
+offset_left = -932.0
+offset_top = -834.0
+offset_right = 988.0
+offset_bottom = 246.0

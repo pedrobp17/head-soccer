@@ -43,7 +43,8 @@ func _ready() -> void:
 	setup_comportamiento_ia()
 	posicion_aparicion = position
 	pie.setup( estadisticas.get_estadistica("golpe"), CAPA_LOCAL if es_visitante else CAPA_VISITANTE)
-	
+	EventBus.esconder_personajes.connect(on_esconder_personajes)
+	EventBus.mostrar_personajes.connect(on_mostrar_personajes)
 	
 func cambiar_estado( estado : Estado, datos : DatosEstadoJugador = DatosEstadoJugador.new() ) -> void:
 	if estado_actual != null:
@@ -141,3 +142,11 @@ func setup_poder() -> void:
 	poder = asignador_poder.get_script_poder(nombre_poder_activo)
 	var datos_poder = DatosPoderes.get_poder(nombre_poder_activo)
 	poder.setup(self, pelota, datos_poder )
+
+func on_esconder_personajes() -> void:
+	print("La jugador recibió la señal de ocultarse") 
+	self.hide()
+
+func on_mostrar_personajes() -> void:
+	print("La jugador recibió la señal de no ocultarse")
+	self.show()
