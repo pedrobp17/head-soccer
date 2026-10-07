@@ -370,14 +370,14 @@ offset_right = 672.0
 offset_bottom = 384.0
 
 [node name="Indicador" type="Label" parent="." unique_id=386682290]
-offset_left = 638.0
-offset_top = 616.0
-offset_right = 1144.0
-offset_bottom = 639.0
+offset_left = 606.0
+offset_top = 620.0
+offset_right = 1166.0
+offset_bottom = 643.0
 theme_override_colors/font_color = Color(1, 0.84313726, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 22
-text = "Pulsa ENTER para continuar..."
+text = "Pulsa ESPACIO para continuar..."
 
 [node name="NombreModo" type="Label" parent="." unique_id=1651548048]
 anchors_preset = 5

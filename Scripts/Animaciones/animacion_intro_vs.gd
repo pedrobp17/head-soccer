@@ -4,6 +4,7 @@ class_name AnimacionEnfrentamiento
 const NUM_JUGADORES_ENFRENTAMIENTO := 2 
 const DURACION_ANIMACION_ENTRADA := 0.8
 const DURACION_ANIMACION_ESCALADO := 0.5
+const DURACION_PARPADEO := 0.8
 
 @onready var back: Sprite2D = %Back
 @onready var rayo: Sprite2D = %rayo
@@ -13,6 +14,7 @@ const DURACION_ANIMACION_ESCALADO := 0.5
 @onready var posiciones_inicial : Array[Node2D] = [%centro1, %centro2]
 @onready var posiciones_final : Array[Node2D] = [%Final1, %Final2]
 @onready var cabezas_jugadores : Array[Sprite2D] = [%Personaje1, %Personaje2]
+@onready var frase: Label = %Label
 
 signal jugador_quiere_iniciar
 
@@ -24,6 +26,7 @@ func _ready() -> void:
 		cabezas_jugadores[i].texture = CabezasHelper.get_cabeza("ArtieMishman")#jugador)
 	
 	back.scale.y = 0
+	frase.hide()
 	rayo.hide()
 	esperando_espacio = false
 	
@@ -48,7 +51,12 @@ func animar() -> void:
 		tween_posicion_personajes.parallel().tween_property(cabezas_jugadores[i], "global_position", posiciones_medio[i].global_position, DURACION_ANIMACION_ENTRADA/2.0)
 	await tween_posicion_personajes.finished
 	esperando_espacio = true
+	
+	var tween_parpadeo = create_tween().set_loops()
+	tween_parpadeo.tween_callback(func(): frase.visible = not frase.visible).set_delay(0.4)
 	await jugador_quiere_iniciar
+	frase.hide()
+	tween_parpadeo.kill()
 	
 	animacion_rayo.play("Outro")
 	var tween_salida = create_tween()
@@ -62,5 +70,6 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_select") and esperando_espacio:
 		esperando_espacio = false
 		jugador_quiere_iniciar.emit()
+	
 	
 	

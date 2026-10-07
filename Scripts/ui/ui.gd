@@ -32,6 +32,9 @@ func _ready() -> void:
 	EventBus.fin_partido.connect(on_fin_partido)
 	EventBus.en_tiempo_extra.connect(on_tiempo_extra)
 	EventBus.gastar_poder.connect(on_gastar_poder)
+	EventBus.esconder_personajes.connect(on_esconder_personajes)
+	EventBus.mostrar_personajes.connect(on_mostrar_personajes)
+	
 	
 func _process(delta: float) -> void:
 	actualizar_reloj()
@@ -100,3 +103,9 @@ func on_gastar_poder( es_visitante : bool) -> void:
 	var indice_jugador = 1 if es_visitante else 0
 	barras_poder[indice_jugador].reset_poder()
 	poder_listo[indice_jugador] = false
+
+func on_esconder_personajes() -> void:
+	self.hide()
+
+func on_mostrar_personajes() -> void:
+	self.show()
