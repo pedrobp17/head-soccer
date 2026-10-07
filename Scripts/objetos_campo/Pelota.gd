@@ -49,7 +49,10 @@ func mover(normal: Vector2, es_pie : bool, fuerza : float):
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	estaFuera = true
 	
-
+func reset() -> void:
+	estaFuera = true
+	sleeping = false
+	
 #stop movement of the ball
 func _integrate_forces(state: PhysicsDirectBodyState2D):
 	if estaFuera:
@@ -60,9 +63,7 @@ func _integrate_forces(state: PhysicsDirectBodyState2D):
 
 
 func on_esconder_personajes() -> void:
-	print("La pelota recibió la señal de ocultarse")
 	self.hide()
 
 func on_mostrar_personajes() -> void:
-	print("La pelota recibió la señal de no ocultarse")
 	self.show()

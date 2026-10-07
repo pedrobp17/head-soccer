@@ -144,9 +144,7 @@ func setup_poder() -> void:
 	poder.setup(self, pelota, datos_poder )
 
 func on_esconder_personajes() -> void:
-	print("La jugador recibió la señal de ocultarse") 
 	self.hide()
 
 func on_mostrar_personajes() -> void:
-	print("La jugador recibió la señal de no ocultarse")
 	self.show()
