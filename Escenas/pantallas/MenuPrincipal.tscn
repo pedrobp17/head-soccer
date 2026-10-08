@@ -2,228 +2,39 @@
 
 [ext_resource type="Script" uid="uid://d1gpkshmrhi8g" path="res://Scripts/pantallas/menu_principal.gd" id="1_iqy7g"]
 [ext_resource type="PackedScene" uid="uid://dga5wgg7qmxof" path="res://Escenas/pantallas/SelectorPersonajes.tscn" id="2_4wd47"]
+[ext_resource type="PackedScene" uid="uid://c4vcptbaygn7e" path="res://Escenas/pantallas/carta_menu_principal.tscn" id="2_vnpos"]
 [ext_resource type="PackedScene" uid="uid://cnne7mybolqk" path="res://Escenas/pantallas/Menu.tscn" id="3_vnpos"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a8ku5"]
-bg_color = Color(1, 1, 1, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0.021274129, 0.19251195, 0.43541184, 1)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eu64u"]
-bg_color = Color(1, 1, 1, 0)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0.019607844, 0.19215687, 0.43529412, 1)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jtwau"]
-bg_color = Color(1, 1, 1, 0)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0.019607844, 0.19215687, 0.43529412, 1)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j6m78"]
-bg_color = Color(1, 1, 1, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0.019607844, 0.19215687, 0.43529412, 1)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
 
 [node name="MenuPrincipal" type="Node" unique_id=619859490]
 script = ExtResource("1_iqy7g")
 
-[node name="MenuSeleccionado_Personajes" type="Control" parent="." unique_id=1263790870]
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=665189251]
 z_index = 1
-layout_mode = 3
-anchors_preset = 0
-offset_left = 448.0
-offset_right = 704.0
-offset_bottom = 63.64
+custom_minimum_size = Vector2(512, 64)
+offset_left = 314.0
+offset_top = 8.0
+offset_right = 838.0
+offset_bottom = 72.0
 
-[node name="Menu" type="Panel" parent="MenuSeleccionado_Personajes" unique_id=1580601656]
-layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_right = 128.0
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_a8ku5")
+[node name="menu" parent="HBoxContainer" unique_id=922220542 instance=ExtResource("2_vnpos")]
+unique_name_in_owner = true
+layout_mode = 2
+nombre = "Menu"
 
-[node name="Label" type="Label" parent="MenuSeleccionado_Personajes/Menu" unique_id=1585101245]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -30.0
-offset_top = -7.8199997
-offset_right = 31.0
-offset_bottom = 29.18
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "MENU
-"
+[node name="skin" parent="HBoxContainer" unique_id=966256073 instance=ExtResource("2_vnpos")]
+unique_name_in_owner = true
+layout_mode = 2
+nombre = "skin"
 
-[node name="Personajes" type="Panel" parent="MenuSeleccionado_Personajes" unique_id=947078137]
-layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_left = 128.0
-offset_right = 256.0
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_eu64u")
+[node name="Estadisticas" parent="HBoxContainer" unique_id=951603975 instance=ExtResource("2_vnpos")]
+unique_name_in_owner = true
+layout_mode = 2
+nombre = "logros"
 
-[node name="Label2" type="Label" parent="MenuSeleccionado_Personajes/Personajes" unique_id=406015869]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -29.0
-offset_top = -7.8199997
-offset_right = 32.0
-offset_bottom = 29.18
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-text = "SKIN"
-
-[node name="Menu_Personajes" type="Control" parent="." unique_id=674685957]
-visible = false
-z_index = 1
-layout_mode = 3
-anchors_preset = 0
-offset_left = 448.0
-offset_right = 704.0
-offset_bottom = 63.64
-
-[node name="Menu" type="Panel" parent="Menu_Personajes" unique_id=671057213]
-layout_mode = 0
-offset_right = 128.0
-offset_bottom = 63.64
-theme_override_styles/panel = SubResource("StyleBoxFlat_jtwau")
-
-[node name="Label" type="Label" parent="Menu_Personajes/Menu" unique_id=1573360758]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -30.0
-offset_top = -7.8199997
-offset_right = 31.0
-offset_bottom = 29.18
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-text = "MENU
-"
-
-[node name="Personajes" type="Panel" parent="Menu_Personajes" unique_id=2115818436]
-layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_left = 128.0
-offset_right = 256.0
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_eu64u")
-
-[node name="Label2" type="Label" parent="Menu_Personajes/Personajes" unique_id=1854471889]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -29.0
-offset_top = -7.8199997
-offset_right = 32.0
-offset_bottom = 29.18
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-text = "SKIN"
-
-[node name="Menu_PersonajesSeleccionado" type="Control" parent="." unique_id=1585765720]
-visible = false
-z_index = 1
-layout_mode = 3
-anchors_preset = 0
-offset_left = 448.0
-offset_right = 704.0
-offset_bottom = 63.64
-
-[node name="Menu" type="Panel" parent="Menu_PersonajesSeleccionado" unique_id=318935941]
-layout_mode = 0
-offset_right = 128.0
-offset_bottom = 63.64
-theme_override_styles/panel = SubResource("StyleBoxFlat_jtwau")
-
-[node name="Label" type="Label" parent="Menu_PersonajesSeleccionado/Menu" unique_id=1363029631]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -30.0
-offset_top = -7.8199997
-offset_right = 31.0
-offset_bottom = 29.18
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-text = "MENU
-"
-
-[node name="Personajes" type="Panel" parent="Menu_PersonajesSeleccionado" unique_id=1366972123]
-layout_mode = 0
-offset_left = 128.0
-offset_right = 256.0
-offset_bottom = 63.64
-theme_override_styles/panel = SubResource("StyleBoxFlat_j6m78")
-
-[node name="Label2" type="Label" parent="Menu_PersonajesSeleccionado/Personajes" unique_id=1510259798]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -29.0
-offset_top = -7.8199997
-offset_right = 32.0
-offset_bottom = 29.18
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "SKIN"
+[node name="Ajustes" parent="HBoxContainer" unique_id=388831960 instance=ExtResource("2_vnpos")]
+unique_name_in_owner = true
+layout_mode = 2
+nombre = "ajustes"
 
 [node name="Contenido" type="Control" parent="." unique_id=1165322715]
 layout_mode = 3
@@ -243,7 +54,6 @@ layout_mode = 1
 
 [node name="Fps" type="Label" parent="." unique_id=1533829200]
 unique_name_in_owner = true
-visible = false
 offset_left = 559.0
 offset_top = 73.0
 offset_right = 599.0

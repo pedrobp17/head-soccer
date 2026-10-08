@@ -9,7 +9,6 @@ const NUM_PARTICIPANTES := 8
 	Torneo.Estado.FINAL : %Final,
 	Torneo.Estado.COMPLETADO : %Ganador
 }
-@onready var participantes: Control = %Participantes
 
 var torneo : Torneo = null
 var cartas_jugadores_activos : Array[CartasSeleccionTorneo] = []
@@ -64,10 +63,6 @@ func get_placeholder_cartas_por_estado(estado : Torneo.Estado) -> Array[CartasSe
 	for placeholder in contenedor.get_children():
 			cartas.append(placeholder)
 	return cartas
-	
-func set_cartas_jugadores_activos() -> void:
-	for i in participantes.get_child_count():
-		cartas_jugadores_activos.append(participantes.get_child(i))
 	
 func situar_participantes() -> void:
 	for i in NUM_PARTICIPANTES:

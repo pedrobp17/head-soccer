@@ -18,3 +18,4 @@ func cambiar_pantalla( pantalla : Pantalla, datos : DatosPantallas = DatosPantal
 	pantalla_actual.setup(self, datos)
 	pantalla_actual.peticion_transicion_pantalla.connect(cambiar_pantalla.bind())
 	call_deferred("add_child", pantalla_actual)
+ 

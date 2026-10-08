@@ -4,7 +4,7 @@ class_name AnimacionEnfrentamiento
 const NUM_JUGADORES_ENFRENTAMIENTO := 2 
 const DURACION_ANIMACION_ENTRADA := 0.8
 const DURACION_ANIMACION_ESCALADO := 0.5
-const DURACION_PARPADEO := 0.8
+const DURACION_PARPADEO := 0.4
 
 @onready var back: Sprite2D = %Back
 @onready var rayo: Sprite2D = %rayo
@@ -22,8 +22,8 @@ var esperando_espacio : bool
 
 func _ready() -> void:
 	for i in NUM_JUGADORES_ENFRENTAMIENTO:
-		#var jugador = ControladorPartido.enfrentamiento.config_jugador_local.jugador if i == 0 else ControladorPartido.enfrentamiento.config_jugador_visitante.jugador 
-		cabezas_jugadores[i].texture = CabezasHelper.get_cabeza("ArtieMishman")#jugador)
+		var jugador = ControladorPartido.enfrentamiento.config_jugador_local.jugador if i == 0 else ControladorPartido.enfrentamiento.config_jugador_visitante.jugador 
+		cabezas_jugadores[i].texture = CabezasHelper.get_cabeza(jugador)
 	
 	back.scale.y = 0
 	frase.hide()
@@ -53,7 +53,7 @@ func animar() -> void:
 	esperando_espacio = true
 	
 	var tween_parpadeo = create_tween().set_loops()
-	tween_parpadeo.tween_callback(func(): frase.visible = not frase.visible).set_delay(0.4)
+	tween_parpadeo.tween_callback(func(): frase.visible = not frase.visible).set_delay(DURACION_PARPADEO)
 	await jugador_quiere_iniciar
 	frase.hide()
 	tween_parpadeo.kill()

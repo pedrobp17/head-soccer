@@ -1,8 +1,8 @@
 extends Node
 
-const DURACION_JUEGO_SEGUNDOS :=  1 * 60
+const DURACION_JUEGO_SEGUNDOS :=  1 * 20
 
-enum Estado {JUGANDO, GOL, RESETEO, INICIALIZANDO, TIEMPO_EXTRA, FIN}
+enum Estado {JUGANDO, GOL, RESETEO, TIEMPO_EXTRA, FIN}
 
 var enfrentamiento : Enfrentamientos = null
 var creador_estados := CreadorEstadoJuego.new()
@@ -15,7 +15,7 @@ var setup_jugador : Array[String] = ["MarkEvans","AxelBlaze"] # "" = jugando con
 func _ready() -> void:
 	tiempo_restante = DURACION_JUEGO_SEGUNDOS
 	enfrentamiento = Enfrentamientos.new()
-	cambiar_estado(Estado.INICIALIZANDO)
+	cambiar_estado(Estado.RESETEO)
 	
 func cambiar_estado(estado : Estado, datos : DatosEstadoJuego = DatosEstadoJuego.new()) -> void:
 	if estado_actual != null:

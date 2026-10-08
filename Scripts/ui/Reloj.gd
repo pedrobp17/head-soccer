@@ -16,13 +16,28 @@ var esta_en_peligro = false
 func _ready() -> void:
 	progreso.texture_progress = textura_normal
 	progreso.max_value = ControladorPartido.DURACION_JUEGO_SEGUNDOS
+	reiniciar()
+
+func reiniciar() -> void:
+	if parpadeo_timer:
+		parpadeo_timer.kill()
+		parpadeo_timer = null
 	
+
+	esta_en_peligro = false
+	
+	progreso.texture_progress = textura_normal
+	tiempo_restante.modulate = Color.WHITE
+
 func set_valor( _tiempo_restante : float ) -> void:
 	if _tiempo_restante <= ALERTA_POCO_PORCENTAJE && !esta_en_peligro:
 		cambiar_textura(textura_poco_porcentaje)
 		cambiar_texto()
 		esta_en_peligro = true
-		
+	
+	elif _tiempo_restante > ALERTA_POCO_PORCENTAJE and esta_en_peligro:
+		reiniciar()
+			
 	tiempo_restante.text = TiempoHelper.get_texto_tiempo(_tiempo_restante)
 	progreso.value = _tiempo_restante 
 	

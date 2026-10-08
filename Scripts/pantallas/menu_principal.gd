@@ -2,14 +2,18 @@ extends Pantallas
 class_name MenuPrincipal
 	
 const mapa_seleccion_opciones : Dictionary ={
-	"neutro" : -1,
 	"menu" : 0,
-	"personajes" : 1
+	"personajes" : 1,
+	"estadisticas" : 2,
+	"ajustes" : 3
 }
 
-@onready var menu_sel = $MenuSeleccionado_Personajes
-@onready var personajes_sel = $Menu_PersonajesSeleccionado
-@onready var menu_neutral = $Menu_Personajes
+const mapa_direcciones : Dictionary = {
+	"izquierda" : -1,
+	"derecha" : 1
+}
+
+@onready var tipos_menu : Array[CartasPantallaPrincipal] = [%menu, %skin, %Estadisticas, %Ajustes]
 @onready var menu_deslizante: MenuDeslizanteModosJuego = %MenuDeslizante
 @onready var selector_personajes: ManejadorMenuPersonajes = %SelectorPersonajes
 
@@ -22,7 +26,7 @@ var indice_poder_personaje_seleccionado := 0
 func _ready():
 	show_escena_menu()
 	cambiar_foco_escena(true)
-	actualizar_selector(mapa_seleccion_opciones["neutro"])
+	actualizar_selector()
 	EventBus.item_selected_personajes.connect(on_item_selected_personajes)
 	EventBus.item_selected_modos.connect(on_item_selected_modos)
 func _input(event):
@@ -31,28 +35,28 @@ func _input(event):
 	if event.is_action_pressed("ui_up") and !en_menu_superior and escena_actual == mapa_seleccion_opciones["menu"]:
 		en_menu_superior = true
 		cambiar_foco_escena(false)
-		actualizar_selector(escena_actual)
+		actualizar_selector()
 		return
 		
 	#TRANSICION: panel_superior -> menu 
 	if event.is_action_pressed("ui_down") and en_menu_superior and escena_actual == mapa_seleccion_opciones["menu"]:
 		en_menu_superior = false
 		cambiar_foco_escena(true)
-		actualizar_selector(mapa_seleccion_opciones["neutro"])
+		actualizar_selector()
 		return
 	
 	#TRANSICION: boton -> panel_superior
 	if event.is_action_pressed("ui_up") and !en_menu_superior and escena_actual == mapa_seleccion_opciones["personajes"] and selector_personajes.puedo_subir_menu_principal():
 		en_menu_superior = true
 		cambiar_foco_escena(false)
-		actualizar_selector(mapa_seleccion_opciones["personajes"])
+		actualizar_selector()
 		return
 	
 	#TRANSICION: panel_superior ->  boton 
 	if event.is_action_pressed("ui_down") and en_menu_superior and escena_actual == mapa_seleccion_opciones["personajes"]:
 		en_menu_superior = false
 		cambiar_foco_escena(true)
-		actualizar_selector(mapa_seleccion_opciones["neutro"])
+		actualizar_selector()
 		return
 			
 	#NO ES TURNO PANEL SUPERIOR
@@ -62,14 +66,14 @@ func _input(event):
 	#TRANSICION: panel_superior_personajes -> panel_superior_menu
 	if event.is_action_pressed("ui_left") and escena_actual != mapa_seleccion_opciones["menu"] :
 		escena_actual = mapa_seleccion_opciones["menu"]
-		actualizar_selector(escena_actual)
+		actualizar_selector(mapa_direcciones["derecha"])
 		show_escena_menu()
 		selector_personajes.set_item_central(item_seleccionado_personajes)
 	
 	#TRANSICION: panel_superior_menu -> panel_superior_personajes
 	elif event.is_action_pressed("ui_right") and escena_actual != mapa_seleccion_opciones["personajes"] :
 		escena_actual = mapa_seleccion_opciones["personajes"]
-		actualizar_selector(escena_actual)
+		actualizar_selector(mapa_direcciones["izquierda"])
 		show_escena_personajes()
 		
 
@@ -83,19 +87,15 @@ func cambiar_foco_escena(tiene_foco: bool) -> void:
 func _process(_delta: float) -> void:
 	$Fps.text = str(Engine.get_frames_per_second()) + " FPS"
 		
-func actualizar_selector(id : int):
-	if id == mapa_seleccion_opciones["menu"]:
-		menu_sel.show()
-		personajes_sel.hide()
-		menu_neutral.hide()
-	elif id == mapa_seleccion_opciones["personajes"]:
-		menu_sel.hide()
-		personajes_sel.show()
-		menu_neutral.hide()
-	else: 
-		menu_neutral.show()
-		personajes_sel.hide()
-		menu_sel.hide()
+func actualizar_selector(antigua_escena : int = 0) ->void:
+	if antigua_escena != 0:
+		tipos_menu[escena_actual + antigua_escena].set_no_actual()
+	if en_menu_superior:
+		tipos_menu[escena_actual].set_actual()
+	else:
+		tipos_menu[escena_actual].set_no_actual()
+	
+	
 
 func on_item_selected_personajes(datos : Variant) -> void:
 	item_seleccionado_personajes = datos.indice
