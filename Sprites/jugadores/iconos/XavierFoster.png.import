@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxhtsti4odjc1"
-valid=false
+uid="uid://dm3e64ut7a74r"
+path="res://.godot/imported/XavierFoster.png-c7c83a2fc69f8bf9a608c781a19b838f.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://Sprites/jugadores/iconos/XavierFoster.png"
+dest_files=["res://.godot/imported/XavierFoster.png-c7c83a2fc69f8bf9a608c781a19b838f.ctex"]
 
 [params]
 

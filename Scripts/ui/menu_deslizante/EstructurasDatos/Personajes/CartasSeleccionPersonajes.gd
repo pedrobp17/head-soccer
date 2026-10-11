@@ -40,7 +40,7 @@ func establecer_seleccionado(p_is_seleccionado: bool) -> void:
 func establecer_es_actual(p_es_actual: bool, animar: bool = true) -> void:
 	es_actual = p_es_actual
 
-	var esta_desbloqueado = ProgresoPartida.is_personaje_desbloqueado(id_personaje)
+	var esta_desbloqueado = ProgresoPartida.personajes_desbloqueados.get_desbloqueado(id_personaje)
 	
 	var nodo_objetivo = fondo_actual if esta_desbloqueado else current_bloq
 	var nodo_inactivo = current_bloq if esta_desbloqueado else fondo_actual
@@ -93,7 +93,7 @@ func setcentral() -> void:
 	
 
 func set_current() -> void:
-	if ProgresoPartida.is_personaje_desbloqueado(id_personaje):
+	if ProgresoPartida.personajes_desbloqueados.get_desbloqueado(id_personaje):
 		fondo_no_actual.modulate.a = 1.0
 		selected.modulate.a = 0.0
 		not_current_bloq.modulate.a = 0.0

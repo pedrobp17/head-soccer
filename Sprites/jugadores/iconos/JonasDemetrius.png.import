@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cb2skitqmsxca"
-valid=false
+uid="uid://dxtoxn81hxdhp"
+path="res://.godot/imported/JonasDemetrius.png-ab130a9dc14d6ac5a9717222b9f4bbc0.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://Sprites/jugadores/iconos/JonasDemetrius.png"
+dest_files=["res://.godot/imported/JonasDemetrius.png-ab130a9dc14d6ac5a9717222b9f4bbc0.ctex"]
 
 [params]
 

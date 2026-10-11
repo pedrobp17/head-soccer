@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://v24xvxwl3lwy"
-valid=false
+uid="uid://br106ksk2eioy"
+path="res://.godot/imported/MarkEvans.png-db6ba1e31356ae05838775fceac8af9e.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://Sprites/jugadores/iconos/MarkEvans.png"
+dest_files=["res://.godot/imported/MarkEvans.png-db6ba1e31356ae05838775fceac8af9e.ctex"]
 
 [params]
 

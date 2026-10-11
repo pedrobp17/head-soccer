@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cb7spgqyyk3yc"
-valid=false
+uid="uid://dp818yu8qjfuk"
+path="res://.godot/imported/ByronLove.png-1aa77976fc2f6bb732703724fb614eba.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://Sprites/jugadores/iconos/ByronLove.png"
+dest_files=["res://.godot/imported/ByronLove.png-1aa77976fc2f6bb732703724fb614eba.ctex"]
 
 [params]
 

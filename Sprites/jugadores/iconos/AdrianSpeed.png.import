@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cksk43i4txy88"
-valid=false
+uid="uid://cdehis0bqddfm"
+path="res://.godot/imported/AdrianSpeed.png-07849edb34c876fefd3bbf4eb651be8d.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://Sprites/jugadores/iconos/AdrianSpeed.png"
+dest_files=["res://.godot/imported/AdrianSpeed.png-07849edb34c876fefd3bbf4eb651be8d.ctex"]
 
 [params]
 

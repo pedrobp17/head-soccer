@@ -1,0 +1,918 @@
+[gd_scene format=3 uid="uid://dxsa4ege3cvxu"]
+
+[ext_resource type="Texture2D" uid="uid://btglwcq5gxups" path="res://Sprites/pantallas/PantallaLogros.png" id="1_1h8vj"]
+[ext_resource type="Script" uid="uid://d3tuyf7qlvjot" path="res://Scripts/ui/menu_deslizante/EstructurasDatos/estadisticas/logros.gd" id="1_5a6hj"]
+[ext_resource type="Script" uid="uid://cp15dpvu6qxx6" path="res://Scripts/ui/menu_deslizante/EstructurasDatos/estadisticas/celdas_seleccion_personajes.gd" id="2_frvt7"]
+[ext_resource type="Texture2D" uid="uid://dancky1dnowvr" path="res://Sprites/jugadores/personajesNoBloq/MarkEvans.png" id="4_q7wsj"]
+[ext_resource type="Texture2D" uid="uid://fkeeoxaxdaj2" path="res://Sprites/jugadores/cabezas/MarkEvans_C.png" id="5_6jj84"]
+[ext_resource type="Texture2D" uid="uid://crwvbnux7o5t" path="res://Sprites/banderas/bandera-raimon.png" id="6_6jj84"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a8ku5"]
+bg_color = Color(0.047058824, 0.2901961, 0.627451, 0.69803923)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.019607844, 0.19215687, 0.43529412, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eu64u"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jtwau"]
+bg_color = Color(0.6, 0.6, 0.6, 0.011764706)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 0.84313726, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j6m78"]
+bg_color = Color(0.019607844, 0.19215687, 0.43529412, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 0.28627452, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4td64"]
+bg_color = Color(1, 1, 0.28627452, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m3b2f"]
+bg_color = Color(0.019607844, 0.19215687, 0.43529412, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 0.28627452, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="logros" type="Control" unique_id=128429028]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5a6hj")
+
+[node name="Base" type="TextureRect" parent="." unique_id=1681154768]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_1h8vj")
+
+[node name="FondoPantallaCentral" type="Panel" parent="." unique_id=1682247814]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -512.0
+offset_top = -228.0
+offset_right = 512.0
+offset_bottom = 257.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_a8ku5")
+
+[node name="EleccionPersonaje" type="Control" parent="FondoPantallaCentral" unique_id=389358941]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Barra" type="ScrollContainer" parent="FondoPantallaCentral/EleccionPersonaje" unique_id=1229816364]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = 96.0
+offset_right = -25.0
+offset_bottom = -69.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_frvt7")
+
+[node name="celdas" type="GridContainer" parent="FondoPantallaCentral/EleccionPersonaje/Barra" unique_id=1471425996]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 64
+theme_override_constants/v_separation = 64
+columns = 5
+
+[node name="jugador1" type="Panel" parent="FondoPantallaCentral/EleccionPersonaje/Barra/celdas" unique_id=255406659]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="imagen" type="TextureRect" parent="FondoPantallaCentral/EleccionPersonaje/Barra/celdas/jugador1" unique_id=10932883]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="marco" type="Panel" parent="FondoPantallaCentral/EleccionPersonaje/Barra/celdas/jugador1" unique_id=774640325]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_eu64u")
+
+[node name="jugador2" type="Panel" parent="FondoPantallaCentral/EleccionPersonaje/Barra/celdas" unique_id=1727724974]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="imagen" type="TextureRect" parent="FondoPantallaCentral/EleccionPersonaje/Barra/celdas/jugador2" unique_id=588333885]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="marco" type="Panel" parent="FondoPantallaCentral/EleccionPersonaje/Barra/celdas/jugador2" unique_id=1391199395]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_eu64u")
+
+[node name="jugador3" type="Panel" parent="FondoPantallaCentral/EleccionPersonaje/Barra/celdas" unique_id=727685263]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="imagen" type="TextureRect" parent="FondoPantallaCentral/EleccionPersonaje/Barra/celdas/jugador3" unique_id=1711831397]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="marco" type="Panel" parent="FondoPantallaCentral/EleccionPersonaje/Barra/celdas/jugador3" unique_id=1601184296]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_eu64u")
+
+[node name="jugador4" type="Panel" parent="FondoPantallaCentral/EleccionPersonaje/Barra/celdas" unique_id=37105468]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="imagen" type="TextureRect" parent="FondoPantallaCentral/EleccionPersonaje/Barra/celdas/jugador4" unique_id=2024404690]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="marco" type="Panel" parent="FondoPantallaCentral/EleccionPersonaje/Barra/celdas/jugador4" unique_id=1492973621]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_eu64u")
+
+[node name="jugador5" type="Panel" parent="FondoPantallaCentral/EleccionPersonaje/Barra/celdas" unique_id=1560209150]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="imagen" type="TextureRect" parent="FondoPantallaCentral/EleccionPersonaje/Barra/celdas/jugador5" unique_id=1159074086]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="marco" type="Panel" parent="FondoPantallaCentral/EleccionPersonaje/Barra/celdas/jugador5" unique_id=2072195886]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_eu64u")
+
+[node name="jugador6" type="Panel" parent="FondoPantallaCentral/EleccionPersonaje/Barra/celdas" unique_id=1361543911]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="imagen" type="TextureRect" parent="FondoPantallaCentral/EleccionPersonaje/Barra/celdas/jugador6" unique_id=386833441]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="marco" type="Panel" parent="FondoPantallaCentral/EleccionPersonaje/Barra/celdas/jugador6" unique_id=413658571]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_eu64u")
+
+[node name="jugador7" type="Panel" parent="FondoPantallaCentral/EleccionPersonaje/Barra/celdas" unique_id=139512117]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="imagen" type="TextureRect" parent="FondoPantallaCentral/EleccionPersonaje/Barra/celdas/jugador7" unique_id=1044758736]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="marco" type="Panel" parent="FondoPantallaCentral/EleccionPersonaje/Barra/celdas/jugador7" unique_id=577318397]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_eu64u")
+
+[node name="jugador8" type="Panel" parent="FondoPantallaCentral/EleccionPersonaje/Barra/celdas" unique_id=1105935359]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="imagen" type="TextureRect" parent="FondoPantallaCentral/EleccionPersonaje/Barra/celdas/jugador8" unique_id=1505774339]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="marco" type="Panel" parent="FondoPantallaCentral/EleccionPersonaje/Barra/celdas/jugador8" unique_id=1982830845]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_eu64u")
+
+[node name="jugador9" type="Panel" parent="FondoPantallaCentral/EleccionPersonaje/Barra/celdas" unique_id=2118388423]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="imagen" type="TextureRect" parent="FondoPantallaCentral/EleccionPersonaje/Barra/celdas/jugador9" unique_id=2094644244]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="marco" type="Panel" parent="FondoPantallaCentral/EleccionPersonaje/Barra/celdas/jugador9" unique_id=391075305]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_eu64u")
+
+[node name="jugador10" type="Panel" parent="FondoPantallaCentral/EleccionPersonaje/Barra/celdas" unique_id=1384014508]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="imagen" type="TextureRect" parent="FondoPantallaCentral/EleccionPersonaje/Barra/celdas/jugador10" unique_id=853374850]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="marco" type="Panel" parent="FondoPantallaCentral/EleccionPersonaje/Barra/celdas/jugador10" unique_id=740037750]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_eu64u")
+
+[node name="jugador11" type="Panel" parent="FondoPantallaCentral/EleccionPersonaje/Barra/celdas" unique_id=358305222]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="imagen" type="TextureRect" parent="FondoPantallaCentral/EleccionPersonaje/Barra/celdas/jugador11" unique_id=1166196427]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="marco" type="Panel" parent="FondoPantallaCentral/EleccionPersonaje/Barra/celdas/jugador11" unique_id=2004505525]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_eu64u")
+
+[node name="jugador12" type="Panel" parent="FondoPantallaCentral/EleccionPersonaje/Barra/celdas" unique_id=749322385]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="imagen" type="TextureRect" parent="FondoPantallaCentral/EleccionPersonaje/Barra/celdas/jugador12" unique_id=1417408524]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="marco" type="Panel" parent="FondoPantallaCentral/EleccionPersonaje/Barra/celdas/jugador12" unique_id=1958624317]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_eu64u")
+
+[node name="jugador13" type="Panel" parent="FondoPantallaCentral/EleccionPersonaje/Barra/celdas" unique_id=176125604]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="imagen" type="TextureRect" parent="FondoPantallaCentral/EleccionPersonaje/Barra/celdas/jugador13" unique_id=1516101050]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="marco" type="Panel" parent="FondoPantallaCentral/EleccionPersonaje/Barra/celdas/jugador13" unique_id=1286078700]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_eu64u")
+
+[node name="jugador14" type="Panel" parent="FondoPantallaCentral/EleccionPersonaje/Barra/celdas" unique_id=62440831]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="imagen" type="TextureRect" parent="FondoPantallaCentral/EleccionPersonaje/Barra/celdas/jugador14" unique_id=273981753]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="marco" type="Panel" parent="FondoPantallaCentral/EleccionPersonaje/Barra/celdas/jugador14" unique_id=1964827251]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_eu64u")
+
+[node name="jugador15" type="Panel" parent="FondoPantallaCentral/EleccionPersonaje/Barra/celdas" unique_id=599824974]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="imagen" type="TextureRect" parent="FondoPantallaCentral/EleccionPersonaje/Barra/celdas/jugador15" unique_id=502478815]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="marco" type="Panel" parent="FondoPantallaCentral/EleccionPersonaje/Barra/celdas/jugador15" unique_id=115020193]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_eu64u")
+
+[node name="jugador16" type="Panel" parent="FondoPantallaCentral/EleccionPersonaje/Barra/celdas" unique_id=1721479885]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="imagen" type="TextureRect" parent="FondoPantallaCentral/EleccionPersonaje/Barra/celdas/jugador16" unique_id=1600105146]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="marco" type="Panel" parent="FondoPantallaCentral/EleccionPersonaje/Barra/celdas/jugador16" unique_id=188828130]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_eu64u")
+
+[node name="jugador17" type="Panel" parent="FondoPantallaCentral/EleccionPersonaje/Barra/celdas" unique_id=2013204460]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="imagen" type="TextureRect" parent="FondoPantallaCentral/EleccionPersonaje/Barra/celdas/jugador17" unique_id=2053875651]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="marco" type="Panel" parent="FondoPantallaCentral/EleccionPersonaje/Barra/celdas/jugador17" unique_id=1222956882]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_eu64u")
+
+[node name="jugador18" type="Panel" parent="FondoPantallaCentral/EleccionPersonaje/Barra/celdas" unique_id=1533888768]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="imagen" type="TextureRect" parent="FondoPantallaCentral/EleccionPersonaje/Barra/celdas/jugador18" unique_id=1174794474]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="marco" type="Panel" parent="FondoPantallaCentral/EleccionPersonaje/Barra/celdas/jugador18" unique_id=823626290]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_eu64u")
+
+[node name="Nombre" type="Label" parent="FondoPantallaCentral/EleccionPersonaje" unique_id=229166538]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 5.0
+offset_bottom = 69.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 28
+text = "SELECCIONA UN JUGADOR"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarcoSeleccion" type="Panel" parent="FondoPantallaCentral/EleccionPersonaje" unique_id=397508697]
+unique_name_in_owner = true
+z_index = 1
+layout_mode = 0
+offset_left = 64.0
+offset_top = 96.0
+offset_right = 192.0
+offset_bottom = 224.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_jtwau")
+
+[node name="EstadisticasPersonaje" type="Control" parent="FondoPantallaCentral" unique_id=353454541]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -52.0
+offset_right = -52.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CuerpoEntero" type="TextureRect" parent="FondoPantallaCentral/EstadisticasPersonaje" unique_id=813046787]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -82.0
+offset_top = -96.0
+offset_right = 668.0
+offset_bottom = 654.0
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("4_q7wsj")
+
+[node name="Datos" type="Panel" parent="FondoPantallaCentral/EstadisticasPersonaje" unique_id=58119258]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 96.0
+offset_right = 768.0
+offset_bottom = 448.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_j6m78")
+
+[node name="Estadisticas" type="VBoxContainer" parent="FondoPantallaCentral/EstadisticasPersonaje/Datos" unique_id=1105369521]
+layout_mode = 1
+offset_left = 11.0
+offset_top = 15.0
+offset_right = 443.0
+offset_bottom = 344.0
+theme_override_constants/separation = 24
+
+[node name="PartidosJugados" type="HBoxContainer" parent="FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas" unique_id=1885150219]
+layout_mode = 2
+
+[node name="nombre" type="Label" parent="FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/PartidosJugados" unique_id=591664584]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "partidos jugados"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="valor" type="Label" parent="FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/PartidosJugados" unique_id=985501841]
+custom_minimum_size = Vector2(161.46, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "40"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Barra" type="Control" parent="FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/PartidosJugados" unique_id=244365547]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/PartidosJugados/Barra" unique_id=2012853888]
+layout_mode = 0
+offset_left = -429.0
+offset_top = 21.0
+offset_bottom = 25.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4td64")
+
+[node name="Victorias" type="HBoxContainer" parent="FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas" unique_id=1422243744]
+layout_mode = 2
+
+[node name="nombre" type="Label" parent="FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/Victorias" unique_id=1330792450]
+custom_minimum_size = Vector2(259, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Victorias"
+vertical_alignment = 1
+
+[node name="valor" type="Label" parent="FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/Victorias" unique_id=1025284338]
+custom_minimum_size = Vector2(161.46, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "40"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Barra" type="Control" parent="FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/Victorias" unique_id=1476064989]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/Victorias/Barra" unique_id=1121900740]
+layout_mode = 0
+offset_left = -429.0
+offset_top = 21.0
+offset_bottom = 25.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4td64")
+
+[node name="Perdidos" type="HBoxContainer" parent="FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas" unique_id=1537254310]
+layout_mode = 2
+
+[node name="nombre" type="Label" parent="FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/Perdidos" unique_id=84676739]
+custom_minimum_size = Vector2(259, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "derrotas"
+vertical_alignment = 1
+
+[node name="valor" type="Label" parent="FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/Perdidos" unique_id=1666127761]
+custom_minimum_size = Vector2(161.46, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "40"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Barra" type="Control" parent="FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/Perdidos" unique_id=121867165]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/Perdidos/Barra" unique_id=156567427]
+layout_mode = 0
+offset_left = -429.0
+offset_top = 21.0
+offset_bottom = 25.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4td64")
+
+[node name="WinRate" type="HBoxContainer" parent="FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas" unique_id=270457759]
+layout_mode = 2
+
+[node name="nombre" type="Label" parent="FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/WinRate" unique_id=726020433]
+custom_minimum_size = Vector2(259, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "winrate"
+vertical_alignment = 1
+
+[node name="valor" type="Label" parent="FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/WinRate" unique_id=1119722951]
+custom_minimum_size = Vector2(161.46, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "40"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Barra" type="Control" parent="FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/WinRate" unique_id=1464369227]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/WinRate/Barra" unique_id=2118452202]
+layout_mode = 0
+offset_left = -429.0
+offset_top = 21.0
+offset_bottom = 25.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4td64")
+
+[node name="Goles" type="HBoxContainer" parent="FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas" unique_id=38613390]
+layout_mode = 2
+
+[node name="nombre" type="Label" parent="FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/Goles" unique_id=285788321]
+custom_minimum_size = Vector2(259, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "goles"
+vertical_alignment = 1
+
+[node name="valor" type="Label" parent="FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/Goles" unique_id=2073448850]
+custom_minimum_size = Vector2(161.46, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "40"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Barra" type="Control" parent="FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/Goles" unique_id=1199441752]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/Goles/Barra" unique_id=2013668943]
+layout_mode = 0
+offset_left = -429.0
+offset_top = 21.0
+offset_bottom = 25.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4td64")
+
+[node name="Poderes" type="HBoxContainer" parent="FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas" unique_id=2066706610]
+layout_mode = 2
+
+[node name="nombre" type="Label" parent="FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/Poderes" unique_id=1876049640]
+custom_minimum_size = Vector2(259, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "poderes usados"
+vertical_alignment = 1
+
+[node name="valor" type="Label" parent="FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/Poderes" unique_id=1843257955]
+custom_minimum_size = Vector2(161.46, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "40"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Barra" type="Control" parent="FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/Poderes" unique_id=1611358699]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/Poderes/Barra" unique_id=2082765422]
+layout_mode = 0
+offset_left = -429.0
+offset_top = 21.0
+offset_bottom = 25.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4td64")
+
+[node name="trofeos" type="Control" parent="FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas" unique_id=236217611]
+layout_mode = 2
+
+[node name="Back" type="Panel" parent="FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/trofeos" unique_id=1414688706]
+custom_minimum_size = Vector2(0, 72)
+layout_mode = 0
+offset_left = -2.0
+offset_top = -14.0
+offset_right = 430.0
+offset_bottom = 58.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_m3b2f")
+
+[node name="Iconoes" type="HBoxContainer" parent="FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/trofeos" unique_id=856960466]
+custom_minimum_size = Vector2(421, 0)
+layout_mode = 0
+offset_left = 4.0
+offset_right = 425.0
+offset_bottom = 40.0
+
+[node name="Nombre" type="Control" parent="FondoPantallaCentral/EstadisticasPersonaje" unique_id=2106889429]
+custom_minimum_size = Vector2(448, 91)
+anchors_preset = 0
+offset_left = 320.0
+offset_top = 5.0
+offset_right = 768.0
+offset_bottom = 96.0
+
+[node name="Texto" type="Label" parent="FondoPantallaCentral/EstadisticasPersonaje/Nombre" unique_id=1104013726]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(448, 29)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -224.0
+offset_top = -14.5
+offset_right = 224.0
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 28
+text = "WILBUR WATKINS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Ingame" type="Control" parent="FondoPantallaCentral/EstadisticasPersonaje" unique_id=1963719168]
+anchors_preset = 0
+offset_left = 778.0
+offset_top = 111.0
+offset_right = 778.0
+offset_bottom = 111.0
+
+[node name="Back" type="Panel" parent="FondoPantallaCentral/EstadisticasPersonaje/Ingame" unique_id=200725469]
+custom_minimum_size = Vector2(0, 72)
+layout_mode = 0
+offset_left = -2.0
+offset_top = -14.0
+offset_right = 232.0
+offset_bottom = 114.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_m3b2f")
+
+[node name="imagen" type="TextureRect" parent="FondoPantallaCentral/EstadisticasPersonaje/Ingame" unique_id=262257105]
+unique_name_in_owner = true
+z_index = 1
+layout_mode = 0
+offset_left = 9.0
+offset_top = 3.0
+offset_right = 104.0
+offset_bottom = 98.0
+texture = ExtResource("5_6jj84")
+
+[node name="equipo" type="TextureRect" parent="FondoPantallaCentral/EstadisticasPersonaje/Ingame" unique_id=129862669]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 99.0
+offset_top = -15.0
+offset_right = 227.0
+offset_bottom = 113.0
+texture = ExtResource("6_6jj84")
+
+[node name="Poderes" type="Control" parent="FondoPantallaCentral/EstadisticasPersonaje" unique_id=38552407]
+anchors_preset = 0
+offset_left = 778.0
+offset_top = 111.0
+offset_right = 778.0
+offset_bottom = 111.0
+
+[node name="Back" type="Panel" parent="FondoPantallaCentral/EstadisticasPersonaje/Poderes" unique_id=1556383229]
+custom_minimum_size = Vector2(0, 90.86)
+layout_mode = 0
+offset_top = 121.0
+offset_right = 234.0
+offset_bottom = 337.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_m3b2f")
+
+[node name="Nombre" type="Label" parent="FondoPantallaCentral/EstadisticasPersonaje/Poderes" unique_id=1951773047]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 135.0
+offset_right = 193.0
+offset_bottom = 161.0
+theme_override_font_sizes/font_size = 25
+text = "poderes"
+
+[node name="lista" type="VBoxContainer" parent="FondoPantallaCentral/EstadisticasPersonaje/Poderes" unique_id=1160991414]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 153.0
+offset_right = 132.0
+offset_bottom = 283.0
+
+[node name="primero" type="Control" parent="FondoPantallaCentral/EstadisticasPersonaje/Poderes/lista" unique_id=1669741185]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="FondoPantallaCentral/EstadisticasPersonaje/Poderes/lista/primero" unique_id=1273879476]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 0
+offset_left = 16.0
+offset_top = 24.0
+offset_right = 80.0
+offset_bottom = 88.0
+
+[node name="TextureRect" type="TextureRect" parent="FondoPantallaCentral/EstadisticasPersonaje/Poderes/lista/primero/Panel" unique_id=203554013]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="info" type="Label" parent="FondoPantallaCentral/EstadisticasPersonaje/Poderes/lista/primero" unique_id=959763008]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 24.0
+offset_right = 234.0
+offset_bottom = 41.0
+theme_override_font_sizes/font_size = 14
+text = "desbloquear"
+
+[node name="ProgressBar" type="ProgressBar" parent="FondoPantallaCentral/EstadisticasPersonaje/Poderes/lista/primero" unique_id=1486292179]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 64.0
+offset_right = 213.83
+offset_bottom = 85.0
+value = 100.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="FondoPantallaCentral/EstadisticasPersonaje/Poderes/lista/primero" unique_id=1989884938]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 41.0
+offset_right = 204.0
+offset_bottom = 58.0
+theme_override_font_sizes/font_size = 8
+text = "gana 5 partidos "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="segundo" type="Control" parent="FondoPantallaCentral/EstadisticasPersonaje/Poderes/lista" unique_id=544529512]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="FondoPantallaCentral/EstadisticasPersonaje/Poderes/lista/segundo" unique_id=426789403]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 0
+offset_left = 16.0
+offset_top = 92.0
+offset_right = 80.0
+offset_bottom = 156.0
+
+[node name="TextureRect" type="TextureRect" parent="FondoPantallaCentral/EstadisticasPersonaje/Poderes/lista/segundo/Panel" unique_id=1661397728]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="info" type="Label" parent="FondoPantallaCentral/EstadisticasPersonaje/Poderes/lista/segundo" unique_id=985142607]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 17.0
+
+[node name="info2" type="Label" parent="FondoPantallaCentral/EstadisticasPersonaje/Poderes/lista/segundo" unique_id=330797576]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 113.0
+offset_right = 238.0
+offset_bottom = 130.0
+theme_override_font_sizes/font_size = 14
+text = "mano magica  "

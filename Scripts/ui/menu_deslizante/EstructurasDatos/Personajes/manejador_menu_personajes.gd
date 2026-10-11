@@ -19,8 +19,7 @@ func puedo_subir_menu_principal() -> bool:
 
 
 func _input(event):
-
-
+	
 	#TRANSICION: boton -> personajes
 	if event.is_action_pressed("ui_left") and estado_actual == Interactuables.BOTON:
 		estado_actual = Interactuables.PERSONAJES

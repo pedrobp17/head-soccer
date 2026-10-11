@@ -29,8 +29,8 @@ func _ready():
 	actualizar_selector()
 	EventBus.item_selected_personajes.connect(on_item_selected_personajes)
 	EventBus.item_selected_modos.connect(on_item_selected_modos)
-func _input(event):
 
+func _input(event):
 	#TRANSICION: menu -> panel_superior
 	if event.is_action_pressed("ui_up") and !en_menu_superior and escena_actual == mapa_seleccion_opciones["menu"]:
 		en_menu_superior = true

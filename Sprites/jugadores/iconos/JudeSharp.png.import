@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://di5s6pkofv3jc"
-valid=false
+uid="uid://brxtsi2lsdwbu"
+path="res://.godot/imported/JudeSharp.png-a93d9562cac99180bb5cd424180f0baf.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://Sprites/jugadores/iconos/JudeSharp.png"
+dest_files=["res://.godot/imported/JudeSharp.png-a93d9562cac99180bb5cd424180f0baf.ctex"]
 
 [params]
 

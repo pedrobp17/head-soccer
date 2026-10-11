@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqq3uqyumbq38"
-valid=false
+uid="uid://by6cffq5stmpg"
+path="res://.godot/imported/ArtieMishman.png-64b4e157eeadf874916fd7ba89b26d5d.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://Sprites/jugadores/iconos/ArtieMishman.png"
+dest_files=["res://.godot/imported/ArtieMishman.png-64b4e157eeadf874916fd7ba89b26d5d.ctex"]
 
 [params]
 
