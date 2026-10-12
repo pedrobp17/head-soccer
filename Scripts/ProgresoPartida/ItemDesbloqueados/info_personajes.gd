@@ -175,6 +175,44 @@ func get_usos_poder(nombre: String) -> int:
 	var personaje := _obtener(nombre)
 	return personaje.usos_poder if personaje else 0
 
+func get_poder1(nombre: String) -> bool:
+	var personaje := _obtener(nombre)
+	return personaje.poder1 if personaje else false
+
+func get_poder2(nombre: String) -> bool:
+	var personaje := _obtener(nombre)
+	return personaje.poder2 if personaje else false
+
+func get_descripcion(nombre: String) -> String:
+	var personaje := _obtener(nombre)
+	return personaje.descripcion if personaje else ""
+
+func get_descripcion_poder1(nombre: String) -> String:
+	var personaje := _obtener(nombre)
+	return personaje.descripcion_poder1 if personaje else ""
+
+func get_descripcion_poder2(nombre: String) -> String:
+	var personaje := _obtener(nombre)
+	return personaje.descripcion_poder2 if personaje else ""
+
+# Acceso genérico: numero_poder = 1 o 2.
+func get_descripcion_poder(nombre: String, numero_poder: int) -> String:
+	match numero_poder:
+		1: return get_descripcion_poder1(nombre)
+		2: return get_descripcion_poder2(nombre)
+		_:
+			push_warning("Número de poder no válido: " + str(numero_poder))
+			return ""
+
+# Acceso genérico: numero_poder = 1 o 2.
+func get_poder_desbloqueado(nombre: String, numero_poder: int) -> bool:
+	match numero_poder:
+		1: return get_poder1(nombre)
+		2: return get_poder2(nombre)
+		_:
+			push_warning("Número de poder no válido: " + str(numero_poder))
+			return false
+
 
 # SETTERS ACUMULATIVOS
 func set_partidos_ganados(nombre: String, cantidad: int = 1) -> void:
@@ -226,3 +264,35 @@ func set_desbloqueado(nombre: String, valor: bool = true) -> void:
 	var personaje := _obtener(nombre)
 	if personaje:
 		personaje.desbloqueado = valor
+
+func set_poder1(nombre: String, valor: bool = true) -> void:
+	var personaje := _obtener(nombre)
+	if personaje:
+		personaje.poder1 = valor
+
+func set_poder2(nombre: String, valor: bool = true) -> void:
+	var personaje := _obtener(nombre)
+	if personaje:
+		personaje.poder2 = valor
+
+# Acceso genérico: numero_poder = 1 o 2.
+func set_poder_desbloqueado(nombre: String, numero_poder: int, valor: bool = true) -> void:
+	match numero_poder:
+		1: set_poder1(nombre, valor)
+		2: set_poder2(nombre, valor)
+		_: push_warning("Número de poder no válido: " + str(numero_poder))
+
+func set_descripcion(nombre: String, texto: String) -> void:
+	var personaje := _obtener(nombre)
+	if personaje:
+		personaje.descripcion = texto
+
+func set_descripcion_poder1(nombre: String, texto: String) -> void:
+	var personaje := _obtener(nombre)
+	if personaje:
+		personaje.descripcion_poder1 = texto
+
+func set_descripcion_poder2(nombre: String, texto: String) -> void:
+	var personaje := _obtener(nombre)
+	if personaje:
+		personaje.descripcion_poder2 = texto

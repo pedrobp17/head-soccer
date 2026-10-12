@@ -13,6 +13,7 @@ signal cambiar_barra_vida( vida : float, es_visitante : bool)
 signal cambio_marcador(jugador_anotador : String)
 signal fin_animacion_gol
 signal fin_animacion_vs
+signal fin_animacion_nombre
 signal fin_partido()
 signal en_tiempo_extra()
 signal item_selected_personajes(data: Variant)

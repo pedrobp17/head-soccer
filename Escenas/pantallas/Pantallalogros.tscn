@@ -4,8 +4,13 @@
 [ext_resource type="Script" uid="uid://d3tuyf7qlvjot" path="res://Scripts/ui/menu_deslizante/EstructurasDatos/estadisticas/logros.gd" id="1_5a6hj"]
 [ext_resource type="Script" uid="uid://cp15dpvu6qxx6" path="res://Scripts/ui/menu_deslizante/EstructurasDatos/estadisticas/celdas_seleccion_personajes.gd" id="2_frvt7"]
 [ext_resource type="Texture2D" uid="uid://dancky1dnowvr" path="res://Sprites/jugadores/personajesNoBloq/MarkEvans.png" id="4_q7wsj"]
-[ext_resource type="Texture2D" uid="uid://fkeeoxaxdaj2" path="res://Sprites/jugadores/cabezas/MarkEvans_C.png" id="5_6jj84"]
-[ext_resource type="Texture2D" uid="uid://crwvbnux7o5t" path="res://Sprites/banderas/bandera-raimon.png" id="6_6jj84"]
+[ext_resource type="Texture2D" uid="uid://cv0wr4kf5gkxe" path="res://Sprites/trofeos/torneo.png" id="5_wer5v"]
+[ext_resource type="Texture2D" uid="uid://dylpxxkojyyb6" path="res://Sprites/trofeos/liga.png" id="6_0bpj7"]
+[ext_resource type="Texture2D" uid="uid://csk5c276ndi22" path="res://Sprites/trofeos/mundial.png" id="7_woh5l"]
+[ext_resource type="Texture2D" uid="uid://c745hfcau16ek" path="res://Sprites/trofeos/pelea.png" id="8_nta2p"]
+[ext_resource type="Script" uid="uid://bcklb680kuyci" path="res://Scripts/ui/menu_deslizante/EstructurasDatos/estadisticas/animacion_desplazamiento_nombres.gd" id="9_0bpj7"]
+[ext_resource type="PackedScene" uid="uid://drkd57imti32b" path="res://Escenas/ui/Cartas/carta_ingame_logros.tscn" id="10_wer5v"]
+[ext_resource type="PackedScene" uid="uid://b72obpfe6701y" path="res://Escenas/ui/Cartas/carta_poderes_logro.tscn" id="11_0bpj7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a8ku5"]
 bg_color = Color(0.047058824, 0.2901961, 0.627451, 0.69803923)
@@ -58,6 +63,24 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_avrte"]
+bg_color = Color(1, 1, 0.28627452, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cfhg6"]
+bg_color = Color(1, 1, 0.28627452, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tvkqe"]
+bg_color = Color(0.019607844, 0.19215687, 0.43529412, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 0.28627452, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
 [node name="logros" type="Control" unique_id=128429028]
 layout_mode = 3
 anchors_preset = 15
@@ -93,6 +116,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_a8ku5")
 
 [node name="EleccionPersonaje" type="Control" parent="FondoPantallaCentral" unique_id=389358941]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -733,42 +757,172 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_4td64")
 layout_mode = 2
 
 [node name="Back" type="Panel" parent="FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/trofeos" unique_id=1414688706]
-custom_minimum_size = Vector2(0, 72)
 layout_mode = 0
 offset_left = -2.0
 offset_top = -14.0
 offset_right = 430.0
 offset_bottom = 58.0
+scale = Vector2(0.895, 1)
+pivot_offset = Vector2(216, 0)
 theme_override_styles/panel = SubResource("StyleBoxFlat_m3b2f")
 
 [node name="Iconoes" type="HBoxContainer" parent="FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/trofeos" unique_id=856960466]
 custom_minimum_size = Vector2(421, 0)
 layout_mode = 0
-offset_left = 4.0
-offset_right = 425.0
+offset_left = 31.0
+offset_top = -11.0
+offset_right = 452.0
+offset_bottom = 53.0
+theme_override_constants/separation = 30
+
+[node name="Torneos" type="TextureRect" parent="FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/trofeos/Iconoes" unique_id=1078489602]
+layout_mode = 2
+texture = ExtResource("5_wer5v")
+
+[node name="Label" type="Label" parent="FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/trofeos/Iconoes/Torneos" unique_id=1341495554]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 46.0
+offset_right = 90.0
+offset_bottom = 63.0
+text = "x0"
+
+[node name="Ligas" type="TextureRect" parent="FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/trofeos/Iconoes" unique_id=928717093]
+layout_mode = 2
+texture = ExtResource("6_0bpj7")
+
+[node name="Label" type="Label" parent="FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/trofeos/Iconoes/Ligas" unique_id=593271566]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 46.0
+offset_right = 90.0
+offset_bottom = 63.0
+text = "x0"
+
+[node name="Mundial" type="TextureRect" parent="FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/trofeos/Iconoes" unique_id=1421960847]
+layout_mode = 2
+texture = ExtResource("7_woh5l")
+
+[node name="Label" type="Label" parent="FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/trofeos/Iconoes/Mundial" unique_id=1909229956]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 46.0
+offset_right = 90.0
+offset_bottom = 63.0
+text = "x0"
+
+[node name="Pelea" type="TextureRect" parent="FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/trofeos/Iconoes" unique_id=1613225293]
+layout_mode = 2
+texture = ExtResource("8_nta2p")
+
+[node name="Label" type="Label" parent="FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/trofeos/Iconoes/Pelea" unique_id=1285461420]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 46.0
+offset_right = 90.0
+offset_bottom = 63.0
+text = "x0"
+
+[node name="Flecha1" type="Panel" parent="FondoPantallaCentral/EstadisticasPersonaje" unique_id=117148784]
+layout_mode = 0
+offset_left = 314.00003
+offset_top = 30.0
+offset_right = 354.00003
+offset_bottom = 70.0
+rotation = 0.7853982
+pivot_offset = Vector2(20, 20)
+theme_override_styles/panel = SubResource("StyleBoxFlat_avrte")
+
+[node name="Flecha2" type="Panel" parent="FondoPantallaCentral/EstadisticasPersonaje" unique_id=487188608]
+layout_mode = 0
+offset_left = 732.0
+offset_top = 30.0
+offset_right = 772.0
+offset_bottom = 70.0
+rotation = 0.7853982
+pivot_offset = Vector2(20, 20)
+theme_override_styles/panel = SubResource("StyleBoxFlat_cfhg6")
+
+[node name="jugador" type="Panel" parent="FondoPantallaCentral/EstadisticasPersonaje" unique_id=517185315]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(420.8, 0)
+layout_mode = 0
+offset_left = 332.0
+offset_top = 20.0
+offset_right = 752.805
+offset_bottom = 79.97
+theme_override_styles/panel = SubResource("StyleBoxFlat_tvkqe")
+script = ExtResource("9_0bpj7")
+
+[node name="zonaVisible" type="Control" parent="FondoPantallaCentral/EstadisticasPersonaje/jugador" unique_id=1658961135]
+clip_contents = true
+anchors_preset = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 415.965
+offset_bottom = 55.02
+
+[node name="NombresIntercambiados" type="Control" parent="FondoPantallaCentral/EstadisticasPersonaje/jugador/zonaVisible" unique_id=1861562719]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Nombre" type="Control" parent="FondoPantallaCentral/EstadisticasPersonaje" unique_id=2106889429]
-custom_minimum_size = Vector2(448, 91)
-anchors_preset = 0
-offset_left = 320.0
-offset_top = 5.0
-offset_right = 768.0
-offset_bottom = 96.0
-
-[node name="Texto" type="Label" parent="FondoPantallaCentral/EstadisticasPersonaje/Nombre" unique_id=1104013726]
+[node name="Saliente" type="Label" parent="FondoPantallaCentral/EstadisticasPersonaje/jugador/zonaVisible/NombresIntercambiados" unique_id=1920555754]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(448, 29)
+z_index = 1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 17.0
+
+[node name="Entrante" type="Label" parent="FondoPantallaCentral/EstadisticasPersonaje/jugador/zonaVisible/NombresIntercambiados" unique_id=474876421]
+unique_name_in_owner = true
+z_index = 1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 17.0
+
+[node name="Placeholders" type="Control" parent="FondoPantallaCentral/EstadisticasPersonaje/jugador" unique_id=1111499013]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Derecha" type="Label" parent="FondoPantallaCentral/EstadisticasPersonaje/jugador/Placeholders" unique_id=1530798977]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 29)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -224.0
-offset_top = -14.5
-offset_right = 224.0
-offset_bottom = 14.5
+offset_left = 213.5975
+offset_top = -13.985001
+offset_right = 558.59753
+offset_bottom = 15.014999
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+theme_override_font_sizes/font_size = 28
+text = "caleb stonewall"
+vertical_alignment = 1
+
+[node name="Centro" type="Label" parent="FondoPantallaCentral/EstadisticasPersonaje/jugador/Placeholders" unique_id=19095665]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 29)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -205.4025
+offset_top = -13.985001
+offset_right = 205.5625
+offset_bottom = 15.014999
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 28
@@ -776,40 +930,46 @@ text = "WILBUR WATKINS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Ingame" type="Control" parent="FondoPantallaCentral/EstadisticasPersonaje" unique_id=1963719168]
-anchors_preset = 0
-offset_left = 778.0
-offset_top = 111.0
-offset_right = 778.0
-offset_bottom = 111.0
-
-[node name="Back" type="Panel" parent="FondoPantallaCentral/EstadisticasPersonaje/Ingame" unique_id=200725469]
-custom_minimum_size = Vector2(0, 72)
-layout_mode = 0
-offset_left = -2.0
-offset_top = -14.0
-offset_right = 232.0
-offset_bottom = 114.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_m3b2f")
-
-[node name="imagen" type="TextureRect" parent="FondoPantallaCentral/EstadisticasPersonaje/Ingame" unique_id=262257105]
+[node name="Izquierda" type="Label" parent="FondoPantallaCentral/EstadisticasPersonaje/jugador/Placeholders" unique_id=738904776]
 unique_name_in_owner = true
-z_index = 1
-layout_mode = 0
-offset_left = 9.0
-offset_top = 3.0
-offset_right = 104.0
-offset_bottom = 98.0
-texture = ExtResource("5_6jj84")
+custom_minimum_size = Vector2(0, 29)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -539.40247
+offset_top = -13.985001
+offset_right = -128.43762
+offset_bottom = 15.014999
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+theme_override_font_sizes/font_size = 28
+text = "caleb stonewall"
+horizontal_alignment = 2
+vertical_alignment = 1
 
-[node name="equipo" type="TextureRect" parent="FondoPantallaCentral/EstadisticasPersonaje/Ingame" unique_id=129862669]
+[node name="Nombre" type="Label" parent="FondoPantallaCentral/EstadisticasPersonaje/jugador" unique_id=111836928]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 99.0
-offset_top = -15.0
-offset_right = 227.0
-offset_bottom = 113.0
-texture = ExtResource("6_6jj84")
+custom_minimum_size = Vector2(0, 29)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -205.4025
+offset_top = -13.985001
+offset_right = 205.5625
+offset_bottom = 15.014999
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 28
+text = "WILBUR WATKINS"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Poderes" type="Control" parent="FondoPantallaCentral/EstadisticasPersonaje" unique_id=38552407]
 anchors_preset = 0
@@ -835,84 +995,29 @@ offset_bottom = 161.0
 theme_override_font_sizes/font_size = 25
 text = "poderes"
 
-[node name="lista" type="VBoxContainer" parent="FondoPantallaCentral/EstadisticasPersonaje/Poderes" unique_id=1160991414]
-layout_mode = 0
-offset_left = 6.0
-offset_top = 153.0
-offset_right = 132.0
-offset_bottom = 283.0
-
-[node name="primero" type="Control" parent="FondoPantallaCentral/EstadisticasPersonaje/Poderes/lista" unique_id=1669741185]
-layout_mode = 2
-
-[node name="Panel" type="Panel" parent="FondoPantallaCentral/EstadisticasPersonaje/Poderes/lista/primero" unique_id=1273879476]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 0
-offset_left = 16.0
-offset_top = 24.0
-offset_right = 80.0
-offset_bottom = 88.0
-
-[node name="TextureRect" type="TextureRect" parent="FondoPantallaCentral/EstadisticasPersonaje/Poderes/lista/primero/Panel" unique_id=203554013]
-layout_mode = 0
+[node name="cartas" type="Control" parent="FondoPantallaCentral/EstadisticasPersonaje/Poderes" unique_id=431615789]
+anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="info" type="Label" parent="FondoPantallaCentral/EstadisticasPersonaje/Poderes/lista/primero" unique_id=959763008]
+[node name="CartaPoderesLogro1" parent="FondoPantallaCentral/EstadisticasPersonaje/Poderes/cartas" unique_id=2135137069 instance=ExtResource("11_0bpj7")]
 layout_mode = 0
-offset_left = 90.0
-offset_top = 24.0
-offset_right = 234.0
-offset_bottom = 41.0
-theme_override_font_sizes/font_size = 14
-text = "desbloquear"
+offset_left = 22.0
+offset_top = 177.0
+offset_right = 148.0
+offset_bottom = 177.0
 
-[node name="ProgressBar" type="ProgressBar" parent="FondoPantallaCentral/EstadisticasPersonaje/Poderes/lista/primero" unique_id=1486292179]
+[node name="CartaPoderesLogro2" parent="FondoPantallaCentral/EstadisticasPersonaje/Poderes/cartas" unique_id=2035853753 instance=ExtResource("11_0bpj7")]
 layout_mode = 0
-offset_left = 90.0
-offset_top = 64.0
-offset_right = 213.83
-offset_bottom = 85.0
-value = 100.0
-show_percentage = false
+offset_left = 22.0
+offset_top = 249.0
+offset_right = 148.0
+offset_bottom = 249.0
 
-[node name="Label" type="Label" parent="FondoPantallaCentral/EstadisticasPersonaje/Poderes/lista/primero" unique_id=1989884938]
+[node name="CartaIngramLogro" parent="FondoPantallaCentral/EstadisticasPersonaje" unique_id=41956185 instance=ExtResource("10_wer5v")]
+unique_name_in_owner = true
 layout_mode = 0
-offset_left = 100.0
-offset_top = 41.0
-offset_right = 204.0
-offset_bottom = 58.0
-theme_override_font_sizes/font_size = 8
-text = "gana 5 partidos "
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="segundo" type="Control" parent="FondoPantallaCentral/EstadisticasPersonaje/Poderes/lista" unique_id=544529512]
-layout_mode = 2
-
-[node name="Panel" type="Panel" parent="FondoPantallaCentral/EstadisticasPersonaje/Poderes/lista/segundo" unique_id=426789403]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 0
-offset_left = 16.0
-offset_top = 92.0
-offset_right = 80.0
-offset_bottom = 156.0
-
-[node name="TextureRect" type="TextureRect" parent="FondoPantallaCentral/EstadisticasPersonaje/Poderes/lista/segundo/Panel" unique_id=1661397728]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="info" type="Label" parent="FondoPantallaCentral/EstadisticasPersonaje/Poderes/lista/segundo" unique_id=985142607]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 17.0
-
-[node name="info2" type="Label" parent="FondoPantallaCentral/EstadisticasPersonaje/Poderes/lista/segundo" unique_id=330797576]
-layout_mode = 0
-offset_left = 90.0
-offset_top = 113.0
-offset_right = 238.0
-offset_bottom = 130.0
-theme_override_font_sizes/font_size = 14
-text = "mano magica  "
+offset_left = 778.0
+offset_top = 97.0
+offset_right = 778.0
+offset_bottom = 97.0

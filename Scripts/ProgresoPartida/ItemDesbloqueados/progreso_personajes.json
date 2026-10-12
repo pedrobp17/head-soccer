@@ -9,7 +9,12 @@
 		"peleas_ganadas": 0,
 		"goles_metidos": 0,
 		"ronda_maxima_survival": 0,
-		"usos_poder": 0
+		"usos_poder": 0,
+		"poder1": false,
+		"poder2": false,
+		"descripcion": "",
+		"descripcion_poder1": "",
+		"descripcion_poder2": ""
 	},
 	"ArtieMishman": {
 		"desbloqueado": true,
@@ -21,7 +26,12 @@
 		"peleas_ganadas": 0,
 		"goles_metidos": 0,
 		"ronda_maxima_survival": 0,
-		"usos_poder": 0
+		"usos_poder": 0,
+		"poder1": false,
+		"poder2": false,
+		"descripcion": "",
+		"descripcion_poder1": "",
+		"descripcion_poder2": ""
 	},
 	"AxelBlaze": {
 		"desbloqueado": true,
@@ -33,7 +43,12 @@
 		"peleas_ganadas": 0,
 		"goles_metidos": 0,
 		"ronda_maxima_survival": 0,
-		"usos_poder": 0
+		"usos_poder": 0,
+		"poder1": false,
+		"poder2": false,
+		"descripcion": "",
+		"descripcion_poder1": "",
+		"descripcion_poder2": ""
 	},
 	"ByronLove": {
 		"desbloqueado": false,
@@ -45,7 +60,12 @@
 		"peleas_ganadas": 0,
 		"goles_metidos": 0,
 		"ronda_maxima_survival": 0,
-		"usos_poder": 0
+		"usos_poder": 0,
+		"poder1": false,
+		"poder2": false,
+		"descripcion": "",
+		"descripcion_poder1": "",
+		"descripcion_poder2": ""
 	},
 	"CalebStonewall": {
 		"desbloqueado": false,
@@ -57,7 +77,12 @@
 		"peleas_ganadas": 0,
 		"goles_metidos": 0,
 		"ronda_maxima_survival": 0,
-		"usos_poder": 0
+		"usos_poder": 0,
+		"poder1": false,
+		"poder2": false,
+		"descripcion": "",
+		"descripcion_poder1": "",
+		"descripcion_poder2": ""
 	},
 	"GaryLancaster": {
 		"desbloqueado": false,
@@ -69,7 +94,12 @@
 		"peleas_ganadas": 0,
 		"goles_metidos": 0,
 		"ronda_maxima_survival": 0,
-		"usos_poder": 0
+		"usos_poder": 0,
+		"poder1": false,
+		"poder2": false,
+		"descripcion": "",
+		"descripcion_poder1": "",
+		"descripcion_poder2": ""
 	},
 	"HarleyKane": {
 		"desbloqueado": false,
@@ -81,7 +111,12 @@
 		"peleas_ganadas": 0,
 		"goles_metidos": 0,
 		"ronda_maxima_survival": 0,
-		"usos_poder": 0
+		"usos_poder": 0,
+		"poder1": false,
+		"poder2": false,
+		"descripcion": "",
+		"descripcion_poder1": "",
+		"descripcion_poder2": ""
 	},
 	"JohanTassman": {
 		"desbloqueado": false,
@@ -93,7 +128,12 @@
 		"peleas_ganadas": 0,
 		"goles_metidos": 0,
 		"ronda_maxima_survival": 0,
-		"usos_poder": 0
+		"usos_poder": 0,
+		"poder1": false,
+		"poder2": false,
+		"descripcion": "",
+		"descripcion_poder1": "",
+		"descripcion_poder2": ""
 	},
 	"JonasDemetrius": {
 		"desbloqueado": false,
@@ -105,7 +145,12 @@
 		"peleas_ganadas": 0,
 		"goles_metidos": 0,
 		"ronda_maxima_survival": 0,
-		"usos_poder": 0
+		"usos_poder": 0,
+		"poder1": false,
+		"poder2": false,
+		"descripcion": "",
+		"descripcion_poder1": "",
+		"descripcion_poder2": ""
 	},
 	"JudeSharp": {
 		"desbloqueado": false,
@@ -117,7 +162,12 @@
 		"peleas_ganadas": 0,
 		"goles_metidos": 0,
 		"ronda_maxima_survival": 0,
-		"usos_poder": 0
+		"usos_poder": 0,
+		"poder1": false,
+		"poder2": false,
+		"descripcion": "",
+		"descripcion_poder1": "",
+		"descripcion_poder2": ""
 	},
 	"KatieBrown": {
 		"desbloqueado": false,
@@ -129,7 +179,12 @@
 		"peleas_ganadas": 0,
 		"goles_metidos": 0,
 		"ronda_maxima_survival": 0,
-		"usos_poder": 0
+		"usos_poder": 0,
+		"poder1": false,
+		"poder2": false,
+		"descripcion": "",
+		"descripcion_poder1": "",
+		"descripcion_poder2": ""
 	},
 	"MarkEvans": {
 		"desbloqueado": true,
@@ -141,7 +196,12 @@
 		"peleas_ganadas": 0,
 		"goles_metidos": 0,
 		"ronda_maxima_survival": 0,
-		"usos_poder": 0
+		"usos_poder": 0,
+		"poder1": false,
+		"poder2": false,
+		"descripcion": "",
+		"descripcion_poder1": "",
+		"descripcion_poder2": ""
 	},
 	"NathanJones": {
 		"desbloqueado": false,
@@ -153,7 +213,12 @@
 		"peleas_ganadas": 0,
 		"goles_metidos": 0,
 		"ronda_maxima_survival": 0,
-		"usos_poder": 0
+		"usos_poder": 0,
+		"poder1": false,
+		"poder2": false,
+		"descripcion": "",
+		"descripcion_poder1": "",
+		"descripcion_poder2": ""
 	},
 	"NelsonRockwell": {
 		"desbloqueado": false,
@@ -165,7 +230,12 @@
 		"peleas_ganadas": 0,
 		"goles_metidos": 0,
 		"ronda_maxima_survival": 0,
-		"usos_poder": 0
+		"usos_poder": 0,
+		"poder1": false,
+		"poder2": false,
+		"descripcion": "",
+		"descripcion_poder1": "",
+		"descripcion_poder2": ""
 	},
 	"SteveEagle": {
 		"desbloqueado": false,
@@ -177,7 +247,12 @@
 		"peleas_ganadas": 0,
 		"goles_metidos": 0,
 		"ronda_maxima_survival": 0,
-		"usos_poder": 0
+		"usos_poder": 0,
+		"poder1": false,
+		"poder2": false,
+		"descripcion": "",
+		"descripcion_poder1": "",
+		"descripcion_poder2": ""
 	},
 	"ThomasFeldt": {
 		"desbloqueado": false,
@@ -189,7 +264,12 @@
 		"peleas_ganadas": 0,
 		"goles_metidos": 0,
 		"ronda_maxima_survival": 0,
-		"usos_poder": 0
+		"usos_poder": 0,
+		"poder1": false,
+		"poder2": false,
+		"descripcion": "",
+		"descripcion_poder1": "",
+		"descripcion_poder2": ""
 	},
 	"WilburWatkins": {
 		"desbloqueado": false,
@@ -201,7 +281,12 @@
 		"peleas_ganadas": 0,
 		"goles_metidos": 0,
 		"ronda_maxima_survival": 0,
-		"usos_poder": 0
+		"usos_poder": 0,
+		"poder1": false,
+		"poder2": false,
+		"descripcion": "",
+		"descripcion_poder1": "",
+		"descripcion_poder2": ""
 	},
 	"XavierFoster": {
 		"desbloqueado": false,
@@ -213,6 +298,11 @@
 		"peleas_ganadas": 0,
 		"goles_metidos": 0,
 		"ronda_maxima_survival": 0,
-		"usos_poder": 0
+		"usos_poder": 0,
+		"poder1": false,
+		"poder2": false,
+		"descripcion": "",
+		"descripcion_poder1": "",
+		"descripcion_poder2": ""
 	}
 }

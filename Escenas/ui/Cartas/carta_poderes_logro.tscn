@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://b72obpfe6701y"]
+
+[ext_resource type="Script" uid="uid://d0b6wcws0i0gk" path="res://Scripts/ui/menu_deslizante/EstructurasDatos/estadisticas/cartas_poderes_logros.gd" id="1_0j1o0"]
+
+[node name="CartaPoderesLogro" type="Control" unique_id=2135137069]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 205.0
+offset_bottom = 64.0
+script = ExtResource("1_0j1o0")
+
+[node name="bloqueado" type="Control" parent="." unique_id=571030991]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="info" type="Label" parent="bloqueado" unique_id=475913150]
+layout_mode = 0
+offset_left = 64.0
+offset_right = 205.0
+offset_bottom = 17.0
+theme_override_font_sizes/font_size = 13
+text = "desbloquear"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="descripcion" type="Label" parent="bloqueado" unique_id=2004413759]
+unique_name_in_owner = true
+custom_maximum_size = Vector2(141, 31)
+layout_mode = 0
+offset_left = 64.0
+offset_top = 17.0
+offset_right = 205.0
+offset_bottom = 47.715
+theme_override_font_sizes/font_size = 6
+text = "afhksfalljl dlafjlaflajflsj sljflsjflsj lsdjfl sl jlsj fsj lsj"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="bloqueado" unique_id=1976543134]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 0
+offset_left = 72.0
+offset_top = 50.0
+offset_right = 200.355
+offset_bottom = 63.43
+show_percentage = false
+
+[node name="desbloqueado" type="Control" parent="." unique_id=1139862555]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="nombre" type="Label" parent="desbloqueado" unique_id=1275876806]
+unique_name_in_owner = true
+custom_maximum_size = Vector2(141, 31)
+layout_mode = 0
+offset_left = 64.0
+offset_top = 22.0
+offset_right = 205.0
+offset_bottom = 39.0
+theme_override_font_sizes/font_size = 13
+text = "mano Magica"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="imagen" type="TextureRect" parent="." unique_id=1441567213]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+expand_mode = 1
+stretch_mode = 5

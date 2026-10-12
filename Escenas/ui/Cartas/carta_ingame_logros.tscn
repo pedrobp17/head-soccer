@@ -1,0 +1,104 @@
+[gd_scene format=3 uid="uid://drkd57imti32b"]
+
+[ext_resource type="Texture2D" uid="uid://fkeeoxaxdaj2" path="res://Sprites/jugadores/cabezas/MarkEvans_C.png" id="1_6im5v"]
+[ext_resource type="Script" uid="uid://c11m6u4o1qjgj" path="res://Scripts/ui/menu_deslizante/EstructurasDatos/estadisticas/carta_ingame_logros.gd" id="1_xb4v3"]
+[ext_resource type="Texture2D" uid="uid://crwvbnux7o5t" path="res://Sprites/banderas/bandera-raimon.png" id="2_xb4v3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l550w"]
+bg_color = Color(0.019607844, 0.19215687, 0.43529412, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 0.28627452, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="CartaIngramLogro" type="Control" unique_id=41956185]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_xb4v3")
+
+[node name="Back" type="Panel" parent="." unique_id=249094505]
+custom_minimum_size = Vector2(0, 72)
+layout_mode = 0
+offset_left = -2.0
+offset_right = 232.0
+offset_bottom = 128.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_l550w")
+
+[node name="bloqueado" type="Control" parent="Back" unique_id=608910742]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="info" type="Label" parent="Back/bloqueado" unique_id=689522839]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 8.0
+offset_bottom = 25.0
+grow_horizontal = 2
+text = "desbloquear"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="descripcion" type="Label" parent="Back/bloqueado" unique_id=40542549]
+unique_name_in_owner = true
+custom_maximum_size = Vector2(224, 65)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 33.0
+offset_right = -5.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "aljslafa als alsj  aj ñalals j"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="Back/bloqueado" unique_id=925818276]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 99.0
+offset_right = 218.19
+offset_bottom = 120.0
+show_percentage = false
+
+[node name="desbloqueado" type="Control" parent="Back" unique_id=1816161238]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="imagen" type="TextureRect" parent="Back/desbloqueado" unique_id=1208653331]
+unique_name_in_owner = true
+z_index = 1
+layout_mode = 0
+offset_left = 12.0
+offset_top = 15.0
+offset_right = 107.0
+offset_bottom = 110.0
+texture = ExtResource("1_6im5v")
+
+[node name="equipo" type="TextureRect" parent="Back/desbloqueado" unique_id=1324029864]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 101.0
+offset_right = 229.0
+offset_bottom = 128.0
+texture = ExtResource("2_xb4v3")

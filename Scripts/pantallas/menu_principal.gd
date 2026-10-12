@@ -16,6 +16,7 @@ const mapa_direcciones : Dictionary = {
 @onready var tipos_menu : Array[CartasPantallaPrincipal] = [%menu, %skin, %Estadisticas, %Ajustes]
 @onready var menu_deslizante: MenuDeslizanteModosJuego = %MenuDeslizante
 @onready var selector_personajes: ManejadorMenuPersonajes = %SelectorPersonajes
+@onready var logros: Logros = %logros
 
 var en_menu_superior := false
 var escena_actual := mapa_seleccion_opciones["menu"] 
@@ -64,18 +65,27 @@ func _input(event):
 		return
 	
 	#TRANSICION: panel_superior_personajes -> panel_superior_menu
-	if event.is_action_pressed("ui_left") and escena_actual != mapa_seleccion_opciones["menu"] :
+	if event.is_action_pressed("ui_left") and escena_actual == mapa_seleccion_opciones["personajes"] :
 		escena_actual = mapa_seleccion_opciones["menu"]
 		actualizar_selector(mapa_direcciones["derecha"])
 		show_escena_menu()
 		selector_personajes.set_item_central(item_seleccionado_personajes)
 	
 	#TRANSICION: panel_superior_menu -> panel_superior_personajes
-	elif event.is_action_pressed("ui_right") and escena_actual != mapa_seleccion_opciones["personajes"] :
+	elif event.is_action_pressed("ui_right") and escena_actual == mapa_seleccion_opciones["menu"] :
 		escena_actual = mapa_seleccion_opciones["personajes"]
 		actualizar_selector(mapa_direcciones["izquierda"])
 		show_escena_personajes()
+	
+	elif event.is_action_pressed("ui_right") and escena_actual == mapa_seleccion_opciones["personajes"] :
+		escena_actual = mapa_seleccion_opciones["estadisticas"]
+		actualizar_selector(mapa_direcciones["izquierda"])
+		show_escena_logros()
 		
+	elif event.is_action_pressed("ui_left") and escena_actual == mapa_seleccion_opciones["estadisticas"] :
+		escena_actual = mapa_seleccion_opciones["personajes"]
+		actualizar_selector(mapa_direcciones["derecha"])
+		show_escena_personajes()
 
 func cambiar_foco_escena(tiene_foco: bool) -> void:
 	if escena_actual == mapa_seleccion_opciones["menu"]:
@@ -110,7 +120,13 @@ func on_item_selected_modos( datos : Variant) -> void:
 func show_escena_menu() -> void:
 	selector_personajes.hide()
 	menu_deslizante.show()
-	
+	logros.hide()
 func show_escena_personajes() -> void:
 	selector_personajes.show()
 	menu_deslizante.hide()
+	logros.hide()
+
+func show_escena_logros() -> void:
+	logros.show()
+	menu_deslizante.hide()
+	selector_personajes.hide()

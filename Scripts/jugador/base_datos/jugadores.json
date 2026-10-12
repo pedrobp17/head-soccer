@@ -13,7 +13,7 @@
 			},
 			"poderes": [
 				"mano_magica",
-				"cabezazo"
+                "cabezazo"
 			],
 			"pie": {
 				"x": 2.0,
@@ -40,7 +40,7 @@
 			},
 			"poderes": [
 				"tornado_fuego",
-				"tornado_dragon"
+                "tornado_dragon"
 			],
 			"pie": {
 				"x": -5.0,
@@ -67,7 +67,7 @@
 			},
 			"poderes": [
 				"cañon_meteoros",
-				"pingüinos_cosmicos"
+                "pingüinos_cosmicos"
 			],
 			"pie": {
 				"x": 0.0,
@@ -94,7 +94,7 @@
 			},
 			"poderes": [
 				"espejismo",
-				"pingüino_emperador"
+                "pingüino_emperador"
 			],
 			"pie": {
 				"x": -10.0,
@@ -121,7 +121,7 @@
 			},
 			"poderes": [
 				"tiro_reaccion",
-				""
+                "jugarreta"
 			],
 			"pie": {
 				"x": -1.0,
@@ -148,7 +148,7 @@
 			},
 			"poderes": [
 				"murcielagos",
-				"maldicion"
+                "maldicion"
 			],
 			"pie": {
 				"x": -5.0,
@@ -175,7 +175,7 @@
 			},
 			"poderes": [
 				"momia",
-				"agujero_negro"
+                "cuchillas"
 			],
 			"pie": {
 				"x": -10.0,
@@ -202,7 +202,7 @@
 			},
 			"poderes": [
 				"dron",
-				"campo_magnetico"
+                "campo_magnetico"
 			],
 			"pie": {
 				"x": -12.0,
@@ -229,7 +229,7 @@
 			},
 			"poderes": [
 				"hora_celestial",
-				"espada_divina"
+                "espada_divina"
 			],
 			"pie": {
 				"x": -7.0,
@@ -255,8 +255,8 @@
 				"vida": 5
 			},
 			"poderes": [
-				"",
-				""
+				"zarpazos_espectrales",
+                "vibora"
 			],
 			"pie": {
 				"x": -8.0,
@@ -282,8 +282,8 @@
 				"vida": 5
 			},
 			"poderes": [
-				"",
-				""
+				"prision_de_piedra",
+                ""
 			],
 			"pie": {
 				"x": 0.0,
@@ -309,8 +309,8 @@
 				"vida": 8
 			},
 			"poderes": [
-				"",
-				""
+				"remate_tarzan",
+                "embestida_gorila"
 			],
 			"pie": {
 				"x": 0.0,
@@ -336,8 +336,8 @@
 				"vida": 7
 			},
 			"poderes": [
-				"",
-				""
+				"rayo_burbuja",
+                "surf"
 			],
 			"pie": {
 				"x": 0.0,
@@ -363,8 +363,8 @@
 				"vida": 7
 			},
 			"poderes": [
-				"",
-				""
+				"justa",
+                "asalto"
 			],
 			"pie": {
 				"x": 0.0,
@@ -390,8 +390,8 @@
 				"vida": 6
 			},
 			"poderes": [
-				"",
-				""
+				"parasito_espacial",
+                "mascostas_alienigenas"
 			],
 			"pie": {
 				"x": 0.0,
@@ -417,8 +417,8 @@
 				"vida": 9
 			},
 			"poderes": [
-				"",
-				""
+				"agujero_negro",
+                "ovni"
 			],
 			"pie": {
 				"x": 0.0,
@@ -444,8 +444,8 @@
 				"vida": 5
 			},
 			"poderes": [
-				"",
-				""
+				"ametralladora",
+                "caza_en_picado"
 			],
 			"pie": {
 				"x": 0.0,
@@ -471,8 +471,8 @@
 				"vida": 8
 			},
 			"poderes": [
-				"",
-				""
+				"tiro_hiperespacial",
+                "paralisis_alienigena"
 			],
 			"pie": {
 				"x": 0.0,

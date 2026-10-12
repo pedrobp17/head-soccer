@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dga5wgg7qmxof" path="res://Escenas/pantallas/SelectorPersonajes.tscn" id="2_4wd47"]
 [ext_resource type="PackedScene" uid="uid://c4vcptbaygn7e" path="res://Escenas/pantallas/carta_menu_principal.tscn" id="2_vnpos"]
 [ext_resource type="PackedScene" uid="uid://cnne7mybolqk" path="res://Escenas/pantallas/Menu.tscn" id="3_vnpos"]
+[ext_resource type="PackedScene" uid="uid://dxsa4ege3cvxu" path="res://Escenas/pantallas/Pantallalogros.tscn" id="5_eqcwp"]
 
 [node name="MenuPrincipal" type="Node" unique_id=619859490]
 script = ExtResource("1_iqy7g")
@@ -49,6 +50,10 @@ unique_name_in_owner = true
 layout_mode = 1
 
 [node name="MenuDeslizante" parent="Contenido" unique_id=2104744245 instance=ExtResource("3_vnpos")]
+unique_name_in_owner = true
+layout_mode = 1
+
+[node name="logros" parent="Contenido" unique_id=128429028 instance=ExtResource("5_eqcwp")]
 unique_name_in_owner = true
 layout_mode = 1
 

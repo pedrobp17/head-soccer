@@ -13,6 +13,7 @@ const DIRECCIONES : Dictionary ={
 
 enum Estado {ELIGIENDO, VIENDO}
 
+@onready var ingame : CartaIngameLogro = %CartaIngramLogro
 @onready var barra: CeldasSeleccionPersonajes = %Barra
 @onready var marco_seleccion: Panel = %MarcoSeleccion
 @onready var eleccion_personaje: Control = %EleccionPersonaje
@@ -23,13 +24,19 @@ enum Estado {ELIGIENDO, VIENDO}
 	"perdidos" : $FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/Perdidos/valor,
 	"winrate" : $FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/WinRate/valor,
 	"goles" :  $FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/Goles/valor,
-	"poderes_usados" : $FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/Poderes/valor
+	"poderes_usados" : $FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/Poderes/valor,
+	"torneo" : $FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/trofeos/Iconoes/Torneos/Label,
+	"liga" : $FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/trofeos/Iconoes/Ligas/Label ,
+	"mundial" : $FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/trofeos/Iconoes/Mundial/Label,
+	"pelea" : $FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/trofeos/Iconoes/Pelea/Label
 }
+@onready var jugador: AnimacionDesplazamientoNombres = %jugador
 @onready var cuerpo_entero: TextureRect = %CuerpoEntero
-@onready var texto: Label = %Texto
 @onready var equipo: TextureRect = %equipo
 @onready var imagen: TextureRect = %imagen
-@onready var poderes : Array = [ $FondoPantallaCentral/EstadisticasPersonaje/Poderes/lista/primero/Panel/TextureRect, $FondoPantallaCentral/EstadisticasPersonaje/Poderes/lista/segundo/Panel/TextureRect]
+@onready var poderes : Array[CartaPoderesLogro] = [$FondoPantallaCentral/EstadisticasPersonaje/Poderes/cartas/CartaPoderesLogro1, $FondoPantallaCentral/EstadisticasPersonaje/Poderes/cartas/CartaPoderesLogro2 ]
+@onready var flecha_1: Panel = $FondoPantallaCentral/EstadisticasPersonaje/Flecha1
+@onready var flecha_2: Panel = $FondoPantallaCentral/EstadisticasPersonaje/Flecha2
 
 var tiene_foco : bool = true
 var numero_personajes : int
@@ -47,8 +54,7 @@ func _ready() -> void:
 	cambiar_estado(Estado.ELIGIENDO)
 
 
-# Único punto por donde se cambia de estado.
-# El estado actual se retira y se crea uno nuevo como hijo.
+
 func cambiar_estado( nuevo_estado : Estado, datos : DatosEstadoLogros = DatosEstadoLogros.new() ) -> void:
 	if estado_actual:
 		remove_child(estado_actual)
@@ -123,21 +129,28 @@ func mostrar_estadisticas_personajes() -> void:
 
 func set_pantalla_estadisticas_personaje(indice : int) -> void:
 	var logros_jugador = ProgresoPartida.personajes_desbloqueados.get_personaje_indice(indice)
+	set_valores_numericos_logros(logros_jugador)
+	
 	var info_personaje = DatosJugadores.get_jugador(logros_jugador.nombre)
-
+	jugador.set_nombre(NombresPersonajesHelper.get_nombre_normal_to_separacion_espacio( logros_jugador.nombre ))
+	cuerpo_entero.texture = ImagenJugadorEnteroHelper.get_icono(logros_jugador.nombre)
+	ingame.inicializar(logros_jugador.nombre)
+	
+	for i in poderes.size():
+		poderes[i].inicializar(logros_jugador.nombre, info_personaje.poderes[i], i + 1)
+		
+	
+func set_valores_numericos_logros(logros_jugador : ProgresoPersonajes) -> void:
 	var partidos_totales : int = logros_jugador.partidos_ganados + logros_jugador.partidos_perdidos
-
+	
 	numeros_logros["partidos_ganados"].text = str(partidos_totales)
 	numeros_logros["victorias"].text = str(logros_jugador.partidos_ganados)
 	numeros_logros["perdidos"].text = str(logros_jugador.partidos_perdidos)
 	numeros_logros["winrate"].text = "0" if partidos_totales == 0 else str(roundi(float(logros_jugador.partidos_ganados) / partidos_totales * 100.0))
 	numeros_logros["goles"].text = str(logros_jugador.goles_metidos)
 	numeros_logros["poderes_usados"].text = str(logros_jugador.usos_poder)
-	texto.text = NombresPersonajesHelper.get_nombre_normal_to_separacion_espacio( logros_jugador.nombre )
-	cuerpo_entero.texture = ImagenJugadorEnteroHelper.get_icono(logros_jugador.nombre)
-	imagen.texture = CabezasHelper.get_cabeza(logros_jugador.nombre)
-	equipo.texture = BanderasHelper.get_sprite(info_personaje.equipo)
-
-	var array_texturas_poderes = PoderesHelper.get_icono(info_personaje.nombre, info_personaje.poderes)
-	for i in mini(poderes.size(), array_texturas_poderes.size()):
-		poderes[i].texture = array_texturas_poderes[i]
+	numeros_logros["torneo"].text = str(logros_jugador.torneos_ganados)
+	numeros_logros["liga"].text = str(logros_jugador.ligas_ganadas)
+	numeros_logros["mundial"].text = str(logros_jugador.mundiales_ganados)
+	numeros_logros["pelea"].text = str(logros_jugador.peleas_ganadas)
+	
