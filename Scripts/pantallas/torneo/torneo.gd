@@ -12,7 +12,10 @@ var partidos := {
 var ganador : ConfiguracionJugadorPartido = null
 var configuracion_jugador_seleccionado := ConfiguracionJugadorPartido.new()
 
-func _init(config_jugador : ConfiguracionJugadorPartido) -> void:
+func _init(config_jugador : ConfiguracionJugadorPartido = null) -> void:
+	if config_jugador == null:
+		return 
+	
 	configuracion_jugador_seleccionado = config_jugador
 	var pool_random_jugadores : Array[ConfiguracionJugadorPartido] = [config_jugador]
 	pool_random_jugadores.append_array(get_pool_random_enemigos())
@@ -75,3 +78,33 @@ func avanzar() -> void:
 			ganador = ganadores[0]
 		else:
 			crear_bracket(estado_actual, ganadores)
+
+func serialize() -> Dictionary:
+	var partidos_data := {}
+	for estado in partidos.keys():
+		var lista := []
+		for partido : Enfrentamientos in partidos[estado]:
+			lista.append(partido.serialize())
+		partidos_data[Estado.keys()[estado]] = lista
+	
+	return {
+		"estado_actual": Estado.keys()[estado_actual],
+		"jugador": configuracion_jugador_seleccionado.serialize(),
+		"ganador": ganador.serialize() if ganador != null else null,
+		"partidos": partidos_data
+	}
+
+static func deserialize(data: Dictionary) -> Torneo:
+	var torneo := Torneo.new()
+	torneo.estado_actual = Estado[data["estado_actual"]]
+	torneo.configuracion_jugador_seleccionado = ConfiguracionJugadorPartido.deserialize(data["jugador"])
+	if data["ganador"] != null:
+		torneo.ganador = ConfiguracionJugadorPartido.deserialize(data["ganador"])
+	
+	for nombre_estado in data["partidos"]:
+		var estado : Estado = Estado[nombre_estado]
+		torneo.partidos[estado] = []
+		for partido_data in data["partidos"][nombre_estado]:
+			torneo.partidos[estado].append(Enfrentamientos.deserialize(partido_data))
+	
+	return torneo

@@ -15,5 +15,5 @@ func serialize() -> Dictionary:
 		"poder" : poder
 	}
 
-func deserialize( datos : Dictionary) -> ConfiguracionJugadorPartido:
-	
+static func deserialize( datos : Dictionary) -> ConfiguracionJugadorPartido:
+	return ConfiguracionJugadorPartido.new().setup(datos["jugador"], datos["poder"])
