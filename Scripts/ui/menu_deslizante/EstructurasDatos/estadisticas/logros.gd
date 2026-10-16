@@ -1,4 +1,4 @@
-extends Node
+extends Control
 class_name Logros
 
 const DURACION_ANIMACION := 0.2
@@ -74,7 +74,7 @@ func cambiar_estado_foco( foco : bool) -> void:
 		marco_seleccion.hide()
 
 func puedo_subir_menu_principal( ) -> bool:
-	return coordenadas_casilla_actual == Vector2.ZERO
+	return coordenadas_casilla_actual.y == 0
 
 func nueva_celda_seleccionada( direccion : Vector2) -> void:
 	var nueva_celda = coordenadas_casilla_actual + direccion
@@ -153,4 +153,9 @@ func set_valores_numericos_logros(logros_jugador : ProgresoPersonajes) -> void:
 	numeros_logros["liga"].text = str(logros_jugador.ligas_ganadas)
 	numeros_logros["mundial"].text = str(logros_jugador.mundiales_ganados)
 	numeros_logros["pelea"].text = str(logros_jugador.peleas_ganadas)
+	
+func set_posicion_actual( vector : Vector2) -> void:
+	marco_seleccion.global_position = get_coordenadas_celda_objetivo(vector)
+	coordenadas_casillas_visibles = vector
+	coordenadas_casilla_actual = vector 
 	

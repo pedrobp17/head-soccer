@@ -47,6 +47,7 @@ grow_vertical = 2
 
 [node name="SelectorPersonajes" parent="Contenido" unique_id=882551169 instance=ExtResource("2_4wd47")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 
 [node name="MenuDeslizante" parent="Contenido" unique_id=2104744245 instance=ExtResource("3_vnpos")]
@@ -55,7 +56,29 @@ layout_mode = 1
 
 [node name="logros" parent="Contenido" unique_id=128429028 instance=ExtResource("5_eqcwp")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
+
+[node name="AjustesContenido" type="Control" parent="Contenido" unique_id=1716151413]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EtiquetaAjustes" type="Label" parent="Contenido/AjustesContenido" unique_id=1716151414]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Ajustes (pendiente de implementar)"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Fps" type="Label" parent="." unique_id=1533829200]
 unique_name_in_owner = true

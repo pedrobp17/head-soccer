@@ -5,9 +5,9 @@ var estados : Dictionary
 func _init() -> void:
 	estados = {
 		MenuPrincipal.Estado.MENU: EstadoMenuPrincipalMenu,
-		MenuPrincipal.Estado.SKIN: Logros,
-		MenuPrincipal.Estado.LOGROS: ManejadorMenuPersonajes,
-		#MenuPrincipal.Estado.AJUSTES: EstadoMenuPrincipalAjustes,
+		MenuPrincipal.Estado.SKIN: EstadoMenuPrincipalSkin,
+		MenuPrincipal.Estado.LOGROS: EstadoMenuPrincipalLogros,
+		MenuPrincipal.Estado.AJUSTES: EstadoMenuPrincipalAjustes,
 	}
 
 func get_fresh_state( estado : MenuPrincipal.Estado ) -> EstadoMenuPrincipal:

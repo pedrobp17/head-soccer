@@ -33,21 +33,29 @@ func input_barra_superior( _event : InputEvent ) -> void:
 
 func _enter_tree() -> void:
 	mostrar_escena()
+	cambiar_foco(not menu_principal.en_menu_superior)
 
 func _input( event : InputEvent ) -> void:
 	#TRANSICION: contenido -> panel_superior
 	if event.is_action_pressed("ui_up") and !menu_principal.en_menu_superior and puede_subir_barra_superior():
 		menu_principal.cambiar_foco_barra_superior(true)
+		get_viewport().set_input_as_handled()
 		return
 
 	#TRANSICION: panel_superior -> contenido
 	if event.is_action_pressed("ui_down") and menu_principal.en_menu_superior and puede_bajar_barra_superior():
 		menu_principal.cambiar_foco_barra_superior(false)
+		get_viewport().set_input_as_handled()
 		return
 
 	#NO ES TURNO PANEL SUPERIOR
 	if !menu_principal.en_menu_superior:
 		return
+
+	# En la barra superior, izquierda/derecha son exclusivas del estado actual:
+	# se marca como manejado ANTES de delegar para que ningún widget reciba el evento.
+	if event.is_action_pressed("ui_left") or event.is_action_pressed("ui_right"):
+		get_viewport().set_input_as_handled()
 
 	input_barra_superior(event)
 

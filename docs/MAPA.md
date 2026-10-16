@@ -42,7 +42,7 @@ head_soccer.tscn (HeadSoccer, nodo raíz, escena principal)
 | ControladorPartido | `ControladorPartido.Estado` | CreadorEstadoJuego | EstadoJuego | Jugando, Gol, Reseteo, TiempoExtra, Fin |
 | Jugador | `Jugador.Estado` | CreadorEstadoJugador | EstadoJugador | Moviendo (JUGANDO), EsperandoPoder, Poder, Aturdido, Reinicio, Gol (vacío) |
 | Pelota | `Pelota.Estado` | CreadorEstadoPelota | EstadoPelota | Normal, Poder, Reinicio |
-| MenuPrincipal | `MenuPrincipal.Estado` | CreadorEstadoMenuPrincipal | EstadoMenuPrincipal | Menu (casi vacío), + Logros y ManejadorMenuPersonajes registrados como estados |
+| MenuPrincipal | `MenuPrincipal.Estado` | CreadorEstadoMenuPrincipal | EstadoMenuPrincipal | Menu, Skin, Logros, Ajustes (cada uno envuelve su widget: carrusel, selector, logros, panel) |
 | Logros | `Logros.Estado` | CreadorEstadoLogros | EstadoLogros | Eligiendo, Viendo |
 
 ## 5. Partido (ControladorPartido + Enfrentamientos)
@@ -166,12 +166,10 @@ contacto de pie/cuerpo con la pelota -> estado PODER -> `poder.ejecutar()` (aún
     mezcladas (`Animaciones`, `ControladorJuego` frente a `jugador`, `utils`); ficheros `Player.gd`, `Pantallatorneo.gd`.
     Renombrarlos desde el sistema de archivos rompe las rutas `ext_resource` de las escenas: hacerlo desde el editor Godot.
 14. Desviaciones del patrón de máquina de estados: `ControladorPartido`/`EstadoJuego` usan la señal
-    `peticion_transmitir_estado` (el resto del proyecto: `peticion_transmision_estado`); `menu_principal.gd` nombra su
-    estado `"MaquinaEstadosJugador: "` (copia de `Player.gd`); `Player.gd` y `controlador_partido.gd` conectan con
-    `.bind()` sin argumentos mientras menú y logros conectan directos.
+    `peticion_transmitir_estado` (el resto del proyecto: `peticion_transmision_estado`); `Player.gd` y
+    `controlador_partido.gd` conectan con `.bind()` sin argumentos mientras menú y logros conectan directos.
 15. `.gitignore` solo cubre `.godot/` y `/android/`: `.opencode/` (contiene ~2500 ficheros de `node_modules`) está sin
-    ignorar y aparece como `??`; la carpeta nueva `Scripts/pantallas/MenuPrincipal/estados menu principal/` también está
-    sin trackear. Añadir `.opencode/` antes del próximo commit.
+    ignorar y aparece como `??`. Añadir `.opencode/` antes del próximo commit.
 16. IA jamás se activa, aunque se descomente `process_ia()`: `controlador_partido.setup_jugador` no es `@export` y nadie
     le asigna valor, así que `jugando_solitario()` (que lee `setup_jugador[1].is_empty()`) es siempre false con el
     default `["MarkEvans","AxelBlaze"]` -> `apariciones.gd` pone P2, nunca `ControlScheme.IA`. Hay dos fuentes de verdad
@@ -179,3 +177,8 @@ contacto de pie/cuerpo con la pelota -> estado PODER -> `poder.ejecutar()` (aún
 17. Descomentar `process_ia()` tampoco movería a la IA: la rama IA de `_process` en los estados no hace `move_and_slide`,
     ni gravedad, ni animación, ni las comprobaciones de transición (vida <= 0, poder); y `KeyUtils.MAPA_ACCIONES` no
     tiene entrada para `ControlScheme.IA`, por lo que `movimiento_general()` fallaría con "key not found".
+18. `Menu.tscn` tiene 5 placeholders pero `MenuDeslizante.visible_slots` por defecto es 7: se corrigió poniendo
+    `visible_slots = 5` en el nodo `manejador` (el que lleva `menu_deslizante_modos_juego.gd`). La raíz `MenuDeslizante`
+    NO debe llevar script de estado: el estado se crea con `.new()` desde el Creador.
+19. `logros.gd` y `manejador_menu_personajes.gd` decían `extends Node` pero sus raíces de escena son `Control`: sin
+    `extends Control`, las llamadas `.show()/.hide()` desde `menu_principal.gd` (variables tipadas) no compilaban.

@@ -1,11 +1,19 @@
 extends EstadoMenuPrincipal
 class_name EstadoMenuPrincipalMenu
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+func mostrar_escena() -> void:
+	menu_principal.menu_deslizante.show()
 
+func esconder_escena() -> void:
+	menu_principal.menu_deslizante.hide()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func cambiar_foco( tiene_foco : bool ) -> void:
+	menu_principal.menu_deslizante.cambiar_estado_foco(tiene_foco)
+
+func puede_subir_barra_superior() -> bool:
+	return true
+
+func input_barra_superior( event : InputEvent ) -> void:
+	if event.is_action_pressed("ui_right"):
+		get_viewport().set_input_as_handled()
+		cambiar_estado(MenuPrincipal.Estado.SKIN)
