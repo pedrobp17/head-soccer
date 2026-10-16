@@ -14,7 +14,6 @@ var nombres_personajes: Array[String] = []
 
 
 func _ready() -> void:
-	reiniciar_progreso()
 	crear_progreso_inicial()
 	cargar_progreso()
 

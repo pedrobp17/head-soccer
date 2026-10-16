@@ -6,8 +6,8 @@
 
 [resource]
 script = ExtResource("2_htlrp")
-name = "Survival"
+modo = 1
+name = "survival"
 normal_texture = ExtResource("1_yeefb")
 selected_texture = ExtResource("3_l48fe")
-pantalla = 3
 metadata/_custom_type_script = "uid://cnyrrymgnuu3n"

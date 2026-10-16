@@ -6,8 +6,8 @@
 
 [resource]
 script = ExtResource("1_bc6qw")
-name = "Liga"
+modo = 5
+name = "liga"
 normal_texture = ExtResource("1_arjay")
 selected_texture = ExtResource("3_v6kjl")
-pantalla = 3
 metadata/_custom_type_script = "uid://cnyrrymgnuu3n"

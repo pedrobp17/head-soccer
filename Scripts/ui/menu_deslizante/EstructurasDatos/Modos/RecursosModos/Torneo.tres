@@ -6,8 +6,8 @@
 
 [resource]
 script = ExtResource("2_r88k5")
-name = "Torneo"
+modo = 4
+name = "torneo"
 normal_texture = ExtResource("1_r88k5")
 selected_texture = ExtResource("3_at152")
-pantalla = 1
 metadata/_custom_type_script = "uid://cnyrrymgnuu3n"

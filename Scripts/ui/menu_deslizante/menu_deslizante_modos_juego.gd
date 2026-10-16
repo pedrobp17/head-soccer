@@ -1,19 +1,21 @@
 extends MenuDeslizante
 class_name MenuDeslizanteModosJuego
 
+enum Modos {VERSUS, SURVIVAL, ONLINE, ARCADE, TORNEO, LIGA, MUNDIAL, PELEA}
+
 @export var modes : Array[DatosModoJuego]
 
 @onready var personaje_seleccion: Sprite2D = %PersonajeSeleccion
 
 var pantalla_modo : Dictionary = {
-	"1vs1" : HeadSoccer.Pantalla.DEFAULT,
-	"Survival" : HeadSoccer.Pantalla.DEFAULT,
-	"Online" : HeadSoccer.Pantalla.DEFAULT,
-	"Arcade" : HeadSoccer.Pantalla.DEFAULT,
-	"Torneo" : HeadSoccer.Pantalla.TORNEO,
-	"Liga" : HeadSoccer.Pantalla.DEFAULT,
-	"Mundial" : HeadSoccer.Pantalla.DEFAULT,
-	"Pelea" : HeadSoccer.Pantalla.DEFAULT,
+	Modos.VERSUS : HeadSoccer.Pantalla.DEFAULT,
+	Modos.SURVIVAL : HeadSoccer.Pantalla.DEFAULT,
+	Modos.ONLINE : HeadSoccer.Pantalla.DEFAULT,
+	Modos.ARCADE : HeadSoccer.Pantalla.JUGANDO,
+	Modos.TORNEO : HeadSoccer.Pantalla.TORNEO,
+	Modos.LIGA : HeadSoccer.Pantalla.DEFAULT,
+	Modos.MUNDIAL : HeadSoccer.Pantalla.DEFAULT,
+	Modos.PELEA : HeadSoccer.Pantalla.DEFAULT,
 }
 func _ready():
 	card_scene = preload("res://Escenas/ui/Cartas/CartasModoJuego.tscn")
@@ -43,10 +45,8 @@ func on_item_selected_personajes( datos : Variant) -> void:
 		personaje_seleccion.texture = ImagenJugadorEnteroHelper.get_icono(datos.name)
 	
 func select_current() -> void:
-	print("elemento seleccionado")
 	EventBus.item_selected_modos.emit(get_current_item())
 
-func get_pantalla_asociada(modo : String) -> HeadSoccer.Pantalla:
-	print(modo)
+func get_pantalla_asociada(modo : Modos) -> HeadSoccer.Pantalla:
 	assert(pantalla_modo.has(modo), "modo de juego no detectado")
 	return pantalla_modo[modo]

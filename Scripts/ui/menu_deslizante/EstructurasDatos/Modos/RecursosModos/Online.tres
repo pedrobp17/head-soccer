@@ -6,7 +6,8 @@
 
 [resource]
 script = ExtResource("1_0kk0o")
-name = "Online"
+modo = 2
+name = "online"
 normal_texture = ExtResource("1_vfyu5")
 selected_texture = ExtResource("3_5aiim")
 metadata/_custom_type_script = "uid://cnyrrymgnuu3n"

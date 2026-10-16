@@ -1,6 +1,6 @@
 extends Node
 
-const DURACION_JUEGO_SEGUNDOS :=  1 * 20
+const DURACION_JUEGO_SEGUNDOS :=  1 * 10
 
 enum Estado {JUGANDO, GOL, RESETEO, TIEMPO_EXTRA, FIN}
 

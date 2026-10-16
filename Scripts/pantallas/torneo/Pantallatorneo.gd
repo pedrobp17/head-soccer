@@ -12,7 +12,7 @@ const NUM_PARTICIPANTES := 8
 
 var torneo : Torneo = null
 var cartas_jugadores_activos : Array[CartasSeleccionTorneo] = []
-#var jugador_seleccionado : ConfiguracionJugadorPartido = ControladorPartido.
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_select"):
 		if torneo.estado_actual < Torneo.Estado.COMPLETADO:
@@ -25,12 +25,11 @@ func _ready() -> void:
 	torneo = datos_pantalla.torneo
 	refresh_brackets()
 	
-	set_enfrentamientos()
-	situar_participantes()
 
 func refresh_brackets() -> void:
 	for estado in range(torneo.estado_actual + 1):
 		refresh_bracket_estado(estado)
+	torneo.mostrar_partidos()
 	
 func refresh_bracket_estado(estado : Torneo.Estado) -> void:
 	var cartas := get_placeholder_cartas_por_estado(estado)
@@ -64,9 +63,3 @@ func get_placeholder_cartas_por_estado(estado : Torneo.Estado) -> Array[CartasSe
 			cartas.append(placeholder)
 	return cartas
 	
-func situar_participantes() -> void:
-	for i in NUM_PARTICIPANTES:
-		pass
-		
-func set_enfrentamientos() -> void:
-	pass

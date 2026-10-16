@@ -6,8 +6,8 @@
 
 [resource]
 script = ExtResource("2_xcx25")
-name = "Mundial"
+modo = 6
+name = "mundial"
 normal_texture = ExtResource("1_mv5uq")
 selected_texture = ExtResource("3_8ccly")
-pantalla = 3
 metadata/_custom_type_script = "uid://cnyrrymgnuu3n"

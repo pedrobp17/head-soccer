@@ -45,3 +45,8 @@ func get_ganador() -> ConfiguracionJugadorPartido:
 	if ganador == config_jugador_local.jugador:
 		return config_jugador_local
 	return config_jugador_visitante
+
+func serialize() -> Dictionary:
+	return {
+		"jugador_local" : ju
+	}

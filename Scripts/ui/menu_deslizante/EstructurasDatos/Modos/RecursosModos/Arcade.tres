@@ -6,8 +6,8 @@
 
 [resource]
 script = ExtResource("2_s5rca")
-name = "Arcade"
+modo = 3
+name = "arcade"
 normal_texture = ExtResource("1_8eth4")
 selected_texture = ExtResource("3_qlyub")
-pantalla = 2
 metadata/_custom_type_script = "uid://cnyrrymgnuu3n"
