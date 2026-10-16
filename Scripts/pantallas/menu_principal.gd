@@ -13,26 +13,29 @@ const mapa_direcciones : Dictionary = {
 	"derecha" : 1
 }
 
+enum Estado {MENU, SKIN, LOGROS, AJUSTES}
+
 @onready var tipos_menu : Array[CartasPantallaPrincipal] = [%menu, %skin, %Estadisticas, %Ajustes]
 @onready var menu_deslizante: MenuDeslizanteModosJuego = %MenuDeslizante
 @onready var selector_personajes: ManejadorMenuPersonajes = %SelectorPersonajes
 @onready var logros: Logros = %logros
 
 var en_menu_superior := false
-var escena_actual := mapa_seleccion_opciones["menu"] 
+var escena_actual : Estado = Estado.MENU
+var estado_actual : EstadoMenuPrincipal = null
+var creador_estados := CreadorEstadoMenuPrincipal.new() 
 var item_seleccionado_personajes := 0
 var nombre_personaje_seleccionado := "MarkEvans"
 var indice_poder_personaje_seleccionado := 0
 
 func _ready():
-	show_escena_menu()
-	cambiar_foco_escena(true)
-	actualizar_selector()
+	cambiar_estado(Estado.MENU)
+	cambiar_foco_barra_superior(false)
 	EventBus.item_selected_personajes.connect(on_item_selected_personajes)
 	EventBus.item_selected_modos.connect(on_item_selected_modos)
 
 func _input(event):
-	#TRANSICION: menu -> panel_superior
+	'  #TRANSICION: menu -> panel_superior
 	if event.is_action_pressed("ui_up") and !en_menu_superior and escena_actual == mapa_seleccion_opciones["menu"]:
 		en_menu_superior = true
 		cambiar_foco_escena(false)
@@ -85,26 +88,40 @@ func _input(event):
 	elif event.is_action_pressed("ui_left") and escena_actual == mapa_seleccion_opciones["estadisticas"] :
 		escena_actual = mapa_seleccion_opciones["personajes"]
 		actualizar_selector(mapa_direcciones["derecha"])
-		show_escena_personajes()
+		show_escena_personajes()'
+	pass
+func cambiar_estado( nuevo_estado : Estado ) -> void:
+	if estado_actual != null:
+		tipos_menu[escena_actual].set_no_actual()
+		remove_child(estado_actual)
+		estado_actual.queue_free()
+	
+	escena_actual = nuevo_estado
+	estado_actual = creador_estados.get_fresh_state(nuevo_estado)
+	estado_actual.setup(self)
+	estado_actual.peticion_transmision_estado.connect(cambiar_estado)
+	estado_actual.name = "MaquinaEstadosJugador: " + str(nuevo_estado)
+	call_deferred("add_child", estado_actual)
+	actualizar_selector()
+
+func cambiar_foco_barra_superior( a_barra_superior : bool ) -> void:
+	en_menu_superior = a_barra_superior
+	cambiar_foco_escena(!a_barra_superior)
+	actualizar_selector()
 
 func cambiar_foco_escena(tiene_foco: bool) -> void:
-	if escena_actual == mapa_seleccion_opciones["menu"]:
-		menu_deslizante.cambiar_estado_foco(tiene_foco)
-	
-	elif escena_actual == mapa_seleccion_opciones["personajes"]:
-		selector_personajes.cambiar_estado_foco(tiene_foco)
-
+	if estado_actual:
+		estado_actual.cambiar_foco(tiene_foco)
+		
 func _process(_delta: float) -> void:
 	$Fps.text = str(Engine.get_frames_per_second()) + " FPS"
 		
 func actualizar_selector(antigua_escena : int = 0) ->void:
-	if antigua_escena != 0:
-		tipos_menu[escena_actual + antigua_escena].set_no_actual()
 	if en_menu_superior:
 		tipos_menu[escena_actual].set_actual()
 	else:
 		tipos_menu[escena_actual].set_no_actual()
-	
+ 
 	
 
 func on_item_selected_personajes(datos : Variant) -> void:
