@@ -1,7 +1,7 @@
 extends MenuDeslizante
 class_name MenuDeslizanteModosJuego
 
-enum Modos {VERSUS, SURVIVAL, ONLINE, ARCADE, TORNEO, LIGA, MUNDIAL, PELEA}
+const Modos = ProgresoGlobal.Modos
 
 @export var modes : Array[DatosModoJuego]
 
@@ -41,12 +41,15 @@ func configure_card(
 		animar_seleccion
 	)
 
-func on_item_selected_personajes( datos : Variant) -> void:
-		personaje_seleccion.texture = ImagenJugadorEnteroHelper.get_icono(datos.name)
+func on_item_selected_personajes(datos : Variant) -> void:
+	personaje_seleccion.texture = ImagenJugadorEnteroHelper.get_icono(ProgresoPartida.progreso_general.get_jugador_seleccionado())	
 	
 func select_current() -> void:
-	EventBus.item_selected_modos.emit(get_current_item())
-
+	var nombre_modo: String = get_current_item().name.to_upper()
+	assert(Modos.has(nombre_modo), "El modo '%s' no existe en el enum Modos" % nombre_modo)
+	ProgresoPartida.progreso_general.set_modo_jugado(Modos[nombre_modo])
+	EventBus.item_selected_modos.emit()
+	
 func get_pantalla_asociada(modo : Modos) -> HeadSoccer.Pantalla:
 	assert(pantalla_modo.has(modo), "modo de juego no detectado")
 	return pantalla_modo[modo]

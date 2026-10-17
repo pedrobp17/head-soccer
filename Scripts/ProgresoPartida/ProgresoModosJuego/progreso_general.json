@@ -1,11 +1,10 @@
 {
-    "global": {
-        "ultimo_modo_jugado": "torneo",
-        "ultimo_jugador_seleccionado" : "MarkEvans",
-        "ultimo_poder_jugador_seleccionado" : "mano_magica"
-    },
-    "modos": {
-        "torneo": {
-        }
-    }
+	"global": {
+		"ultimo_modo_jugado": "TORNEO",
+		"ultimo_jugador_seleccionado" : "MarkEvans",
+		"ultimo_poder_jugador_seleccionado" : "mano_magica"
+	},
+	"torneo": {
+		
+	}
 }

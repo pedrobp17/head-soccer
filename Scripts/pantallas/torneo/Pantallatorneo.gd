@@ -29,7 +29,7 @@ func _ready() -> void:
 func refresh_brackets() -> void:
 	for estado in range(torneo.estado_actual + 1):
 		refresh_bracket_estado(estado)
-	torneo.mostrar_partidos()
+	
 	
 func refresh_bracket_estado(estado : Torneo.Estado) -> void:
 	var cartas := get_placeholder_cartas_por_estado(estado)

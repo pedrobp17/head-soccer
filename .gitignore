@@ -3,3 +3,5 @@
 /android/
 /.opencode/
 *.tmp
+AGENTS.md
+opencode.json

@@ -16,7 +16,7 @@ signal fin_animacion_vs
 signal fin_animacion_nombre
 signal fin_partido()
 signal en_tiempo_extra()
-signal item_selected_personajes(data: Variant)
-signal item_selected_modos(data: Variant)
+signal item_selected_personajes(datos : Variant)
+signal item_selected_modos()
 signal esconder_personajes
 signal mostrar_personajes

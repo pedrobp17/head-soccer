@@ -21,31 +21,7 @@ func _init(config_jugador : ConfiguracionJugadorPartido = null) -> void:
 	pool_random_jugadores.append_array(get_pool_random_enemigos())
 	
 	crear_bracket(estado_actual, pool_random_jugadores)
-
-func mostrar_partidos() -> void:
-	# Mapeo de nombres legibles para cada estado del enum
-	var nombres_estado := {
-		Estado.CUARTOS: "Cuartos de Final",
-		Estado.SEMIS: "Semifinales",
-		Estado.FINAL: "Final"
-	}
-	
-	print("====================================")
-	print("       ESTADO DEL TORNEO            ")
-	print("====================================")
-	
-	for estado in partidos.keys():
-		var nombre_fase: String = nombres_estado.get(estado, "Fase Desconocida")
-		var lista_partidos: Array = partidos[estado]
-		
-		print("\n--- %s (%d) ---" % [nombre_fase, lista_partidos.size()])
-		
-		if lista_partidos.is_empty():
-			print("  (Sin partidos registrados)")
-		else:
-			for i in range(lista_partidos.size()):
-				var partido = lista_partidos[i]
-				print("  [%d] %s" % [i + 1, str(partido)])
+	ProgresoPartida.progreso_general.guardar_torneo(self)
 
 func get_pool_random_enemigos() -> Array[ConfiguracionJugadorPartido]:
 	var pool_jugadores = DatosJugadores.get_array_jugadores()
@@ -78,7 +54,8 @@ func avanzar() -> void:
 			ganador = ganadores[0]
 		else:
 			crear_bracket(estado_actual, ganadores)
-
+	ProgresoPartida.progreso_general.guardar_torneo(self)
+	
 func serialize() -> Dictionary:
 	var partidos_data := {}
 	for estado in partidos.keys():
@@ -93,8 +70,10 @@ func serialize() -> Dictionary:
 		"ganador": ganador.serialize() if ganador != null else null,
 		"partidos": partidos_data
 	}
-
+	
 static func deserialize(data: Dictionary) -> Torneo:
+	if data.is_empty():
+		return null
 	var torneo := Torneo.new()
 	torneo.estado_actual = Estado[data["estado_actual"]]
 	torneo.configuracion_jugador_seleccionado = ConfiguracionJugadorPartido.deserialize(data["jugador"])

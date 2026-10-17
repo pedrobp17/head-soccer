@@ -20,9 +20,8 @@ var indice_poder_personaje_seleccionado := 0
 func _ready() -> void:
 	cambiar_estado(Estado.MENU)
 	cambiar_foco_barra_superior(false)
-	EventBus.item_selected_personajes.connect(on_item_selected_personajes)
 	EventBus.item_selected_modos.connect(on_item_selected_modos)
-
+	
 func cambiar_estado( nuevo_estado : Estado ) -> void:
 	if estado_actual != null:
 		tipos_menu[escena_actual].set_no_actual()
@@ -55,12 +54,10 @@ func actualizar_selector() -> void:
 	else:
 		tipos_menu[escena_actual].set_no_actual()
 
-func on_item_selected_personajes(datos : Variant) -> void:
-	item_seleccionado_personajes = datos.indice
-	nombre_personaje_seleccionado = datos.name
-
-func on_item_selected_modos( datos : Variant) -> void:
-	var datos_personaje = DatosJugadores.get_jugador(nombre_personaje_seleccionado)
-	ControladorPartido.enfrentamiento.set_jugador_local(datos_personaje.nombre, "mano_magica")#datos_personaje.poderes[indice_poder_personaje_seleccionado])
-	var torneo = Torneo.new(ControladorPartido.enfrentamiento.config_jugador_local)
-	transicion_pantallas(menu_deslizante.get_pantalla_asociada(datos.modo), DatosPantallas.build().set_config_jugador(ControladorPartido.enfrentamiento.config_jugador_local).set_torneo(torneo))
+	
+func on_item_selected_modos() -> void:
+	ControladorPartido.enfrentamiento.set_jugador_local(ProgresoPartida.progreso_general.get_jugador_seleccionado(),ProgresoPartida.progreso_general.get_poder_seleccionado())
+	var torneo = ProgresoPartida.progreso_general.cargar_torneo() 
+	if torneo == null:
+		torneo = Torneo.new(ControladorPartido.enfrentamiento.config_jugador_local)
+	transicion_pantallas(menu_deslizante.get_pantalla_asociada(ProgresoGlobal.Modos.TORNEO), DatosPantallas.build().set_config_jugador(ControladorPartido.enfrentamiento.config_jugador_local).set_torneo(torneo))

@@ -29,7 +29,9 @@ func _input(event):
 	
 	if event.is_action_pressed("ui_accept"):
 		if ProgresoPartida.personajes_desbloqueados.get_desbloqueado(jugador_central.name):
+			ProgresoPartida.progreso_general.set_jugador_seleccionado(selector_personajes.get_current_item().name)
 			EventBus.item_selected_personajes.emit(selector_personajes.get_current_item())
+			
 		else:
 			pass
 			
