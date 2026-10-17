@@ -56,10 +56,10 @@ func actualizar_selector() -> void:
 
 
 func on_item_selected_modos() -> void:
-	#if ProgresoPartida.progreso_general.puedo_jugar():
+	if ProgresoPartida.progreso_general.puedo_jugar():
 		ControladorPartido.enfrentamiento.set_jugador_local(ProgresoPartida.progreso_general.get_jugador_seleccionado(),ProgresoPartida.progreso_general.get_poder_seleccionado())
 		var enum_modo = ProgresoPartida.progreso_general.get_modo_jugado()
 		var datos_pantalla : DatosPantallas = menu_deslizante.set_datos_pantalla_seleccionada()
 		transicion_pantallas(menu_deslizante.get_pantalla_asociada(enum_modo), datos_pantalla)
-	#else:
-	#	menu_deslizante.mostrar_error()
+	else:
+		menu_deslizante.mostrar_error()

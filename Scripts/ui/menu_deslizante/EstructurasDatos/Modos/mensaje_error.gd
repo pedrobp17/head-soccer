@@ -34,7 +34,7 @@ func _ready() -> void:
 	estilos[indice_boton_actual].bg_color = COLOR_SELECCION
 	
 func mostrar() -> void:
-	jugador.text = ProgresoPartida.progreso_general.get_jugador_torneo_actual()
+	jugador.text = "[i]" + ProgresoPartida.progreso_general.get_jugador_torneo_actual() + "[/i]]"
 	cambiar_foco(true)
 	animando = true
 	var tween := create_tween().set_parallel(true)
