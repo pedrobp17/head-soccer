@@ -108,7 +108,13 @@ func get_jugador_seleccionado() -> String:
 
 func set_jugador_seleccionado(valor: String) -> void:
 	datos_generales["global"].ultimo_jugador_seleccionado = valor
-	
+
+func get_indice_jugador_seleccionado() -> int:
+	return datos_generales["global"].indice_ultimo_jugador_seleccionado
+
+func set_indice_jugador_seleccionado(valor: int) -> void:
+	datos_generales["global"].indice_ultimo_jugador_seleccionado = valor
+		
 func get_modo_jugado() -> ProgresoGlobal.Modos:
 	return datos_generales["global"].ultimo_modo_jugado
 

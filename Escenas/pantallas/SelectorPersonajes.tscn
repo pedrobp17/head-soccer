@@ -95,10 +95,18 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_rub24")
 modes = Array[ExtResource("2_hnj5y")]([ExtResource("3_2pgxr"), ExtResource("13_yntdo"), ExtResource("4_ixhsm"), ExtResource("5_ptf4e"), ExtResource("20_n523y"), ExtResource("19_8d61v"), ExtResource("18_tb116"), ExtResource("17_l1uw8"), ExtResource("16_b2v7a"), ExtResource("15_08jok"), ExtResource("14_eed3h"), ExtResource("12_hkpbk"), ExtResource("11_7lib7"), ExtResource("9_ia51c"), ExtResource("8_7cer4"), ExtResource("7_tyrni"), ExtResource("6_5hy0c"), ExtResource("10_0d2f1")])
+visible_slots = null
+circular = null
+animation_time = null
+transition = null
+ease = null
 left = "ui_up"
 right = "ui_down"
+accept = null
 use_scaling = false
 use_fade = false
+use_rotation = null
+use_depth = null
 
 [node name="PlaceholderContainer" type="Control" parent="SelectorPersonajes" unique_id=793799856]
 unique_name_in_owner = true

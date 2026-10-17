@@ -15,6 +15,7 @@ func _ready():
 	super()
 
 	set_items(modes)
+	set_elemento_central(ProgresoPartida.progreso_general.get_indice_jugador_seleccionado())
 	EventBus.item_selected_personajes.connect(_al_confirmar_personaje)
 
 func get_center_slot() -> int:
@@ -33,11 +34,11 @@ func configure_card(card: Control, data: Variant, is_selected: bool, animar_sele
 	)
 	
 
-func _al_confirmar_personaje(data_personaje: Variant) -> void:
+func _al_confirmar_personaje() -> void:
 	if items.is_empty() or animating:
 		return
 		
-	var nuevo_indice = items.find(data_personaje)
+	var nuevo_indice = get_current_item().indice
 	
 	if nuevo_indice != -1:
 		indice_carta_seleccionada = nuevo_indice

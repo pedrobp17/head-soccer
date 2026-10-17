@@ -46,7 +46,7 @@ func configure_card(
 func actualizar_imagen() -> void:
 	personaje_seleccion.texture = ImagenJugadorEnteroHelper.get_icono(ProgresoPartida.progreso_general.get_jugador_seleccionado())	
 
-func on_item_selected_personajes(datos : Variant) -> void:
+func on_item_selected_personajes() -> void:
 	actualizar_imagen()
 	
 func set_datos_pantalla_seleccionada() -> DatosPantallas:
