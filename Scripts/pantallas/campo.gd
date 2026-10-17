@@ -23,6 +23,7 @@ func on_fin_partido()-> void:
 	fin_timer.start()
 	ProgresoPartida.personajes_desbloqueados.set_partidos_ganados(ControladorPartido.enfrentamiento.config_jugador_local.jugador)
 	ProgresoPartida.personajes_desbloqueados.guardar_progreso()
+	
 func on_fin_animacion() -> void:
 	EventBus.mostrar_personajes.emit()
 	ControladorPartido.empezar_juego()

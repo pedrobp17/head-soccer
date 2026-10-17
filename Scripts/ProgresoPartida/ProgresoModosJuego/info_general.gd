@@ -100,13 +100,15 @@ func guardar_progreso() -> void:
 	archivo.store_string(JSON.stringify(datos_guardar, "\t"))
 	archivo.close()
 
-
+func get_jugador_torneo_actual() -> String:
+	return datos_generales["torneo"].configuracion_jugador_seleccionado.jugador
+	
 func get_jugador_seleccionado() -> String:
 	return datos_generales["global"].ultimo_jugador_seleccionado
 
 func set_jugador_seleccionado(valor: String) -> void:
 	datos_generales["global"].ultimo_jugador_seleccionado = valor
-
+	
 func get_modo_jugado() -> ProgresoGlobal.Modos:
 	return datos_generales["global"].ultimo_modo_jugado
 
@@ -119,6 +121,14 @@ func get_poder_seleccionado() -> String:
 func set_poder_seleccionado(valor: String) -> void:
 	datos_generales["global"].ultimo_poder_jugador_seleccionado = valor
 
+func puedo_jugar() -> bool:
+	var modo := get_modo_jugado()
+	var nombre: String = ProgresoGlobal.Modos.keys()[modo].to_lower()
+	if datos_generales[nombre] == null:
+		return true
+	var jugador_guardado : ConfiguracionJugadorPartido = datos_generales[nombre].configuracion_jugador_seleccionado
+	return jugador_guardado.jugador == get_jugador_seleccionado()
+	
 # BORRA LA PARTIDA GUARDADA Y VUELVE AL PROGRESO INICIAL (PARTIDA NUEVA).
 
 func reiniciar_progreso() -> void:

@@ -30,6 +30,7 @@ func _input(event):
 	if event.is_action_pressed("ui_accept"):
 		if ProgresoPartida.personajes_desbloqueados.get_desbloqueado(jugador_central.name):
 			ProgresoPartida.progreso_general.set_jugador_seleccionado(selector_personajes.get_current_item().name)
+			ProgresoPartida.progreso_general.guardar_progreso()
 			EventBus.item_selected_personajes.emit(selector_personajes.get_current_item())
 			
 		else:
@@ -45,7 +46,6 @@ func cambiar_color_texto( color : Color, texto : Label) -> void:
 	
 func cambiar_estado_foco( foco : bool) -> void:
 	tiene_foco = foco
-	print( ProgresoPartida.personajes_desbloqueados.get_desbloqueado(jugador_central.name))
 	var panel = seleccion_panel if ProgresoPartida.personajes_desbloqueados.get_desbloqueado(jugador_central.name) else bloqueado_panel
 	var texto = nombre_seleccion if ProgresoPartida.personajes_desbloqueados.get_desbloqueado(jugador_central.name) else nombre_bloqueado
 	if tiene_foco:

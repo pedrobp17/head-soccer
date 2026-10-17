@@ -13,6 +13,58 @@
 [ext_resource type="Resource" uid="uid://c4tc14oykjd8u" path="res://Scripts/ui/menu_deslizante/EstructurasDatos/Modos/RecursosModos/Mundial.tres" id="9_c7igs"]
 [ext_resource type="Resource" uid="uid://hobjdgud5qxy" path="res://Scripts/ui/menu_deslizante/EstructurasDatos/Modos/RecursosModos/Pelea.tres" id="10_cf3lp"]
 [ext_resource type="Texture2D" uid="uid://dancky1dnowvr" path="res://Sprites/jugadores/personajesNoBloq/MarkEvans.png" id="13_u06ut"]
+[ext_resource type="Script" uid="uid://okv3b6bdxli5" path="res://Scripts/ui/menu_deslizante/EstructurasDatos/Modos/mensaje_error.gd" id="14_su2ki"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k0wdy"]
+bg_color = Color(0, 0, 0, 0.75686276)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a8ku5"]
+bg_color = Color(0.019607844, 0.19215687, 0.43529412, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 0.28627452, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j6m78"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eu64u"]
+bg_color = Color(0, 0.627451, 0.9843137, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jtwau"]
+bg_color = Color(3.85046e-07, 0.6281029, 0.98620313, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 
 [node name="MenuDeslizante" type="Control" unique_id=2104744245]
 layout_mode = 3
@@ -112,3 +164,138 @@ grow_vertical = 2
 unique_name_in_owner = true
 position = Vector2(250, 295)
 texture = ExtResource("13_u06ut")
+
+[node name="FondoError" type="Panel" parent="manejador" unique_id=955522223]
+z_index = 5
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_k0wdy")
+script = ExtResource("14_su2ki")
+
+[node name="Error" type="Panel" parent="manejador/FondoError" unique_id=1290071521]
+unique_name_in_owner = true
+z_index = 5
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -271.0
+offset_top = -147.0
+offset_right = 271.0
+offset_bottom = 147.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(271, 147)
+theme_override_styles/panel = SubResource("StyleBoxFlat_a8ku5")
+
+[node name="sombraNuevo" type="Panel" parent="manejador/FondoError/Error" unique_id=782692685]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 339.0
+offset_top = 211.0
+offset_right = -11.0
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_j6m78")
+
+[node name="sombraVolver" type="Panel" parent="manejador/FondoError/Error" unique_id=1507293512]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 19.0
+offset_top = 211.0
+offset_right = -331.0
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_j6m78")
+
+[node name="TextoInformativo" type="Label" parent="manejador/FondoError/Error" unique_id=1622151799]
+custom_maximum_size = Vector2(542, 294)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -48.0
+offset_bottom = -48.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 27
+text = "Este modo de juego habia sido iniciado con el jugador:"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="manejador/FondoError/Error/TextoInformativo" unique_id=1339127207]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 41.025)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 207.0
+offset_bottom = 248.025
+grow_horizontal = 2
+theme_override_colors/default_color = Color(1, 1, 0.28627452, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/italics_font_size = 27
+bbcode_enabled = true
+text = "[i]caleb stonewall[/i]"
+scroll_active = false
+
+[node name="Nuevo" type="Panel" parent="manejador/FondoError/Error" unique_id=385225863]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 335.0
+offset_top = 207.0
+offset_right = 527.0
+offset_bottom = 271.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_eu64u")
+
+[node name="textoNuevo" type="Label" parent="manejador/FondoError/Error/Nuevo" unique_id=641358442]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 21
+text = "nuevo"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="volver" type="Panel" parent="manejador/FondoError/Error" unique_id=1481127276]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 15.0
+offset_top = 207.0
+offset_right = 207.0
+offset_bottom = 271.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_jtwau")
+
+[node name="textoVolver" type="Label" parent="manejador/FondoError/Error/volver" unique_id=1601912894]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 21
+text = "volver"
+horizontal_alignment = 1
+vertical_alignment = 1

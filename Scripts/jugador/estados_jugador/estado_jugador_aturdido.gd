@@ -10,7 +10,6 @@ func _enter_tree() -> void:
 	#animacion_jugador.play("aturdimiento")
 	knockback()
 	tiempo_inicio_aturdimiento = Time.get_ticks_msec()
-	print(jugador.name + "herido")
 	nombre_estado = Jugador.Estado.ATURDIDO
 	
 func _process(delta: float) -> void:
