@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://emvdemyc862y" path="res://Sprites/pantallas/PantallaTorneo.png" id="1_p660u"]
 [ext_resource type="Script" uid="uid://cp8p3o3qgejbd" path="res://Scripts/pantallas/torneo/Pantallatorneo.gd" id="1_v7tjj"]
-[ext_resource type="Texture2D" uid="uid://dswx1ri2v2tsf" path="res://Sprites/pantallas/Captura de pantalla 2026-10-04 122547.png" id="2_5gpbi"]
 [ext_resource type="Texture2D" uid="uid://bl85djy8uj8om" path="res://Sprites/UI/Copa.png" id="3_7f8ow"]
 [ext_resource type="Texture2D" uid="uid://clgm1yytehk23" path="res://Sprites/UI/torneo/Braquets.png" id="4_tp2ac"]
 [ext_resource type="Texture2D" uid="uid://dcuef0gm4m78r" path="res://Sprites/UI/torneo/Cuartos1_Win1.png" id="5_oyqmp"]
@@ -37,7 +36,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_5gpbi")
 
 [node name="Trofeo" type="TextureRect" parent="." unique_id=1855355685]
 visible = false

@@ -19,7 +19,6 @@ var indice_boton_actual: int = 1
 
 func _ready() -> void:
 	jugador.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	jugador.text = ProgresoPartida.progreso_general.get_jugador_torneo_actual()
 	modulate.a = 0.0
 	foco = false
 	animando = false
@@ -35,6 +34,7 @@ func _ready() -> void:
 	estilos[indice_boton_actual].bg_color = COLOR_SELECCION
 	
 func mostrar() -> void:
+	jugador.text = ProgresoPartida.progreso_general.get_jugador_torneo_actual()
 	cambiar_foco(true)
 	animando = true
 	var tween := create_tween().set_parallel(true)

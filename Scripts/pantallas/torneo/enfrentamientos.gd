@@ -51,8 +51,11 @@ func serialize() -> Dictionary:
 		"local": config_jugador_local.serialize(),
 		"visitante": config_jugador_visitante.serialize(),
 		"goles_local": goles_local,
-		"goles_visitante": goles_visitante
-	}
+		"goles_visitante": goles_visitante,
+		"ganador" : ganador,
+		"marcador_final" : marcador_final
+
+}
 
 static func deserialize(data: Dictionary) -> Enfrentamientos:
 	var enfrentamiento := Enfrentamientos.new()
@@ -60,4 +63,6 @@ static func deserialize(data: Dictionary) -> Enfrentamientos:
 	enfrentamiento.set_jugador_visitante(data["visitante"]["jugador"], data["visitante"]["poder"])
 	enfrentamiento.goles_local = int(data["goles_local"])
 	enfrentamiento.goles_visitante = int(data["goles_visitante"])
+	enfrentamiento.ganador = data["ganador"]
+	enfrentamiento.marcador_final = data["marcador_final"]
 	return enfrentamiento
