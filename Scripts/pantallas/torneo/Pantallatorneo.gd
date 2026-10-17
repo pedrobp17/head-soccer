@@ -19,6 +19,7 @@ func _input(event: InputEvent) -> void:
 			transicion_pantallas(HeadSoccer.Pantalla.JUGANDO, datos_pantalla)
 			
 	if event.is_action_pressed("p1_back"):
+		ControladorPartido.enfrentamiento = Enfrentamientos.new()
 		transicion_pantallas(HeadSoccer.Pantalla.MENU_PRINCIPAL)
 
 func _ready() -> void:

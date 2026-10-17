@@ -16,10 +16,9 @@ func _init(config_jugador : ConfiguracionJugadorPartido = null) -> void:
 	if config_jugador == null:
 		return 
 	
-	configuracion_jugador_seleccionado = config_jugador
-	var pool_random_jugadores : Array[ConfiguracionJugadorPartido] = [config_jugador]
+	configuracion_jugador_seleccionado = ConfiguracionJugadorPartido.new().setup(config_jugador.jugador, config_jugador.poder)
+	var pool_random_jugadores : Array[ConfiguracionJugadorPartido] = [configuracion_jugador_seleccionado]
 	pool_random_jugadores.append_array(get_pool_random_enemigos())
-	
 	crear_bracket(estado_actual, pool_random_jugadores)
 	ProgresoPartida.progreso_general.guardar_torneo(self)
 
@@ -31,7 +30,7 @@ func get_pool_random_enemigos() -> Array[ConfiguracionJugadorPartido]:
 	var pool_jugadores_configurados : Array[ConfiguracionJugadorPartido]= []
 	for i in pool_jugadores.size():
 		var configuracion_jugador_enemigo = ConfiguracionJugadorPartido.new()
-		pool_jugadores_configurados.append(configuracion_jugador_enemigo.setup(pool_jugadores[i].nombre, "mano_magica"))#pool_jugadores[i].poderes[randi_range(0,1)]))
+		pool_jugadores_configurados.append(configuracion_jugador_enemigo.setup(pool_jugadores[i].nombre, "mano_magica"))
 	
 	return pool_jugadores_configurados
 		

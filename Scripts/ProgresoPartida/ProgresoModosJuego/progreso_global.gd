@@ -12,7 +12,7 @@ func serialize() -> Dictionary:
 	return {
 		"ultimo_modo_jugado": Modos.keys()[ultimo_modo_jugado],
 		"ultimo_jugador_seleccionado": ultimo_jugador_seleccionado,
-		"indice_ultimo_jugador_seleccionado" : str(indice_ultimo_jugador_seleccionado),
+		"indice_ultimo_jugador_seleccionado" : indice_ultimo_jugador_seleccionado,
 		"ultimo_poder_jugador_seleccionado": ultimo_poder_jugador_seleccionado
 	}
 

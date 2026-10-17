@@ -35,12 +35,18 @@ func refresh_info_enfrentamiento() -> void:
 	ganador = config_jugador_local.jugador if goles_local > goles_visitante else config_jugador_visitante.jugador
 	marcador_final = [goles_local, goles_visitante]
 
+func reiniciar_resultado() -> void:
+	goles_local = 0
+	goles_visitante = 0
+	marcador_final = []
+	ganador = ""
+	
 func get_random_marcador() -> void:
 	while empate():
 		goles_local = randi_range(0,7)
 		goles_visitante = randi_range(0,7)
 	refresh_info_enfrentamiento()
-
+	
 func get_ganador() -> ConfiguracionJugadorPartido:
 	if ganador == config_jugador_local.jugador:
 		return config_jugador_local

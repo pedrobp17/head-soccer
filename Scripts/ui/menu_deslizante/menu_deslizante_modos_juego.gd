@@ -58,9 +58,13 @@ func set_datos_pantalla_seleccionada() -> DatosPantallas:
 		Modos.ONLINE:
 			return DatosPantallas.new()
 		Modos.ARCADE:
+			ProgresoPartida.progreso_general.set_modo_jugado(Modos.ARCADE)
+			ProgresoPartida.progreso_general.guardar_progreso()
 			ControladorPartido.enfrentamiento.set_jugador_visitante("AdrianSpeed", "mano_magica")
 			return DatosPantallas.new()
 		Modos.TORNEO:
+			ProgresoPartida.progreso_general.set_modo_jugado(Modos.ARCADE)
+			ProgresoPartida.progreso_general.guardar_progreso()
 			var torneo = ProgresoPartida.progreso_general.cargar_torneo()
 			if torneo == null:
 				torneo = Torneo.new(ControladorPartido.enfrentamiento.config_jugador_local)

@@ -16,6 +16,8 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	if KeyUtils.is_action_just_pressed(Jugador.ControlScheme.P1, KeyUtils.Accion.BACK):
+		if datos_pantalla.torneo != null and not ControladorPartido.fin_partido():
+			ControladorPartido.enfrentamiento.reiniciar_resultado()
 		ControladorPartido.enfrentamiento = Enfrentamientos.new()
 		transicion_pantallas(HeadSoccer.Pantalla.MENU_PRINCIPAL)
 	$Fps.text = str(Engine.get_frames_per_second()) + " FPS"
