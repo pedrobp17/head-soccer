@@ -6,16 +6,19 @@ const MARCO_GANADOR := Color.DODGER_BLUE
 const MARCO_SIN_DECIDIR_RESULTADO := Color.BLACK
 const NIVEL_OPACIDAD := 0.5
 const TIEMPO_TRANSICION := 0.3
+const NUMERO_PERSONAJES_ANIMACION_TRAGAPERRAS := 5
+const DURACION_ANIMACION_TRAGAPERRAS := 2.5
 
 @onready var personaje: TextureRect = %Personaje
 @onready var marco: Panel = %Marco
 @onready var marcador: Label = %Marcador
 @onready var jugador_seleccionado: Panel = %JugadorSeleccionado
+@onready var jugadores: HBoxContainer = %HBoxContainer
 
 var estilo_panel = null
 
 func inicializar( jugador : String ) -> void:
-	personaje.texture = load("res://Sprites/jugadores/iconos_torneos/%s.png" %jugador )
+	personaje.texture = ImagenesPersonajesTorneo.get_imagen(jugador)
 	estilo_panel = marco.get_theme_stylebox("panel").duplicate() as StyleBoxFlat
 	marco.add_theme_stylebox_override("panel", estilo_panel)
 	set_sin_definir()
@@ -50,4 +53,27 @@ func set_sin_definir() -> void:
 
 func set_jugador_seleccionado() -> void:
 	jugador_seleccionado.show()
+
+func animacion_tragaperras( array : Array) -> Tween:
+	var pool_jugadores_animacion_tragaperras = array
+	if pool_jugadores_animacion_tragaperras.size() < NUMERO_PERSONAJES_ANIMACION_TRAGAPERRAS:
+		pool_jugadores_animacion_tragaperras = ampliar_array(pool_jugadores_animacion_tragaperras)
+	set_imagenes_pool_animacion(pool_jugadores_animacion_tragaperras)
+	return animar()
 	
+func ampliar_array( array : Array ) -> Array:
+	var tamano_original = array.size()
+	while array.size() < NUMERO_PERSONAJES_ANIMACION_TRAGAPERRAS:
+		array.append(array[array.size() % tamano_original])
+	return array	
+
+func set_imagenes_pool_animacion( array : Array) -> void:
+	assert(array.size() == jugadores.get_child_count(), "los jugadores a animar en torneo es diferente al esperado")
+	for i in range(jugadores.get_child_count()):
+		var imagen = jugadores.get_child(i) as TextureRect
+		imagen.texture = ImagenesPersonajesTorneo.get_imagen(array[array.size() - i - 1])
+
+func animar() -> Tween:
+	var tween = create_tween()
+	tween.tween_property(jugadores, "position", Vector2(0,0), DURACION_ANIMACION_TRAGAPERRAS).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
+	return tween

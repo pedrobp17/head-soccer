@@ -14,6 +14,7 @@ var tipos_datos : Dictionary = {
 }
 
 func _ready() -> void:
+	reiniciar_progreso()
 	crear_progreso_inicial()
 	cargar_progreso()
 	

@@ -29,14 +29,6 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_p660u")
 
-[node name="Ayuda" type="TextureRect" parent="." unique_id=1660467735]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
 [node name="Trofeo" type="TextureRect" parent="." unique_id=1855355685]
 visible = false
 offset_left = 439.0
@@ -63,6 +55,7 @@ texture = ExtResource("4_tp2ac")
 
 [node name="IndicadoresGanadores" type="Control" parent="Braquets" unique_id=18947043]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -299,6 +292,7 @@ offset_bottom = 576.0
 
 [node name="Semis" type="Control" parent="PlaceholdersPosiciones" unique_id=425561353]
 unique_name_in_owner = true
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -333,6 +327,7 @@ offset_bottom = 448.0
 
 [node name="Final" type="Control" parent="PlaceholdersPosiciones" unique_id=1048594281]
 unique_name_in_owner = true
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -353,6 +348,7 @@ offset_bottom = 544.0
 
 [node name="Ganador" type="Control" parent="PlaceholdersPosiciones" unique_id=349207366]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
