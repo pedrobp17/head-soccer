@@ -33,8 +33,8 @@ func on_fin_animacion() -> void:
 
 func on_transicion() -> void:
 	if ProgresoPartida.progreso_general.get_modo_jugado() == ProgresoGlobal.Modos.TORNEO:
-		datos_pantalla.torneo.avanzar()
-		if ControladorPartido.enfrentamiento.ganador != ControladorPartido.enfrentamiento.config_jugador_local.jugador:
+		datos_pantalla.torneo.set_partido_personaje_actual()
+		if ControladorPartido.enfrentamiento.ganador != ControladorPartido.enfrentamiento.config_jugador_visitante.jugador:
 			datos_pantalla.torneo.set_perdido()  
 		transicion_pantallas(HeadSoccer.Pantalla.TORNEO, datos_pantalla)
 	

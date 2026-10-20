@@ -15,7 +15,7 @@ var ronda_mostrada : Dictionary[Estado, bool]
 var ganador : ConfiguracionJugadorPartido = null
 var configuracion_jugador_seleccionado := ConfiguracionJugadorPartido.new()
 var ultima_pool_enemigos : Array = []
-var perdido : bool = false	
+var perdido : bool = false
 
 func _init(config_jugador : ConfiguracionJugadorPartido = null) -> void:
 	if config_jugador == null:
@@ -24,8 +24,9 @@ func _init(config_jugador : ConfiguracionJugadorPartido = null) -> void:
 	perdido = false
 	actualizar_rondas_mostradas()
 	configuracion_jugador_seleccionado = ConfiguracionJugadorPartido.new().setup(config_jugador.jugador, config_jugador.poder)
-	var pool_random_jugadores : Array[ConfiguracionJugadorPartido] = [configuracion_jugador_seleccionado]
+	var pool_random_jugadores : Array[ConfiguracionJugadorPartido] = []
 	pool_random_jugadores.append_array(get_pool_random_enemigos())
+	pool_random_jugadores.append(configuracion_jugador_seleccionado)
 	crear_bracket(estado_actual, pool_random_jugadores)
 	ProgresoPartida.progreso_general.guardar_torneo(self)
 
@@ -49,20 +50,25 @@ func crear_bracket(estado : Estado, pool_jugadores : Array[ConfiguracionJugadorP
 		enfrentamiento.set_jugador_visitante(pool_jugadores[i*2 + 1].jugador, pool_jugadores[i*2 + 1].poder)
 		partidos[estado].append(enfrentamiento)
 
-func extraer_enemigos_de_pool( array : Array) -> Array:
+func extraer_enemigos_de_pool( array : Array[String]) -> Array[String]:
 	var enemigos : Array = []
 	for indice in INDICES_INICIO_POOL_ANIMACION_TRAGAPERRAS:
 		enemigos.append(array[indice])
 	return enemigos
 
-func extraer_pool_animacion_tragaperras( indice : int ) -> Array:
+func extraer_pool_animacion_tragaperras( indice : int ) -> Array[String]:
 	var pool_animacion : Array = []
-	var indice_inicio = INDICES_INICIO_POOL_ANIMACION_TRAGAPERRAS[indice]
-	pool_animacion.append_array(ultima_pool_enemigos.slice(indice_inicio + 1, indice_inicio + 4 ))
+	var tamano := ultima_pool_enemigos.size()
+	var indice_inicio : int = INDICES_INICIO_POOL_ANIMACION_TRAGAPERRAS[indice]
+
+	for i in range(1, MAX_PERSONAJES_ANIMACION_TRAGAPERRAS):
+		pool_animacion.append(ultima_pool_enemigos[posmod(indice_inicio + i, tamano)])
+
 	pool_animacion.append(ultima_pool_enemigos[indice_inicio])
+	
 	return pool_animacion
 	
-func avanzar(guardar : bool = true) -> void:
+func avanzar() -> void:
 	if estado_actual < Estado.COMPLETADO:
 		var partidos_actuales : Array = partidos[estado_actual]
 		var ganadores : Array[ConfiguracionJugadorPartido] = []
@@ -75,18 +81,40 @@ func avanzar(guardar : bool = true) -> void:
 			ganador = ganadores[0]
 		else:
 			crear_bracket(estado_actual, ganadores)
-		if guardar:
-			ProgresoPartida.progreso_general.guardar_torneo(self)
-
-func avanzar_enemigos() -> Array:
+		
+func set_partido_personaje_actual() -> void:
+	if estado_actual < Estado.FINAL:
+		var partido_jugado : Enfrentamientos =  partidos[estado_actual][-1]
+		var ganador : ConfiguracionJugadorPartido = partido_jugado.get_ganador()
+		estado_actual += 1
+		var partido_por_jugar : Enfrentamientos = partidos[estado_actual][-1]
+		partido_por_jugar.config_jugador_visitante = ganador
+		ProgresoPartida.progreso_general.guardar_torneo(self)
+	
+func avanzar_enemigos() -> void:
+	
 	if estado_actual > Estado.SEMIS:
-		return []
-	var ronda_avanzada : Array[ConfiguracionJugadorPartido] = []
-	var ronda_actual : Array[Enfrentamientos] = partidos[estado_actual]
-	for i in range(1, ronda_actual.size()):
-		ronda_actual[i].get_random_marcador()
-		ronda_avanzada.append(ronda_actual[i].get_ganador())
-	return ronda_avanzada
+		return
+		 
+	for i in range(0, partidos[estado_actual].size(), 2):
+		var partido_actual_1 : Enfrentamientos = partidos[estado_actual][i]
+		var partido_actual_2 : Enfrentamientos = partidos[estado_actual][i + 1]
+		partido_actual_1.get_random_marcador()
+		partido_actual_2.get_random_marcador()
+		var jugador_ganador_1 = partido_actual_1.get_ganador()
+		var jugador_ganador_2 = partido_actual_2.get_ganador()
+		var partido_siguiente : Enfrentamientos = Enfrentamientos.new()
+		partido_siguiente.config_jugador_local = jugador_ganador_1
+		partido_siguiente.config_jugador_visitante = jugador_ganador_2
+		
+		if partido_actual_2.config_jugador_visitante.jugador == configuracion_jugador_seleccionado.jugador:
+			partido_siguiente.config_jugador_visitante = ConfiguracionJugadorPartido.new()
+			partido_actual_2.reiniciar_resultado()
+		
+		partidos[estado_actual + 1].append(partido_siguiente)
+		
+	ProgresoPartida.progreso_general.guardar_torneo(self)
+
 	
 func set_perdido() -> void:
 	perdido = true
@@ -98,7 +126,11 @@ func actualizar_rondas_mostradas() -> void:
 		Estado.SEMIS : false,
 		Estado.FINAL : false
 	}
-
+	
+func set_ronda_mostrada( mostrada : bool, estado : Estado) -> void:
+	ronda_mostrada[estado] = mostrada
+	ProgresoPartida.progreso_general.guardar_torneo(self)
+	
 func serialize() -> Dictionary:
 	var partidos_data := {}
 	for estado in partidos.keys():

@@ -18,6 +18,8 @@ const DURACION_ANIMACION_TRAGAPERRAS := 2.5
 var estilo_panel = null
 
 func inicializar( jugador : String ) -> void:
+	personaje.show()
+	jugadores.hide()
 	personaje.texture = ImagenesPersonajesTorneo.get_imagen(jugador)
 	estilo_panel = marco.get_theme_stylebox("panel").duplicate() as StyleBoxFlat
 	marco.add_theme_stylebox_override("panel", estilo_panel)
@@ -55,6 +57,8 @@ func set_jugador_seleccionado() -> void:
 	jugador_seleccionado.show()
 
 func animacion_tragaperras( array : Array) -> Tween:
+	personaje.hide()
+	jugadores.show()
 	var pool_jugadores_animacion_tragaperras = array
 	if pool_jugadores_animacion_tragaperras.size() < NUMERO_PERSONAJES_ANIMACION_TRAGAPERRAS:
 		pool_jugadores_animacion_tragaperras = ampliar_array(pool_jugadores_animacion_tragaperras)

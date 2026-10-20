@@ -227,6 +227,7 @@ grow_vertical = 2
 
 [node name="Cuartos" type="Control" parent="PlaceholdersPosiciones" unique_id=421678669]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
