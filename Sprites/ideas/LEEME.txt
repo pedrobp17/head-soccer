@@ -1,0 +1,12 @@
+MAPA 1152x648 (dimensiones originales). Todas las capas completas se superponen en (0,0).
+
+Orden de dibujado:
+ 1) base_bloqueada.png          -> siempre visible (mapa apagado, legible)
+ 2) islands/<id>.png (RGBA)     -> solo las zonas desbloqueadas, encima de la base
+ 3) glow/<id>_brillo.png (RGBA) -> opcional: borde dorado suave. Dibujar ENCIMA con blend aditivo
+                                   durante la animacion de desbloqueo (tween alpha 0 -> 1 -> 0.4)
+ 4) masks/<id>_mask.png         -> mascara de cada zona (clics, efectos)
+
+islands.json: numero_pin (1 a 9, el numero del pin en la imagen), bbox y centro de cada zona.
+Variante ligera: islands/<id>_recorte.png + bbox_x / bbox_y.
+Usa filtrado bilineal y no reescales las capas en el motor.

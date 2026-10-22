@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://d3bmynm8yd7sg"]
+
+[ext_resource type="Script" uid="uid://qfv4vok3e2yo" path="res://Scripts/pantallas/torneo/lineaBrackets.gd" id="1_w3grg"]
+
+[node name="lineaBraquet" type="Control" unique_id=1176933657]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 743.0
+offset_top = 270.0
+offset_right = 973.0
+offset_bottom = 462.0
+scale = Vector2(-1, 1)
+script = ExtResource("1_w3grg")
+
+[node name="cuartos" type="Control" parent="." unique_id=1351638690]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="barraHorizontal" type="TextureProgressBar" parent="cuartos" unique_id=1201876001]
+visible = false
+layout_mode = 0
+offset_left = 6.0
+offset_right = 225.0
+offset_bottom = 6.0
+value = 100.0
+fill_mode = 1
+
+[node name="barraVertical" type="TextureProgressBar" parent="cuartos/barraHorizontal" unique_id=421044560]
+visible = false
+layout_mode = 0
+offset_left = -6.0
+offset_top = -133.0
+offset_bottom = 64.0
+scale = Vector2(1, -1)
+pivot_offset = Vector2(6, 133)
+value = 100.0
+fill_mode = 3
+
+[node name="semis" type="Control" parent="." unique_id=1716738976]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="barraHorizontal" type="TextureProgressBar" parent="semis" unique_id=1493412318]
+layout_mode = 0
+offset_left = 6.0
+offset_right = 225.0
+offset_bottom = 6.0
+value = 100.0
+
+[node name="barraVertical" type="TextureProgressBar" parent="semis/barraHorizontal" unique_id=2040510012]
+layout_mode = 0
+offset_left = 188.0
+offset_top = -260.0
+offset_right = 194.0
+offset_bottom = -63.0
+scale = Vector2(-1, -1)
+pivot_offset = Vector2(6, 133)
+value = 100.0
+fill_mode = 2

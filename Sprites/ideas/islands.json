@@ -1,0 +1,116 @@
+{
+ "canvas": [
+  1152,
+  648
+ ],
+ "islands": [
+  {
+   "id": "01_nevado",
+   "numero_pin": 1,
+   "bbox_x": 466,
+   "bbox_y": 12,
+   "w": 262,
+   "h": 168,
+   "centro": [
+    597,
+    96
+   ]
+  },
+  {
+   "id": "02_ciudad_oeste",
+   "numero_pin": 2,
+   "bbox_x": 2,
+   "bbox_y": 0,
+   "w": 270,
+   "h": 317,
+   "centro": [
+    137,
+    158
+   ]
+  },
+  {
+   "id": "03_bosque_centro_norte",
+   "numero_pin": 3,
+   "bbox_x": 433,
+   "bbox_y": 119,
+   "w": 218,
+   "h": 240,
+   "centro": [
+    542,
+    239
+   ]
+  },
+  {
+   "id": "04_isla_suroeste_bosque",
+   "numero_pin": 4,
+   "bbox_x": 35,
+   "bbox_y": 267,
+   "w": 346,
+   "h": 340,
+   "centro": [
+    208,
+    437
+   ]
+  },
+  {
+   "id": "05_ruinas_norte",
+   "numero_pin": 5,
+   "bbox_x": 245,
+   "bbox_y": 61,
+   "w": 264,
+   "h": 326,
+   "centro": [
+    377,
+    224
+   ]
+  },
+  {
+   "id": "06_pueblo_este",
+   "numero_pin": 6,
+   "bbox_x": 615,
+   "bbox_y": 80,
+   "w": 251,
+   "h": 389,
+   "centro": [
+    740,
+    274
+   ]
+  },
+  {
+   "id": "07_meseta_noreste",
+   "numero_pin": 7,
+   "bbox_x": 810,
+   "bbox_y": 0,
+   "w": 342,
+   "h": 332,
+   "centro": [
+    981,
+    166
+   ]
+  },
+  {
+   "id": "08_isla_este",
+   "numero_pin": 8,
+   "bbox_x": 779,
+   "bbox_y": 294,
+   "w": 371,
+   "h": 354,
+   "centro": [
+    964,
+    471
+   ]
+  },
+  {
+   "id": "09_volcan_sur",
+   "numero_pin": 9,
+   "bbox_x": 343,
+   "bbox_y": 322,
+   "w": 472,
+   "h": 321,
+   "centro": [
+    579,
+    482
+   ]
+  }
+ ]
+}

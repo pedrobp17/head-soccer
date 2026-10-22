@@ -1,5 +1,6 @@
 class_name Torneo
 
+# Los 7 enemigos reales se reparten espaciados por el pool para que la animación tenga señuelos variados.
 const INDICES_INICIO_POOL_ANIMACION_TRAGAPERRAS = [1,3,6,8,11,13,15]
 const MAX_PERSONAJES_ANIMACION_TRAGAPERRAS = 5
 
@@ -24,9 +25,8 @@ func _init(config_jugador : ConfiguracionJugadorPartido = null) -> void:
 	perdido = false
 	actualizar_rondas_mostradas()
 	configuracion_jugador_seleccionado = ConfiguracionJugadorPartido.new().setup(config_jugador.jugador, config_jugador.poder)
-	var pool_random_jugadores : Array[ConfiguracionJugadorPartido] = []
+	var pool_random_jugadores : Array[ConfiguracionJugadorPartido] = [configuracion_jugador_seleccionado]
 	pool_random_jugadores.append_array(get_pool_random_enemigos())
-	pool_random_jugadores.append(configuracion_jugador_seleccionado)
 	crear_bracket(estado_actual, pool_random_jugadores)
 	ProgresoPartida.progreso_general.guardar_torneo(self)
 
@@ -44,6 +44,7 @@ func get_pool_random_enemigos() -> Array[ConfiguracionJugadorPartido]:
 	return pool_jugadores_configurados
 		
 func crear_bracket(estado : Estado, pool_jugadores : Array[ConfiguracionJugadorPartido]) -> void:
+	partidos[estado].clear()
 	for i in range(pool_jugadores.size() / 2.0):
 		var enfrentamiento = Enfrentamientos.new()
 		enfrentamiento.set_jugador_local(pool_jugadores[i*2].jugador, pool_jugadores[i*2].poder)
@@ -84,15 +85,18 @@ func avanzar() -> void:
 		
 func set_partido_personaje_actual() -> void:
 	if estado_actual < Estado.FINAL:
-		var partido_jugado : Enfrentamientos =  partidos[estado_actual][-1]
+		var partido_jugado : Enfrentamientos =  partidos[estado_actual][0]
 		var ganador : ConfiguracionJugadorPartido = partido_jugado.get_ganador()
-		estado_actual += 1
-		var partido_por_jugar : Enfrentamientos = partidos[estado_actual][-1]
-		partido_por_jugar.config_jugador_visitante = ganador
+		estado_actual += 1 as Estado
+		var partido_por_jugar : Enfrentamientos = partidos[estado_actual][0]
+		partido_por_jugar.config_jugador_local = ganador
 		ProgresoPartida.progreso_general.guardar_torneo(self)
-	
+	elif estado_actual == Estado.FINAL:
+		ganador = partidos[estado_actual][0].get_ganador()
+		estado_actual += 1 as Estado
+		ProgresoPartida.progreso_general.guardar_torneo(self)
+		
 func avanzar_enemigos() -> void:
-	
 	if estado_actual > Estado.SEMIS:
 		return
 		 
@@ -107,9 +111,9 @@ func avanzar_enemigos() -> void:
 		partido_siguiente.config_jugador_local = jugador_ganador_1
 		partido_siguiente.config_jugador_visitante = jugador_ganador_2
 		
-		if partido_actual_2.config_jugador_visitante.jugador == configuracion_jugador_seleccionado.jugador:
-			partido_siguiente.config_jugador_visitante = ConfiguracionJugadorPartido.new()
-			partido_actual_2.reiniciar_resultado()
+		if partido_actual_1.config_jugador_local.jugador == configuracion_jugador_seleccionado.jugador:
+			partido_siguiente.config_jugador_local = ConfiguracionJugadorPartido.new()
+			partido_actual_1.reiniciar_resultado()
 		
 		partidos[estado_actual + 1].append(partido_siguiente)
 		

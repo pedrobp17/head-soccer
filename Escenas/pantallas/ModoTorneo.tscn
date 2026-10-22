@@ -4,18 +4,11 @@
 [ext_resource type="Script" uid="uid://cp8p3o3qgejbd" path="res://Scripts/pantallas/torneo/Pantallatorneo.gd" id="1_v7tjj"]
 [ext_resource type="Texture2D" uid="uid://bl85djy8uj8om" path="res://Sprites/UI/Copa.png" id="3_7f8ow"]
 [ext_resource type="Texture2D" uid="uid://clgm1yytehk23" path="res://Sprites/UI/torneo/Braquets.png" id="4_tp2ac"]
-[ext_resource type="Texture2D" uid="uid://dcuef0gm4m78r" path="res://Sprites/UI/torneo/Cuartos1_Win1.png" id="5_oyqmp"]
-[ext_resource type="Texture2D" uid="uid://bbvf1d1rq2rp" path="res://Sprites/UI/torneo/Cuartos1_Win2.png" id="6_v7tjj"]
-[ext_resource type="Texture2D" uid="uid://bhxafk6ikqmts" path="res://Sprites/UI/torneo/Cuartos2_Win1.png" id="7_vq41w"]
-[ext_resource type="Texture2D" uid="uid://68eldsevgamq" path="res://Sprites/UI/torneo/Cuartos2_Win2.png" id="8_0vg5m"]
-[ext_resource type="Texture2D" uid="uid://c0rs7h00hxyvv" path="res://Sprites/UI/torneo/Cuartos3_Win1.png" id="9_2tiiq"]
-[ext_resource type="Texture2D" uid="uid://d0eawhh01a8ma" path="res://Sprites/UI/torneo/Cuartos3_Win2.png" id="10_6wy7o"]
-[ext_resource type="Texture2D" uid="uid://yahl2nj8ytjm" path="res://Sprites/UI/torneo/Cuartos4_Win1.png" id="11_l3hj8"]
-[ext_resource type="Texture2D" uid="uid://cw4y1bj8gym5b" path="res://Sprites/UI/torneo/Cuartos4_Win2.png" id="12_sco7c"]
-[ext_resource type="Texture2D" uid="uid://cbnb5fxrnackc" path="res://Sprites/UI/torneo/Semis1_Win1.png" id="13_xocfs"]
-[ext_resource type="Texture2D" uid="uid://byrxvbvqguhyf" path="res://Sprites/UI/torneo/Semis1_Win2.png" id="14_5omy3"]
-[ext_resource type="Texture2D" uid="uid://cgog6ry0s6sf8" path="res://Sprites/UI/torneo/Semis2_Win1.png" id="15_3okjq"]
-[ext_resource type="Texture2D" uid="uid://djv4v6piv814w" path="res://Sprites/UI/torneo/Semis2_Win2.png" id="16_fea6j"]
+[ext_resource type="Texture2D" uid="uid://bx68iqmsaaw3t" path="res://Sprites/UI/torneo/barra_horizontal_cuartos.png" id="5_68of2"]
+[ext_resource type="PackedScene" uid="uid://d3bmynm8yd7sg" path="res://Escenas/ui/linea_braquet.tscn" id="5_loeoc"]
+[ext_resource type="Texture2D" uid="uid://dvfb4ayvmroyp" path="res://Sprites/UI/torneo/barra_vertical_cuartos.png" id="6_0mcam"]
+[ext_resource type="Texture2D" uid="uid://c7ewhgmg8wak0" path="res://Sprites/UI/torneo/barra_vertical_semis.png" id="8_svkmv"]
+[ext_resource type="Texture2D" uid="uid://co323yelb5o0s" path="res://Sprites/UI/torneo/barra_horizontal_semis.png" id="9_vrup1"]
 [ext_resource type="PackedScene" uid="uid://bajeoiubckdh3" path="res://Escenas/ui/Cartas/cartas_seleccion_torneo.tscn" id="18_vq41w"]
 
 [node name="Torneo" type="Node" unique_id=1569456997]
@@ -55,7 +48,6 @@ texture = ExtResource("4_tp2ac")
 
 [node name="IndicadoresGanadores" type="Control" parent="Braquets" unique_id=18947043]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -63,7 +55,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Cuartos" type="Control" parent="Braquets/IndicadoresGanadores" unique_id=493916758]
+[node name="CuartosLineBrackets" type="Control" parent="Braquets/IndicadoresGanadores" unique_id=493916758]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -71,93 +64,105 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Cuartos1_Win1" type="TextureProgressBar" parent="Braquets/IndicadoresGanadores/Cuartos" unique_id=45440603]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-value = 100.0
-texture_progress = ExtResource("5_oyqmp")
+[node name="Cuartos1_Win1" parent="Braquets/IndicadoresGanadores/CuartosLineBrackets" unique_id=1176933657 instance=ExtResource("5_loeoc")]
+layout_mode = 0
+offset_left = 379.0
+offset_top = 125.0
+offset_right = 609.0
+offset_bottom = 317.0
+textura_barra_vertical = ExtResource("6_0mcam")
+textura_barra_horizontal = ExtResource("5_68of2")
+direccion_barra_horizontal_x = 1
+direccion_barra_vertical_y = 3
+fase = "cuartos"
 
-[node name="Cuartos1_Win2" type="TextureProgressBar" parent="Braquets/IndicadoresGanadores/Cuartos" unique_id=2028512610]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-value = 100.0
-texture_progress = ExtResource("6_v7tjj")
+[node name="Cuartos1_Win2" parent="Braquets/IndicadoresGanadores/CuartosLineBrackets" unique_id=329920816 instance=ExtResource("5_loeoc")]
+layout_mode = 0
+offset_left = 379.0
+offset_top = 253.0
+offset_right = 609.0
+offset_bottom = 445.0
+textura_barra_horizontal = ExtResource("5_68of2")
+direccion_barra_horizontal_x = 1
+direccion_barra_vertical_y = 3
+fase = "cuartos"
 
-[node name="Cuartos2_Win1" type="TextureProgressBar" parent="Braquets/IndicadoresGanadores/Cuartos" unique_id=1332288475]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-value = 100.0
-texture_progress = ExtResource("7_vq41w")
+[node name="Cuartos2_Win1" parent="Braquets/IndicadoresGanadores/CuartosLineBrackets" unique_id=1170467224 instance=ExtResource("5_loeoc")]
+layout_mode = 0
+offset_left = 379.0
+offset_top = 381.0
+offset_right = 609.0
+offset_bottom = 573.0
+textura_barra_horizontal = ExtResource("5_68of2")
+direccion_barra_horizontal_x = 1
+direccion_barra_vertical_y = 3
+fase = "cuartos"
 
-[node name="Cuartos2_Win2" type="TextureProgressBar" parent="Braquets/IndicadoresGanadores/Cuartos" unique_id=66199750]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-value = 100.0
-texture_progress = ExtResource("8_0vg5m")
+[node name="Cuartos2_Win2" parent="Braquets/IndicadoresGanadores/CuartosLineBrackets" unique_id=1995681536 instance=ExtResource("5_loeoc")]
+layout_mode = 0
+offset_left = 379.0
+offset_top = 515.0
+offset_right = 609.0
+offset_bottom = 707.0
+scale = Vector2(-1, -1)
+textura_barra_vertical = ExtResource("6_0mcam")
+textura_barra_horizontal = ExtResource("5_68of2")
+direccion_barra_horizontal_x = 1
+direccion_barra_vertical_y = 3
+fase = "cuartos"
 
-[node name="Cuartos3_Win1" type="TextureProgressBar" parent="Braquets/IndicadoresGanadores/Cuartos" unique_id=581159102]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-value = 100.0
-fill_mode = 1
-texture_progress = ExtResource("9_2tiiq")
+[node name="Cuartos3_Win1" parent="Braquets/IndicadoresGanadores/CuartosLineBrackets" unique_id=466195631 instance=ExtResource("5_loeoc")]
+layout_mode = 0
+offset_left = 775.0
+offset_top = 125.0
+offset_right = 1005.0
+offset_bottom = 317.0
+scale = Vector2(1, 1)
+textura_barra_vertical = ExtResource("6_0mcam")
+textura_barra_horizontal = ExtResource("5_68of2")
+direccion_barra_horizontal_x = 1
+direccion_barra_vertical_y = 3
+fase = "cuartos"
 
-[node name="Cuartos3_Win2" type="TextureProgressBar" parent="Braquets/IndicadoresGanadores/Cuartos" unique_id=1916153090]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-value = 100.0
-fill_mode = 1
-texture_progress = ExtResource("10_6wy7o")
+[node name="Cuartos3_Win2" parent="Braquets/IndicadoresGanadores/CuartosLineBrackets" unique_id=244444192 instance=ExtResource("5_loeoc")]
+layout_mode = 0
+offset_left = 775.0
+offset_top = 253.0
+offset_right = 1005.0
+offset_bottom = 445.0
+scale = Vector2(1, 1)
+textura_barra_horizontal = ExtResource("5_68of2")
+direccion_barra_horizontal_x = 1
+direccion_barra_vertical_y = 3
+fase = "cuartos"
 
-[node name="Cuartos4_Win1" type="TextureProgressBar" parent="Braquets/IndicadoresGanadores/Cuartos" unique_id=1705883729]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1.0
-offset_right = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-value = 100.0
-fill_mode = 1
-texture_progress = ExtResource("11_l3hj8")
+[node name="Cuartos4_Win1" parent="Braquets/IndicadoresGanadores/CuartosLineBrackets" unique_id=683230738 instance=ExtResource("5_loeoc")]
+layout_mode = 0
+offset_left = 775.0
+offset_top = 381.0
+offset_right = 1005.0
+offset_bottom = 573.0
+scale = Vector2(1, 1)
+textura_barra_horizontal = ExtResource("5_68of2")
+direccion_barra_horizontal_x = 1
+direccion_barra_vertical_y = 3
+fase = "cuartos"
 
-[node name="Cuartos4_Win2" type="TextureProgressBar" parent="Braquets/IndicadoresGanadores/Cuartos" unique_id=1594489921]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-value = 100.0
-fill_mode = 1
-texture_progress = ExtResource("12_sco7c")
+[node name="Cuartos4_Win2" parent="Braquets/IndicadoresGanadores/CuartosLineBrackets" unique_id=720653328 instance=ExtResource("5_loeoc")]
+layout_mode = 0
+offset_left = 775.0
+offset_top = 515.0
+offset_right = 1005.0
+offset_bottom = 707.0
+scale = Vector2(1, -1)
+textura_barra_vertical = ExtResource("6_0mcam")
+textura_barra_horizontal = ExtResource("5_68of2")
+direccion_barra_horizontal_x = 1
+direccion_barra_vertical_y = 3
+fase = "cuartos"
 
-[node name="Semis" type="Control" parent="Braquets/IndicadoresGanadores" unique_id=1609181575]
+[node name="SemisLineBrackets" type="Control" parent="Braquets/IndicadoresGanadores" unique_id=1609181575]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -165,55 +170,57 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Semis1_Win1" type="TextureProgressBar" parent="Braquets/IndicadoresGanadores/Semis" unique_id=290879189]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -2.0
-offset_bottom = -2.0
-grow_horizontal = 2
-grow_vertical = 2
-value = 100.0
-texture_progress = ExtResource("13_xocfs")
+[node name="Semis1_Win1" parent="Braquets/IndicadoresGanadores/SemisLineBrackets" unique_id=1702861530 instance=ExtResource("5_loeoc")]
+layout_mode = 0
+offset_left = 374.0
+offset_top = 317.0
+offset_right = 604.0
+offset_bottom = 509.0
+scale = Vector2(1, 1)
+textura_barra_vertical = ExtResource("8_svkmv")
+textura_barra_horizontal = ExtResource("9_vrup1")
+direccion_barra_horizontal_x = 1
+direccion_barra_vertical_y = 3
+fase = "semis"
 
-[node name="Semis1_Win2" type="TextureProgressBar" parent="Braquets/IndicadoresGanadores/Semis" unique_id=1509148556]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -2.0
-offset_bottom = -2.0
-grow_horizontal = 2
-grow_vertical = 2
-value = 100.0
-texture_progress = ExtResource("14_5omy3")
+[node name="Semis1_Win2" parent="Braquets/IndicadoresGanadores/SemisLineBrackets" unique_id=319163555 instance=ExtResource("5_loeoc")]
+layout_mode = 0
+offset_left = 374.0
+offset_top = 317.0
+offset_right = 604.0
+offset_bottom = 509.0
+scale = Vector2(1, 1)
+textura_barra_vertical = ExtResource("8_svkmv")
+textura_barra_horizontal = ExtResource("9_vrup1")
+direccion_barra_horizontal_x = 1
+direccion_barra_vertical_y = 3
+fase = "semis"
 
-[node name="Semis2_Win1" type="TextureProgressBar" parent="Braquets/IndicadoresGanadores/Semis" unique_id=1694556112]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -2.0
-offset_bottom = -2.0
-grow_horizontal = 2
-grow_vertical = 2
-value = 100.0
-fill_mode = 1
-texture_progress = ExtResource("15_3okjq")
+[node name="Semis2_Win1" parent="Braquets/IndicadoresGanadores/SemisLineBrackets" unique_id=562298566 instance=ExtResource("5_loeoc")]
+layout_mode = 0
+offset_left = 780.0
+offset_top = 323.0
+offset_right = 1010.0
+offset_bottom = 515.0
+scale = Vector2(-1, -1)
+textura_barra_vertical = ExtResource("8_svkmv")
+textura_barra_horizontal = ExtResource("9_vrup1")
+direccion_barra_horizontal_x = 1
+direccion_barra_vertical_y = 3
+fase = "semis"
 
-[node name="Semis2_Win2" type="TextureProgressBar" parent="Braquets/IndicadoresGanadores/Semis" unique_id=251515326]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -2.0
-offset_bottom = -2.0
-grow_horizontal = 2
-grow_vertical = 2
-value = 100.0
-fill_mode = 1
-texture_progress = ExtResource("16_fea6j")
+[node name="Semis2_Win2" parent="Braquets/IndicadoresGanadores/SemisLineBrackets" unique_id=1356119495 instance=ExtResource("5_loeoc")]
+layout_mode = 0
+offset_left = 780.0
+offset_top = 323.0
+offset_right = 1010.0
+offset_bottom = 515.0
+scale = Vector2(-1, -1)
+textura_barra_vertical = ExtResource("8_svkmv")
+textura_barra_horizontal = ExtResource("9_vrup1")
+direccion_barra_horizontal_x = 1
+direccion_barra_vertical_y = 3
+fase = "semis"
 
 [node name="PlaceholdersPosiciones" type="Control" parent="." unique_id=972757629]
 layout_mode = 3
@@ -227,7 +234,6 @@ grow_vertical = 2
 
 [node name="Cuartos" type="Control" parent="PlaceholdersPosiciones" unique_id=421678669]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

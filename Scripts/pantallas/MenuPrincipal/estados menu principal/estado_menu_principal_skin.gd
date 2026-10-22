@@ -3,8 +3,9 @@ class_name EstadoMenuPrincipalSkin
 
 func mostrar_escena() -> void:
 	menu_principal.selector_personajes.show()
+	menu_principal.selector_personajes.set_item_central( ProgresoPartida.progreso_general.get_indice_jugador_seleccionado())
 	menu_principal.selector_personajes.selector_personajes._al_confirmar_personaje()
-
+	
 func esconder_escena() -> void:
 	menu_principal.selector_personajes.hide()
 
