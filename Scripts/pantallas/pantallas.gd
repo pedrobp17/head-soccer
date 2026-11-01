@@ -12,3 +12,9 @@ func setup(_juego : HeadSoccer, _datos : DatosPantallas) -> void:
 	
 func transicion_pantallas( nueva_pantalla : HeadSoccer.Pantalla, datos : DatosPantallas = DatosPantallas.new()) -> void:
 	peticion_transicion_pantalla.emit(nueva_pantalla, datos)
+
+func animacion_entrada() -> void:
+	pass
+
+func animacion_salida() -> void:
+	pass

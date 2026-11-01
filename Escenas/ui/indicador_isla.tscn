@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://4s0ernixfssi"]
+
+[ext_resource type="Texture2D" uid="uid://d1jdijah1la4w" path="res://Sprites/UI/isla/identificador_no_seleccionado.png" id="1_g38a3"]
+[ext_resource type="Script" uid="uid://ddfn4dss8o3np" path="res://Scripts/pantallas/Arcade/indicador.gd" id="1_mkcrl"]
+[ext_resource type="Texture2D" uid="uid://d22lb0e56p2yg" path="res://Sprites/UI/isla/identificador_seleccionado.png" id="2_1qmhj"]
+[ext_resource type="Texture2D" uid="uid://di0u7mvva1mmj" path="res://Sprites/UI/isla/identificador_bloqueado.png" id="4_g1vqq"]
+
+[node name="indicadorIsla" type="Control" unique_id=32558303]
+z_index = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1072.0
+offset_bottom = -568.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mkcrl")
+
+[node name="bases" type="Control" parent="." unique_id=1816342865]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="no_seleccionado" type="TextureRect" parent="bases" unique_id=921004286]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 80.0
+texture = ExtResource("1_g38a3")
+
+[node name="seleccionado" type="TextureRect" parent="bases" unique_id=285811761]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_1qmhj")
+
+[node name="bloqueado" type="TextureRect" parent="bases" unique_id=1013781035]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_g1vqq")
+
+[node name="indicadorCompletados" type="Label" parent="." unique_id=552597879]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 12)
+custom_maximum_size = Vector2(32, 12)
+layout_mode = 0
+offset_left = 25.0
+offset_top = 50.0
+offset_right = 57.0
+offset_bottom = 62.0
+theme_override_font_sizes/font_size = 10
+text = "6/6"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="indiceIsla" type="Label" parent="." unique_id=1179993592]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 20.0
+offset_top = 18.0
+offset_right = 60.0
+offset_bottom = 40.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 21
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="nombre" type="Label" parent="." unique_id=1113523377]
+unique_name_in_owner = true
+z_index = 1
+custom_maximum_size = Vector2(39, 8)
+layout_mode = 0
+offset_left = 21.0
+offset_top = 41.0
+offset_right = 60.0
+offset_bottom = 49.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 5
+text = "r.academy"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -4,11 +4,13 @@ class_name EstadoMenuPrincipalSkin
 func mostrar_escena() -> void:
 	menu_principal.selector_personajes.show()
 	menu_principal.selector_personajes.set_item_central( ProgresoPartida.progreso_general.get_indice_jugador_seleccionado())
+	await menu_principal.selector_personajes.animar()
 	menu_principal.selector_personajes.selector_personajes._al_confirmar_personaje()
 	
 func esconder_escena() -> void:
 	menu_principal.selector_personajes.hide()
-
+	menu_principal.selector_personajes.reposicionar()
+	
 func cambiar_foco( tiene_foco : bool ) -> void:
 	menu_principal.selector_personajes.cambiar_estado_foco(tiene_foco)
 

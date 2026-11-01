@@ -93,6 +93,9 @@ func set_partido_personaje_actual() -> void:
 		ProgresoPartida.progreso_general.guardar_torneo(self)
 	elif estado_actual == Estado.FINAL:
 		ganador = partidos[estado_actual][0].get_ganador()
+		if ganador.jugador == configuracion_jugador_seleccionado.jugador:
+			ProgresoPartida.personajes_desbloqueados.set_torneos_ganados(configuracion_jugador_seleccionado.jugador, 1)
+			ProgresoPartida.personajes_desbloqueados.guardar_progreso()
 		estado_actual += 1 as Estado
 		ProgresoPartida.progreso_general.guardar_torneo(self)
 		

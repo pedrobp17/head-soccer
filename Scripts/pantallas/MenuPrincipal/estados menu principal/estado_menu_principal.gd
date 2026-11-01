@@ -32,7 +32,7 @@ func input_barra_superior( _event : InputEvent ) -> void:
 	pass
 
 func _enter_tree() -> void:
-	mostrar_escena()
+	await mostrar_escena()
 	cambiar_foco(not menu_principal.en_menu_superior)
 
 func _input( event : InputEvent ) -> void:

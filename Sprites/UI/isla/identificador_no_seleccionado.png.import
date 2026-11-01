@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://e12uj2stgcso"
-path="res://.godot/imported/murcielagos.png-0a8eb8a695e669cfbd067560c15998a8.ctex"
+uid="uid://d1jdijah1la4w"
+path="res://.godot/imported/identificador_no_seleccionado.png-24739067d2becf61af80556bfbb290cf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/animaciones_poderes/murcielagos.png"
-dest_files=["res://.godot/imported/murcielagos.png-0a8eb8a695e669cfbd067560c15998a8.ctex"]
+source_file="res://Sprites/UI/isla/identificador_no_seleccionado.png"
+dest_files=["res://.godot/imported/identificador_no_seleccionado.png-24739067d2becf61af80556bfbb290cf.ctex"]
 
 [params]
 

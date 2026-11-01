@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://dbmlpke1duuq6"]
+
+[ext_resource type="Texture2D" uid="uid://bnjhmvhyrtgxa" path="res://Sprites/pantallas/PantallaArcade.png" id="1_1ny3h"]
+[ext_resource type="Script" uid="uid://cu3ll2vssodsg" path="res://Scripts/pantallas/Arcade/arcade.gd" id="1_6ohly"]
+[ext_resource type="PackedScene" uid="uid://4s0ernixfssi" path="res://Escenas/ui/indicador_isla.tscn" id="2_yg3c7"]
+
+[node name="Arcade" type="Node" unique_id=2093938702]
+script = ExtResource("1_6ohly")
+
+[node name="base" type="TextureRect" parent="." unique_id=1411837914]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_1ny3h")
+expand_mode = 1
+
+[node name="identificadores" type="Control" parent="." unique_id=552824504]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="indicadorIsla1" parent="identificadores" unique_id=32558303 instance=ExtResource("2_yg3c7")]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 121.0
+offset_top = 327.0
+offset_right = 81.0
+offset_bottom = 287.0
+nombre_equipo_isla = "raimon"
+indice_equipo_isla = 1
+
+[node name="indicadorIsla2" parent="identificadores" unique_id=774487446 instance=ExtResource("2_yg3c7")]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 94.0
+offset_top = 124.0
+offset_right = 54.0
+offset_bottom = 84.0
+nombre_equipo_isla = "m.times"
+indice_equipo_isla = 2
+
+[node name="indicadorIsla3" parent="identificadores" unique_id=47262984 instance=ExtResource("2_yg3c7")]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 146.0
+offset_top = 453.0
+offset_right = 106.0
+offset_bottom = 413.0
+nombre_equipo_isla = "occult"
+indice_equipo_isla = 3
+
+[node name="indicadorIsla4" parent="identificadores" unique_id=898962701 instance=ExtResource("2_yg3c7")]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 353.0
+offset_top = 81.0
+offset_right = 313.0
+offset_bottom = 41.0
+nombre_equipo_isla = "r.academy"
+indice_equipo_isla = 4
+
+[node name="indicadorIsla5" parent="identificadores" unique_id=501315545 instance=ExtResource("2_yg3c7")]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 755.0
+offset_top = 367.0
+offset_right = 715.0
+offset_bottom = 327.0
+nombre_equipo_isla = "wild"
+indice_equipo_isla = 5
+
+[node name="indicadorIsla6" parent="identificadores" unique_id=1281714690 instance=ExtResource("2_yg3c7")]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 509.0
+offset_top = 143.0
+offset_right = 469.0
+offset_bottom = 103.0
+nombre_equipo_isla = "brain"
+indice_equipo_isla = 6
+
+[node name="indicadorIsla7" parent="identificadores" unique_id=2073433288 instance=ExtResource("2_yg3c7")]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 995.0
+offset_top = 282.0
+offset_right = 955.0
+offset_bottom = 242.0
+nombre_equipo_isla = "zeus"
+indice_equipo_isla = 7
+
+[node name="indicadorIsla8" parent="identificadores" unique_id=729180137 instance=ExtResource("2_yg3c7")]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 543.0
+offset_top = 247.0
+offset_right = 503.0
+offset_bottom = 207.0
+nombre_equipo_isla = "genesis"
+indice_equipo_isla = 8

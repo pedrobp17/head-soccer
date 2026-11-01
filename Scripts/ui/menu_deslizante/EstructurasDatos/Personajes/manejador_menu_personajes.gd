@@ -50,3 +50,9 @@ func _input(event):
 	
 func set_item_central( indice : int) -> void:
 	selector_personajes.set_elemento_central(indice)
+
+func animar() -> void:
+	pass
+
+func reposicionar() -> void:
+	pass
