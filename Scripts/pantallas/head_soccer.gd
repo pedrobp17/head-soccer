@@ -3,6 +3,8 @@ class_name HeadSoccer
 
 enum Pantalla {MENU_PRINCIPAL, TORNEO, ARCADE, JUGANDO, DEFAULT} 
 
+@onready var animaciones: AnimationPlayer = %animaciones
+
 var pantalla_actual : Pantallas = null
 var fabrica_pantalla := FabricaPantallas.new()
 var fabrica_animaciones := CreadorAnimacionesPantallas.new()
@@ -16,19 +18,17 @@ func cambiar_pantalla(pantalla : Pantalla, datos : DatosPantallas = DatosPantall
 	if transicionando:
 		return
 		
-	transicionando = true
-	var transicion = fabrica_animaciones.get_fresh_state(pantalla)
+	var transicion = fabrica_animaciones.get_fresh_animacion(pantalla)
 	
 	if pantalla_actual != null:
 		pantalla_actual.process_mode = Node.PROCESS_MODE_DISABLED
 	
-	await transicion.entrada()
+	await entrada(transicion)
 
 	_cargar_pantalla(pantalla, datos)
 	await get_tree().process_frame
 
-	await transicion.salida()
-	transicionando = false
+	await salida(transicion)
 
 
 func _cargar_pantalla(pantalla : Pantalla, datos : DatosPantallas) -> void:
@@ -38,3 +38,19 @@ func _cargar_pantalla(pantalla : Pantalla, datos : DatosPantallas) -> void:
 	pantalla_actual.setup(self, datos)
 	pantalla_actual.peticion_transicion_pantalla.connect(cambiar_pantalla)
 	add_child(pantalla_actual)
+
+func entrada(transicion : String) -> void:
+	if transicion.is_empty():
+		return
+	transicionando = true
+	$sprite.show()
+	animaciones.play(transicion + "_entrada")
+	await animaciones.animation_finished
+
+func salida(transicion : String ) -> void:
+	if transicion.is_empty():
+		return
+	animaciones.play(transicion + "_salida")
+	await animaciones.animation_finished
+	$sprite.hide()
+	transicionando = false

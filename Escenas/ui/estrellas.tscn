@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://c68j2ic4w0o6"]
+
+[ext_resource type="Script" uid="uid://cn1sp3igwt5pf" path="res://Scripts/ui/estrellas.gd" id="1_3cq6x"]
+[ext_resource type="Texture2D" uid="uid://bpryn4qeq1la8" path="res://Sprites/UI/isla/estrella.png" id="1_bqee2"]
+[ext_resource type="Texture2D" uid="uid://cl21d60auo0gm" path="res://Sprites/UI/isla/estrella_no_conseguida.png" id="2_myu8n"]
+
+[node name="estrellas" type="Control" unique_id=1311146543]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = 6.0
+offset_right = -1063.0
+offset_bottom = -562.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3cq6x")
+
+[node name="no_conseguida" type="TextureRect" parent="." unique_id=648013410]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_myu8n")
+
+[node name="conseguida" type="TextureRect" parent="." unique_id=1852984101]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_bqee2")

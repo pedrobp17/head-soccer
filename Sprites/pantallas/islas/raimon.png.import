@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5s5tmbtnase7"
-valid=false
+uid="uid://cjh1odc44cke1"
+path="res://.godot/imported/raimon.png-cb2963da503693e68308e7db5756504c.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://Sprites/pantallas/islas/crater.png"
+source_file="res://Sprites/pantallas/islas/raimon.png"
+dest_files=["res://.godot/imported/raimon.png-cb2963da503693e68308e7db5756504c.ctex"]
 
 [params]
 

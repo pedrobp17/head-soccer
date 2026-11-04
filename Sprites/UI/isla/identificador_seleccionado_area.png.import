@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3c1r22h73oge"
-valid=false
+uid="uid://bdkpqjdbyym7n"
+path="res://.godot/imported/identificador_seleccionado_area.png-074e88fa16a809224fa2aedd55b5785f.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://Sprites/pantallas/islas/volcan.png"
+source_file="res://Sprites/UI/isla/identificador_seleccionado_area.png"
+dest_files=["res://.godot/imported/identificador_seleccionado_area.png-074e88fa16a809224fa2aedd55b5785f.ctex"]
 
 [params]
 

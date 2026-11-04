@@ -1,22 +1,26 @@
 [gd_scene format=3 uid="uid://dbmlpke1duuq6"]
 
-[ext_resource type="Texture2D" uid="uid://bnjhmvhyrtgxa" path="res://Sprites/pantallas/PantallaArcade.png" id="1_1ny3h"]
 [ext_resource type="Script" uid="uid://cu3ll2vssodsg" path="res://Scripts/pantallas/Arcade/arcade.gd" id="1_6ohly"]
 [ext_resource type="PackedScene" uid="uid://4s0ernixfssi" path="res://Escenas/ui/indicador_isla.tscn" id="2_yg3c7"]
+[ext_resource type="Script" uid="uid://ctsm55l0p2bhc" path="res://Scripts/Animaciones/animacion_zoom.gd" id="4_08am1"]
+[ext_resource type="Texture2D" uid="uid://df0fvl2qge6e4" path="res://Sprites/pantallas/islas/mapa.png" id="4_s3fgn"]
+[ext_resource type="PackedScene" uid="uid://cuaeb37cuxfin" path="res://Escenas/ui/indicador_area.tscn" id="5_08am1"]
 
 [node name="Arcade" type="Node" unique_id=2093938702]
 script = ExtResource("1_6ohly")
 
-[node name="base" type="TextureRect" parent="." unique_id=1411837914]
+[node name="base" type="TextureRect" parent="." unique_id=885695203]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_1ny3h")
+texture = ExtResource("4_s3fgn")
 expand_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="identificadores" type="Control" parent="." unique_id=552824504]
+unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -25,79 +29,405 @@ offset_bottom = 40.0
 [node name="indicadorIsla1" parent="identificadores" unique_id=32558303 instance=ExtResource("2_yg3c7")]
 unique_name_in_owner = true
 layout_mode = 1
-offset_left = 121.0
-offset_top = 327.0
-offset_right = 81.0
-offset_bottom = 287.0
+offset_left = 228.0
+offset_top = 429.0
+offset_right = 188.0
+offset_bottom = 389.0
 nombre_equipo_isla = "raimon"
 indice_equipo_isla = 1
+
+[node name="posicion_niveles" type="Control" parent="identificadores/indicadorIsla1" unique_id=1077188874]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -132.0
+offset_top = -10.0
+offset_right = 197.14001
+offset_bottom = 175.14001
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(164.57, 92.57)
+
+[node name="Node2D" type="Node2D" parent="identificadores/indicadorIsla1/posicion_niveles" unique_id=996960826]
+position = Vector2(272, 143)
+
+[node name="Node2D2" type="Node2D" parent="identificadores/indicadorIsla1/posicion_niveles" unique_id=1344253288]
+position = Vector2(120, 151)
+
+[node name="Node2D3" type="Node2D" parent="identificadores/indicadorIsla1/posicion_niveles" unique_id=336913936]
+position = Vector2(60, 121)
+
+[node name="Node2D4" type="Node2D" parent="identificadores/indicadorIsla1/posicion_niveles" unique_id=1714076604]
+position = Vector2(159, 57)
+
+[node name="Node2D5" type="Node2D" parent="identificadores/indicadorIsla1/posicion_niveles" unique_id=351244656]
+position = Vector2(224, 92)
+
+[node name="Node2D6" type="Node2D" parent="identificadores/indicadorIsla1/posicion_niveles" unique_id=586358182]
+position = Vector2(173, 110)
 
 [node name="indicadorIsla2" parent="identificadores" unique_id=774487446 instance=ExtResource("2_yg3c7")]
 unique_name_in_owner = true
 layout_mode = 1
-offset_left = 94.0
-offset_top = 124.0
-offset_right = 54.0
-offset_bottom = 84.0
+offset_left = 171.0
+offset_top = 233.0
+offset_right = 131.0
+offset_bottom = 193.0
 nombre_equipo_isla = "m.times"
 indice_equipo_isla = 2
+
+[node name="posicion_niveles" type="Control" parent="identificadores/indicadorIsla2" unique_id=1161212883]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -108.0
+offset_right = 221.14001
+offset_bottom = 185.14001
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(164.57, 92.57)
+
+[node name="Node2D1" type="Node2D" parent="identificadores/indicadorIsla2/posicion_niveles" unique_id=1868608347]
+position = Vector2(101, 124)
+
+[node name="Node2D2" type="Node2D" parent="identificadores/indicadorIsla2/posicion_niveles" unique_id=356895521]
+position = Vector2(147, 78)
 
 [node name="indicadorIsla3" parent="identificadores" unique_id=47262984 instance=ExtResource("2_yg3c7")]
 unique_name_in_owner = true
 layout_mode = 1
-offset_left = 146.0
-offset_top = 453.0
-offset_right = 106.0
-offset_bottom = 413.0
+offset_left = 527.0
+offset_top = 478.0
+offset_right = 487.0
+offset_bottom = 438.0
 nombre_equipo_isla = "occult"
 indice_equipo_isla = 3
+
+[node name="posicion_niveles" type="Control" parent="identificadores/indicadorIsla3" unique_id=1852217046]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -122.0
+offset_top = -52.0
+offset_right = 207.14001
+offset_bottom = 133.14001
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(164.57, 92.57)
+
+[node name="Node2D" type="Node2D" parent="identificadores/indicadorIsla3/posicion_niveles" unique_id=1706730356]
+position = Vector2(256, 155)
+
+[node name="Node2D2" type="Node2D" parent="identificadores/indicadorIsla3/posicion_niveles" unique_id=643614700]
+position = Vector2(182, 176)
+
+[node name="Node2D3" type="Node2D" parent="identificadores/indicadorIsla3/posicion_niveles" unique_id=1598404689]
+position = Vector2(115, 170)
+
+[node name="Node2D4" type="Node2D" parent="identificadores/indicadorIsla3/posicion_niveles" unique_id=287318924]
+position = Vector2(157, 126)
 
 [node name="indicadorIsla4" parent="identificadores" unique_id=898962701 instance=ExtResource("2_yg3c7")]
 unique_name_in_owner = true
 layout_mode = 1
-offset_left = 353.0
+offset_left = 288.0
 offset_top = 81.0
-offset_right = 313.0
+offset_right = 248.0
 offset_bottom = 41.0
 nombre_equipo_isla = "r.academy"
 indice_equipo_isla = 4
 
+[node name="posicion_niveles" type="Control" parent="identificadores/indicadorIsla4" unique_id=2132694076]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -140.0
+offset_top = -13.0
+offset_right = 189.14001
+offset_bottom = 172.14001
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(164.57, 92.57)
+
+[node name="Node2D" type="Node2D" parent="identificadores/indicadorIsla4/posicion_niveles" unique_id=103577370]
+position = Vector2(120, 156)
+
+[node name="Node2D2" type="Node2D" parent="identificadores/indicadorIsla4/posicion_niveles" unique_id=1146233910]
+position = Vector2(153, 163)
+
+[node name="Node2D3" type="Node2D" parent="identificadores/indicadorIsla4/posicion_niveles" unique_id=1928740954]
+position = Vector2(234, 147)
+
+[node name="Node2D4" type="Node2D" parent="identificadores/indicadorIsla4/posicion_niveles" unique_id=849065475]
+position = Vector2(188, 99)
+
 [node name="indicadorIsla5" parent="identificadores" unique_id=501315545 instance=ExtResource("2_yg3c7")]
 unique_name_in_owner = true
 layout_mode = 1
-offset_left = 755.0
-offset_top = 367.0
-offset_right = 715.0
-offset_bottom = 327.0
+offset_left = 509.0
+offset_top = 108.0
+offset_right = 469.0
+offset_bottom = 68.0
 nombre_equipo_isla = "wild"
 indice_equipo_isla = 5
+
+[node name="posicion_niveles" type="Control" parent="identificadores/indicadorIsla5" unique_id=147889899]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -127.0
+offset_top = -17.0
+offset_right = 202.14001
+offset_bottom = 168.14001
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(164.57, 92.57)
+
+[node name="Node2D" type="Node2D" parent="identificadores/indicadorIsla5/posicion_niveles" unique_id=1127456721]
+z_index = 1
+position = Vector2(46, 151)
+
+[node name="Node2D2" type="Node2D" parent="identificadores/indicadorIsla5/posicion_niveles" unique_id=1374516995]
+position = Vector2(102, 157)
+
+[node name="Node2D3" type="Node2D" parent="identificadores/indicadorIsla5/posicion_niveles" unique_id=576669336]
+position = Vector2(81, 118)
+
+[node name="Node2D4" type="Node2D" parent="identificadores/indicadorIsla5/posicion_niveles" unique_id=1452107563]
+position = Vector2(158, 128)
+
+[node name="Node2D5" type="Node2D" parent="identificadores/indicadorIsla5/posicion_niveles" unique_id=301619914]
+position = Vector2(122, 110)
+
+[node name="Node2D6" type="Node2D" parent="identificadores/indicadorIsla5/posicion_niveles" unique_id=200210918]
+position = Vector2(181, 90)
 
 [node name="indicadorIsla6" parent="identificadores" unique_id=1281714690 instance=ExtResource("2_yg3c7")]
 unique_name_in_owner = true
 layout_mode = 1
-offset_left = 509.0
-offset_top = 143.0
-offset_right = 469.0
-offset_bottom = 103.0
+offset_left = 330.0
+offset_top = 184.0
+offset_right = 290.0
+offset_bottom = 144.0
 nombre_equipo_isla = "brain"
 indice_equipo_isla = 6
+
+[node name="posicion_niveles" type="Control" parent="identificadores/indicadorIsla6" unique_id=709254901]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -108.0
+offset_top = 36.0
+offset_right = 221.14001
+offset_bottom = 221.14001
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(164.57, 92.57)
+
+[node name="Node2D" type="Node2D" parent="identificadores/indicadorIsla6/posicion_niveles" unique_id=180114988]
+position = Vector2(272, 158)
+
+[node name="Node2D2" type="Node2D" parent="identificadores/indicadorIsla6/posicion_niveles" unique_id=476964895]
+position = Vector2(159, 140)
 
 [node name="indicadorIsla7" parent="identificadores" unique_id=2073433288 instance=ExtResource("2_yg3c7")]
 unique_name_in_owner = true
 layout_mode = 1
-offset_left = 995.0
-offset_top = 282.0
-offset_right = 955.0
-offset_bottom = 242.0
+offset_left = 977.0
+offset_top = 382.0
+offset_right = 937.0
+offset_bottom = 342.0
 nombre_equipo_isla = "zeus"
 indice_equipo_isla = 7
+
+[node name="posicion_niveles" type="Control" parent="identificadores/indicadorIsla7" unique_id=1426800280]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -219.0
+offset_top = 26.0
+offset_right = 110.140015
+offset_bottom = 211.14001
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(164.57, 92.57)
+
+[node name="Node2D" type="Node2D" parent="identificadores/indicadorIsla7/posicion_niveles" unique_id=33834633]
+position = Vector2(145, 167)
+
+[node name="Node2D2" type="Node2D" parent="identificadores/indicadorIsla7/posicion_niveles" unique_id=978437011]
+position = Vector2(212, 150)
+
+[node name="Node2D3" type="Node2D" parent="identificadores/indicadorIsla7/posicion_niveles" unique_id=667797598]
+position = Vector2(281, 103)
+
+[node name="Node2D4" type="Node2D" parent="identificadores/indicadorIsla7/posicion_niveles" unique_id=301220365]
+position = Vector2(214, 103)
+
+[node name="Node2D5" type="Node2D" parent="identificadores/indicadorIsla7/posicion_niveles" unique_id=68018813]
+position = Vector2(244, 61)
+
+[node name="Node2D6" type="Node2D" parent="identificadores/indicadorIsla7/posicion_niveles" unique_id=751535236]
+position = Vector2(276, 47)
 
 [node name="indicadorIsla8" parent="identificadores" unique_id=729180137 instance=ExtResource("2_yg3c7")]
 unique_name_in_owner = true
 layout_mode = 1
 offset_left = 543.0
-offset_top = 247.0
+offset_top = 213.0
 offset_right = 503.0
-offset_bottom = 207.0
+offset_bottom = 173.0
 nombre_equipo_isla = "genesis"
 indice_equipo_isla = 8
+
+[node name="posicion_niveles" type="Control" parent="identificadores/indicadorIsla8" unique_id=1901536541]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -130.0
+offset_top = -13.0
+offset_right = 199.14001
+offset_bottom = 172.14001
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(164.57, 92.57)
+
+[node name="Node2D" type="Node2D" parent="identificadores/indicadorIsla8/posicion_niveles" unique_id=29114222]
+position = Vector2(267, 90)
+
+[node name="Node2D2" type="Node2D" parent="identificadores/indicadorIsla8/posicion_niveles" unique_id=211754776]
+position = Vector2(171, 146)
+
+[node name="Node2D3" type="Node2D" parent="identificadores/indicadorIsla8/posicion_niveles" unique_id=2071011709]
+position = Vector2(103, 142)
+
+[node name="Node2D4" type="Node2D" parent="identificadores/indicadorIsla8/posicion_niveles" unique_id=1007339728]
+position = Vector2(74, 90)
+
+[node name="Node2D5" type="Node2D" parent="identificadores/indicadorIsla8/posicion_niveles" unique_id=72943580]
+position = Vector2(149, 90)
+
+[node name="Node2D6" type="Node2D" parent="identificadores/indicadorIsla8/posicion_niveles" unique_id=1081836061]
+position = Vector2(181, 98)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1925143291]
+unique_name_in_owner = true
+position = Vector2(576.00006, 324.00003)
+rotation = 0.2617994
+scale = Vector2(1.0000001, 1.0000001)
+script = ExtResource("4_08am1")
+
+[node name="puntosZoom" type="Control" parent="." unique_id=1174719437]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -22.0
+offset_top = 3.0
+offset_right = -22.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="raimon" type="Node2D" parent="puntosZoom" unique_id=174735207]
+unique_name_in_owner = true
+position = Vector2(260.99997, 510.99997)
+rotation = 0.2617994
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="marytimes" type="Node2D" parent="puntosZoom" unique_id=960613740]
+unique_name_in_owner = true
+position = Vector2(227.00002, 326)
+rotation = 0.26179937
+scale = Vector2(0.9999999, 0.9999999)
+
+[node name="occult" type="Node2D" parent="puntosZoom" unique_id=2138423609]
+unique_name_in_owner = true
+position = Vector2(569, 518.99994)
+rotation = 0.2617994
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="royalAcademy" type="Node2D" parent="puntosZoom" unique_id=1806182736]
+unique_name_in_owner = true
+position = Vector2(313, 161)
+scale = Vector2(1.0000001, 1.0000001)
+
+[node name="wild" type="Node2D" parent="puntosZoom" unique_id=430035357]
+unique_name_in_owner = true
+position = Vector2(547, 183.99997)
+rotation = 0.2617994
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="brain" type="Node2D" parent="puntosZoom" unique_id=379458595]
+unique_name_in_owner = true
+position = Vector2(386.99994, 313)
+rotation = 0.2617994
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="zeus" type="Node2D" parent="puntosZoom" unique_id=1110193549]
+unique_name_in_owner = true
+position = Vector2(923.00055, 500.00006)
+rotation = 0.2617994
+scale = Vector2(0.99999994, 0.99999994)
+
+[node name="genesis" type="Node2D" parent="puntosZoom" unique_id=1826921951]
+unique_name_in_owner = true
+position = Vector2(576.99994, 292.99994)
+scale = Vector2(1.0000001, 1.0000001)
+
+[node name="niveles" type="Control" parent="." unique_id=1901828977]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = 640.0
+offset_top = 108.0
+offset_right = 680.0
+offset_bottom = 148.0
+
+[node name="indicador_area1" parent="niveles" unique_id=1885402168 instance=ExtResource("5_08am1")]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = -525.0
+offset_top = 357.0
+offset_right = -565.0
+offset_bottom = 317.0
+scale = Vector2(0.5, 0.5)
+indice_nivel = 1
+
+[node name="indicador_area2" parent="niveles" unique_id=1631002851 instance=ExtResource("5_08am1")]
+unique_name_in_owner = true
+layout_mode = 1
+scale = Vector2(0.5, 0.5)
+indice_nivel = 2
+
+[node name="indicador_area3" parent="niveles" unique_id=1735871162 instance=ExtResource("5_08am1")]
+unique_name_in_owner = true
+layout_mode = 1
+scale = Vector2(0.5, 0.5)
+indice_nivel = 3
+
+[node name="indicador_area4" parent="niveles" unique_id=1530119155 instance=ExtResource("5_08am1")]
+unique_name_in_owner = true
+layout_mode = 1
+scale = Vector2(0.5, 0.5)
+indice_nivel = 4
+
+[node name="indicador_area5" parent="niveles" unique_id=893125622 instance=ExtResource("5_08am1")]
+unique_name_in_owner = true
+layout_mode = 1
+scale = Vector2(0.5, 0.5)
+indice_nivel = 5
+
+[node name="indicador_area6" parent="niveles" unique_id=1144821442 instance=ExtResource("5_08am1")]
+unique_name_in_owner = true
+layout_mode = 1
+scale = Vector2(0.5, 0.5)
+indice_nivel = 6

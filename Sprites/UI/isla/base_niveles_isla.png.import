@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://24dg2skyets5"
-valid=false
+uid="uid://bg1ti8cs518pd"
+path="res://.godot/imported/base_niveles_isla.png-de7d0f9dc2bb1e0b78688e802ca7790e.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://Sprites/pantallas/islas/viento.png"
+source_file="res://Sprites/UI/isla/base_niveles_isla.png"
+dest_files=["res://.godot/imported/base_niveles_isla.png-de7d0f9dc2bb1e0b78688e802ca7790e.ctex"]
 
 [params]
 

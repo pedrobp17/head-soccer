@@ -10,7 +10,8 @@ const RUTA_JSON := "user://progreso_general.json"
 var datos_generales: Dictionary = {}
 var tipos_datos : Dictionary = {
 	"global" : ProgresoGlobal,
-	"torneo" : Torneo
+	"torneo" : Torneo,
+	"arcade" : ProgresoArcade  
 }
 
 func _ready() -> void:
@@ -59,30 +60,69 @@ func cargar_progreso() -> void:
 	datos_generales.clear()
 	
 	for dato in datos:
+		if not tipos_datos.has(dato):
+			push_warning("Sección desconocida en el JSON de progreso: " + dato)
+			continue
 		assert( tipos_datos[dato].has_method("deserialize"), "no hay metodo para deserializar")
 		datos_generales[dato] = tipos_datos[dato].deserialize(datos[dato])
 	
+#TORNEO
 
+func get_jugador_torneo_actual() -> String:
+	return datos_generales["torneo"].configuracion_jugador_seleccionado.jugador
+	
 func hay_torneo() -> bool:
 	return datos_generales["torneo"] != null
-
 
 func guardar_torneo(torneo: Torneo) -> void:
 	datos_generales["torneo"] = torneo
 	set_modo_jugado(ProgresoGlobal.Modos.TORNEO)
 	guardar_progreso()
 
-
 func cargar_torneo() -> Torneo:
 	if not hay_torneo():
 		return null
 	return datos_generales["torneo"]
 
-
 func terminar_torneo() -> void:
 	datos_generales["torneo"] = null
 	guardar_progreso()
 
+
+#ARCADE
+
+func get_progreso_arcade() -> ProgresoArcade:
+	return datos_generales["arcade"]
+
+func get_islas_desbloqueadas_arcade() -> Array[PantallaArcade.Islas]:
+	return get_progreso_arcade().get_islas_desbloqueadas(get_jugador_seleccionado())
+
+func esta_nivel_arcade_vencido(isla : PantallaArcade.Islas, rival : String, nivel : int) -> bool:
+	return get_progreso_arcade().esta_vencido(get_jugador_seleccionado(), isla, rival, nivel)
+
+func esta_isla_arcade_completada(isla : PantallaArcade.Islas) -> bool:
+	return get_progreso_arcade().isla_completada(get_jugador_seleccionado(), isla)
+	
+func get_niveles_vencidos_arcade(isla : PantallaArcade.Islas) -> int:
+	return get_progreso_arcade().get_niveles_vencidos(get_jugador_seleccionado(), isla)
+
+func completar_nivel_arcade(isla : PantallaArcade.Islas, rival : String, nivel : int) -> void:
+	var progreso := get_progreso_arcade()
+	var jugador := get_jugador_seleccionado()
+	progreso.set_vencido(jugador, isla, rival, nivel)
+	guardar_progreso()
+
+func desbloquear_isla_arcade(isla : PantallaArcade.Islas) -> bool:
+	var progreso := get_progreso_arcade()
+	var jugador := get_jugador_seleccionado()
+	if isla in progreso.get_islas_desbloqueadas(jugador):
+		return false
+	progreso.desbloquear_isla(jugador, isla)
+	guardar_progreso()
+	return true	
+	
+	
+#GUARDADO
 
 func guardar_progreso() -> void:
 	var datos_guardar: Dictionary = {}
@@ -101,9 +141,9 @@ func guardar_progreso() -> void:
 	archivo.store_string(JSON.stringify(datos_guardar, "\t"))
 	archivo.close()
 
-func get_jugador_torneo_actual() -> String:
-	return datos_generales["torneo"].configuracion_jugador_seleccionado.jugador
-	
+
+#GLOBAL
+
 func get_jugador_seleccionado() -> String:
 	return datos_generales["global"].ultimo_jugador_seleccionado
 
@@ -128,10 +168,12 @@ func get_poder_seleccionado() -> String:
 func set_poder_seleccionado(valor: String) -> void:
 	datos_generales["global"].ultimo_poder_jugador_seleccionado = valor
 
+#AUXILIAR
+
 func puedo_jugar() -> bool:
 	var modo := get_modo_jugado()
 	var nombre: String = ProgresoGlobal.Modos.keys()[modo].to_lower()
-	if datos_generales[nombre] == null:
+	if datos_generales[nombre] == null or modo == ProgresoGlobal.Modos.ARCADE:
 		return true
 	var jugador_guardado : ConfiguracionJugadorPartido = datos_generales[nombre].configuracion_jugador_seleccionado
 	return jugador_guardado.jugador == get_jugador_seleccionado()

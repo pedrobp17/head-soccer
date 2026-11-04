@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://u48qpxy81j21"
-valid=false
+uid="uid://fxrvrfkl1mdu"
+path="res://.godot/imported/identificador_no_seleccionado_area.png-0656c176710c368318f8d7e2266da42a.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://Sprites/pantallas/islas/isla5.png"
+source_file="res://Sprites/UI/isla/identificador_no_seleccionado_area.png"
+dest_files=["res://.godot/imported/identificador_no_seleccionado_area.png-0656c176710c368318f8d7e2266da42a.ctex"]
 
 [params]
 

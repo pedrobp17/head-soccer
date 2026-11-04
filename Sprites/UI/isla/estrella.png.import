@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vd6ntjxot3xd"
-valid=false
+uid="uid://bpryn4qeq1la8"
+path="res://.godot/imported/estrella.png-749b370fb1212a7bf6edf3d11a366ff1.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://Sprites/pantallas/islas/isla4.png"
+source_file="res://Sprites/UI/isla/estrella.png"
+dest_files=["res://.godot/imported/estrella.png-749b370fb1212a7bf6edf3d11a366ff1.ctex"]
 
 [params]
 

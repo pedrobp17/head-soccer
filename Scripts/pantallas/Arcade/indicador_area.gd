@@ -1,0 +1,70 @@
+extends Control
+class_name IndicadorArea
+
+@export var indice_nivel : int
+@export var amplitud := 5.0        
+@export var duracion := 1.1 
+
+@onready var no_seleccionado: TextureRect = %no_seleccionado
+@onready var seleccionado: TextureRect = %seleccionado
+@onready var panel: Control = $panel
+@onready var estrellas : Array[Estrellas] = [ %estrellas1,%estrellas2,%estrellas3 ]
+@onready var indice_nivel_area: Label = %indice_isla
+
+
+var base_y := 0.0
+var tween: Tween
+
+
+func _ready() -> void:
+	indice_nivel_area.text = str(indice_nivel)
+	
+func inicializar(posicion : Vector2, desbloqueada : bool, estrellas_conseguidas : int = 0 ) -> void:
+	base_y = panel.position.y
+	self.global_position = posicion
+	set_estrellas(estrellas_conseguidas)
+	set_desbloqueado(desbloqueada)
+	
+func set_actual() -> void:
+	no_seleccionado.hide()
+	seleccionado.show()
+	iniciar_animacion()
+
+func set_desbloqueado(era_actual : bool = false) -> void:
+	no_seleccionado.show()
+	seleccionado.hide()
+	if era_actual:
+		finalizar_animacion()
+		
+func set_bloqueado() -> void:
+	no_seleccionado.hide()
+	seleccionado.hide()
+
+func set_estrellas(estrellas_conseguidas : int ) -> void:
+	for i in estrellas.size():
+		var conseguida = true if (i + 1) <= estrellas_conseguidas else false 
+		estrellas[i].inicializar(conseguida)
+
+func iniciar_animacion() -> void:
+	_matar_tween()
+	panel.position.y = base_y
+
+	tween = create_tween().set_loops()
+	tween.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(panel, "position:y", base_y - amplitud, duracion)
+	tween.tween_property(panel, "position:y", base_y, duracion)
+
+func finalizar_animacion(suave := true) -> void:
+	_matar_tween()
+	if suave:
+		tween = create_tween()
+		tween.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+		tween.tween_property(panel, "position:y", base_y, 0.25)
+	else:
+		panel.position.y = base_y
+
+
+func _matar_tween() -> void:
+	if tween != null and tween.is_valid():
+		tween.kill()
+	tween = null

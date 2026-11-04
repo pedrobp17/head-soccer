@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chrnbe5xr8pw2"
-valid=false
+uid="uid://cl21d60auo0gm"
+path="res://.godot/imported/estrella_no_conseguida.png-59e35229d7f8a48e6f6579906b6c7b13.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://Sprites/pantallas/islas/isla2.png"
+source_file="res://Sprites/UI/isla/estrella_no_conseguida.png"
+dest_files=["res://.godot/imported/estrella_no_conseguida.png-59e35229d7f8a48e6f6579906b6c7b13.ctex"]
 
 [params]
 

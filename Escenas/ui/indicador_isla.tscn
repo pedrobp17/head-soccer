@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://4s0ernixfssi"]
 
 [ext_resource type="Texture2D" uid="uid://d1jdijah1la4w" path="res://Sprites/UI/isla/identificador_no_seleccionado.png" id="1_g38a3"]
-[ext_resource type="Script" uid="uid://ddfn4dss8o3np" path="res://Scripts/pantallas/Arcade/indicador.gd" id="1_mkcrl"]
+[ext_resource type="Script" uid="uid://ddfn4dss8o3np" path="res://Scripts/pantallas/Arcade/indicador_isla.gd" id="1_mkcrl"]
 [ext_resource type="Texture2D" uid="uid://d22lb0e56p2yg" path="res://Sprites/UI/isla/identificador_seleccionado.png" id="2_1qmhj"]
 [ext_resource type="Texture2D" uid="uid://di0u7mvva1mmj" path="res://Sprites/UI/isla/identificador_bloqueado.png" id="4_g1vqq"]
 
@@ -17,7 +17,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_mkcrl")
 
-[node name="bases" type="Control" parent="." unique_id=1816342865]
+[node name="bases_isla" type="Control" parent="." unique_id=1816342865]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,15 +25,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="no_seleccionado" type="TextureRect" parent="bases" unique_id=921004286]
+[node name="no_seleccionado" type="TextureRect" parent="bases_isla" unique_id=921004286]
 unique_name_in_owner = true
-visible = false
 layout_mode = 0
 offset_right = 80.0
 offset_bottom = 80.0
 texture = ExtResource("1_g38a3")
 
-[node name="seleccionado" type="TextureRect" parent="bases" unique_id=285811761]
+[node name="seleccionado" type="TextureRect" parent="bases_isla" unique_id=285811761]
 unique_name_in_owner = true
 visible = false
 layout_mode = 0
@@ -41,8 +40,9 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("2_1qmhj")
 
-[node name="bloqueado" type="TextureRect" parent="bases" unique_id=1013781035]
+[node name="bloqueado" type="TextureRect" parent="bases_isla" unique_id=1013781035]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0

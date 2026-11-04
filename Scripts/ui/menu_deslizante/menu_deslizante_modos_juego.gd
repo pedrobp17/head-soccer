@@ -12,7 +12,7 @@ var pantalla_modo : Dictionary = {
 	Modos.VERSUS : HeadSoccer.Pantalla.DEFAULT,
 	Modos.SURVIVAL : HeadSoccer.Pantalla.DEFAULT,
 	Modos.ONLINE : HeadSoccer.Pantalla.DEFAULT,
-	Modos.ARCADE : HeadSoccer.Pantalla.JUGANDO,
+	Modos.ARCADE : HeadSoccer.Pantalla.ARCADE,
 	Modos.TORNEO : HeadSoccer.Pantalla.TORNEO,
 	Modos.LIGA : HeadSoccer.Pantalla.DEFAULT,
 	Modos.MUNDIAL : HeadSoccer.Pantalla.DEFAULT,
@@ -60,7 +60,6 @@ func set_datos_pantalla_seleccionada() -> DatosPantallas:
 		Modos.ARCADE:
 			ProgresoPartida.progreso_general.set_modo_jugado(Modos.ARCADE)
 			ProgresoPartida.progreso_general.guardar_progreso()
-			ControladorPartido.enfrentamiento.set_jugador_visitante("AdrianSpeed", "mano_magica")
 			return DatosPantallas.new()
 		Modos.TORNEO:
 			ProgresoPartida.progreso_general.set_modo_jugado(Modos.TORNEO)

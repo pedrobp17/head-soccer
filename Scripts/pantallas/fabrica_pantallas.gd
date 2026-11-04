@@ -7,8 +7,8 @@ func _init() -> void:
 		HeadSoccer.Pantalla.MENU_PRINCIPAL : preload("res://Escenas/pantallas/MenuPrincipal.tscn"),
 		HeadSoccer.Pantalla.TORNEO : preload("res://Escenas/pantallas/ModoTorneo.tscn"),
 		HeadSoccer.Pantalla.JUGANDO : preload("res://Escenas/pantallas/campo.tscn"),
-		HeadSoccer.Pantalla.DEFAULT : preload("res://Escenas/pantallas/Default.tscn")
-		
+		HeadSoccer.Pantalla.DEFAULT : preload("res://Escenas/pantallas/Default.tscn"),
+		HeadSoccer.Pantalla.ARCADE : preload("res://Escenas/pantallas/arcade.tscn")
 	}
 
 func get_fresh_screen( pantalla : HeadSoccer.Pantalla) -> Pantallas:
