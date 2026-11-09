@@ -2,6 +2,7 @@ extends Node
 class_name CreadorEstadoJuego
 
 var estados : Dictionary ={
+	ControladorPartido.Estado.INACTIVO : EstadoJuegoInactivo,
 	ControladorPartido.Estado.JUGANDO : EstadoJuegoJugando,
 	ControladorPartido.Estado.FIN : EstadoJuegoFin,
 	ControladorPartido.Estado.TIEMPO_EXTRA : EstadoJuegoTiempoExtra,

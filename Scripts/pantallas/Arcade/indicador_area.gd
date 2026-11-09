@@ -10,6 +10,7 @@ class_name IndicadorArea
 @onready var panel: Control = $panel
 @onready var estrellas : Array[Estrellas] = [ %estrellas1,%estrellas2,%estrellas3 ]
 @onready var indice_nivel_area: Label = %indice_isla
+@onready var bloqueado: TextureRect = %bloqueado
 
 
 var base_y := 0.0
@@ -23,23 +24,38 @@ func inicializar(posicion : Vector2, desbloqueada : bool, estrellas_conseguidas 
 	base_y = panel.position.y
 	self.global_position = posicion
 	set_estrellas(estrellas_conseguidas)
-	set_desbloqueado(desbloqueada)
+	set_estado_nivel(desbloqueada)
 	
 func set_actual() -> void:
 	no_seleccionado.hide()
 	seleccionado.show()
+	bloqueado.hide()
 	iniciar_animacion()
 
+func set_estado_nivel( desbloqueada : bool) -> void:
+	if desbloqueada:
+		set_desbloqueado()
+	else:
+		set_bloqueado()
+		
 func set_desbloqueado(era_actual : bool = false) -> void:
 	no_seleccionado.show()
 	seleccionado.hide()
+	bloqueado.hide()
+	indice_nivel_area.show()
+	for estrella in estrellas:
+		estrella.show()
 	if era_actual:
 		finalizar_animacion()
 		
 func set_bloqueado() -> void:
 	no_seleccionado.hide()
 	seleccionado.hide()
-
+	bloqueado.show()
+	indice_nivel_area.hide()
+	for estrella in estrellas:
+		estrella.hide()
+	
 func set_estrellas(estrellas_conseguidas : int ) -> void:
 	for i in estrellas.size():
 		var conseguida = true if (i + 1) <= estrellas_conseguidas else false 

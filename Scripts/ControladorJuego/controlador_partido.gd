@@ -2,7 +2,7 @@ extends Node
 
 const DURACION_JUEGO_SEGUNDOS :=  1 * 10
 
-enum Estado {JUGANDO, GOL, RESETEO, TIEMPO_EXTRA, FIN}
+enum Estado {INACTIVO, JUGANDO, GOL, RESETEO, TIEMPO_EXTRA, FIN}
 
 var enfrentamiento : Enfrentamientos = null
 var creador_estados := CreadorEstadoJuego.new()
@@ -15,7 +15,7 @@ var setup_jugador : Array[String] = ["MarkEvans","AxelBlaze"] # "" = jugando con
 func _ready() -> void:
 	tiempo_restante = DURACION_JUEGO_SEGUNDOS
 	enfrentamiento = Enfrentamientos.new()
-	cambiar_estado(Estado.RESETEO)
+	cambiar_estado(Estado.INACTIVO)
 	
 func cambiar_estado(estado : Estado, datos : DatosEstadoJuego = DatosEstadoJuego.new()) -> void:
 	if estado_actual != null:
@@ -29,6 +29,11 @@ func cambiar_estado(estado : Estado, datos : DatosEstadoJuego = DatosEstadoJuego
 func empezar_juego() -> void:
 	tiempo_restante = DURACION_JUEGO_SEGUNDOS
 	cambiar_estado(Estado.RESETEO)
+
+func parar_juego() -> void:
+	if estado_actual != null and estado_actual is EstadoJuegoInactivo:
+		return
+	cambiar_estado(Estado.INACTIVO)
 
 func jugando_solitario() -> bool:
 	return setup_jugador[1].is_empty()

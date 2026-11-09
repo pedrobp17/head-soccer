@@ -8,7 +8,7 @@ const Modos = ProgresoGlobal.Modos
 
 @onready var personaje_seleccion: Sprite2D = %PersonajeSeleccion
 
-var pantalla_modo : Dictionary = {
+static var pantalla_modo : Dictionary = {
 	Modos.VERSUS : HeadSoccer.Pantalla.DEFAULT,
 	Modos.SURVIVAL : HeadSoccer.Pantalla.DEFAULT,
 	Modos.ONLINE : HeadSoccer.Pantalla.DEFAULT,
@@ -67,7 +67,7 @@ func set_datos_pantalla_seleccionada() -> DatosPantallas:
 			var torneo = ProgresoPartida.progreso_general.cargar_torneo()
 			if torneo == null:
 				torneo = Torneo.new(ControladorPartido.enfrentamiento.config_jugador_local)
-			return DatosPantallas.build().set_config_jugador(ControladorPartido.enfrentamiento.config_jugador_local).set_torneo(torneo)
+			return DatosPantallas.build().set_torneo(torneo)
 		Modos.LIGA:
 			return DatosPantallas.new()
 		Modos.MUNDIAL:
@@ -84,7 +84,7 @@ func select_current() -> void:
 	ProgresoPartida.progreso_general.set_modo_jugado(Modos[nombre_modo])
 	EventBus.item_selected_modos.emit()
 	
-func get_pantalla_asociada(modo : Modos) -> HeadSoccer.Pantalla:
+static func get_pantalla_asociada(modo : Modos) -> HeadSoccer.Pantalla:
 	assert(pantalla_modo.has(modo), "modo de juego no detectado")
 	return pantalla_modo[modo]
 

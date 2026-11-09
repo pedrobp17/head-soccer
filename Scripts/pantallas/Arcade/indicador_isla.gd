@@ -22,7 +22,9 @@ func _ready() -> void:
 	indice_isla.text = str(indice_equipo_isla)
 	set_bloqueado()
 	base_y = self.position.y
-	
+
+func set_niveles_ganados(niveles_ganados : int, niveles_totales : int) -> void:
+	indicador_completados.text = str(niveles_ganados) + "/" + str(niveles_totales)
 func set_actual() -> void:
 	no_seleccionado.hide()
 	seleccionado.show()

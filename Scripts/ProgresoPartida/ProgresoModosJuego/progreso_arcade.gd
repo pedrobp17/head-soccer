@@ -70,3 +70,4 @@ func get_niveles_vencidos(jugador : String, isla : PantallaArcade.Islas) -> int:
 
 func get_niveles_totales(isla : PantallaArcade.Islas) -> int:
 	return PantallaArcade.jugadores_islas[isla].size() * NIVELES_POR_JUGADOR
+	

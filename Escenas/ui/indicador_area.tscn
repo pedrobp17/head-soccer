@@ -6,43 +6,50 @@
 [ext_resource type="Texture2D" uid="uid://bdkpqjdbyym7n" path="res://Sprites/UI/isla/identificador_seleccionado_area.png" id="3_1iqa0"]
 [ext_resource type="PackedScene" uid="uid://c68j2ic4w0o6" path="res://Escenas/ui/estrellas.tscn" id="4_tvcvc"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a8ku5"]
+bg_color = Color(0.9019608, 0.8509804, 0.7372549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eu64u"]
+bg_color = Color(0.15294118, 0.39607844, 0.4392157, 1)
+
 [node name="indicador_area" type="Control" unique_id=1885402168]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_right = -1071.999
-offset_bottom = -550.8
+offset_bottom = -550.80005
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(40.5, 75)
-pivot_offset_ratio = Vector2(40.5, 75)
 script = ExtResource("1_1iqa0")
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1586265625]
+visible = false
+custom_minimum_size = Vector2(262.06, 0)
+layout_mode = 0
+offset_left = 4.0
+offset_top = -7.0
+offset_right = 266.06
+offset_bottom = 14.0
+theme_override_styles/background = SubResource("StyleBoxFlat_a8ku5")
+theme_override_styles/fill = SubResource("StyleBoxFlat_eu64u")
+value = 50.0
+show_percentage = false
 
 [node name="circulo" type="TextureRect" parent="." unique_id=1147533847]
 layout_mode = 0
-offset_top = 37.0
-offset_right = 80.0
-offset_bottom = 117.0
+offset_left = -41.0
+offset_top = -38.0
+offset_right = 39.0
+offset_bottom = 42.0
 texture = ExtResource("1_njp2f")
-
-[node name="indice_isla" type="Label" parent="." unique_id=379620415]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 21.0
-offset_top = 14.0
-offset_right = 61.0
-offset_bottom = 45.0
-theme_override_colors/font_color = Color(0.12298488, 0.12298488, 0.12298488, 1)
-theme_override_font_sizes/font_size = 30
-text = "6"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="panel" type="Control" parent="." unique_id=1590431781]
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -41.0
+offset_top = -75.0
+offset_right = -1.0
+offset_bottom = -35.0
 
 [node name="bases" type="Control" parent="panel" unique_id=570195067]
 anchors_preset = 0
@@ -62,6 +69,19 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("3_1iqa0")
+
+[node name="bloqueado" type="TextureRect" parent="panel/bases" unique_id=2046111590]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 37.0
+offset_right = 40.0
+offset_bottom = 77.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_njp2f")
 
 [node name="estrellas1" parent="panel" unique_id=1311146543 instance=ExtResource("4_tvcvc")]
 unique_name_in_owner = true
@@ -101,3 +121,16 @@ offset_right = 60.0
 offset_bottom = 96.0
 grow_horizontal = 1
 grow_vertical = 1
+
+[node name="indice_isla" type="Label" parent="panel" unique_id=379620415]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 21.0
+offset_top = 14.0
+offset_right = 61.0
+offset_bottom = 45.0
+theme_override_colors/font_color = Color(0.12298488, 0.12298488, 0.12298488, 1)
+theme_override_font_sizes/font_size = 30
+text = "6"
+horizontal_alignment = 1
+vertical_alignment = 1

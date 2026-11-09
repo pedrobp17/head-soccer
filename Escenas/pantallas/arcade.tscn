@@ -5,11 +5,13 @@
 [ext_resource type="Script" uid="uid://ctsm55l0p2bhc" path="res://Scripts/Animaciones/animacion_zoom.gd" id="4_08am1"]
 [ext_resource type="Texture2D" uid="uid://df0fvl2qge6e4" path="res://Sprites/pantallas/islas/mapa.png" id="4_s3fgn"]
 [ext_resource type="PackedScene" uid="uid://cuaeb37cuxfin" path="res://Escenas/ui/indicador_area.tscn" id="5_08am1"]
+[ext_resource type="PackedScene" uid="uid://k6rfyewb7eri" path="res://Escenas/ui/Cartas/info_niveles.tscn" id="6_are53"]
 
 [node name="Arcade" type="Node" unique_id=2093938702]
 script = ExtResource("1_6ohly")
 
 [node name="base" type="TextureRect" parent="." unique_id=885695203]
+z_index = -1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -53,10 +55,10 @@ pivot_offset = Vector2(164.57, 92.57)
 position = Vector2(272, 143)
 
 [node name="Node2D2" type="Node2D" parent="identificadores/indicadorIsla1/posicion_niveles" unique_id=1344253288]
-position = Vector2(120, 151)
+position = Vector2(201, 156)
 
 [node name="Node2D3" type="Node2D" parent="identificadores/indicadorIsla1/posicion_niveles" unique_id=336913936]
-position = Vector2(60, 121)
+position = Vector2(113, 150)
 
 [node name="Node2D4" type="Node2D" parent="identificadores/indicadorIsla1/posicion_niveles" unique_id=1714076604]
 position = Vector2(159, 57)
@@ -90,7 +92,7 @@ grow_vertical = 2
 pivot_offset = Vector2(164.57, 92.57)
 
 [node name="Node2D1" type="Node2D" parent="identificadores/indicadorIsla2/posicion_niveles" unique_id=1868608347]
-position = Vector2(101, 124)
+position = Vector2(153, 141)
 
 [node name="Node2D2" type="Node2D" parent="identificadores/indicadorIsla2/posicion_niveles" unique_id=356895521]
 position = Vector2(147, 78)
@@ -265,11 +267,11 @@ position = Vector2(145, 167)
 [node name="Node2D2" type="Node2D" parent="identificadores/indicadorIsla7/posicion_niveles" unique_id=978437011]
 position = Vector2(212, 150)
 
-[node name="Node2D3" type="Node2D" parent="identificadores/indicadorIsla7/posicion_niveles" unique_id=667797598]
-position = Vector2(281, 103)
-
 [node name="Node2D4" type="Node2D" parent="identificadores/indicadorIsla7/posicion_niveles" unique_id=301220365]
 position = Vector2(214, 103)
+
+[node name="Node2D3" type="Node2D" parent="identificadores/indicadorIsla7/posicion_niveles" unique_id=667797598]
+position = Vector2(281, 103)
 
 [node name="Node2D5" type="Node2D" parent="identificadores/indicadorIsla7/posicion_niveles" unique_id=68018813]
 position = Vector2(244, 61)
@@ -304,13 +306,13 @@ pivot_offset = Vector2(164.57, 92.57)
 position = Vector2(267, 90)
 
 [node name="Node2D2" type="Node2D" parent="identificadores/indicadorIsla8/posicion_niveles" unique_id=211754776]
-position = Vector2(171, 146)
+position = Vector2(218, 134)
 
 [node name="Node2D3" type="Node2D" parent="identificadores/indicadorIsla8/posicion_niveles" unique_id=2071011709]
-position = Vector2(103, 142)
+position = Vector2(155, 147)
 
 [node name="Node2D4" type="Node2D" parent="identificadores/indicadorIsla8/posicion_niveles" unique_id=1007339728]
-position = Vector2(74, 90)
+position = Vector2(117, 135)
 
 [node name="Node2D5" type="Node2D" parent="identificadores/indicadorIsla8/posicion_niveles" unique_id=72943580]
 position = Vector2(149, 90)
@@ -394,6 +396,7 @@ offset_bottom = 148.0
 
 [node name="indicador_area1" parent="niveles" unique_id=1885402168 instance=ExtResource("5_08am1")]
 unique_name_in_owner = true
+z_index = 1
 layout_mode = 1
 offset_left = -525.0
 offset_top = 357.0
@@ -404,30 +407,45 @@ indice_nivel = 1
 
 [node name="indicador_area2" parent="niveles" unique_id=1631002851 instance=ExtResource("5_08am1")]
 unique_name_in_owner = true
+z_index = 1
 layout_mode = 1
 scale = Vector2(0.5, 0.5)
 indice_nivel = 2
 
 [node name="indicador_area3" parent="niveles" unique_id=1735871162 instance=ExtResource("5_08am1")]
 unique_name_in_owner = true
+z_index = 1
 layout_mode = 1
 scale = Vector2(0.5, 0.5)
 indice_nivel = 3
 
 [node name="indicador_area4" parent="niveles" unique_id=1530119155 instance=ExtResource("5_08am1")]
 unique_name_in_owner = true
+z_index = 1
 layout_mode = 1
 scale = Vector2(0.5, 0.5)
 indice_nivel = 4
 
 [node name="indicador_area5" parent="niveles" unique_id=893125622 instance=ExtResource("5_08am1")]
 unique_name_in_owner = true
+z_index = 1
 layout_mode = 1
 scale = Vector2(0.5, 0.5)
 indice_nivel = 5
 
 [node name="indicador_area6" parent="niveles" unique_id=1144821442 instance=ExtResource("5_08am1")]
 unique_name_in_owner = true
+z_index = 1
 layout_mode = 1
 scale = Vector2(0.5, 0.5)
 indice_nivel = 6
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=194670392]
+
+[node name="Panel" parent="CanvasLayer" unique_id=466321702 instance=ExtResource("6_are53")]
+unique_name_in_owner = true
+offset_left = 17.0
+offset_top = 35.0
+offset_right = 367.0
+offset_bottom = 560.0
+scale = Vector2(1.115, 1.115)

@@ -6,6 +6,7 @@ enum Pantalla {MENU_PRINCIPAL, TORNEO, ARCADE, JUGANDO, DEFAULT}
 @onready var animaciones: AnimationPlayer = %animaciones
 
 var pantalla_actual : Pantallas = null
+var pantalla_cargada : Pantalla = Pantalla.MENU_PRINCIPAL
 var fabrica_pantalla := FabricaPantallas.new()
 var fabrica_animaciones := CreadorAnimacionesPantallas.new()
 var transicionando := false
@@ -17,12 +18,13 @@ func _ready() -> void:
 func cambiar_pantalla(pantalla : Pantalla, datos : DatosPantallas = DatosPantallas.new()) -> void:
 	if transicionando:
 		return
-		
-	var transicion = fabrica_animaciones.get_fresh_animacion(pantalla)
-	
+
+	# pantalla_cargada aun es la pantalla de ORIGEN (se actualiza al cargar la nueva)
+	var transicion = fabrica_animaciones.get_fresh_animacion(pantalla_cargada, pantalla)
+
 	if pantalla_actual != null:
 		pantalla_actual.process_mode = Node.PROCESS_MODE_DISABLED
-	
+
 	await entrada(transicion)
 
 	_cargar_pantalla(pantalla, datos)
@@ -32,6 +34,7 @@ func cambiar_pantalla(pantalla : Pantalla, datos : DatosPantallas = DatosPantall
 
 
 func _cargar_pantalla(pantalla : Pantalla, datos : DatosPantallas) -> void:
+	pantalla_cargada = pantalla
 	if pantalla_actual != null:
 		pantalla_actual.queue_free()
 	pantalla_actual = fabrica_pantalla.get_fresh_screen(pantalla)

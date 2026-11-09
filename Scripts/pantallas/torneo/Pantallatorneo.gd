@@ -92,8 +92,8 @@ func refresh_bracket_estado(estado : Torneo.Estado) -> void:
 			carta_visitante.inicializar(partido_actual.config_jugador_visitante.jugador)
 			if not partido_actual.ganador.is_empty():
 				pintar_resultado_partido(carta_local, carta_visitante, partido_actual)
-			elif [partido_actual.config_jugador_local.jugador, partido_actual.config_jugador_visitante.jugador].has(datos_pantalla.confing_jugador.jugador) and torneo.estado_actual == estado:
-				var carta_jugador := carta_local if partido_actual.config_jugador_local.jugador == datos_pantalla.confing_jugador.jugador else carta_visitante 
+			elif [partido_actual.config_jugador_local.jugador, partido_actual.config_jugador_visitante.jugador].has(ControladorPartido.enfrentamiento.config_jugador_local.jugador) and torneo.estado_actual == estado:
+				var carta_jugador := carta_local if partido_actual.config_jugador_local.jugador == ControladorPartido.enfrentamiento.config_jugador_local.jugador else carta_visitante 
 				carta_jugador.set_jugador_seleccionado()
 				ControladorPartido.enfrentamiento = partido_actual
 	else:
