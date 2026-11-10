@@ -4,11 +4,15 @@ class_name EstadoArcadeIsla
 func mostrar_escena() -> void:
 	set_seleccionado(arcade.isla_actual, PantallaArcade.Islas.NONE)
 	await arcade.zoom_a_centro()
-	
-func _ready() -> void:
-	EventBus.fin_animacion_zoom_reset.connect(on_fin_animacion_zoom_reset)
-		
-func _input(event: InputEvent) -> void:
+	# El fundido iba conectado a fin_animacion_zoom_reset, que se emite al final del
+	# zoom_reset: al hacerlo aquí con await, el candado de input no se abre hasta que
+	# el fundido ha terminado de verdad. Hay que esperar a la señal del tween, porque
+	# hacer `await` sobre el propio Tween no espera nada (no es una señal).
+	var tween_fundido := arcade.cambiar_visibilidad_identificadores(true, arcade.DURACION_ANIMACION_TRANSPARENCIA / 2.0)
+	if tween_fundido.is_running():
+		await tween_fundido.finished
+
+func procesar_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_select"):
 		cambiar_estado(PantallaArcade.Estado.AREA)
 	
@@ -21,9 +25,6 @@ func _input(event: InputEvent) -> void:
 		if vecino == PantallaArcade.Islas.NONE or !es_valido(vecino):
 			return
 		set_seleccionado(vecino, arcade.isla_actual)
-
-func on_fin_animacion_zoom_reset() -> void:
-	arcade.cambiar_visibilidad_identificadores(true, arcade.DURACION_ANIMACION_TRANSPARENCIA/2.0)
 
 func es_valido( isla : PantallaArcade.Islas ) -> bool:
 	return isla in arcade.islas_desbloqueadas

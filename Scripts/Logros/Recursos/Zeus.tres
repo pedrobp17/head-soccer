@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="LogroArcade" format=3 uid="uid://bot4vslk0s6t8"]
+
+[ext_resource type="Script" uid="uid://c1r1j3piaqpr" path="res://Scripts/Logros/logros.gd" id="1_numj5"]
+
+[resource]
+script = ExtResource("1_numj5")
+id = 3
+objetivo = 1
+metadata/_custom_type_script = "uid://c1r1j3piaqpr"

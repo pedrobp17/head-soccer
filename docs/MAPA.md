@@ -25,10 +25,38 @@ head_soccer.tscn (HeadSoccer, nodo raíz, escena principal)
 - Transiciones típicas: Menú -> Torneo/Arcade (al elegir modo) -> Jugando (ESPACIO/`ui_select`) -> al terminar,
   la pantalla asociada al modo vía `MenuDeslizanteModosJuego.get_pantalla_asociada()`. Con `p1_back` se sale:
   en arcade vuelve al mapa arcade (conservando la isla); en el resto, al menú.
+- Vuelta desde un partido arcade: `campo` devuelve `DatosPantallas` con `isla_arcade`/`nivel_arcade` y
+  `PantallaArcade._ready` entra directamente en el estado `AREA`, colocando la cámara al instante sobre la
+  isla (`AnimacionZoom.zoom_instantaneo` vía `PantallaArcade.zoom_a_isla_instantaneo`, sin animación de zoom),
+  con `PantallaArcade.nivel_inicial_area` (contexto consumido) marcando el nivel actual. Si el jugador sale
+  de `AREA` con `p1_back` (decisión propia), `nivel_inicial_area` se limpia a -1 y el próximo acceso a `AREA`
+  arranca en el nivel 0.
 - Animaciones de transición (`AnimationPlayer` de `head_soccer.tscn`): `CreadorAnimacionesPantallas.
   get_fresh_animacion(origen, destino)` consulta un dict `destino -> { origen -> animación }` — sin entrada
   para el origen, cambio instantáneo. Hoy solo ARCADE tiene animación (`nubes`) y solo si el origen es
   `MENU_PRINCIPAL` (no al volver de `JUGANDO`); el origen lo recuerda `HeadSoccer.pantalla_cargada`.
+  `HeadSoccer.transicionando` es true solo mientras dura esa animación (la activa `entrada()` y la
+  desactiva `salida()`; si no hay animación, nunca se activa).
+- **Candado de input en arcade** (2026-11-10): no se puede cambiar de estado ISLA->AREA ni lanzar
+  partido (AREA + `ui_accept`) hasta que la animación de entrada del estado termine de verdad.
+  Lo implementa la base `EstadoArcade`:
+  - `var escena_lista = false` + `_enter_tree`: `await mostrar_escena(); escena_lista = true`.
+  - `_input()` (único punto de entrada) descarta TODO el evento — flechas, `ui_select`/`ui_accept`,
+    `p1_back` — mientras `escena_lista == false` o `arcade.juego.transicionando` (nubes) sea true;
+    solo entonces delega en `procesar_input(event)`, el gancho que cada estado concreto implementa
+    (antes cada estado tenía su propio `_input`). Imprime un `print()` de diagnóstico al descartar
+    (temporal, para probar el candado; ver punto 23).
+  - Por eso `mostrar_escena()` espera los tweens de verdad: `AnimacionZoom.zoom_to()`,
+    `PantallaArcade.zoom_a_isla()`, `PantallaArcade.cambiar_visibilidad_identificadores()` e
+    `InfoNivel.mostrar()` devuelven su `Tween` y se hace `await tween.finished` solo si
+    `tween.is_running()` (ojo: `await` sobre el objeto Tween NO espera — solo esperan señales y
+    corutinas — y `Tween.is_finished()` no existe; si el tween ya terminó, el await colgaría).
+  - `PantallaArcade.cambiar_estado()` apaga `set_process_input(false)` al estado viejo antes del
+    `queue_free` (un nodo en `queue_free` sigue recibiendo `_input` hasta el fin del frame).
+  - `await mostrar_escena()` en la base lleva `@warning_ignore("redundant_await")`: el análisis
+    estático lo resuelve contra la base (`pass`, no corrutina), pero en runtime se despacha a la
+    subclase, que sí es corrutina. NO quitar el await. El mismo patrón sin candado existe en
+    `EstadoMenuPrincipal._enter_tree` (decisión: no tocar el menú; ver punto 24).
 
 ## 3. Autoloads (singletons)
 | Autoload | Script | Papel |
@@ -45,6 +73,7 @@ head_soccer.tscn (HeadSoccer, nodo raíz, escena principal)
 | Dueño | Enum | Creador | Base | Estados concretos |
 |---|---|---|---|---|
 | HeadSoccer (pantallas) | `HeadSoccer.Pantalla` | FabricaPantallas | Pantallas | MenuPrincipal, PantallaTorneo, Campo, default |
+| PantallaArcade (mapa arcade) | `PantallaArcade.Estado` | CreadorEstadoArcade | EstadoArcade | Isla, Area |
 | ControladorPartido | `ControladorPartido.Estado` | CreadorEstadoJuego | EstadoJuego | Inactivo, Jugando, Gol, Reseteo, TiempoExtra, Fin |
 | Jugador | `Jugador.Estado` | CreadorEstadoJugador | EstadoJugador | Moviendo (JUGANDO), EsperandoPoder, Poder, Aturdido, Reinicio, Gol (vacío) |
 | Pelota | `Pelota.Estado` | CreadorEstadoPelota | EstadoPelota | Normal, Poder, Reinicio |
@@ -154,6 +183,7 @@ head_soccer.tscn (HeadSoccer, nodo raíz, escena principal)
 | cambio_marcador(anotador) | ControladorPartido | ui.gd |
 | fin_animacion_gol | AnimadorGol | EstadoJuegoGol |
 | fin_animacion_vs | AnimacionEnfrentamiento | campo.gd |
+| fin_animacion_zoom_reset | AnimacionZoom.zoom_reset | (sin receptores desde 2026-11-10; antes EstadoArcadeIsla._ready) |
 | fin_animacion_nombre | AnimacionDesplazamientoNombres | EstadoLogrosViendo |
 | fin_partido | EstadoJuegoFin | ui.gd, campo.gd |
 | en_tiempo_extra | EstadoJuegoTiempoExtra | ui.gd |
@@ -171,8 +201,8 @@ pasa a GOL (con anotador) -> `incrementar_marcador` -> `ui` anima el gol -> `fin
 
 **Fin de partido**: FIN -> `fin_partido` -> `campo.on_fin_partido` (arranca FinTimer) -> `on_transicion` ->
 `gestionador_resultados.actualizar_datos_juego(datos)` (resultado por modo) -> `transicion_pantallas(
-get_pantalla_asociada(modo))`. BACK a mitad de partido: en arcade -> mapa arcade (con contexto de isla);
-en el resto -> menú principal.
+get_pantalla_asociada(modo))`. BACK a mitad de partido: en arcade -> mapa arcade en el estado `AREA`
+(con contexto de isla y del nivel jugado); en el resto -> menú principal.
 
 **Poder (previsto)**: UI llena barra -> `poder_cargado` -> jugador pulsa PODER -> estado ESPERANDO_PODER y `gastar_poder` ->
 contacto de pie/cuerpo con la pelota -> estado PODER -> `poder.ejecutar()` (aún sin implementar).
@@ -247,3 +277,18 @@ contacto de pie/cuerpo con la pelota -> estado PODER -> `poder.ejecutar()` (aún
     accedía a `jugador_data.nombre` (`Player.gd:88`). **Corregido**: `estado_arcade_area` (rama
     `ui_accept`) pone también el local desde el progreso antes de transicionar; el reset de BACK se
     mantiene. El mismo día se cambió la regla de animación a por-origen (sección 2).
+
+23. `estado_arcade.gd` tiene `print()` de diagnóstico **temporales** (`_diagnostico_bloqueo` y el de
+    `escena_lista = true`) para probar el candado de input (sección 2): borrarlos cuando se confirme
+    que funciona. Idioma de los mensajes: español.
+
+24. `EstadoMenuPrincipal._enter_tree` (línea 35) repite el patrón `await mostrar_escena()` de la base
+    arcade, pero **sin candado de input**: el menú acepta teclas mientras su `mostrar_escena()` corre
+    (y aquí casi todas las implementaciones son síncronas, así que el await es realmente redundante —
+    produce el aviso `redundant_await` que en arcade se silenció con `@warning_ignore`). Decisión
+    2026-11-10: fuera de alcance, no tocar `EstadoMenuPrincipal`.
+
+25. `EventBus.fin_animacion_zoom_reset` quedó **sin receptores** al mover el fundido de identificadores
+    de ISLA dentro de `EstadoArcadeIsla.mostrar_escena()` con await (sección 2). El `emit()` sigue en
+    `AnimacionZoom.zoom_reset()` (línea 33): se puede eliminar la señal y el emit si no se planea
+    reutilizar.

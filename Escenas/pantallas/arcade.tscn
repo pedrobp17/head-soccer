@@ -444,8 +444,8 @@ indice_nivel = 6
 
 [node name="Panel" parent="CanvasLayer" unique_id=466321702 instance=ExtResource("6_are53")]
 unique_name_in_owner = true
-offset_left = 17.0
-offset_top = 35.0
-offset_right = 367.0
-offset_bottom = 560.0
-scale = Vector2(1.115, 1.115)
+offset_left = 44.0
+offset_top = 64.0
+offset_right = 394.0
+offset_bottom = 589.0
+scale = Vector2(1.17, 1.115)
