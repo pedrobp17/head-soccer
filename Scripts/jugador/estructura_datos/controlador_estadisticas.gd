@@ -5,7 +5,7 @@ var base := 5.0
 var salto_siguiente_nivel : Dictionary = {
 	"velocidad": 300.0,
 	"salto": -450.0,
-	"golpe": 60.0,
+	"golpe": 0.07,
 	"power": 5.0,
 	"aguante": 5.0,
 	"vida": 10.0
@@ -14,7 +14,7 @@ var salto_siguiente_nivel : Dictionary = {
 var constantes : Dictionary = {
 	"velocidad": 300.0,
 	"salto": -450.0,
-	"golpe": 60.0,
+	"golpe": 1.0,
 	"power": 100.0,
 	"aguante": 5.0,
 	"vida": 100.0
@@ -32,7 +32,10 @@ func modificar( estadistica : String, modificacion : float) -> void:
 func get_estadistica( estadistica : String) -> float:
 	if estadisticas_modificadas.has(estadistica):
 		return estadisticas_modificadas[estadistica]
-	return (estadisticas_normales[estadistica] - base) * salto_siguiente_nivel[estadistica] + constantes[estadistica]
+	var valor := (estadisticas_normales[estadistica] - base) * salto_siguiente_nivel[estadistica] + constantes[estadistica]
+	if estadistica == "golpe":
+		return clampf(valor, 0.65, 1.35)
+	return valor
 
 func reset_estadistica( estadistica : String) ->void:
 	if estadisticas_modificadas.has(estadistica):

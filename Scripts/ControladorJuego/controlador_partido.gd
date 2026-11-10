@@ -1,15 +1,14 @@
 extends Node
 
-const DURACION_JUEGO_SEGUNDOS :=  1 * 10
+const DURACION_JUEGO_SEGUNDOS := 1 * 100000
 
 enum Estado {INACTIVO, JUGANDO, GOL, RESETEO, TIEMPO_EXTRA, FIN}
 
-var enfrentamiento : Enfrentamientos = null
+var enfrentamiento: Enfrentamientos = null
 var creador_estados := CreadorEstadoJuego.new()
-var estado_actual : EstadoJuego = null
-var tiempo_restante : float
-var setup_jugador : Array[String] = ["MarkEvans","AxelBlaze"] # "" = jugando contra IA , "nombre" = jugando contra jugador 2 
-
+var estado_actual: EstadoJuego = null
+var tiempo_restante: float
+var setup_jugador: Array[String] = ["MarkEvans", "AxelBlaze"] # "" = jugando contra IA , "nombre" = jugando contra jugador 2
 
 
 func _ready() -> void:
@@ -17,7 +16,7 @@ func _ready() -> void:
 	enfrentamiento = Enfrentamientos.new()
 	cambiar_estado(Estado.INACTIVO)
 	
-func cambiar_estado(estado : Estado, datos : DatosEstadoJuego = DatosEstadoJuego.new()) -> void:
+func cambiar_estado(estado: Estado, datos: DatosEstadoJuego = DatosEstadoJuego.new()) -> void:
 	if estado_actual != null:
 		estado_actual.queue_free()
 	estado_actual = creador_estados.get_fresh_state(estado)
@@ -45,6 +44,6 @@ func ganador_partido() -> String:
 	assert(not enfrentamiento.empate())
 	return enfrentamiento.ganador
 
-func incrementar_marcador(jugador_anotador : String) -> void:
+func incrementar_marcador(jugador_anotador: String) -> void:
 	enfrentamiento.aumentar_marcador(jugador_anotador)
 	EventBus.cambio_marcador.emit(jugador_anotador)

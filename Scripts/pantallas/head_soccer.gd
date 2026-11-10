@@ -1,12 +1,12 @@
 extends Node
 class_name HeadSoccer
 
-enum Pantalla {MENU_PRINCIPAL, TORNEO, ARCADE, JUGANDO, DEFAULT} 
+enum Pantalla {MENU_PRINCIPAL, TORNEO, ARCADE, JUGANDO, DEFAULT}
 
 @onready var animaciones: AnimationPlayer = %animaciones
 
-var pantalla_actual : Pantallas = null
-var pantalla_cargada : Pantalla = Pantalla.MENU_PRINCIPAL
+var pantalla_actual: Pantallas = null
+var pantalla_cargada: Pantalla = Pantalla.MENU_PRINCIPAL
 var fabrica_pantalla := FabricaPantallas.new()
 var fabrica_animaciones := CreadorAnimacionesPantallas.new()
 var transicionando := false
@@ -15,7 +15,7 @@ func _ready() -> void:
 	_cargar_pantalla(Pantalla.MENU_PRINCIPAL, DatosPantallas.new())
 
 
-func cambiar_pantalla(pantalla : Pantalla, datos : DatosPantallas = DatosPantallas.new()) -> void:
+func cambiar_pantalla(pantalla: Pantalla, datos: DatosPantallas = DatosPantallas.new()) -> void:
 	if transicionando:
 		return
 
@@ -33,7 +33,7 @@ func cambiar_pantalla(pantalla : Pantalla, datos : DatosPantallas = DatosPantall
 	await salida(transicion)
 
 
-func _cargar_pantalla(pantalla : Pantalla, datos : DatosPantallas) -> void:
+func _cargar_pantalla(pantalla: Pantalla, datos: DatosPantallas) -> void:
 	pantalla_cargada = pantalla
 	if pantalla_actual != null:
 		pantalla_actual.queue_free()
@@ -42,7 +42,7 @@ func _cargar_pantalla(pantalla : Pantalla, datos : DatosPantallas) -> void:
 	pantalla_actual.peticion_transicion_pantalla.connect(cambiar_pantalla)
 	add_child(pantalla_actual)
 
-func entrada(transicion : String) -> void:
+func entrada(transicion: String) -> void:
 	if transicion.is_empty():
 		return
 	transicionando = true
@@ -50,7 +50,7 @@ func entrada(transicion : String) -> void:
 	animaciones.play(transicion + "_entrada")
 	await animaciones.animation_finished
 
-func salida(transicion : String ) -> void:
+func salida(transicion: String) -> void:
 	if transicion.is_empty():
 		return
 	animaciones.play(transicion + "_salida")

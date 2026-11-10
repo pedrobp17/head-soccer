@@ -13,11 +13,7 @@ func _enter_tree() -> void:
 	ejecutando_poder = true
 	
 func desactivar_fisicas() -> void:
-	pelota.linear_velocity = Vector2.ZERO
-	pelota.angular_velocity = 0.0
-	
-	pelota.freeze_mode = RigidBody2D.FREEZE_MODE_KINEMATIC
-	pelota.freeze = true
+	pelota.velocity = Vector2.ZERO
 	
 	
 func _process(_delta: float) -> void:
@@ -26,7 +22,7 @@ func _process(_delta: float) -> void:
 
 
 func _exit_tree() -> void:
-	activar_fisicas()
+	pelota.velocity = Vector2.ZERO
 
 
 func set_fin_poder() -> void:
@@ -34,5 +30,5 @@ func set_fin_poder() -> void:
 
 
 func activar_fisicas() -> void:
-	pelota.freeze = false
+	pass
 	#falta añadir direccion de rebote al salir del poder

@@ -3,7 +3,6 @@ class_name  Jugador
 
 const CAPA_VISITANTE := 5
 const CAPA_LOCAL := 1
-const FUERZA_CABEZAZO := 30
 const BANDO : Dictionary = {
 	true : -1,
 	false : 1
@@ -66,10 +65,9 @@ func comprobar_colisiones( esperando_ejecutar_poder : bool) -> bool:
 			
 			else:
 				var direccion := -collision.get_normal()
-				var aumentar_fuerza := direccion.y < -0.5
-				fuerza = FUERZA_CABEZAZO
+				fuerza = estadisticas.get_estadistica("golpe")
 				
-				EventBus.golpear_pelota.emit(direccion, aumentar_fuerza, fuerza)
+				EventBus.golpear_pelota.emit(direccion, false, fuerza)
 	return false
 
 func set_animacion( nombre_animacion : String) -> void:

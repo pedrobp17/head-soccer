@@ -41,6 +41,9 @@ func procesar_input(event: InputEvent) -> void:
 			set_nivel_actual(1, nivel_actual)
 	
 	if event.is_action_pressed("ui_accept"):
+		# El autoload conserva el enfrentamiento al volver del mapa arcade;
+		# cada nuevo nivel debe empezar con marcador y ganador limpios.
+		ControladorPartido.enfrentamiento.reiniciar_resultado()
 		ControladorPartido.enfrentamiento.set_jugador_local(
 			ProgresoPartida.progreso_general.get_jugador_seleccionado(),
 			ProgresoPartida.progreso_general.get_poder_seleccionado())

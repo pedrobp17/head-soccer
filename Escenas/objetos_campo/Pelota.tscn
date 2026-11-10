@@ -4,9 +4,6 @@
 [ext_resource type="Script" uid="uid://dsw4lenyfy7b2" path="res://Scripts/objetos_campo/Pelota.gd" id="1_rvfdg"]
 [ext_resource type="Texture2D" uid="uid://bh61ryossub4r" path="res://Sprites/particulas/white-circle.png" id="2_tgrf4"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rvfdg"]
-bounce = 0.6
-
 [sub_resource type="Curve" id="Curve_tuny4"]
 _data = [Vector2(0, 0.2678572), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
@@ -26,12 +23,10 @@ scale_curve = SubResource("CurveTexture_eu64u")
 [sub_resource type="CircleShape2D" id="CircleShape2D_eu64u"]
 radius = 27.0
 
-[node name="Pelota" type="RigidBody2D" unique_id=279367134]
+[node name="Pelota" type="CharacterBody2D" unique_id=279367134]
 collision_layer = 2
 collision_mask = 29
-mass = 0.3
-physics_material_override = SubResource("PhysicsMaterial_rvfdg")
-continuous_cd = 2
+motion_mode = 1
 script = ExtResource("1_rvfdg")
 
 [node name="Particulas" type="GPUParticles2D" parent="." unique_id=1179422576]

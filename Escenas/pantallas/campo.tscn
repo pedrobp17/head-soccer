@@ -88,7 +88,7 @@ porteria_local = NodePath("../PorteriaDelantera/PorteriaDelIzq")
 porteria_visitante = NodePath("../PorteriaDelantera/PorteriaDelDer")
 
 [node name="Pelota" parent="ContenedorPersonajes" unique_id=279367134 instance=ExtResource("6_fj5fn")]
-position = Vector2(-6, -536)
+position = Vector2(-910, -239)
 
 [node name="Apariciones" type="Node2D" parent="ContenedorPersonajes" unique_id=1211540772]
 unique_name_in_owner = true
