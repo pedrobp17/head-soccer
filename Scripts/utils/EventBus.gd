@@ -2,6 +2,7 @@ extends Node
 
 signal golpear_pelota(direcion : Vector2, es_pie : bool, fuerza : float )
 signal pie_contacto_pelota_en_poder()
+# En goles, marcador y reposicion: false = anotador local, true = visitante.
 signal gol(es_visitante: bool)
 signal reposicionar(es_visitante: bool)
 signal reposicionar_pelota(es_visitante: bool)

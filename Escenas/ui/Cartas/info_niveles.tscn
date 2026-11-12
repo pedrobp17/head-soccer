@@ -2,18 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://c68j2ic4w0o6" path="res://Escenas/ui/estrellas.tscn" id="1_knea1"]
 [ext_resource type="Script" uid="uid://dlm7invi2ntd" path="res://Scripts/pantallas/Arcade/info_nivel.gd" id="1_tqvmg"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eu64u"]
-bg_color = Color(0.019607844, 0.19215687, 0.43529412, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.8, 0.8, 0.8, 0)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
+[ext_resource type="Texture2D" uid="uid://dysyec23t5oia" path="res://Sprites/UI/isla/base_info_nivel.png" id="2_eyuy3"]
+[ext_resource type="Texture2D" uid="uid://pixjoh7ik4k2" path="res://Sprites/UI/isla/base_titulos_info_nivel.png" id="4_iakhx"]
 
 [node name="Panel" type="Control" unique_id=466321702]
 layout_mode = 3
@@ -23,23 +13,27 @@ offset_bottom = 525.0
 pivot_offset = Vector2(175, 262.5)
 script = ExtResource("1_tqvmg")
 
-[node name="base" type="Panel" parent="." unique_id=1670311431]
+[node name="base" type="TextureRect" parent="." unique_id=525938074]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(175, 262.5)
-theme_override_styles/panel = SubResource("StyleBoxFlat_eu64u")
+scale = Vector2(1.185, 1.185)
+texture = ExtResource("2_eyuy3")
+expand_mode = 1
 
 [node name="nivel" type="Label" parent="." unique_id=681478830]
 custom_minimum_size = Vector2(350, 0)
 layout_mode = 0
-offset_left = -1.0
-offset_top = 32.0
-offset_right = 349.0
-offset_bottom = 113.0
+offset_left = 23.0
+offset_top = 59.000004
+offset_right = 373.0
+offset_bottom = 140.0
+scale = Vector2(1.075, 1.075)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
 theme_override_font_sizes/font_size = 80
 text = "6"
 horizontal_alignment = 1
@@ -48,10 +42,13 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(350, 0)
 custom_maximum_size = Vector2(350, -1)
 layout_mode = 0
-offset_left = -1.0
-offset_top = 114.0
-offset_right = 349.0
-offset_bottom = 199.0
+offset_left = 20.0
+offset_top = 139.0
+offset_right = 370.0
+offset_bottom = 224.0
+scale = Vector2(1.075, 1.075)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
 theme_override_font_sizes/font_size = 40
 text = "caleb stonewall"
 horizontal_alignment = 1
@@ -60,10 +57,11 @@ autowrap_mode = 2
 
 [node name="misiones" type="Control" parent="." unique_id=1072593090]
 anchors_preset = 0
-offset_left = -7.0
-offset_top = 36.0
-offset_right = 33.0
-offset_bottom = 53.0
+offset_left = 7.0
+offset_top = 37.0
+offset_right = 47.0
+offset_bottom = 54.0
+scale = Vector2(1.075, 1.075)
 
 [node name="estrellas" type="VBoxContainer" parent="misiones" unique_id=140627514]
 unique_name_in_owner = true
@@ -71,8 +69,8 @@ layout_mode = 0
 offset_top = 250.0
 offset_right = 40.0
 offset_bottom = 292.0
-scale = Vector2(2, 2)
-theme_override_constants/separation = 21
+scale = Vector2(1.67, 1.67)
+theme_override_constants/separation = 24
 
 [node name="estrella1" parent="misiones/estrellas" unique_id=1311146543 instance=ExtResource("1_knea1")]
 layout_mode = 2
@@ -83,16 +81,34 @@ layout_mode = 2
 [node name="estrella3" parent="misiones/estrellas" unique_id=392095782 instance=ExtResource("1_knea1")]
 layout_mode = 2
 
+[node name="fondo_nombre" type="TextureRect" parent="misiones" unique_id=1919788986]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.441861
+offset_top = 149.7674
+offset_right = 7.4418564
+offset_bottom = 149.7674
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(9.025, 6)
+texture = ExtResource("4_iakhx")
+expand_mode = 1
+
 [node name="nombre" type="Label" parent="misiones" unique_id=132331640]
+z_index = 1
 custom_minimum_size = Vector2(350, 0)
 custom_maximum_size = Vector2(350, -1)
 layout_mode = 0
-offset_left = 6.0
+offset_left = 6.0000005
 offset_top = 190.0
 offset_right = 356.0
 offset_bottom = 211.0
+scale = Vector2(1.075, 1.075)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
-text = "misiones:"
+text = "misiones"
 horizontal_alignment = 1
 
 [node name="mision1" type="Label" parent="misiones" unique_id=481553111]
@@ -103,6 +119,7 @@ offset_left = 70.0
 offset_top = 224.0
 offset_right = 350.0
 offset_bottom = 261.0
+scale = Vector2(1.075, 1.075)
 theme_override_font_sizes/font_size = 12
 text = "gana el partido sin encajar goles"
 vertical_alignment = 1
@@ -116,6 +133,7 @@ offset_left = 70.0
 offset_top = 266.0
 offset_right = 350.0
 offset_bottom = 303.0
+scale = Vector2(1.075, 1.075)
 theme_override_font_sizes/font_size = 12
 text = "gana el partido sin encajar goles"
 vertical_alignment = 1
@@ -129,6 +147,7 @@ offset_left = 70.0
 offset_top = 308.0
 offset_right = 350.0
 offset_bottom = 345.0
+scale = Vector2(1.075, 1.075)
 theme_override_font_sizes/font_size = 12
 text = "gana el partido sin encajar goles"
 vertical_alignment = 1
@@ -136,27 +155,47 @@ autowrap_mode = 2
 
 [node name="recompensas" type="Control" parent="." unique_id=472320028]
 anchors_preset = 0
-offset_left = -1.0
-offset_top = 22.0
-offset_right = 39.0
-offset_bottom = 62.0
+offset_top = 18.0
+offset_right = 40.0
+offset_bottom = 58.0
+scale = Vector2(1.075, 1.075)
+
+[node name="fondo_recompensas" type="TextureRect" parent="recompensas" unique_id=1119422719]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 13.023255
+offset_top = 331.1628
+offset_right = 13.023254
+offset_bottom = 331.1628
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(8.995, 2.87)
+texture = ExtResource("4_iakhx")
+expand_mode = 1
 
 [node name="nombre" type="Label" parent="recompensas" unique_id=1995138084]
+z_index = 1
 custom_minimum_size = Vector2(350, 0)
 layout_mode = 0
-offset_top = 379.0
-offset_right = 350.0
-offset_bottom = 400.0
+offset_left = 4.6511626
+offset_top = 377.6744
+offset_right = 354.65115
+offset_bottom = 398.6744
+scale = Vector2(1.075, 1.075)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
-text = "recompensas:"
+text = "recompensas"
 horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="recompensas" unique_id=61820360]
 layout_mode = 0
-offset_left = 17.0
-offset_top = 397.0
-offset_right = 337.0
-offset_bottom = 497.0
+offset_left = 20.720932
+offset_top = 414.67444
+offset_right = 340.72095
+offset_bottom = 514.67444
+scale = Vector2(1.075, 1.075)
 theme_override_constants/separation = 10
 
 [node name="Panel" type="Panel" parent="recompensas/HBoxContainer" unique_id=5186104]

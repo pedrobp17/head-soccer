@@ -306,3 +306,37 @@ Esta secci?n sustituye los valores y observaciones anteriores sobre estad?sticas
 - Validaci?n: carga de scripts en Godot 4.7.1 y prueba aislada de valores 0/3/5/10, conversi?n de salto, recarga/bonus/reset y l?mites de modificaciones. Pendiente evaluar sensaciones y balance en partidas reales.
 
 - Ajuste vigente de salto: referencia de capsula 114.2 px, media de las 10 alturas positivas de jugadores.json (104..122 px); se excluyen 8 fichas con altura 0. Desplazamiento vertical para estadistica 0/3/4/5/10: 15.28065/28.460210625/32.8533975/64.688085/223.8615225 px. Sumando la capsula media, nivel 4 alcanza 147.0533975 px y nivel 10 alcanza 338.0615225 px tras tres aumentos del 5% y otro del 10% (factor acumulado 1.2733875). Se conserva la gravedad. Es una calibracion media, no una compensacion individual: el alcance cambia con el tamano real, la integracion fisica y las colisiones. La capsula tampoco garantiza el limite exacto del sprite visible.
+
+
+## Logros por nivel arcade
+- Cada entrada de `ProgresoArcade.progreso_por_jugador[personaje][isla]["jugadores"][rival_nivel]` contiene ahora `{"vencido": false, "logros_arcade": [false, false, false]}`. Cada nivel tiene su propio array.
+- `deserialize` convierte booleanos antiguos a este formato conservando las victorias; rellena logros ausentes con false y conserva los ya conseguidos. Las consultas de victorias y el recuento de niveles usan `vencido`.
+- `InfoGeneral.get_logros_arcade(isla, rival, nivel)` devuelve un Array[bool] independiente para el personaje seleccionado. Nivel usa exclusivamente 0 o 1 por rival. No evalua ni desbloquea misiones.
+- `InfoGeneral._ready` ya no reinicia el progreso al arrancar; crea la plantilla solo si no existe y carga el JSON existente. `reiniciar_progreso` sigue disponible para reinicio explicito. El formato nuevo se escribe con `guardar_progreso()`.
+
+- `GestorLogrosArcade` es RefCounted. Se crea por partido con isla, rival y nivel local 0/1, y captura el personaje seleccionado. Los diccionarios usan ID int: islas 0..7, generales 100 (ganar sin tiempo extra) y 101 (marcar 5 goles). Los contadores pendientes se reinician por instancia; los logros previos se cargan del progreso.
+- Orden persistido: [GANAR_SIN_TIEMPO_EXTRA, METER_5_GOLES, logro de isla]. Los textos respetan ese orden y Meter5Goles tiene objetivo 5. Las condiciones especificas de isla siguen pendientes de definicion; no se conceden automaticamente.
+- `evaluar_logros()` agrupa todos los desbloqueos en una llamada a InfoGeneral. `ProgresoArcade.set_logros_arcade()` fusiona mediante OR y devuelve si hay nuevos true. InfoGeneral escribe en disco solo cuando hay nuevos desbloqueos; una repeticion peor nunca elimina estrellas.
+- El mapa y DatosPantallas mantienen indices globales. `ProgresoArcade.get_nivel_rival(isla, indice)` convierte con floor(indice / cantidad_rivales) a 0/1. El gestor, InfoNivel y resultado arcade aplican esta conversion antes de consultar/escribir progreso. El JSON solo usa rival_0 y rival_1.
+- Migracion version_niveles=2 por isla: conserva valores locales y fusiona claves globales mediante OR; elimina claves sobrantes. Algunas claves antiguas 0/1 son ambiguas al coexistir formatos, por lo que se prioriza conservar logros. InfoGeneral conserva un .antes_niveles_locales.bak antes de escribir el JSON migrado.
+- `evaluar_logros` guarda si cambios > 0; comparar con Array.size() era incorrecto porque siempre vale 3. Los indicadores del mapa reciben ahora el array real con set_logros; antes siempre mostraban cero estrellas por el argumento por defecto de inicializar.
+- Prueba aislada de Godot: generacion de claves 0/1, conversion de mapa, migracion de claves globales, recarga y union monotona de logros.
+- EstadoArcadeArea actualiza InfoNivel.setup en cada seleccion, despues de restaurar el indice al volver al mapa.
+- Campo.on_fin_partido procesa el resultado inmediatamente antes del FinTimer. GestionadorResultadosPartidos usa resultado_procesado para impedir dobles evaluaciones. Solo confirma resultados en EstadoJuegoFin; el reloj a cero por si solo no basta (tiempo extra).
+- EstadoResultadoPartidoArcade registra la victoria sin tiempo extra solo cuando gana el local, registra goles locales y evalua. Maneja gestor null y contexto NONE. Las victorias generales de personaje se incrementan solo al ganar.
+- BACK de Campo delega en GestionadorResultadosPartidos.gestionar_back(campo): detiene timer, confirma FIN si falta, para el partido, limpia contexto temporal y vuelve al mapa arcade o menu. salida_iniciada evita transiciones duplicadas. El gestor RefCounted se libera al limpiar la referencia.
+- Validacion en copia aislada de Godot 4.7.1: IDs, umbral de cinco goles, guardado/carga JSON, catalogo de niveles, derrota sin tiempo extra, repeticion, union de logros y BACK antes/despues de FIN. No se ha probado visualmente la UI. Godot tambien reporta avisos preexistentes de mayusculas en Pelota.tscn y recursos pendientes al cerrar la prueba.
+
+
+
+## Contrato del marcador
+- Todo el recorrido gol -> estados -> incrementar_marcador -> aumentar_marcador -> cambio_marcador -> UI y reposicion transmite `es_visitante: bool`: false identifica al anotador local, true al visitante. Se corrige la firma String que quedaba en ControladorPartido.
+- `Porteria.es_visitante` identifica al anotador; apariciones configura true en porteria_local y false en porteria_visitante. Solo Pelota puede producir un gol.
+- Los receptores on_gol de Jugando y TiempoExtra ignoran eventos si ya no son el estado actual, aunque queue_free aun no los haya eliminado.
+
+
+## Navegacion de logros del menu
+- EstadoMenuPrincipalLogros abre siempre ELIGIENDO con indice 0; ocultarlo retira el foco.
+- BACK desde VIENDO pasa el ultimo indice consultado mediante DatosEstadoLogros. ELIGIENDO selecciona ese personaje, sincronizando coordenadas globales/visibles, filas, scroll y marco.
+- Al reposicionar se cancelan tweens anteriores de marco y scroll; al salir de VIENDO se detiene el tween de flechas y se desconecta fin_animacion_nombre. Solo recibe input el estado actual con panel visible y foco.
+- Verificado en Godot con la escena real: BACK tras avanzar de personaje, seleccion del ultimo personaje con scroll y reapertura en ELIGIENDO. Eliminadas referencias onready sin uso a %equipo y %imagen, nodos inexistentes en Pantallalogros.

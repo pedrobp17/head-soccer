@@ -13,7 +13,7 @@ func _enter_tree() -> void:
 func _exit_tree() -> void:
 	# Al salir de la pantalla (BACK, fin de partido, cambio de pantalla) nadie
 	# debe seguir simulando el partido. El guard cubre el apagado de la app,
-	# donde el autoload podría estar ya liberado.
+	# donde el autoload podrÃ­a estar ya liberado.
 	if is_instance_valid(ControladorPartido):
 		ControladorPartido.parar_juego()
 	
@@ -26,28 +26,21 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	if KeyUtils.is_action_just_pressed(Jugador.ControlScheme.P1, KeyUtils.Accion.BACK):
-		ControladorPartido.parar_juego()
-		if datos_pantalla.torneo != null and not ControladorPartido.fin_partido():
-			ControladorPartido.enfrentamiento.reiniciar_resultado()
-		ControladorPartido.enfrentamiento = Enfrentamientos.new()
-		var modo_jugado := ProgresoPartida.progreso_general.get_modo_jugado()
-		if modo_jugado == ProgresoGlobal.Modos.ARCADE:
-			# Volvemos al mapa arcade con el contexto de isla/nivel (datos_pantalla lo lleva)
-			transicion_pantallas(MenuDeslizanteModosJuego.get_pantalla_asociada(modo_jugado), datos_pantalla)
-		else:
-			transicion_pantallas(HeadSoccer.Pantalla.MENU_PRINCIPAL)
+		gestionador_resultados.gestionar_back(self)
+		return
 	$Fps.text = str(Engine.get_frames_per_second()) + " FPS"
 	
-func on_fin_partido()-> void:
+func on_fin_partido() -> void:
+	gestionador_resultados.actualizar_datos_juego(datos_pantalla)
 	fin_timer.start()
-	ProgresoPartida.personajes_desbloqueados.set_partidos_ganados(ControladorPartido.enfrentamiento.config_jugador_local.jugador)
-	ProgresoPartida.personajes_desbloqueados.guardar_progreso()
-	
+
 func on_fin_animacion() -> void:
 	EventBus.mostrar_personajes.emit()
 	ControladorPartido.empezar_juego()
 
 func on_transicion() -> void:
+	if gestionador_resultados.salida_iniciada:
+		return
+	gestionador_resultados.salida_iniciada = true
 	var nuevos_datos_pantalla = gestionador_resultados.actualizar_datos_juego(datos_pantalla)
 	transicion_pantallas(MenuDeslizanteModosJuego.get_pantalla_asociada(ProgresoPartida.progreso_general.get_modo_jugado()), nuevos_datos_pantalla)
-	

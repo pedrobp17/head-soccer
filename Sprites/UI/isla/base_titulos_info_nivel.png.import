@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2yxyq2nll1el"
-path="res://.godot/imported/PantallaEleccionEquipos.png-f8e0d6157e6a8eed0187e658b43c7df7.ctex"
+uid="uid://pixjoh7ik4k2"
+path="res://.godot/imported/base_titulos_info_nivel.png-2de36be87162513b6a138bbeb9289270.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/pantallas/PantallaEleccionEquipos.png"
-dest_files=["res://.godot/imported/PantallaEleccionEquipos.png-f8e0d6157e6a8eed0187e658b43c7df7.ctex"]
+source_file="res://Sprites/UI/isla/base_titulos_info_nivel.png"
+dest_files=["res://.godot/imported/base_titulos_info_nivel.png-2de36be87162513b6a138bbeb9289270.ctex"]
 
 [params]
 

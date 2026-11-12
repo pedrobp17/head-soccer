@@ -12,14 +12,20 @@ const POSICION_INICIAL_X := 219
 
 var escala_base := Vector2.ONE
 var tween: Tween
+var indice_nivel: int
+var rival: String
+var isla_actual: PantallaArcade.Islas
 
 
 func _ready() -> void:
 	escala_base = scale
 	pivot_offset = size / 2.0
 
-## Devuelve el Tween para que quien lo llame pueda esperar a que el panel termine
-## de aparecer.
+func setup(_indice_nivel: int, _rival: String, _isla: PantallaArcade.Islas) -> void:
+	indice_nivel = _indice_nivel
+	rival = _rival
+	isla_actual = _isla
+
 func mostrar() -> Tween:
 	_matar_tween()
 	scale = ESCALA_OCULTA
@@ -41,12 +47,13 @@ func ocultar() -> void:
 	if global_position.x != POSICION_INICIAL_X:
 		global_position.x = POSICION_INICIAL_X
 
-func refresh_nivel(indice_nivel: int, rival: String, isla: PantallaArcade.Islas) -> void:
+func refresh_nivel() -> void:
 	nivel.text = str(indice_nivel + 1)
 	nombre.text = NombresPersonajesHelper.get_nombre_normal_to_separacion_espacio(rival)
-	var texto_misiones: Array = LogrosArcadeHelper.MISIONES_GLOBALES + [LogrosArcadeHelper.MISIONES_ISLA.get(isla, "")]
+	var texto_misiones: Array = LogrosArcadeHelper.get_texto_logro(isla_actual)
 	for i in misiones.size():
 		misiones[i].text = texto_misiones[i]
+	refresh_estrellas()
 
 func _matar_tween() -> void:
 	if tween != null and tween.is_valid():
@@ -55,3 +62,8 @@ func _matar_tween() -> void:
 
 func posicionar(posicion: Vector2) -> void:
 	global_position = posicion
+
+func refresh_estrellas() -> void:
+	var logros: Array[bool] = ProgresoPartida.progreso_general.get_logros_arcade(isla_actual, rival, ProgresoArcade.get_nivel_rival(isla_actual, indice_nivel))
+	for i in logros.size():
+		estrellas.get_child(i).inicializar(logros[i])

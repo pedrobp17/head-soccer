@@ -2,20 +2,19 @@ extends Node
 class_name InfoGeneral
 
 
-const RUTA_PLANTILLA :="res://Scripts/ProgresoPartida/ProgresoModosJuego/progreso_general.json" 
+const RUTA_PLANTILLA := "res://Scripts/ProgresoPartida/ProgresoModosJuego/progreso_general.json"
 
 
 const RUTA_JSON := "user://progreso_general.json"
 
 var datos_generales: Dictionary = {}
-var tipos_datos : Dictionary = {
-	"global" : ProgresoGlobal,
-	"torneo" : Torneo,
-	"arcade" : ProgresoArcade  
+var tipos_datos: Dictionary = {
+	"global": ProgresoGlobal,
+	"torneo": Torneo,
+	"arcade": ProgresoArcade
 }
 
 func _ready() -> void:
-	reiniciar_progreso()
 	crear_progreso_inicial()
 	cargar_progreso()
 	
@@ -63,9 +62,23 @@ func cargar_progreso() -> void:
 		if not tipos_datos.has(dato):
 			push_warning("Sección desconocida en el JSON de progreso: " + dato)
 			continue
-		assert( tipos_datos[dato].has_method("deserialize"), "no hay metodo para deserializar")
+		assert(tipos_datos[dato].has_method("deserialize"), "no hay metodo para deserializar")
 		datos_generales[dato] = tipos_datos[dato].deserialize(datos[dato])
 	
+	var arcade: ProgresoArcade = datos_generales.get("arcade")
+	if arcade != null and arcade.necesita_guardar_migracion:
+		# Conserva el JSON original antes de corregir sus claves en disco.
+		var ruta_copia: String = RUTA_JSON + ".antes_niveles_locales.bak"
+		if not FileAccess.file_exists(ruta_copia):
+			var copia := FileAccess.open(ruta_copia, FileAccess.WRITE)
+			if copia == null:
+				push_error("No se pudo crear la copia del progreso; migracion solo en memoria.")
+				return
+			copia.store_string(FileAccess.get_file_as_string(RUTA_JSON))
+			copia.close()
+		guardar_progreso()
+		arcade.necesita_guardar_migracion = false
+
 #TORNEO
 
 func get_jugador_torneo_actual() -> String:
@@ -97,29 +110,37 @@ func get_progreso_arcade() -> ProgresoArcade:
 func get_islas_desbloqueadas_arcade() -> Array[PantallaArcade.Islas]:
 	return get_progreso_arcade().get_islas_desbloqueadas(get_jugador_seleccionado())
 
-func esta_nivel_arcade_vencido(isla : PantallaArcade.Islas, rival : String, nivel : int) -> bool:
+func esta_nivel_arcade_vencido(isla: PantallaArcade.Islas, rival: String, nivel: int) -> bool:
 	return get_progreso_arcade().esta_vencido(get_jugador_seleccionado(), isla, rival, nivel)
 
-func esta_isla_arcade_completada(isla : PantallaArcade.Islas) -> bool:
+func get_logros_arcade(isla: PantallaArcade.Islas, rival: String, nivel: int) -> Array[bool]:
+	return get_progreso_arcade().get_logros_arcade(get_jugador_seleccionado(), isla, rival, nivel)
+
+func set_logros_arcade(isla: PantallaArcade.Islas, rival: String, nivel: int, logros: Array[bool], jugador: String = "") -> void:
+	var personaje: String = get_jugador_seleccionado() if jugador.is_empty() else jugador
+	if get_progreso_arcade().set_logros_arcade(personaje, isla, rival, nivel, logros):
+		guardar_progreso()
+
+func esta_isla_arcade_completada(isla: PantallaArcade.Islas) -> bool:
 	return get_progreso_arcade().isla_completada(get_jugador_seleccionado(), isla)
 	
-func get_niveles_vencidos_arcade(isla : PantallaArcade.Islas) -> int:
+func get_niveles_vencidos_arcade(isla: PantallaArcade.Islas) -> int:
 	return get_progreso_arcade().get_niveles_vencidos(get_jugador_seleccionado(), isla)
 
-func completar_nivel_arcade(isla : PantallaArcade.Islas, rival : String, nivel : int) -> void:
+func completar_nivel_arcade(isla: PantallaArcade.Islas, rival: String, nivel: int) -> void:
 	var progreso := get_progreso_arcade()
 	var jugador := get_jugador_seleccionado()
 	progreso.set_vencido(jugador, isla, rival, nivel)
 	guardar_progreso()
 
-func desbloquear_isla_arcade(isla : PantallaArcade.Islas) -> bool:
+func desbloquear_isla_arcade(isla: PantallaArcade.Islas) -> bool:
 	var progreso := get_progreso_arcade()
 	var jugador := get_jugador_seleccionado()
 	if isla in progreso.get_islas_desbloqueadas(jugador):
 		return false
 	progreso.desbloquear_isla(jugador, isla)
 	guardar_progreso()
-	return true	
+	return true
 	
 	
 #GUARDADO
@@ -175,7 +196,7 @@ func puedo_jugar() -> bool:
 	var nombre: String = ProgresoGlobal.Modos.keys()[modo].to_lower()
 	if datos_generales[nombre] == null or modo == ProgresoGlobal.Modos.ARCADE:
 		return true
-	var jugador_guardado : ConfiguracionJugadorPartido = datos_generales[nombre].configuracion_jugador_seleccionado
+	var jugador_guardado: ConfiguracionJugadorPartido = datos_generales[nombre].configuracion_jugador_seleccionado
 	return jugador_guardado.jugador == get_jugador_seleccionado()
 	
 # BORRA LA PARTIDA GUARDADA Y VUELVE AL PROGRESO INICIAL (PARTIDA NUEVA).

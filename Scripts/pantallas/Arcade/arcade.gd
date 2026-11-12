@@ -106,7 +106,6 @@ func zoom_a_centro() -> void:
 func zoom_a_isla_instantaneo() -> void:
 	camera.zoom_instantaneo(puntosZoom[isla_actual].global_position)
 
-## Devuelve el Tween para poder esperar a que el fundido termine.
 func cambiar_visibilidad_identificadores(es_visible: bool, duracion: float = DURACION_ANIMACION_TRANSPARENCIA) -> Tween:
 	var transparencia_final = 1.0 if es_visible else 0.0
 	var tween = create_tween()

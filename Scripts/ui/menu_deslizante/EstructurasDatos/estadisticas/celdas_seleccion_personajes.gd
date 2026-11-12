@@ -8,6 +8,7 @@ const DURACION_TRANSICION := 0.15
 @onready var celdas: GridContainer = %celdas
 
 var numero_elementos : int = 0
+var tween_scroll: Tween
 
 func _ready() -> void:
 	barra.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -31,5 +32,12 @@ func subir_fila() -> void:
 	scroll_suave(nuevo_scroll_vertical)
 	
 func scroll_suave( valor : int) -> void:
-	var tween := create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
-	tween.tween_property(self, "scroll_vertical", valor, DURACION_TRANSICION )
+	if tween_scroll != null and tween_scroll.is_valid():
+		tween_scroll.kill()
+	tween_scroll = create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	tween_scroll.tween_property(self, "scroll_vertical", valor, DURACION_TRANSICION)
+
+func set_fila_instantanea(fila: int) -> void:
+	if tween_scroll != null and tween_scroll.is_valid():
+		tween_scroll.kill()
+	scroll_vertical = fila * DISTANCIA_ENTRE_CELDAS

@@ -5,6 +5,7 @@ extends EstadoLogros
 func _enter_tree() -> void:
 	nombre_estado = Logros.Estado.ELIGIENDO
 	logros.mostrar_eleccion_personajes()
+	logros.seleccionar_personaje_indice(datos_juego.indice_personaje)
  
  
 func _input(event: InputEvent) -> void:

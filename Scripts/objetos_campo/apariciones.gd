@@ -14,6 +14,7 @@ var jugador_visitante : Jugador = null
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	jugador_local = aparecer_jugador(ControladorPartido.enfrentamiento.config_jugador_local, Jugador.BANDO[false])
+	# En la porteria local marca el visitante, y viceversa.
 	porteria_local.inicializar(true)
 	jugador_visitante = aparecer_jugador(ControladorPartido.enfrentamiento.config_jugador_visitante, Jugador.BANDO[true])
 	porteria_visitante.inicializar(false)

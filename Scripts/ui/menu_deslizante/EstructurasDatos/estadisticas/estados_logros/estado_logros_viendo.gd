@@ -61,7 +61,7 @@ func _input(event: InputEvent) -> void:
 
 	if event.is_action_pressed("p1_back"):
 		get_viewport().set_input_as_handled()
-		cambiar_estado(Logros.Estado.ELIGIENDO)
+		cambiar_estado(Logros.Estado.ELIGIENDO, DatosEstadoLogros.build().set_indice_personaje(datos_juego.indice_personaje))
 
 
 func on_fin_animacion_nombre() -> void:
@@ -103,3 +103,8 @@ func parar_animacion() -> void:
 
 	logros.flecha_1.scale = Vector2.ONE
 	logros.flecha_2.scale = Vector2.ONE
+
+func _exit_tree() -> void:
+	parar_animacion()
+	if EventBus.fin_animacion_nombre.is_connected(on_fin_animacion_nombre):
+		EventBus.fin_animacion_nombre.disconnect(on_fin_animacion_nombre)

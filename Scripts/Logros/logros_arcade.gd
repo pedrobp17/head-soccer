@@ -1,5 +1,5 @@
 extends Resource
 class_name LogroArcade
 
-@export var id: LogrosArcadeHelper.LogrosAreas
+@export var id: int
 @export var objetivo: Variant

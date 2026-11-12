@@ -84,3 +84,7 @@ func _matar_tween() -> void:
 	if tween != null and tween.is_valid():
 		tween.kill()
 	tween = null
+
+func set_logros(logros: Array[bool]) -> void:
+	for i in estrellas.size():
+		estrellas[i].inicializar(logros[i] if i < logros.size() else false)

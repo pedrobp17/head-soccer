@@ -18,5 +18,5 @@ func cambiar_estado( nuevo_estado : Logros.Estado, datos : DatosEstadoLogros = D
  
  
 func puede_recibir_input() -> bool:
-	return logros.tiene_foco and not logros.animacion
+	return logros.estado_actual == self and logros.is_visible_in_tree() and logros.tiene_foco and not logros.animacion
  

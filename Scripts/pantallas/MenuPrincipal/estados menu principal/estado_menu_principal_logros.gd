@@ -3,10 +3,11 @@ class_name EstadoMenuPrincipalLogros
 
 func mostrar_escena() -> void:
 	menu_principal.logros.show()
-	menu_principal.logros.set_posicion_actual(Vector2(0,0))
+	menu_principal.logros.cambiar_estado(Logros.Estado.ELIGIENDO, DatosEstadoLogros.build().set_indice_personaje(0))
 	menu_principal.logros.cambiar_estado_foco(false)
 
 func esconder_escena() -> void:
+	menu_principal.logros.cambiar_estado_foco(false)
 	menu_principal.logros.hide()
 
 func cambiar_foco( tiene_foco : bool ) -> void:

@@ -93,7 +93,7 @@ func on_cambio_marcador(es_visitante: bool) -> void:
 	marcador[indice_jugador_anotador].text = str(ControladorPartido.enfrentamiento.goles_jugador(es_visitante))
 	barras_poder[posmod(indice_jugador_anotador + 1, NUM_JUGADORES)].incremento_gol()
 	
-func on_fin_partido(jugador, array) -> void:
+func on_fin_partido() -> void:
 	texto_fin.show()
 	
 func on_tiempo_extra() -> void:

@@ -19,7 +19,7 @@ func set_inicio_poder() -> void:
 	peticion_transmision_estado.emit(Pelota.Estado.PODER)
 
 
-func set_reposicion(es_visitante: bool):
+func set_reposicion(es_visitante: bool) -> void:
 	pelota.angulo_aparicion = (randf_range(-20.0, -10.0) if es_visitante else randf_range(10.0, 20.0))
 	cambiar_estado(Pelota.Estado.REINICIO)
 	

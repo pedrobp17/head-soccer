@@ -32,8 +32,6 @@ enum Estado {ELIGIENDO, VIENDO}
 }
 @onready var jugador: AnimacionDesplazamientoNombres = %jugador
 @onready var cuerpo_entero: TextureRect = %CuerpoEntero
-@onready var equipo: TextureRect = %equipo
-@onready var imagen: TextureRect = %imagen
 @onready var poderes : Array[CartaPoderesLogro] = [$FondoPantallaCentral/EstadisticasPersonaje/Poderes/cartas/CartaPoderesLogro1, $FondoPantallaCentral/EstadisticasPersonaje/Poderes/cartas/CartaPoderesLogro2 ]
 @onready var flecha_1: Panel = $FondoPantallaCentral/EstadisticasPersonaje/Flecha1
 @onready var flecha_2: Panel = $FondoPantallaCentral/EstadisticasPersonaje/Flecha2
@@ -43,6 +41,7 @@ var numero_personajes : int
 var coordenadas_casilla_actual := Vector2(0,0)
 var coordenadas_casillas_visibles := Vector2(0,0)
 var animacion : bool = false
+var tween_marco: Tween
 var filas_visibles : Array = [0,1]
 
 var creador_estados := CreadorEstadoLogros.new()
@@ -63,7 +62,7 @@ func cambiar_estado( nuevo_estado : Estado, datos : DatosEstadoLogros = DatosEst
 	estado_actual = creador_estados.get_fresh_state(nuevo_estado)
 	estado_actual.setup(self, datos)
 	estado_actual.peticion_transmision_estado.connect(cambiar_estado)
-	add_child(estado_actual)
+	call_deferred("add_child", estado_actual)
 
 
 func cambiar_estado_foco( foco : bool) -> void:
@@ -106,9 +105,11 @@ func get_indice_jugador(nueva_posicion : Vector2) -> int:
 	return int(nueva_posicion.y * NUMERO_COLUMNAS + nueva_posicion.x)
 
 func transicion_marco_seleccion( nueva_posicion : Vector2) -> void:
-	var tween = create_tween()
-	tween.tween_property(marco_seleccion, "global_position", nueva_posicion, DURACION_ANIMACION )
-	await tween.finished
+	if tween_marco != null and tween_marco.is_valid():
+		tween_marco.kill()
+	tween_marco = create_tween()
+	tween_marco.tween_property(marco_seleccion, "global_position", nueva_posicion, DURACION_ANIMACION)
+	await tween_marco.finished
 	animacion = false
 
 func get_coordenadas_celda_objetivo( nueva_celda : Vector2) -> Vector2:
@@ -154,8 +155,22 @@ func set_valores_numericos_logros(logros_jugador : ProgresoPersonajes) -> void:
 	numeros_logros["mundial"].text = str(logros_jugador.mundiales_ganados)
 	numeros_logros["pelea"].text = str(logros_jugador.peleas_ganadas)
 	
-func set_posicion_actual( vector : Vector2) -> void:
-	marco_seleccion.global_position = get_coordenadas_celda_objetivo(vector)
-	coordenadas_casillas_visibles = vector
-	coordenadas_casilla_actual = vector 
-	
+func set_posicion_actual(vector: Vector2) -> void:
+	seleccionar_personaje_indice(get_indice_jugador(vector))
+
+func seleccionar_personaje_indice(indice: int) -> void:
+	if numero_personajes <= 0:
+		return
+	indice = clampi(indice, 0, numero_personajes - 1)
+	if tween_marco != null and tween_marco.is_valid():
+		tween_marco.kill()
+	animacion = false
+	var fila: int = floori(float(indice) / NUMERO_COLUMNAS)
+	var columna: int = indice % NUMERO_COLUMNAS
+	var total_filas: int = ceili(float(numero_personajes) / NUMERO_COLUMNAS)
+	var primera_fila: int = clampi(fila - 1, 0, maxi(0, total_filas - 2))
+	filas_visibles = [primera_fila, primera_fila + 1]
+	coordenadas_casilla_actual = Vector2(columna, fila)
+	coordenadas_casillas_visibles = Vector2(columna, fila - primera_fila)
+	barra.set_fila_instantanea(primera_fila)
+	marco_seleccion.global_position = get_coordenadas_celda_objetivo(coordenadas_casillas_visibles)

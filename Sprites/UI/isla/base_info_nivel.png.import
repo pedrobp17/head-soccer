@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1f5h0usvd312"
-path="res://.godot/imported/pantallas.png-06377cf45d9e4f0758fb94038e61706b.ctex"
+uid="uid://dysyec23t5oia"
+path="res://.godot/imported/base_info_nivel.png-db09c1187fbb978aeadbdab3f85ce5ff.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/pantallas/pantallas.png"
-dest_files=["res://.godot/imported/pantallas.png-06377cf45d9e4f0758fb94038e61706b.ctex"]
+source_file="res://Sprites/UI/isla/base_info_nivel.png"
+dest_files=["res://.godot/imported/base_info_nivel.png-db09c1187fbb978aeadbdab3f85ce5ff.ctex"]
 
 [params]
 

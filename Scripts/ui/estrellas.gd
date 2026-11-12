@@ -4,7 +4,7 @@ class_name Estrellas
 @onready var conseguida: TextureRect = %conseguida
 @onready var no_conseguida: TextureRect = %no_conseguida
 
-func inicializar( desbloqueada : bool = false) -> void:
+func inicializar(desbloqueada: bool = false) -> void:
 	if desbloqueada:
 		mostrar_conseguida()
 	else:

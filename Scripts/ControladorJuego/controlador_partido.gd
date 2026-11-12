@@ -1,6 +1,6 @@
 extends Node
 
-const DURACION_JUEGO_SEGUNDOS := 1 * 100000
+const DURACION_JUEGO_SEGUNDOS := 1 * 60
 
 enum Estado {INACTIVO, JUGANDO, GOL, RESETEO, TIEMPO_EXTRA, FIN}
 
@@ -9,7 +9,7 @@ var creador_estados := CreadorEstadoJuego.new()
 var estado_actual: EstadoJuego = null
 var tiempo_restante: float
 var setup_jugador: Array[String] = ["MarkEvans", "AxelBlaze"] # "" = jugando contra IA , "nombre" = jugando contra jugador 2
-
+var logros_arcade: GestorLogrosArcade = null
 
 func _ready() -> void:
 	tiempo_restante = DURACION_JUEGO_SEGUNDOS
@@ -44,6 +44,7 @@ func ganador_partido() -> String:
 	assert(not enfrentamiento.empate())
 	return enfrentamiento.ganador
 
-func incrementar_marcador(jugador_anotador: String) -> void:
-	enfrentamiento.aumentar_marcador(jugador_anotador)
-	EventBus.cambio_marcador.emit(jugador_anotador)
+# false: marca el local; true: marca el visitante.
+func incrementar_marcador(es_visitante: bool) -> void:
+	enfrentamiento.aumentar_marcador(es_visitante)
+	EventBus.cambio_marcador.emit(es_visitante)

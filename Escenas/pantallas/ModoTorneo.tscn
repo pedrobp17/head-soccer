@@ -21,6 +21,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_p660u")
+expand_mode = 1
 
 [node name="Trofeo" type="TextureRect" parent="." unique_id=1855355685]
 visible = false

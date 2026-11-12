@@ -6,7 +6,8 @@ const MAX_PELOTA_SOBRE_LARGUERO = 1000
 @onready var red : Area2D = %Red
 @onready var larguero : Area2D = %AreaLarguero
 
-var es_visitante := false
+# Indica quien MARCA al entrar la pelota, no el propietario de la porteria.
+var es_visitante: bool = false
 var tiempo_pelota_sobre_larguero = 0.0 
 var pelota_sobre_larguero: Pelota = null
 
@@ -25,8 +26,8 @@ func _process(_delta: float) -> void:
 		if is_instance_valid(pelota_sobre_larguero):
 			pelota_sobre_larguero.empujar_desde_porteria(direccion)
 		
-func _on_red_body_entered(_body: Node2D) -> void:
-	if ControladorPartido.estado_actual.gol_valido():
+func _on_red_body_entered(body: Node2D) -> void:
+	if body is Pelota and ControladorPartido.estado_actual.gol_valido():
 		EventBus.gol.emit(es_visitante)
 	
 func _on_area_larguero_body_entered(body: Node2D) -> void:
