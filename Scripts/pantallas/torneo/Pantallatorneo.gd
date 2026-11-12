@@ -193,8 +193,8 @@ func set_ganadores_siguiente_ronda( estado : Torneo.Estado) -> void:
 	torneo.avanzar_enemigos()
 	for i in range(1, cartas.size()):
 		var partido_actual : Enfrentamientos = torneo.partidos[estado - 1][i]
-		var primer_jugador = partido_actual.ganador
-		var segundo_jugador = partido_actual.config_jugador_local.jugador if partido_actual.ganador != partido_actual.config_jugador_local.jugador else partido_actual.config_jugador_visitante.jugador 
+		var primer_jugador = partido_actual.get_ganador().jugador
+		var segundo_jugador = partido_actual.config_jugador_visitante.jugador if partido_actual.gana_local() else partido_actual.config_jugador_local.jugador
 		animaciones.append( cartas[i].animacion_tragaperras([primer_jugador, segundo_jugador]))
 	
 	for tween in animaciones:
@@ -203,12 +203,9 @@ func set_ganadores_siguiente_ronda( estado : Torneo.Estado) -> void:
 	animando = false
 
 func pintar_resultado_partido(carta_local : CartasSeleccionTorneo, carta_visitante : CartasSeleccionTorneo, partido : Enfrentamientos) -> void:
-	var ganador = partido.get_ganador().jugador
-	var jugador_local = partido.config_jugador_local.jugador
-	var indice_local = 0 if ganador == jugador_local else 1
-
-	var carta_ganador := carta_local if ganador == jugador_local else carta_visitante
-	var carta_perdedor := carta_visitante if ganador == jugador_local else carta_local
+	var indice_local := 0 if partido.gana_local() else 1
+	var carta_ganador := carta_local if partido.gana_local() else carta_visitante
+	var carta_perdedor := carta_visitante if partido.gana_local() else carta_local
 
 	carta_ganador.set_ganador(partido.marcador_final[indice_local])
 	carta_perdedor.set_perdedor(partido.marcador_final[1 - indice_local])

@@ -75,22 +75,22 @@ func incrementar_poder(delta : float) -> void:
 		if ControladorPartido.estado_actual.cargar_poder():
 			if not barras_poder[i].es_maximo(): 
 				barras_poder[i].set_poder(delta)
-			elif not poder_listo[i]:
+			if barras_poder[i].es_maximo() and not poder_listo[i]:
 				poder_listo[i] = true
-				EventBus.poder_cargado.emit()
+				EventBus.poder_cargado.emit(i == 1)
 	
 func set_barra_vida(valor : float, es_visitante : bool ) -> void:
 	var indice_jugador = 0 if !es_visitante else 1
 	barras_vida[indice_jugador].set_vida(valor)
 	porcentaje_vida[indice_jugador].text = barras_vida[indice_jugador].get_texto_vida_restante()
 	
-func on_gol(_jugador_anotador : String) -> void:
+func on_gol(_es_visitante: bool) -> void:
 	if not ControladorPartido.fin_partido():
 		animacion_gol.animar()
 	
-func on_cambio_marcador( jugador_anotador : String) -> void: 
-	var indice_jugador_anotador = 0 if jugador_anotador == ControladorPartido.enfrentamiento.config_jugador_local.jugador else 1
-	marcador[indice_jugador_anotador].text = str(ControladorPartido.enfrentamiento.goles_jugador(jugador_anotador))
+func on_cambio_marcador(es_visitante: bool) -> void:
+	var indice_jugador_anotador := 1 if es_visitante else 0
+	marcador[indice_jugador_anotador].text = str(ControladorPartido.enfrentamiento.goles_jugador(es_visitante))
 	barras_poder[posmod(indice_jugador_anotador + 1, NUM_JUGADORES)].incremento_gol()
 	
 func on_fin_partido(jugador, array) -> void:

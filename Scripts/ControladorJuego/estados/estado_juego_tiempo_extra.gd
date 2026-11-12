@@ -8,8 +8,8 @@ func _enter_tree() -> void:
 func gol_valido() -> bool:
 	return true
 
-func on_gol( jugador_anotador : String ) -> void:
-	controlador.incrementar_marcador(jugador_anotador)
+func on_gol( es_visitante: bool ) -> void:
+	controlador.incrementar_marcador(es_visitante)
 	cambiar_estado(ControladorPartido.Estado.FIN)
 	
 func uso_poder() -> bool:

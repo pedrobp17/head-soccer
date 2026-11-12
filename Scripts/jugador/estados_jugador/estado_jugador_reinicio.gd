@@ -6,6 +6,6 @@ class_name EstadoJugadorReinicio
 func _enter_tree() -> void:
 	jugador.velocity = Vector2.ZERO
 	jugador.position = jugador.posicion_aparicion
-	EventBus.reposicionar_pelota.emit(datos_juego.jugador_anotador)
+	EventBus.reposicionar_pelota.emit(datos_juego.es_visitante)
 	peticion_transmision_estado.emit(datos_juego.nombre)
 	

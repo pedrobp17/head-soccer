@@ -1,11 +1,11 @@
 class_name DatosEstadoJuego
 
-var jugador_anotador : String
+var es_visitante: bool
 
 static func build() -> DatosEstadoJuego:
 	return DatosEstadoJuego.new()
 	
-func set_jugador_anotador( jugador : String) -> DatosEstadoJuego:
-	jugador_anotador = jugador
+func set_es_visitante( visitante: bool) -> DatosEstadoJuego:
+	es_visitante = visitante
 	return self
 	

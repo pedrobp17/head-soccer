@@ -7,7 +7,7 @@ func actualizar_resultado_modo(datos_pantalla : DatosPantallas) -> DatosPantalla
 		return datos_pantalla
 	var enfrentamiento := ControladorPartido.enfrentamiento
 	
-	if enfrentamiento.ganador == enfrentamiento.config_jugador_local.jugador:
+	if enfrentamiento.gana_local():
 		ProgresoPartida.progreso_general.completar_nivel_arcade(
 			datos_pantalla.isla_arcade, enfrentamiento.config_jugador_visitante.jugador, datos_pantalla.nivel_arcade)
 	return datos_pantalla

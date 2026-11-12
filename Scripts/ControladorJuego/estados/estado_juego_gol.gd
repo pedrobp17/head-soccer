@@ -6,7 +6,7 @@ func _ready() -> void:
 	EventBus.fin_animacion_gol.connect( on_fin_animacion_gol)
 
 func _enter_tree() -> void:
-	controlador.incrementar_marcador(datos_juego.jugador_anotador)
+	controlador.incrementar_marcador(datos_juego.es_visitante)
 	tiempo = Time.get_ticks_msec()
 
 func on_fin_animacion_gol() -> void:

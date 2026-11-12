@@ -16,23 +16,21 @@ func set_jugador_visitante( _jugador_visitante : String, _poder_visitante : Stri
 func empate() -> bool:	
 	return goles_local == goles_visitante
 	
-func aumentar_marcador( jugador_anotador : String) -> int:
-	var indice_jugador_anotador
-	if jugador_anotador == config_jugador_local.jugador:
-		goles_local += 1
-		indice_jugador_anotador = 0
-	else:
+func aumentar_marcador(es_visitante: bool) -> void:
+	if es_visitante:
 		goles_visitante += 1
-		indice_jugador_anotador = 1
-
+	else:
+		goles_local += 1
 	refresh_info_enfrentamiento()
-	return indice_jugador_anotador
 
-func goles_jugador( jugador_anotador : String) -> int:
-	return goles_local if jugador_anotador == config_jugador_local.jugador else goles_visitante
+func goles_jugador(es_visitante: bool) -> int:
+	return goles_visitante if es_visitante else goles_local
+
+func gana_local() -> bool:
+	return goles_local > goles_visitante
 	
 func refresh_info_enfrentamiento() -> void:
-	ganador = config_jugador_local.jugador if goles_local > goles_visitante else config_jugador_visitante.jugador
+	ganador = config_jugador_local.jugador if gana_local() else config_jugador_visitante.jugador
 	marcador_final = [goles_local, goles_visitante]
 
 func reiniciar_resultado() -> void:
@@ -48,7 +46,7 @@ func get_random_marcador() -> void:
 	refresh_info_enfrentamiento()
 	
 func get_ganador() -> ConfiguracionJugadorPartido:
-	if ganador == config_jugador_local.jugador:
+	if gana_local():
 		return config_jugador_local
 	return config_jugador_visitante
 

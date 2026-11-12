@@ -141,8 +141,8 @@ head_soccer.tscn (HeadSoccer, nodo raíz, escena principal)
 - Sale de pantalla -> `estaFuera = true` (notifier) -> se recoloca.
 
 ## 8. Portería y gol
-- `Porteria` (StaticBody2D): `inicializar(jugador)` le asigna a quién pertenece. `Red` (Area2D) emite
-  `EventBus.gol(jugador)` si `ControladorPartido.estado_actual.gol_valido()`.
+- `Porteria` (StaticBody2D): `inicializar(es_visitante)` le asigna a quién pertenece. `Red` (Area2D) emite
+  `EventBus.gol(es_visitante)` si `ControladorPartido.estado_actual.gol_valido()`.
   Si la pelota está > 1 s sobre el larguero, la empuja de vuelta.
 - `apariciones.gd` (en campo): instancia dos jugadores desde `jugador.tscn`, inicializa porterías y asigna
   esquemas (P1 vs IA o P1 vs P2).
@@ -173,14 +173,14 @@ head_soccer.tscn (HeadSoccer, nodo raíz, escena principal)
 |---|---|---|
 | golpear_pelota(dir, es_pie, fuerza) | pie.gd, Player.gd (cabezazo), porteria.gd (larguero) | EstadoPelotaNormal -> Pelota.mover |
 | pie_contacto_pelota_en_poder | pie.gd | EstadoJugadorEsperandoPoder |
-| gol(jugador) | porteria.gd | EstadoJuegoJugando, EstadoJuegoTiempoExtra, ui.gd |
-| reposicionar(jugador) | EstadoJuegoReseteo | EstadoJugador (base) -> pasa a REINICIO |
-| reposicionar_pelota(anotador) | EstadoJugadorReinicio | EstadoPelotaNormal |
+| gol(es_visitante) | porteria.gd | EstadoJuegoJugando, EstadoJuegoTiempoExtra, ui.gd |
+| reposicionar(es_visitante) | EstadoJuegoReseteo | EstadoJugador (base) -> pasa a REINICIO |
+| reposicionar_pelota(es_visitante) | EstadoJugadorReinicio | EstadoPelotaNormal |
 | poder_cargado | ui.gd | Estados Moviendo y EsperandoPoder (de ambos jugadores) |
 | gastar_poder(es_visitante) | Estados Moviendo/EsperandoPoder | ui.gd |
 | inicio_poder / fin_poder | (no se ha encontrado emisor) | EstadoPelotaNormal / EstadoPelotaPoder |
 | cambiar_barra_vida(vida, es_visitante) | Player.gd, EstadoJugadorMoviendo | ui.gd |
-| cambio_marcador(anotador) | ControladorPartido | ui.gd |
+| cambio_marcador(es_visitante) | ControladorPartido | ui.gd |
 | fin_animacion_gol | AnimadorGol | EstadoJuegoGol |
 | fin_animacion_vs | AnimacionEnfrentamiento | campo.gd |
 | fin_animacion_zoom_reset | AnimacionZoom.zoom_reset | (sin receptores desde 2026-11-10; antes EstadoArcadeIsla._ready) |
@@ -192,8 +192,8 @@ head_soccer.tscn (HeadSoccer, nodo raíz, escena principal)
 | esconder_personajes / mostrar_personajes | campo.gd | ui.gd, Player.gd, Pelota.gd |
 
 ## 12. Flujos clave
-**Gol**: Pelota entra en `Red` -> `porteria` emite `gol(jugador)` (si el estado de juego lo permite) -> `EstadoJuegoJugando`
-pasa a GOL (con anotador) -> `incrementar_marcador` -> `ui` anima el gol -> `fin_animacion_gol` -> RESETEO ->
+**Gol**: Pelota entra en `Red` -> `porteria` emite `gol(es_visitante)` (si el estado de juego lo permite) -> `EstadoJuegoJugando`
+pasa a GOL (con el bando anotador) -> `incrementar_marcador` -> `ui` anima el gol -> `fin_animacion_gol` -> RESETEO ->
 `reposicionar` -> jugadores a REINICIO (posición inicial) -> `reposicionar_pelota` -> pelota REINICIO -> NORMAL -> JUGANDO.
 
 **Inicio de partido**: Torneo/arcade -> `JUGANDO` (campo, máquina en INACTIVO durante toda la intro) -> intro VS ->
@@ -292,3 +292,17 @@ contacto de pie/cuerpo con la pelota -> estado PODER -> `poder.ejecutar()` (aún
     de ISLA dentro de `EstadoArcadeIsla.mostrar_escena()` con await (sección 2). El `emit()` sigue en
     `AnimacionZoom.zoom_reset()` (línea 33): se puede eliminar la señal y el emit si no se planea
     reutilizar.
+
+
+## Balance del jugador (2026-11-12)
+Esta secci?n sustituye los valores y observaciones anteriores sobre estad?sticas, retroceso y se?al de carga.
+- `GestorEstadisticas`: puntuaciones limitadas a 0..10, base 5. Velocidad: 500 + (s-5)*28 px/s; salto: interpolacion de 15.28065 a 32.8533975 px para s=0..4; 64.688085 + (s-5)*31.8346875 px para s >= 4; power: 20 - (s-5)*1.2 segundos de recarga; aguante: 210 - (s-5)*18 px de retroceso objetivo.
+- L?mites respectivos: 360..640 px/s, 15.28065..223.8615225 px, 14..26 s, 120..300 px. Tambi?n se aplican a valores modificados. `modificar()` sigue sumando unidades f?sicas, no puntos de la ficha; vida conserva el da?o existente. Inicializar limpia modificaciones anteriores.
+- `get_velocidad_salto()` convierte la altura en impulso negativo con sqrt(2*g*h). Gravedad propia del jugador: 2*220/0.35? (~3592 px/s?), sin modificar la pelota. Ya no se almacena `velocidad_maxima_subida`.
+- Moviendo, EsperandoPoder y Aturdido actualizan f?sica en `_physics_process`. Movimiento horizontal con respuesta y frenado inmediatos.
+- Aturdido: velocidad inicial horizontal calculada con sqrt(2*4000*distancia); frenado 4000 px/s? multiplicado por delta, independiente de velocidad. Conserva velocidad vertical. Aturdimiento fijo 0.7 s. Distancia aproximada, afectada por paso f?sico y colisiones.
+- `BarraPoder`: capacidad fija 100, tasa 100/segundos_recarga; bonus por recibir gol de 25. La UI env?a `EventBus.poder_cargado(es_visitante: bool)` solo al llenarse la barra correspondiente.
+- `Jugador.poder_listo` conserva disponibilidad entre estados, escucha poder_cargado y gastar_poder filtrando por bando. Los estados consultan esta propiedad y ya no guardan su propia bandera ni escuchan poder_cargado.
+- Validaci?n: carga de scripts en Godot 4.7.1 y prueba aislada de valores 0/3/5/10, conversi?n de salto, recarga/bonus/reset y l?mites de modificaciones. Pendiente evaluar sensaciones y balance en partidas reales.
+
+- Ajuste vigente de salto: referencia de capsula 114.2 px, media de las 10 alturas positivas de jugadores.json (104..122 px); se excluyen 8 fichas con altura 0. Desplazamiento vertical para estadistica 0/3/4/5/10: 15.28065/28.460210625/32.8533975/64.688085/223.8615225 px. Sumando la capsula media, nivel 4 alcanza 147.0533975 px y nivel 10 alcanza 338.0615225 px tras tres aumentos del 5% y otro del 10% (factor acumulado 1.2733875). Se conserva la gravedad. Es una calibracion media, no una compensacion individual: el alcance cambia con el tamano real, la integracion fisica y las colisiones. La capsula tampoco garantiza el limite exacto del sprite visible.

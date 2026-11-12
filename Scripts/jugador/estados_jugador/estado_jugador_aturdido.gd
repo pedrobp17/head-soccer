@@ -1,26 +1,26 @@
 class_name EstadoJugadorAturdido
 extends EstadoJugador
 
-const DURACION_ATURDIMIENTO := 2000
-const DISTANCIA_KNOCK_BACK := -2500
-const FUERZA_KNOCK_BACK := Vector2(DISTANCIA_KNOCK_BACK, 0)
-var tiempo_inicio_aturdimiento := Time.get_ticks_msec()
+const DURACION_ATURDIMIENTO: float = 0.7
+const DESACELERACION_RETROCESO: float = 4000.0
+var tiempo_transcurrido: float = 0.0
 
 func _enter_tree() -> void:
-	#animacion_jugador.play("aturdimiento")
-	knockback()
-	tiempo_inicio_aturdimiento = Time.get_ticks_msec()
 	nombre_estado = Jugador.Estado.ATURDIDO
-	
-func _process(delta: float) -> void:
+	tiempo_transcurrido = 0.0
+	knockback()
+
+func _physics_process(delta: float) -> void:
 	if not jugador.is_on_floor():
-		jugador.velocity += jugador.get_gravity() * delta
-		
-	jugador.velocity.x = move_toward(jugador.velocity.x, 0, jugador.estadisticas.get_estadistica("velocidad"))
+		jugador.velocity.y += GestorEstadisticas.GRAVEDAD_JUGADOR * delta
 	jugador.move_and_slide()
-	
-	if Time.get_ticks_msec() - tiempo_inicio_aturdimiento > DURACION_ATURDIMIENTO:
-		peticion_transmision_estado.emit(Jugador.Estado.JUGANDO)
+	jugador.velocity.x = move_toward(jugador.velocity.x, 0.0, DESACELERACION_RETROCESO * delta)
+	tiempo_transcurrido += delta
+	if tiempo_transcurrido >= DURACION_ATURDIMIENTO:
+		cambiar_estado(Jugador.Estado.JUGANDO)
 
 func knockback() -> void:
-	jugador.velocity = FUERZA_KNOCK_BACK * Jugador.BANDO[jugador.es_visitante]
+	var distancia: float = jugador.estadisticas.get_estadistica("aguante")
+	var rapidez: float = sqrt(2.0 * DESACELERACION_RETROCESO * distancia)
+	# Conserva la velocidad vertical si el golpe se recibe en el aire.
+	jugador.velocity.x = -rapidez * Jugador.BANDO[jugador.es_visitante]

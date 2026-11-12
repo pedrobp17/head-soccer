@@ -13,8 +13,8 @@ func _process(delta: float) -> void:
 			peticion_transmitir_estado.emit(ControladorPartido.Estado.FIN)
 
 
-func on_juegador_marcado ( jugador : String) -> void:
-	cambiar_estado(ControladorPartido.Estado.GOL,  DatosEstadoJuego.build().set_jugador_anotador(jugador))
+func on_juegador_marcado ( es_visitante: bool) -> void:
+	cambiar_estado(ControladorPartido.Estado.GOL, DatosEstadoJuego.build().set_es_visitante(es_visitante))
 
 
 func gol_valido() -> bool:
