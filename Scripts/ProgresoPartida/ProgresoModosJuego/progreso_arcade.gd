@@ -35,7 +35,16 @@ func asegurar_jugador(jugador: String) -> void:
 		if not actual.has(isla):
 			actual[isla] = plantilla[isla]
 		else:
-			var niveles: Dictionary = actual[isla]["jugadores"]
+			var datos_isla: Dictionary = actual[isla]
+			# El formato anterior creaba todas las islas desbloqueadas y no
+			# tenia una version que permitiera distinguir progreso real. Esta
+			# migracion se aplica una sola vez; a partir de la version 1 se
+			# conservan siempre los desbloqueos guardados.
+			if datos_isla.get("version_desbloqueo", 0) < 1:
+				datos_isla["desbloqueada"] = isla == nombre_isla(PantallaArcade.Islas.RAIMON)
+				datos_isla["version_desbloqueo"] = 1
+				necesita_guardar_migracion = true
+			var niveles: Dictionary = datos_isla["jugadores"]
 			for clave in plantilla[isla]["jugadores"]:
 				if not niveles.has(clave):
 					niveles[clave] = normalizar_nivel(false)
@@ -50,7 +59,11 @@ static func crear_progreso_jugador() -> Dictionary:
 			for nivel in NIVELES_POR_JUGADOR:
 				jugadores[clave_nivel(rival, nivel)] = normalizar_nivel(false)
 		progreso[nombre_isla(isla)] = {
-			"desbloqueada": true,
+			# Una partida nueva comienza exclusivamente en Raimon. Las demas
+			# islas conservan sus niveles, pero no se pueden seleccionar hasta
+			# que el sistema de progreso las desbloquee.
+			"desbloqueada": isla == PantallaArcade.Islas.RAIMON,
+			"version_desbloqueo": 1,
 			"version_niveles": 2,
 			"jugadores": jugadores
 		}
@@ -114,6 +127,20 @@ func get_islas_desbloqueadas(jugador : String) -> Array[PantallaArcade.Islas]:
 func desbloquear_isla(jugador : String, isla : PantallaArcade.Islas) -> void:
 	asegurar_jugador(jugador)
 	progreso_por_jugador[jugador][nombre_isla(isla)]["desbloqueada"] = true
+
+func esta_nivel_desbloqueado(jugador: String, isla: PantallaArcade.Islas, indice_mapa: int) -> bool:
+	asegurar_jugador(jugador)
+	if not progreso_por_jugador[jugador][nombre_isla(isla)]["desbloqueada"]:
+		return false
+	if indice_mapa == 0:
+		return true
+	if indice_mapa < 0 or indice_mapa >= get_niveles_totales(isla):
+		return false
+
+	var indice_anterior := indice_mapa - 1
+	var rival_anterior: String = PantallaArcade.jugadores_islas[isla][indice_anterior % PantallaArcade.jugadores_islas[isla].size()]
+	var nivel_anterior := get_nivel_rival(isla, indice_anterior)
+	return esta_vencido(jugador, isla, rival_anterior, nivel_anterior)
 
 static func normalizar_nivel(datos: Variant) -> Dictionary:
 	var resultado: Dictionary = datos.duplicate(true) if datos is Dictionary else {"vencido": datos == true}

@@ -7,6 +7,12 @@ func mostrar_escena() -> void:
 func esconder_escena() -> void:
 	menu_principal.ajustes.hide()
 
+func animar() -> void:
+	pass
+
+func reposicionar() -> void:
+	pass
+
 func puede_subir_barra_superior() -> bool:
 	return true
 

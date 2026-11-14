@@ -3,15 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cpajec3nte8gr"
-path="res://.godot/imported/directormagister.png-fd92d1451d855f588cf70a6f9313a279.ctex"
-metadata={
-"vram_texture": false
-}
+valid=false
 
 [deps]
 
 source_file="res://Sprites/jugadores/a_implementar/directormagister.png"
-dest_files=["res://.godot/imported/directormagister.png-fd92d1451d855f588cf70a6f9313a279.ctex"]
 
 [params]
 

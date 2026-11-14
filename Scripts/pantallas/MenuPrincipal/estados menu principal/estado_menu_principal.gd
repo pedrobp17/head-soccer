@@ -4,6 +4,7 @@ class_name EstadoMenuPrincipal
 signal peticion_transmision_estado( nuevo_estado : MenuPrincipal.Estado )
 
 var menu_principal : MenuPrincipal = null
+var escena_lista: bool = false
 
 func setup( menu_entrada : MenuPrincipal ) -> void:
 	menu_principal = menu_entrada
@@ -16,6 +17,12 @@ func mostrar_escena() -> void:
 	pass
 
 func esconder_escena() -> void:
+	pass
+
+func animar() -> void:
+	pass
+
+func reposicionar() -> void:
 	pass
 	
 func cambiar_foco( _tiene_foco : bool ) -> void:
@@ -32,10 +39,23 @@ func input_barra_superior( _event : InputEvent ) -> void:
 	pass
 
 func _enter_tree() -> void:
-	await mostrar_escena()
+	escena_lista = false
+	mostrar_escena()
+	@warning_ignore("redundant_await")
+	await animar()
+	if not is_inside_tree():
+		return
 	cambiar_foco(not menu_principal.en_menu_superior)
+	escena_lista = true
 
 func _input( event : InputEvent ) -> void:
+	if not escena_lista:
+		if menu_principal.en_menu_superior:
+			procesar_input_barra_superior(event)
+		else:
+			get_viewport().set_input_as_handled()
+		return
+
 	#TRANSICION: contenido -> panel_superior
 	if event.is_action_pressed("ui_up") and !menu_principal.en_menu_superior and puede_subir_barra_superior():
 		menu_principal.cambiar_foco_barra_superior(true)
@@ -52,6 +72,9 @@ func _input( event : InputEvent ) -> void:
 	if !menu_principal.en_menu_superior:
 		return
 
+	procesar_input_barra_superior(event)
+
+func procesar_input_barra_superior(event: InputEvent) -> void:
 	# En la barra superior, izquierda/derecha son exclusivas del estado actual:
 	# se marca como manejado ANTES de delegar para que ningún widget reciba el evento.
 	if event.is_action_pressed("ui_left") or event.is_action_pressed("ui_right"):
@@ -60,4 +83,7 @@ func _input( event : InputEvent ) -> void:
 	input_barra_superior(event)
 
 func _exit_tree() -> void:
+	escena_lista = false
+	cambiar_foco(false)
 	esconder_escena()
+	reposicionar()

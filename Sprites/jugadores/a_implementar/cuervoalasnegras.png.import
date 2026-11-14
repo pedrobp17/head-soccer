@@ -3,15 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cmv6khlpw8wn7"
-path="res://.godot/imported/cuervoalasnegras.png-edc589c383ae6ac153d8baf6c8b683ca.ctex"
-metadata={
-"vram_texture": false
-}
+valid=false
 
 [deps]
 
 source_file="res://Sprites/jugadores/a_implementar/cuervoalasnegras.png"
-dest_files=["res://.godot/imported/cuervoalasnegras.png-edc589c383ae6ac153d8baf6c8b683ca.ctex"]
 
 [params]
 

@@ -1,7 +1,30 @@
 [gd_scene format=3 uid="uid://dyl0wuwreaqd2"]
 
 [ext_resource type="Script" uid="uid://brbrttbc05onw" path="res://Scripts/ui/menu_deslizante/EstructurasDatos/Modos/CartasModosJuego.gd" id="1_rxnc5"]
-[ext_resource type="Texture2D" uid="uid://bmocftqeln4sq" path="res://Sprites/UI/Recuadro1.png" id="2_iecdu"]
+[ext_resource type="Texture2D" uid="uid://depggxif5delf" path="res://Sprites/UI/modos_juego/sinMarco/Modo1VS1.png" id="2_ayhn3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eu64u"]
+bg_color = Color(0.019607844, 0.19215687, 0.43529412, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a8ku5"]
+bg_color = Color(1, 1, 0.28627452, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.019607844, 0.19215687, 0.43529412, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 
 [node name="ItemsModoJuego" type="Control" unique_id=50786478]
 custom_minimum_size = Vector2(400, 500)
@@ -12,38 +35,46 @@ offset_bottom = 40.0
 pivot_offset = Vector2(1.47, 0)
 script = ExtResource("1_rxnc5")
 
-[node name="NotCurrent" type="TextureRect" parent="." unique_id=284019809]
+[node name="NotCurrent" type="Panel" parent="." unique_id=489710141]
 unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_iecdu")
+layout_mode = 0
+offset_left = 12.0
+offset_top = 366.0
+offset_right = 395.31
+offset_bottom = 449.95502
+theme_override_styles/panel = SubResource("StyleBoxFlat_eu64u")
 
-[node name="Current" type="TextureRect" parent="." unique_id=498176247]
+[node name="Current" type="Panel" parent="." unique_id=453011925]
 unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_iecdu")
+layout_mode = 0
+offset_left = 12.0
+offset_top = 366.0
+offset_right = 395.31
+offset_bottom = 449.95502
+theme_override_styles/panel = SubResource("StyleBoxFlat_a8ku5")
 
 [node name="Nombre" type="Label" parent="." unique_id=1669658047]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(383.31, 0)
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -149.0
-offset_top = 67.0
-offset_right = 151.59
-offset_bottom = 123.36
+offset_left = -188.0
+offset_top = 378.0
+offset_right = 195.31
+offset_bottom = 434.36
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 35
 text = "1vs1"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Dibujo" type="TextureRect" parent="." unique_id=509170263]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 4.0
+offset_top = -134.0
+offset_right = 404.0
+offset_bottom = 366.0
+texture = ExtResource("2_ayhn3")

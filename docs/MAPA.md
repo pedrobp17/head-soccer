@@ -282,11 +282,10 @@ contacto de pie/cuerpo con la pelota -> estado PODER -> `poder.ejecutar()` (aún
     `escena_lista = true`) para probar el candado de input (sección 2): borrarlos cuando se confirme
     que funciona. Idioma de los mensajes: español.
 
-24. `EstadoMenuPrincipal._enter_tree` (línea 35) repite el patrón `await mostrar_escena()` de la base
-    arcade, pero **sin candado de input**: el menú acepta teclas mientras su `mostrar_escena()` corre
-    (y aquí casi todas las implementaciones son síncronas, así que el await es realmente redundante —
-    produce el aviso `redundant_await` que en arcade se silenció con `@warning_ignore`). Decisión
-    2026-11-10: fuera de alcance, no tocar `EstadoMenuPrincipal`.
+24. **Corregido**: `EstadoMenuPrincipal._enter_tree` muestra la escena, espera el hook `animar()` y
+    solo después activa el foco y `escena_lista`. Su `_input` descarta eventos mientras la entrada no
+    termina. `_exit_tree` retira el foco, oculta y ejecuta `reposicionar()` sin esperar. El `await`
+    dinámico conserva `@warning_ignore("redundant_await")`, igual que la base arcade.
 
 25. `EventBus.fin_animacion_zoom_reset` quedó **sin receptores** al mover el fundido de identificadores
     de ISLA dentro de `EstadoArcadeIsla.mostrar_escena()` con await (sección 2). El `emit()` sigue en
@@ -318,6 +317,8 @@ Esta secci?n sustituye los valores y observaciones anteriores sobre estad?sticas
 - Orden persistido: [GANAR_SIN_TIEMPO_EXTRA, METER_5_GOLES, logro de isla]. Los textos respetan ese orden y Meter5Goles tiene objetivo 5. Las condiciones especificas de isla siguen pendientes de definicion; no se conceden automaticamente.
 - `evaluar_logros()` agrupa todos los desbloqueos en una llamada a InfoGeneral. `ProgresoArcade.set_logros_arcade()` fusiona mediante OR y devuelve si hay nuevos true. InfoGeneral escribe en disco solo cuando hay nuevos desbloqueos; una repeticion peor nunca elimina estrellas.
 - El mapa y DatosPantallas mantienen indices globales. `ProgresoArcade.get_nivel_rival(isla, indice)` convierte con floor(indice / cantidad_rivales) a 0/1. El gestor, InfoNivel y resultado arcade aplican esta conversion antes de consultar/escribir progreso. El JSON solo usa rival_0 y rival_1.
+- Una partida arcade nueva desbloquea solo RAIMON. El formato `version_desbloqueo=1` migra las partidas creadas por el formato antiguo que marcaba todas las islas como disponibles. El desbloqueo de nuevas islas queda delegado al sistema de progresion que lo invoque explicitamente mediante `desbloquear_isla_arcade()`.
+- Los niveles son secuenciales: el indice 0 esta disponible al desbloquear la isla y cada indice posterior exige haber vencido el inmediatamente anterior. EstadoArcadeArea usa esta misma consulta para pintar indicadores, limitar el movimiento, restaurar el nivel al volver de un partido y bloquear `ui_accept`.
 - Migracion version_niveles=2 por isla: conserva valores locales y fusiona claves globales mediante OR; elimina claves sobrantes. Algunas claves antiguas 0/1 son ambiguas al coexistir formatos, por lo que se prioriza conservar logros. InfoGeneral conserva un .antes_niveles_locales.bak antes de escribir el JSON migrado.
 - `evaluar_logros` guarda si cambios > 0; comparar con Array.size() era incorrecto porque siempre vale 3. Los indicadores del mapa reciben ahora el array real con set_logros; antes siempre mostraban cero estrellas por el argumento por defecto de inicializar.
 - Prueba aislada de Godot: generacion de claves 0/1, conversion de mapa, migracion de claves globales, recarga y union monotona de logros.
@@ -340,3 +341,12 @@ Esta secci?n sustituye los valores y observaciones anteriores sobre estad?sticas
 - BACK desde VIENDO pasa el ultimo indice consultado mediante DatosEstadoLogros. ELIGIENDO selecciona ese personaje, sincronizando coordenadas globales/visibles, filas, scroll y marco.
 - Al reposicionar se cancelan tweens anteriores de marco y scroll; al salir de VIENDO se detiene el tween de flechas y se desconecta fin_animacion_nombre. Solo recibe input el estado actual con panel visible y foco.
 - Verificado en Godot con la escena real: BACK tras avanzar de personaje, seleccion del ultimo personaje con scroll y reapertura en ELIGIENDO. Eliminadas referencias onready sin uso a %equipo y %imagen, nodos inexistentes en Pantallalogros.
+
+## Animaciones de entrada del menu principal
+- `EstadoMenuPrincipal` define los hooks `animar()` y `reposicionar()` para todos sus estados concretos.
+- Al entrar, ejecuta `mostrar_escena()`, espera a que termine `animar()` y solo entonces concede el foco al contenido mediante `escena_lista`. Mientras espera, la barra superior sigue aceptando izquierda/derecha, pero bajar al contenido y el input propio de la pantalla permanecen bloqueados.
+- Al salir, bloquea input, retira el foco, oculta el contenido y llama a `reposicionar()` sin `await`, cuando la pantalla ya no es visible.
+- `EstadoMenuPrincipalSkin` delega estos hooks en `ManejadorMenuPersonajes`; MENU, LOGROS y AJUSTES tienen hooks explicitos vacios pendientes de sus animaciones concretas.
+- Antes de mostrar SKIN, `preparar_animacion()` coloca las cinco cartas interiores en el placeholder 0 mientras el panel sigue oculto, evitando un fotograma con las cartas ya colocadas. Tras los marcos, avanzan por diagonales paralelas hasta los slots 1..5, con pasos lineales de 0.12 s para no reiniciar easing en cada tramo. Los placeholders extremos 0 y 6 solo sirven de referencia. Al ocultar, `reposicionar()` ejecuta `refresh()` sin animacion.
+- Los tweens de entrada de los marcos y las cartas guardan una generacion de cancelacion. Si se navega por la barra antes de terminar, `reposicionar()` mata el tween, invalida la corrutina anterior y libera `animating`, evitando que una animacion oculta interfiera con la siguiente entrada.
+- Boton y estadisticas se preparan explicitamente antes de cada entrada y cancelan sus propios tweens al reposicionar. El manejador comprueba la generacion despues de animar las cartas y mientras espera boton/estadisticas, por lo que una transicion rapida por la barra superior no puede reanudar una animacion antigua sobre el panel oculto.

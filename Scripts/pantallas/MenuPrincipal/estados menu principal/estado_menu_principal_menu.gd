@@ -7,6 +7,12 @@ func mostrar_escena() -> void:
 func esconder_escena() -> void:
 	menu_principal.menu_deslizante.hide()
 
+func animar() -> void:
+	pass
+
+func reposicionar() -> void:
+	pass
+
 func cambiar_foco( tiene_foco : bool ) -> void:
 	menu_principal.menu_deslizante.cambiar_estado_foco(tiene_foco)
 

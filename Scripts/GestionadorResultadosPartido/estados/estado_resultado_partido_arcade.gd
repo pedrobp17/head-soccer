@@ -11,7 +11,6 @@ func actualizar_resultado_modo(datos_pantalla: DatosPantallas) -> DatosPantallas
 		gestor.registrar_logro(LogrosArcadeHelper.LogrosGenerales.GANAR_SIN_TIEMPO_EXTRA,
 			enfrentamiento.gana_local() and sin_tiempo_extra)
 		gestor.registrar_logro(LogrosArcadeHelper.LogrosGenerales.METER_5_GOLES, enfrentamiento.goles_local)
-		print(enfrentamiento.goles_local, " goles locales")
 		gestor.evaluar_logros()
 	ControladorPartido.logros_arcade = null
 	

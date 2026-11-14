@@ -127,6 +127,9 @@ func esta_isla_arcade_completada(isla: PantallaArcade.Islas) -> bool:
 func get_niveles_vencidos_arcade(isla: PantallaArcade.Islas) -> int:
 	return get_progreso_arcade().get_niveles_vencidos(get_jugador_seleccionado(), isla)
 
+func esta_nivel_arcade_desbloqueado(isla: PantallaArcade.Islas, indice_mapa: int) -> bool:
+	return get_progreso_arcade().esta_nivel_desbloqueado(get_jugador_seleccionado(), isla, indice_mapa)
+
 func completar_nivel_arcade(isla: PantallaArcade.Islas, rival: String, nivel: int) -> void:
 	var progreso := get_progreso_arcade()
 	var jugador := get_jugador_seleccionado()

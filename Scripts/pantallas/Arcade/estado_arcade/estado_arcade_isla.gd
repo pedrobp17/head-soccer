@@ -14,7 +14,9 @@ func mostrar_escena() -> void:
 
 func procesar_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_select"):
-		cambiar_estado(PantallaArcade.Estado.AREA)
+		if es_valido(arcade.isla_actual):
+			cambiar_estado(PantallaArcade.Estado.AREA)
+		return
 	
 	if event.is_action_pressed("p1_back"):
 		ControladorPartido.enfrentamiento = Enfrentamientos.new()
@@ -26,7 +28,7 @@ func procesar_input(event: InputEvent) -> void:
 			return
 		set_seleccionado(vecino, arcade.isla_actual)
 
-func es_valido( isla : PantallaArcade.Islas ) -> bool:
+func es_valido(isla: PantallaArcade.Islas) -> bool:
 	return isla in arcade.islas_desbloqueadas
 	
 func get_vecino( _direccion : Key ) -> PantallaArcade.Islas:

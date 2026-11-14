@@ -1,13 +1,11 @@
 [gd_resource type="Resource" script_class="DatosModoJuego" format=3 uid="uid://dobgn2gx6ayb2"]
 
-[ext_resource type="Texture2D" uid="uid://dd6lor4fftxl6" path="res://Sprites/UI/modos_juego/normal/ModoLiga.png" id="1_arjay"]
 [ext_resource type="Script" uid="uid://cnyrrymgnuu3n" path="res://Scripts/ui/menu_deslizante/EstructurasDatos/Modos/DatosModosJuego.gd" id="1_bc6qw"]
-[ext_resource type="Texture2D" uid="uid://xvvlxqgco1co" path="res://Sprites/UI/modos_juego/seleccionado/ModoLiga.png" id="3_v6kjl"]
+[ext_resource type="Texture2D" uid="uid://cfw08v0ltiqcm" path="res://Sprites/UI/modos_juego/sinMarco/ModoLiga.png" id="1_fc5ch"]
 
 [resource]
 script = ExtResource("1_bc6qw")
 modo = 5
 name = "liga"
-normal_texture = ExtResource("1_arjay")
-selected_texture = ExtResource("3_v6kjl")
+normal_texture = ExtResource("1_fc5ch")
 metadata/_custom_type_script = "uid://cnyrrymgnuu3n"

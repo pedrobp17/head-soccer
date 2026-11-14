@@ -103,25 +103,27 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -53.0
+offset_bottom = -53.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ItemsModoJuego" parent="manejador/PlaceholderContainer" unique_id=50786478 instance=ExtResource("3_cti0o")]
 z_index = 1
 layout_mode = 0
-offset_left = 203.00003
-offset_top = 443.00003
-offset_right = 603.0
-offset_bottom = 943.0
+offset_left = 125.0
+offset_top = 471.00003
+offset_right = 525.0
+offset_bottom = 971.0
 scale = Vector2(0.45, 0.45)
 
 [node name="ItemsModoJuego2" parent="manejador/PlaceholderContainer" unique_id=1176962976 instance=ExtResource("3_cti0o")]
 z_index = 2
 layout_mode = 0
-offset_left = 302.0
-offset_top = 379.0
-offset_right = 702.0
-offset_bottom = 879.0
+offset_left = 247.412
+offset_top = 394.0
+offset_right = 647.412
+offset_bottom = 894.0
 scale = Vector2(0.6, 0.6)
 
 [node name="ItemsModoJuego3" parent="manejador/PlaceholderContainer" unique_id=469897803 instance=ExtResource("3_cti0o")]
@@ -136,19 +138,19 @@ scale = Vector2(0.75, 0.75)
 [node name="ItemsModoJuego4" parent="manejador/PlaceholderContainer" unique_id=1413612269 instance=ExtResource("3_cti0o")]
 z_index = 2
 layout_mode = 0
-offset_left = 609.0
-offset_top = 379.0
-offset_right = 1009.0
-offset_bottom = 879.0
+offset_left = 664.0
+offset_top = 395.0
+offset_right = 1064.0
+offset_bottom = 895.0
 scale = Vector2(0.6, 0.6)
 
 [node name="ItemsModoJuego5" parent="manejador/PlaceholderContainer" unique_id=1466601333 instance=ExtResource("3_cti0o")]
 z_index = 1
 layout_mode = 0
-offset_left = 778.0
-offset_top = 443.00003
-offset_right = 1178.0
-offset_bottom = 943.0
+offset_left = 850.0
+offset_top = 470.0
+offset_right = 1250.0
+offset_bottom = 970.0
 scale = Vector2(0.45, 0.45)
 
 [node name="CardContainer" type="Control" parent="manejador" unique_id=1559061087]
@@ -162,15 +164,19 @@ grow_vertical = 2
 
 [node name="PersonajeSeleccion" type="Sprite2D" parent="manejador" unique_id=923300106]
 unique_name_in_owner = true
-position = Vector2(250, 295)
+position = Vector2(576, 305)
+scale = Vector2(0.88, 0.88)
 texture = ExtResource("13_u06ut")
 
 [node name="FondoError" type="Panel" parent="manejador" unique_id=955522223]
+visible = false
 z_index = 5
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 1.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_k0wdy")

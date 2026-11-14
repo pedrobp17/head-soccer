@@ -1,51 +1,51 @@
 extends Control
 class_name Logros
 
-const DURACION_ANIMACION := 0.2
+const DURACION_ANIMACION := 0.1
 const NUMERO_COLUMNAS := 5
 const POSICION_INICIAL := Vector2(128.0, 192.0)
-const DIRECCIONES : Dictionary ={
-	"izquierda" : Vector2.LEFT,
-	"derecha" : Vector2.RIGHT,
-	"subir" : Vector2.UP,
-	"bajar" : Vector2.DOWN
+const DIRECCIONES: Dictionary = {
+	"izquierda": Vector2.LEFT,
+	"derecha": Vector2.RIGHT,
+	"subir": Vector2.UP,
+	"bajar": Vector2.DOWN
 }
 
 enum Estado {ELIGIENDO, VIENDO}
 
-@onready var ingame : CartaIngameLogro = %CartaIngramLogro
+@onready var ingame: CartaIngameLogro = %CartaIngramLogro
 @onready var barra: CeldasSeleccionPersonajes = %Barra
 @onready var marco_seleccion: Panel = %MarcoSeleccion
 @onready var eleccion_personaje: Control = %EleccionPersonaje
 @onready var estadisticas_personaje: Control = %EstadisticasPersonaje
-@onready var numeros_logros : Dictionary[String, Label] = {
-	"partidos_ganados" : $FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/PartidosJugados/valor,
-	"victorias" : $FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/Victorias/valor,
-	"perdidos" : $FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/Perdidos/valor,
-	"winrate" : $FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/WinRate/valor,
-	"goles" :  $FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/Goles/valor,
-	"poderes_usados" : $FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/Poderes/valor,
-	"torneo" : $FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/trofeos/Iconoes/Torneos/Label,
-	"liga" : $FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/trofeos/Iconoes/Ligas/Label ,
-	"mundial" : $FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/trofeos/Iconoes/Mundial/Label,
-	"pelea" : $FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/trofeos/Iconoes/Pelea/Label
+@onready var numeros_logros: Dictionary[String, Label] = {
+	"partidos_ganados": $FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/PartidosJugados/valor,
+	"victorias": $FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/Victorias/valor,
+	"perdidos": $FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/Perdidos/valor,
+	"winrate": $FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/WinRate/valor,
+	"goles": $FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/Goles/valor,
+	"poderes_usados": $FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/Poderes/valor,
+	"torneo": $FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/trofeos/Iconoes/Torneos/Label,
+	"liga": $FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/trofeos/Iconoes/Ligas/Label,
+	"mundial": $FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/trofeos/Iconoes/Mundial/Label,
+	"pelea": $FondoPantallaCentral/EstadisticasPersonaje/Datos/Estadisticas/trofeos/Iconoes/Pelea/Label
 }
 @onready var jugador: AnimacionDesplazamientoNombres = %jugador
 @onready var cuerpo_entero: TextureRect = %CuerpoEntero
-@onready var poderes : Array[CartaPoderesLogro] = [$FondoPantallaCentral/EstadisticasPersonaje/Poderes/cartas/CartaPoderesLogro1, $FondoPantallaCentral/EstadisticasPersonaje/Poderes/cartas/CartaPoderesLogro2 ]
+@onready var poderes: Array[CartaPoderesLogro] = [$FondoPantallaCentral/EstadisticasPersonaje/Poderes/cartas/CartaPoderesLogro1, $FondoPantallaCentral/EstadisticasPersonaje/Poderes/cartas/CartaPoderesLogro2]
 @onready var flecha_1: Panel = $FondoPantallaCentral/EstadisticasPersonaje/Flecha1
 @onready var flecha_2: Panel = $FondoPantallaCentral/EstadisticasPersonaje/Flecha2
 
-var tiene_foco : bool = true
-var numero_personajes : int
-var coordenadas_casilla_actual := Vector2(0,0)
-var coordenadas_casillas_visibles := Vector2(0,0)
-var animacion : bool = false
+var tiene_foco: bool = true
+var numero_personajes: int
+var coordenadas_casilla_actual := Vector2(0, 0)
+var coordenadas_casillas_visibles := Vector2(0, 0)
+var animacion: bool = false
 var tween_marco: Tween
-var filas_visibles : Array = [0,1]
+var filas_visibles: Array = [0, 1]
 
 var creador_estados := CreadorEstadoLogros.new()
-var estado_actual : EstadoLogros = null
+var estado_actual: EstadoLogros = null
 
 
 func _ready() -> void:
@@ -53,8 +53,7 @@ func _ready() -> void:
 	cambiar_estado(Estado.ELIGIENDO)
 
 
-
-func cambiar_estado( nuevo_estado : Estado, datos : DatosEstadoLogros = DatosEstadoLogros.new() ) -> void:
+func cambiar_estado(nuevo_estado: Estado, datos: DatosEstadoLogros = DatosEstadoLogros.new()) -> void:
 	if estado_actual:
 		remove_child(estado_actual)
 		estado_actual.queue_free()
@@ -65,17 +64,17 @@ func cambiar_estado( nuevo_estado : Estado, datos : DatosEstadoLogros = DatosEst
 	call_deferred("add_child", estado_actual)
 
 
-func cambiar_estado_foco( foco : bool) -> void:
+func cambiar_estado_foco(foco: bool) -> void:
 	tiene_foco = foco
 	if tiene_foco:
 		marco_seleccion.show()
 	else:
 		marco_seleccion.hide()
 
-func puedo_subir_menu_principal( ) -> bool:
+func puedo_subir_menu_principal() -> bool:
 	return coordenadas_casilla_actual.y == 0
 
-func nueva_celda_seleccionada( direccion : Vector2) -> void:
+func nueva_celda_seleccionada(direccion: Vector2) -> void:
 	var nueva_celda = coordenadas_casilla_actual + direccion
 
 	if es_posicion_valida(nueva_celda):
@@ -94,17 +93,17 @@ func nueva_celda_seleccionada( direccion : Vector2) -> void:
 			coordenadas_casillas_visibles += direccion
 			transicion_marco_seleccion(get_coordenadas_celda_objetivo(coordenadas_casillas_visibles))
 
-func es_posicion_valida(nueva_posicion : Vector2) -> bool:
+func es_posicion_valida(nueva_posicion: Vector2) -> bool:
 	if nueva_posicion.x >= NUMERO_COLUMNAS || nueva_posicion.x < 0 || nueva_posicion.y < 0:
 		return false
 
 	var elemento = get_indice_jugador(nueva_posicion)
 	return elemento < numero_personajes
 
-func get_indice_jugador(nueva_posicion : Vector2) -> int:
+func get_indice_jugador(nueva_posicion: Vector2) -> int:
 	return int(nueva_posicion.y * NUMERO_COLUMNAS + nueva_posicion.x)
 
-func transicion_marco_seleccion( nueva_posicion : Vector2) -> void:
+func transicion_marco_seleccion(nueva_posicion: Vector2) -> void:
 	if tween_marco != null and tween_marco.is_valid():
 		tween_marco.kill()
 	tween_marco = create_tween()
@@ -112,10 +111,10 @@ func transicion_marco_seleccion( nueva_posicion : Vector2) -> void:
 	await tween_marco.finished
 	animacion = false
 
-func get_coordenadas_celda_objetivo( nueva_celda : Vector2) -> Vector2:
+func get_coordenadas_celda_objetivo(nueva_celda: Vector2) -> Vector2:
 	return nueva_celda * Vector2(barra.DISTANCIA_ENTRE_CELDAS, barra.DISTANCIA_ENTRE_CELDAS) + POSICION_INICIAL
 
-func actualizar_filas_visibles( operacion : String) -> void:
+func actualizar_filas_visibles(operacion: String) -> void:
 	var valor_suma = 1 if operacion == "suma" else -1
 	for i in filas_visibles.size():
 		filas_visibles[i] += valor_suma
@@ -128,12 +127,12 @@ func mostrar_estadisticas_personajes() -> void:
 	eleccion_personaje.hide()
 	estadisticas_personaje.show()
 
-func set_pantalla_estadisticas_personaje(indice : int) -> void:
+func set_pantalla_estadisticas_personaje(indice: int) -> void:
 	var logros_jugador = ProgresoPartida.personajes_desbloqueados.get_personaje_indice(indice)
 	set_valores_numericos_logros(logros_jugador)
 	
 	var info_personaje = DatosJugadores.get_jugador(logros_jugador.nombre)
-	jugador.set_nombre(NombresPersonajesHelper.get_nombre_normal_to_separacion_espacio( logros_jugador.nombre ))
+	jugador.set_nombre(NombresPersonajesHelper.get_nombre_normal_to_separacion_espacio(logros_jugador.nombre))
 	cuerpo_entero.texture = ImagenJugadorEnteroHelper.get_icono(logros_jugador.nombre)
 	ingame.inicializar(logros_jugador.nombre)
 	
@@ -141,8 +140,8 @@ func set_pantalla_estadisticas_personaje(indice : int) -> void:
 		poderes[i].inicializar(logros_jugador.nombre, info_personaje.poderes[i], i + 1)
 		
 	
-func set_valores_numericos_logros(logros_jugador : ProgresoPersonajes) -> void:
-	var partidos_totales : int = logros_jugador.partidos_ganados + logros_jugador.partidos_perdidos
+func set_valores_numericos_logros(logros_jugador: ProgresoPersonajes) -> void:
+	var partidos_totales: int = logros_jugador.partidos_ganados + logros_jugador.partidos_perdidos
 	
 	numeros_logros["partidos_ganados"].text = str(partidos_totales)
 	numeros_logros["victorias"].text = str(logros_jugador.partidos_ganados)

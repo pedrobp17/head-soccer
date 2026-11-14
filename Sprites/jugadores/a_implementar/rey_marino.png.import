@@ -3,15 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cgvpewj4ospef"
-path="res://.godot/imported/rey_marino.png-89ddf0a84b9428f3947436e2ffc15b40.ctex"
-metadata={
-"vram_texture": false
-}
+valid=false
 
 [deps]
 
 source_file="res://Sprites/jugadores/a_implementar/rey_marino.png"
-dest_files=["res://.godot/imported/rey_marino.png-89ddf0a84b9428f3947436e2ffc15b40.ctex"]
 
 [params]
 

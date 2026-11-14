@@ -68,6 +68,9 @@ func _ready() -> void:
 		isla_actual = datos_pantalla.isla_arcade
 		nivel_inicial_area = datos_pantalla.nivel_arcade
 	refresh_islas_desbloqueadas()
+	if isla_actual not in islas_desbloqueadas:
+		isla_actual = Islas.RAIMON
+		nivel_inicial_area = -1
 	refresh_niveles()
 	cambiar_estado(Estado.AREA if nivel_inicial_area >= 0 else Estado.ISLA)
 	info_nivel.scale = Vector2.ZERO
@@ -87,6 +90,8 @@ func cambiar_estado(estado: Estado) -> void:
 	
 func refresh_islas_desbloqueadas() -> void:
 	islas_desbloqueadas = ProgresoPartida.progreso_general.get_islas_desbloqueadas_arcade()
+	for indicador in indicadores:
+		indicador.set_bloqueado()
 	for isla in islas_desbloqueadas:
 		indicadores[isla].set_desbloqueado()
 		indicadores[isla].set_niveles_ganados(ProgresoPartida.progreso_general.get_niveles_vencidos_arcade(isla), ProgresoPartida.progreso_general.get_progreso_arcade().get_niveles_totales(isla))

@@ -35,9 +35,13 @@ func procesar_input(event: InputEvent) -> void:
 			set_nivel_actual(-1, nivel_actual)
 
 		elif nivel_actual < ProgresoPartida.progreso_general.get_progreso_arcade().get_niveles_totales(arcade.isla_actual) - 1 and arcade.movimiento_areas[arcade.isla_actual][nivel_actual] == direccion_vecino:
-			set_nivel_actual(1, nivel_actual)
+			var nivel_siguiente := nivel_actual + 1
+			if es_nivel_desbloqueado(nivel_siguiente):
+				set_nivel_actual(1, nivel_actual)
 
 	if event.is_action_pressed("ui_accept"):
+		if not es_nivel_desbloqueado(nivel_actual):
+			return
 		ControladorPartido.enfrentamiento.reiniciar_resultado()
 		ControladorPartido.enfrentamiento.set_jugador_local(
 			ProgresoPartida.progreso_general.get_jugador_seleccionado(),
@@ -52,18 +56,17 @@ func set_niveles_de_isla() -> void:
 	var contenedor_posiciones = arcade.indicadores[arcade.isla_actual].get_node("posicion_niveles")
 	var array_posiciones = contenedor_posiciones.get_children()
 	var niveles_disponibles = ProgresoPartida.progreso_general.get_progreso_arcade().get_niveles_totales(arcade.isla_actual)
-	var niveles_vencidos = ProgresoPartida.progreso_general.get_niveles_vencidos_arcade(arcade.isla_actual)
 	assert(array_posiciones.size() == niveles_disponibles, "no coincide los niveles definidos en la pantalla arcade con los del json")
 
 	for i in range(niveles_disponibles):
 		var posicion = array_posiciones[i] as Node2D
-		var desbloqueado = i <= niveles_vencidos
+		var desbloqueado := es_nivel_desbloqueado(i)
 		arcade.niveles[i].inicializar(posicion.global_position, desbloqueado)
 		var rival: String = arcade.get_jugador_nivel(i)
 		var nivel_rival: int = ProgresoArcade.get_nivel_rival(arcade.isla_actual, i)
 		arcade.niveles[i].set_logros(ProgresoPartida.progreso_general.get_logros_arcade(arcade.isla_actual, rival, nivel_rival))
 		arcade.niveles[i].show()
-	nivel_actual = clampi(arcade.nivel_inicial_area, 0, niveles_disponibles - 1)
+	nivel_actual = clampi(arcade.nivel_inicial_area, 0, get_ultimo_nivel_desbloqueado(niveles_disponibles))
 	set_nivel_actual(0)
 
 	var nuevo_x: float
@@ -82,6 +85,17 @@ func set_nivel_actual(indicador_siguiente_nivel: int, nivel_anterior: int = -1) 
 	arcade.niveles[nivel_actual].set_actual()
 	arcade.info_nivel.setup(nivel_actual, arcade.get_jugador_nivel(nivel_actual), arcade.isla_actual)
 	arcade.info_nivel.refresh_nivel()
+
+func es_nivel_desbloqueado(indice: int) -> bool:
+	return ProgresoPartida.progreso_general.esta_nivel_arcade_desbloqueado(arcade.isla_actual, indice)
+
+func get_ultimo_nivel_desbloqueado(cantidad_niveles: int) -> int:
+	var ultimo := 0
+	for i in range(cantidad_niveles):
+		if not es_nivel_desbloqueado(i):
+			break
+		ultimo = i
+	return ultimo
 
 func _exit_tree() -> void:
 	if is_instance_valid(arcade) and is_instance_valid(arcade.info_nivel):

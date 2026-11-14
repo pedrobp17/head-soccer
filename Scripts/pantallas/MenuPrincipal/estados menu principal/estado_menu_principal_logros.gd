@@ -10,6 +10,12 @@ func esconder_escena() -> void:
 	menu_principal.logros.cambiar_estado_foco(false)
 	menu_principal.logros.hide()
 
+func animar() -> void:
+	pass
+
+func reposicionar() -> void:
+	pass
+
 func cambiar_foco( tiene_foco : bool ) -> void:
 	menu_principal.logros.cambiar_estado_foco(tiene_foco)
 
