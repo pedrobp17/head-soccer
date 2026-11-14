@@ -1,8 +1,7 @@
 extends EstadoPelota
 class_name EstadoPelotaPoder
 
- #ver si es mejor si se puede hacer q la pelota con su area vaya detectando si colisiona con el jugador contrario y si es asi poder termina
-#implementacion = alguien dice cuando termina el poder
+var ejecutando_poder: bool = false
 
 func _ready() -> void:
 	EventBus.fin_poder.connect(set_fin_poder)
@@ -27,8 +26,3 @@ func _exit_tree() -> void:
 
 func set_fin_poder() -> void:
 	ejecutando_poder = false
-
-
-func activar_fisicas() -> void:
-	pass
-	#falta añadir direccion de rebote al salir del poder

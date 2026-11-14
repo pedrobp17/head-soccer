@@ -87,6 +87,8 @@ func set_nivel_actual(indicador_siguiente_nivel: int, nivel_anterior: int = -1) 
 	arcade.info_nivel.refresh_nivel()
 
 func es_nivel_desbloqueado(indice: int) -> bool:
+	if PantallaArcade.PRUEBA_TODOS_LOS_NIVELES:
+		return indice >= 0 and indice < ProgresoPartida.progreso_general.get_progreso_arcade().get_niveles_totales(arcade.isla_actual)
 	return ProgresoPartida.progreso_general.esta_nivel_arcade_desbloqueado(arcade.isla_actual, indice)
 
 func get_ultimo_nivel_desbloqueado(cantidad_niveles: int) -> int:

@@ -50,7 +50,7 @@ func ocultar() -> void:
 func refresh_nivel() -> void:
 	nivel.text = str(indice_nivel + 1)
 	nombre.text = NombresPersonajesHelper.get_nombre_normal_to_separacion_espacio(rival)
-	var texto_misiones: Array = LogrosArcadeHelper.get_texto_logro(isla_actual)
+	var texto_misiones: Array = LogrosArcadeHelper.get_texto_logro(rival, ProgresoArcade.get_nivel_rival(isla_actual, indice_nivel))
 	for i in misiones.size():
 		misiones[i].text = texto_misiones[i]
 	refresh_estrellas()

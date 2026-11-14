@@ -4,6 +4,8 @@ class_name PantallaArcade
 enum Islas {RAIMON, MARYTIMES, OCCULT, ROYALACADEMY, WILD, BRAIN, ZEUS, GENESIS, NONE}
 enum Estado {ISLA, AREA}
 
+# Acceso temporal para probar retos sin modificar el progreso guardado.
+const PRUEBA_TODOS_LOS_NIVELES := true
 const DURACION_ANIMACION_TRANSPARENCIA = 0.4
 const CENTRO_MAPA = Vector2(576, 324)
 const mapa_direcciones: Dictionary = {
@@ -90,6 +92,8 @@ func cambiar_estado(estado: Estado) -> void:
 	
 func refresh_islas_desbloqueadas() -> void:
 	islas_desbloqueadas = ProgresoPartida.progreso_general.get_islas_desbloqueadas_arcade()
+	if PRUEBA_TODOS_LOS_NIVELES:
+		islas_desbloqueadas.assign(jugadores_islas.keys())
 	for indicador in indicadores:
 		indicador.set_bloqueado()
 	for isla in islas_desbloqueadas:

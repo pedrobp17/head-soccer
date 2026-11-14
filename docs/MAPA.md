@@ -1,5 +1,9 @@
 # MAPA DEL PROYECTO - Head Soccer (Godot 4.7)
 
+> Pruebas arcade: `PantallaArcade.PRUEBA_TODOS_LOS_NIVELES` habilita temporalmente la selección de todas las islas y niveles sin alterar sus desbloqueos guardados. Cambiar a `false` para recuperar las restricciones normales; los resultados y estrellas obtenidos sí se guardan.
+
+> Misión arcade `GOL_TIEMPO`: registra los segundos transcurridos al marcar el último gol local; se cumple al ganar si ese tiempo alcanza el objetivo. La muerte súbita cuenta como final del tiempo reglamentario.
+
 > Generado leyendo todos los scripts (96 `.gd`). Actualízalo con `/mapa`. Lo marcado con (?) no
 > se ha podido verificar solo con los scripts (depende de lo que haya en las escenas `.tscn`).
 

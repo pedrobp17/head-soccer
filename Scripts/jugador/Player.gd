@@ -41,7 +41,7 @@ func _ready() -> void:
 	cambiar_estado(Estado.JUGANDO)
 	setup_comportamiento_ia()
 	posicion_aparicion = position
-	pie.setup(estadisticas.get_estadistica("golpe"), CAPA_LOCAL if es_visitante else CAPA_VISITANTE)
+	pie.setup(estadisticas.get_estadistica("golpe"), CAPA_LOCAL if es_visitante else CAPA_VISITANTE, es_visitante)
 	EventBus.poder_cargado.connect(on_poder_cargado)
 	EventBus.gastar_poder.connect(on_gastar_poder)
 	EventBus.esconder_personajes.connect(on_esconder_personajes)
@@ -69,7 +69,7 @@ func comprobar_colisiones(esperando_ejecutar_poder: bool) -> bool:
 				var direccion := -collision.get_normal()
 				fuerza = estadisticas.get_estadistica("golpe")
 				
-				EventBus.golpear_pelota.emit(direccion, false, fuerza)
+				EventBus.golpear_pelota.emit(direccion, false, fuerza, es_visitante)
 	return false
 
 func set_animacion(nombre_animacion: String) -> void:

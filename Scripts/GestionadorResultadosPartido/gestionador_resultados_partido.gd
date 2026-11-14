@@ -33,6 +33,7 @@ func gestionar_back(campo: Campo) -> void:
 		ControladorPartido.enfrentamiento.reiniciar_resultado()
 	ControladorPartido.enfrentamiento = Enfrentamientos.new()
 	ControladorPartido.logros_arcade = null
+	ControladorPartido.estadisticas_partido_jugador_local = null
 	var modo: ProgresoGlobal.Modos = ProgresoPartida.progreso_general.get_modo_jugado()
 	if modo == ProgresoGlobal.Modos.ARCADE:
 		campo.transicion_pantallas(MenuDeslizanteModosJuego.get_pantalla_asociada(modo), datos)

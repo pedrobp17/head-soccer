@@ -1,9 +1,9 @@
 extends RefCounted
 class_name GestorLogrosArcade
 
-var logros_desbloqueados: Dictionary = {}
-var logros_a_conseguir: Dictionary = {}
-var orden_logros: Array[LogroArcade] = []
+var orden_logros: Array = []
+var logros_desbloqueados: Array[bool] = []
+var valores_partido: Dictionary = {}
 var isla_actual: PantallaArcade.Islas
 var rival_actual: String
 var nivel_actual: int
@@ -14,57 +14,47 @@ func _init(isla: PantallaArcade.Islas, rival: String, nivel: int) -> void:
 	isla_actual = isla
 	rival_actual = rival
 	nivel_actual = nivel
-	orden_logros = LogrosArcadeHelper.get_logro_area(isla)
-	assert(orden_logros.size() == 3, "Se esperaban dos logros generales y uno de isla.")
-	var guardados: Array[bool] = ProgresoPartida.progreso_general.get_logros_arcade(isla, rival, nivel)
-	for i in orden_logros.size():
-		var logro: LogroArcade = orden_logros[i]
-		if logro.objetivo is bool:
-			logros_a_conseguir[logro.id] = false
-		else:
-			logros_a_conseguir[logro.id] = logro.objetivo
+	orden_logros = LogrosArcadeHelper.get_logros_jugador(rival, nivel)
+	assert(orden_logros.size() == 3, "Se esperaban tres logros por encuentro.")
+	logros_desbloqueados = ProgresoPartida.progreso_general.get_logros_arcade(isla, rival, nivel)
 
-		logros_desbloqueados[logro.id] = guardados[i]
-
-func registrar_logro(id: Variant, cantidad: Variant) -> void:
-	if not logros_a_conseguir.has(id):
-		push_warning("El logro no pertenece al catalogo de este partido.")
-		return
-	if is_logro_desbloqueado(id):
-		return
-	if logros_a_conseguir[id] is bool and cantidad is bool:
-		logros_a_conseguir[id] = cantidad
-	elif logros_a_conseguir[id] is int and cantidad is int:
-		logros_a_conseguir[id] -= cantidad
-	else:
-		push_warning("La cantidad y el objetivo deben ser ambos int o ambos bool.")
-		return
+func registrar_logro(id: int, cantidad: Variant) -> void:
+	valores_partido[id] = cantidad
 
 func evaluar_logros() -> void:
-	var cambios: int = 0
-	for id in logros_a_conseguir.keys():
-		if is_logro_desbloqueado(id):
+	# Todas las estrellas requieren ganar, incluso las opcionales.
+	if valores_partido.get(LogrosArcadeHelper.Ids.GANA_PARTIDO, false) != true:
+		return
+	var cambios: bool = false
+	for i in orden_logros.size():
+		if logros_desbloqueados[i]:
 			continue
+		var logro: Dictionary = orden_logros[i]
+		var id: int = logro["id"]
+		if not valores_partido.has(id):
+			continue
+		var objetivo: Variant = logro["objetivo"]
+		var valor: Variant = valores_partido[id]
 		var cumplido: bool = false
-		if logros_a_conseguir[id] is bool:
-			cumplido = logros_a_conseguir[id] == true
-		elif logros_a_conseguir[id] is int:
-			cumplido = logros_a_conseguir[id] <= 0
+		if objetivo is bool and valor is bool:
+			cumplido = valor == objetivo
+		elif objetivo is int and valor is int:
+			cumplido = valor >= objetivo
 		if cumplido:
-			logros_desbloqueados[id] = true
-			cambios += 1
-	if cambios > 0:
+			logros_desbloqueados[i] = true
+			cambios = true
+	if cambios:
 		ProgresoPartida.progreso_general.set_logros_arcade(
-			isla_actual, rival_actual, nivel_actual, get_logros_para_guardar(), jugador_actual)
+			isla_actual, rival_actual, nivel_actual, logros_desbloqueados, jugador_actual)
 
-func is_logro_desbloqueado(id: Variant) -> bool:
-	return logros_desbloqueados.get(id, false)
+func is_logro_desbloqueado(id: int) -> bool:
+	for i in orden_logros.size():
+		if orden_logros[i]["id"] == id and logros_desbloqueados[i]:
+			return true
+	return false
 
 func get_logros_para_guardar() -> Array[bool]:
-	var resultado: Array[bool] = []
-	for logro in orden_logros:
-		resultado.append(is_logro_desbloqueado(logro.id))
-	return resultado
+	return logros_desbloqueados.duplicate()
 
 func get_texto_misiones() -> Array[String]:
-	return LogrosArcadeHelper.get_texto_logro(isla_actual)
+	return LogrosArcadeHelper.get_texto_logro(rival_actual, nivel_actual)

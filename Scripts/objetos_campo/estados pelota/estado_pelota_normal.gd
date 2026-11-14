@@ -8,15 +8,8 @@ func _ready() -> void:
 	EventBus.inicio_poder.connect(set_inicio_poder)
 	EventBus.reposicionar_pelota.connect(set_reposicion)
 	
-func _enter_tree() -> void:
-	ejecutando_poder = false
-	
-func _physics_process(_delta: float) -> void:
-	pass
-	
-		
 func set_inicio_poder() -> void:
-	peticion_transmision_estado.emit(Pelota.Estado.PODER)
+	cambiar_estado(Pelota.Estado.PODER)
 
 
 func set_reposicion(es_visitante: bool) -> void:
