@@ -9,16 +9,14 @@ func _enter_tree() -> void:
 	
 # Called when the node enters the scene tree for the first time.
 func _physics_process(delta: float) -> void:
-	if jugador.esquema_control == Jugador.ControlScheme.IA:
-		#comportamiento_ia.process_ia()
-		pass
-	else:
-		movimiento_player(delta)
+	if jugador.estado_actual != self:
+		return
+	movimiento_player(delta)
 
 func movimiento_player(delta : float) -> void:
 	movimiento_general(delta)
 	
-	if KeyUtils.is_action_just_pressed( jugador.esquema_control, KeyUtils.Accion.PATADA ):
+	if accion_pulsada(KeyUtils.Accion.PATADA):
 		jugador.pie.golpear()
 		
 	
@@ -26,8 +24,8 @@ func movimiento_player(delta : float) -> void:
 		cambiar_estado(Jugador.Estado.ATURDIDO)
 		return
 	
-	if KeyUtils.is_action_just_pressed(jugador.esquema_control, KeyUtils.Accion.PODER) and jugador.poder_listo:
-		peticion_transmision_estado.emit(Jugador.Estado.ESPERANDO_PODER)
+	if accion_pulsada(KeyUtils.Accion.PODER) and jugador.poder_listo:
+		cambiar_estado(Jugador.Estado.ESPERANDO_PODER)
 		EventBus.gastar_poder.emit(jugador.es_visitante)
 		
 	jugador.move_and_slide()

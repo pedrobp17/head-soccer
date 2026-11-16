@@ -91,7 +91,7 @@ head_soccer.tscn (HeadSoccer, nodo raíz, escena principal)
   `parar_juego()` -> INACTIVO con guard `is EstadoJuegoInactivo` (idempotente). La pantalla `campo` es la dueña
   del ciclo de vida: llama a `parar_juego()` en `_enter_tree`, en `_exit_tree` (con guard `is_instance_valid`
   por el apagado de la app) y al inicio de la rama de BACK.
-- `setup_jugador`: array con los dos jugadores; `jugando_solitario()` es true si el visitante está vacío ("" = IA).
+- `jugando_solitario()` consulta el modo seleccionado: VERSUS conserva P1/P2; los otros modos usan P1/IA. `dificultad_ia` conserva DIFICIL/EXTREMA durante la sesión.
 - Estados de juego:
   - **INACTIVO**: "sin partido": sin `_process`, sin conectar `EventBus.gol`; pone `tiempo_restante` a tope en
     `_enter_tree` (el HUD de la intro muestra el tiempo correcto). `gol_valido()`/`cargar_poder()`/`uso_poder()`
@@ -134,10 +134,15 @@ head_soccer.tscn (HeadSoccer, nodo raíz, escena principal)
   Emite `golpear_pelota` y `pie_contacto_pelota_en_poder`.
 - Cabezazo: `comprobar_colisiones()` detecta `Pelota` tras `move_and_slide()` y emite `golpear_pelota`.
 - Poderes: `CreadorPoderes` -> `Poder` (base) -> `PoderManoMagica` (vacío). Solo "mano_magica" registrado.
-- IA: `ComportamientoIA` (Node hijo): cada 300 ms (REACCION_IA) sigue la x de la pelota; `configurar_decision_ia`
-  vacío. Las llamadas a `process_ia()` están comentadas en los estados, así que la IA hoy no actúa.
+- IA: `ComportamientoIA` (Node hijo) produce dirección y pulsos de salto/patada; `EstadoJugador.movimiento_general` y `accion_pulsada` permiten ejecutar humanos e IA con la misma física. No se introduce otra máquina de estados.
+- `ConfiguracionIA` (Resource) define DIFICIL (reacción 0.16 s, horizonte 0.95 s, error horizontal ±18 px) y EXTREMA (0.05 s, 1.5 s, ±2 px). Ambas respetan velocidad, salto, daño y aturdimiento del personaje; extrema también intenta golpear al rival cercano.
+- `PredictorPelotaIA` (RefCounted) reproduce gravedad, amortiguación, límite de velocidad y hasta cuatro rebotes por paso físico mediante consultas `PhysicsServer2D.body_test_motion`. No mueve la pelota y excluye ambos jugadores porque sus golpes futuros son desconocidos.
+- La IA busca contactos alcanzables, se coloca detrás de la pelota respecto a la portería rival, programa saltos según su impulso y cubre su portería si no puede interceptar. La proyección es una estimación; los futuros golpes y colisiones con personajes no se predicen.
+- `apariciones.gd` conecta rival y porterías a cada IA. `Campo` ofrece selector Difícil/Extrema durante la intro; al iniciar lo oculta. La elección dura la sesión, sin escribir progreso. `EstadoJugadorReinicio` limpia las decisiones pendientes tras cada gol.
+- La IA no activa poderes: las implementaciones actuales siguen vacías. El bloqueo de patada en `pie.gd` dura el tween completo (0.30 s).
+- Uso, parámetros, límites y validación de los dos perfiles: `docs/IA.md`.
 
-## 7. Pelota (`Pelota`, RigidBody2D)
+## 7. Pelota (`Pelota`, CharacterBody2D)
 - `mover(normal, es_pie, fuerza)` aplica fuerza central al recibir `golpear_pelota` (conectada en EstadoPelotaNormal).
 - Estados: Normal (limita velocidad máxima 3000, escucha `inicio_poder` y `reposicionar_pelota`),
   Poder (congela la física hasta `fin_poder`), Reinicio (`reset()` y vuelve a Normal).
@@ -220,10 +225,10 @@ contacto de pie/cuerpo con la pelota -> estado PODER -> `poder.ejecutar()` (aún
 4. `estado_jugador_poder.gd`: el método se llama `_entre_tree` (typo), nunca se ejecuta; `poder.ejecutar()` no se llama.
    `PoderManoMagica` está vacío; `CreadorPoderes` solo conoce "mano_magica" mientras los JSON listan más poderes
    (el `assert` fallaría con otro).
-5. IA inactiva: `comportamiento_ia.process_ia()` comentado en los estados Moviendo y EsperandoPoder.
+5. **Corregido (IA)**: Moviendo y EsperandoPoder comparten física para humanos e IA (ver sección 6).
 6. `poder_cargado` no indica de qué jugador es, y `barra_poder_maximo` es una variable del estado (se reinicia a `false` en
    cada entrada); un jugador puede perder la capacidad de usar el poder tras un cambio de estado.
-7. `pie.gd`: `golpeando = false` se asigna justo después de crear el tween, así que el guard `if golpeando` no protege.
+7. **Corregido (IA)**: `pie.gd` libera `golpeando` después de `await tween.finished`; impide apilar patadas.
 8. `inicio_poder` / `fin_poder`: sin emisor encontrado; la pelota nunca entra/sale del estado PODER (?).
 9. `DURACION_JUEGO_SEGUNDOS = 20` parece valor de pruebas.
 10. `info_personajes.gd`: `_ready()` llama a `reiniciar_progreso()`, que borra `user://progreso_personajes.json` en cada arranque
@@ -238,13 +243,8 @@ contacto de pie/cuerpo con la pelota -> estado PODER -> `poder.ejecutar()` (aún
     `controlador_partido.gd` conectan con `.bind()` sin argumentos mientras menú y logros conectan directos.
 15. `.gitignore` solo cubre `.godot/` y `/android/`: `.opencode/` (contiene ~2500 ficheros de `node_modules`) está sin
     ignorar y aparece como `??`. Añadir `.opencode/` antes del próximo commit.
-16. IA jamás se activa, aunque se descomente `process_ia()`: `controlador_partido.setup_jugador` no es `@export` y nadie
-    le asigna valor, así que `jugando_solitario()` (que lee `setup_jugador[1].is_empty()`) es siempre false con el
-    default `["MarkEvans","AxelBlaze"]` -> `apariciones.gd` pone P2, nunca `ControlScheme.IA`. Hay dos fuentes de verdad
-    en conflicto: `setup_jugador` vs `enfrentamiento.config_jugador_visitante`.
-17. Descomentar `process_ia()` tampoco movería a la IA: la rama IA de `_process` en los estados no hace `move_and_slide`,
-    ni gravedad, ni animación, ni las comprobaciones de transición (vida <= 0, poder); y `KeyUtils.MAPA_ACCIONES` no
-    tiene entrada para `ControlScheme.IA`, por lo que `movimiento_general()` fallaría con "key not found".
+16. **Corregido (IA)**: eliminada `setup_jugador`; el modo de juego determina P1/IA o P1/P2.
+17. **Corregido (IA)**: entrada de IA separada de `KeyUtils`; gravedad, movimiento, colisiones, animación y daño pasan por los estados existentes.
 18. `Menu.tscn` tiene 5 placeholders pero `MenuDeslizante.visible_slots` por defecto es 7: se corrigió poniendo
     `visible_slots = 5` en el nodo `manejador` (el que lleva `menu_deslizante_modos_juego.gd`). La raíz `MenuDeslizante`
     NO debe llevar script de estado: el estado se crea con `.new()` desde el Creador.

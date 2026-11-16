@@ -18,22 +18,34 @@ func setup( jugador_entrada : Jugador, animacion_entrada : AnimationPlayer, _com
 	comportamiento_ia = _comportamiento_ia
 	datos_juego = _datos
 func movimiento_general(delta: float) -> void:
+	if jugador.esquema_control == Jugador.ControlScheme.IA:
+		comportamiento_ia.actualizar(delta)
 	if not jugador.is_on_floor():
 		jugador.velocity.y += GestorEstadisticas.GRAVEDAD_JUGADOR * delta
 
 	# Handle jump.
-	if KeyUtils.is_action_just_pressed( jugador.esquema_control, KeyUtils.Accion.SALTO ) and jugador.is_on_floor():
+	if accion_pulsada(KeyUtils.Accion.SALTO) and jugador.is_on_floor():
 		jugador.velocity.y = jugador.estadisticas.get_velocidad_salto()
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direccion :=  KeyUtils.get_input_vector(jugador.esquema_control)
+	var direccion: float = comportamiento_ia.direccion if jugador.esquema_control == Jugador.ControlScheme.IA else KeyUtils.get_input_vector(jugador.esquema_control)
 	if direccion:
 		jugador.velocity.x = direccion * jugador.estadisticas.get_estadistica("velocidad")
 	else:
 		jugador.velocity.x = 0.0 # Frenado inmediato para conservar una respuesta ?gil.
-	
-	
+
+func accion_pulsada(accion: KeyUtils.Accion) -> bool:
+	if jugador.esquema_control != Jugador.ControlScheme.IA:
+		return KeyUtils.is_action_just_pressed(jugador.esquema_control, accion)
+	match accion:
+		KeyUtils.Accion.SALTO:
+			return comportamiento_ia.saltar
+		KeyUtils.Accion.PATADA:
+			return comportamiento_ia.patear
+	# Los poderes actuales no tienen implementacion; activarlos bloquearia a la IA.
+	return false
+
 func cambiar_estado(nuevo_estado : Jugador.Estado, datos : DatosEstadoJugador = DatosEstadoJugador.new()) -> void:
 	peticion_transmision_estado.emit(nuevo_estado, datos)
 

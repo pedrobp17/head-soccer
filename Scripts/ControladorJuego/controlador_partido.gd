@@ -8,7 +8,7 @@ var enfrentamiento: Enfrentamientos = null
 var creador_estados := CreadorEstadoJuego.new()
 var estado_actual: EstadoJuego = null
 var tiempo_restante: float
-var setup_jugador: Array[String] = ["MarkEvans", "AxelBlaze"] # "" = jugando contra IA , "nombre" = jugando contra jugador 2
+var dificultad_ia: ConfiguracionIA.Dificultad = ConfiguracionIA.Dificultad.DIFICIL
 var logros_arcade: GestorLogrosArcade = null
 var estadisticas_partido_jugador_local: EstadisticasPartido = null
 
@@ -37,7 +37,7 @@ func parar_juego() -> void:
 	cambiar_estado(Estado.INACTIVO)
 
 func jugando_solitario() -> bool:
-	return setup_jugador[1].is_empty()
+	return ProgresoPartida.progreso_general.get_modo_jugado() != ProgresoGlobal.Modos.VERSUS
 	
 func fin_partido() -> bool:
 	return tiempo_restante <= 0

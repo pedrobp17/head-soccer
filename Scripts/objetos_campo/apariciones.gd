@@ -19,6 +19,14 @@ func _ready() -> void:
 	jugador_visitante = aparecer_jugador(ControladorPartido.enfrentamiento.config_jugador_visitante, Jugador.BANDO[true])
 	porteria_visitante.inicializar(false)
 	set_controladores_personajes()
+	jugador_local.comportamiento_ia.configurar_partido(jugador_visitante, porteria_local, porteria_visitante)
+	jugador_visitante.comportamiento_ia.configurar_partido(jugador_local, porteria_visitante, porteria_local)
+	set_dificultad_ia(ControladorPartido.dificultad_ia)
+
+func set_dificultad_ia(nivel: ConfiguracionIA.Dificultad) -> void:
+	ControladorPartido.dificultad_ia = nivel
+	jugador_local.comportamiento_ia.set_dificultad(nivel)
+	jugador_visitante.comportamiento_ia.set_dificultad(nivel)
 	
 func aparecer_jugador( config_jugador : ConfiguracionJugadorPartido, identificador_bando : int) -> Jugador:
 	var datos_jugador := DatosJugadores.get_jugador(config_jugador.jugador)
