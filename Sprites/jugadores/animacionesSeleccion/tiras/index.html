@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Animaciones de selección · Head Soccer</title>
+<style>
+*{box-sizing:border-box} :root{color-scheme:dark;font-family:system-ui,sans-serif}
+body{margin:0;background:#101923;color:#edf5fa;padding:28px} main{max-width:1360px;margin:auto}
+h1{font-size:clamp(24px,4vw,34px);margin:0 0 8px}p{color:#a8bdce;line-height:1.55;margin:0 0 22px}
+.layout{display:grid;grid-template-columns:minmax(300px,490px) minmax(0,1fr);gap:24px;align-items:start}
+.viewer{position:sticky;top:20px;padding:20px;background:#192937;border:1px solid #345064;border-radius:16px}
+h2{font-size:23px;margin:0} .heading{display:flex;gap:14px;align-items:center;justify-content:space-between}
+.badge{font-size:12px;color:#91d9e8;background:#203c4b;padding:6px 10px;border-radius:20px;white-space:nowrap}
+#principal{display:block;width:100%;height:auto;margin:14px 0;border:1px solid #345064;border-radius:10px}
+.buttons,.options,.timeline{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin:12px 0}
+button,select{font:inherit;color:inherit;background:#253f51;border:1px solid #486277;border-radius:8px;padding:9px 12px}
+button{cursor:pointer}button:hover{background:#35586e}button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid #8ee7ff;outline-offset:3px}
+#play{background:#91e3f3;color:#0b2736;font-weight:650;min-width:105px;border-color:#91e3f3}
+.timeline input{flex:1;min-width:100px;accent-color:#91e3f3}.timeline output{font-variant-numeric:tabular-nums;color:#c2dce9}
+label{font-size:14px;color:#bed1df;display:flex;gap:8px;align-items:center}input[type=checkbox]{accent-color:#91e3f3}
+.link{color:#91e3f3;font-size:14px;display:inline-block;margin-top:8px}
+.gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.card{padding:8px 8px 12px;background:#192937;border:1px solid #345064;border-radius:12px;min-width:0;text-align:left}
+.card[aria-pressed=true]{border:2px solid #8ee7ff;padding:7px 7px 11px;background:#234256}
+.card canvas{display:block;width:100%;height:auto;border-radius:6px}.name{display:block;font-size:13px;overflow-wrap:anywhere;padding:8px 4px 0}
+.state{font-size:12px;color:#9bb6c8;padding:4px;display:block}.error{color:#ffb7a5}.gallery-head{display:flex;gap:12px;align-items:center;justify-content:space-between;margin-bottom:16px}
+small,footer{color:#96adbf;font-size:12px;line-height:1.5}footer{margin-top:24px}.phase{font-size:14px;color:#a9dfef}
+@media(max-width:1000px){.gallery{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:720px){body{padding:14px}.layout{grid-template-columns:1fr}.viewer{position:static}.gallery{grid-template-columns:repeat(3,minmax(0,1fr))}.gallery-head{flex-wrap:wrap}}
+</style>
+</head>
+<body>
+<main>
+<h1>Animaciones de selección</h1>
+<p>Elige un personaje para ver su gesto de presentación o revisa todos a la vez.<br>18 personajes · 6 fotogramas por tira · cada fotograma conserva sus 750 × 750 píxeles.</p>
+<div class="layout">
+<section class="viewer" aria-label="Vista del personaje seleccionado">
+  <div class="heading"><h2 id="nombre">MarkEvans</h2><span class="badge">750 × 750 px</span></div>
+  <canvas id="principal" width="750" height="750" aria-label="Animación del personaje seleccionado"></canvas>
+  <div class="timeline"><input id="frame" type="range" min="0" max="5" step="1" value="0" aria-label="Fotograma"><output id="counter" for="frame">1 / 6</output></div>
+  <div class="buttons"><button id="play" type="button">Pausar</button><button id="prev" type="button" aria-label="Fotograma anterior">←</button><button id="next" type="button" aria-label="Fotograma siguiente">→</button><button id="restart" type="button">Reiniciar</button></div>
+  <div class="options"><label>Jugador <select id="character" aria-label="Jugador"></select></label></div>
+  <div class="options"><label>Velocidad <select id="speed"><option value="0.5">0,5×</option><option value="1" selected>1×</option><option value="2">2×</option></select></label><label>Fondo <select id="background"><option value="oscuro">Oscuro</option><option value="claro">Claro</option><option value="cuadricula">Cuadrícula</option></select></label></div>
+  <div class="options"><label><input id="loop" type="checkbox" checked>Repetir</label><span id="phase" class="phase">Reposo</span></div>
+  <a id="strip" class="link" href="MarkEvans.png" target="_blank" rel="noopener">Abrir tira completa · 4500 × 750 px</a>
+  <p id="error" class="error" role="alert" hidden></p>
+  <small>El ritmo original incluye pausas de reposo y dura 2,16 segundos.</small>
+</section>
+<section aria-label="Galería de animaciones">
+  <div class="gallery-head"><strong id="loaded">Cargando imágenes…</strong><label><input id="all" type="checkbox" checked>Animar miniaturas</label></div>
+  <div id="gallery" class="gallery"></div>
+</section>
+</div>
+<footer>Abre este HTML directamente. Las imágenes se cargan desde esta misma carpeta; no necesita servidor ni conexión. Usa «Abrir tira completa» para ver los seis fotogramas horizontales.</footer>
+</main>
+<script>
+'use strict';
+const nombres = ['AdrianSpeed','ArtieMishman','AxelBlaze','ByronLove','CalebStonewall','GaryLancaster','HarleyKane','JohanTassman','JonasDemetrius','JudeSharp','KatieBrown','MarkEvans','NathanJones','NelsonRockwell','SteveEagle','ThomasFeldt','WilburWatkins','XavierFoster'];
+const $ = id => document.getElementById(id);
+const ui = Object.fromEntries(['nombre','principal','frame','counter','play','prev','next','restart','character','speed','background','loop','phase','strip','error','all','loaded','gallery'].map(id => [id,$(id)]));
+const duraciones = [600,120,160,320,160,800];
+const comienzos = [0,600,720,880,1200,1360];
+const total = 2160;
+const fases = ['Reposo','Parpadeo','Inicio del gesto','Presentación','Retorno','Reposo'];
+const imagenes = new Map();
+const tarjetas = new Map();
+let elegido = 'MarkEvans';
+let tiempo = 0;
+let activo = true;
+let anterior = null;
+let cargadas = 0;
+let fallidas = 0;
+
+function fotogramaActual() {
+  for (let i = 5; i >= 0; i--) if (tiempo >= comienzos[i]) return i;
+  return 0;
+}
+
+function fondo(ctx, medida) {
+  ctx.clearRect(0,0,medida,medida);
+  if (ui.background.value === 'cuadricula') {
+    const paso = medida / 15;
+    for(let y=0;y<15;y++) for(let x=0;x<15;x++) {
+      ctx.fillStyle=(x+y)%2 ? '#344552' : '#253541';
+      ctx.fillRect(x*paso,y*paso,paso+1,paso+1);
+    }
+  } else {
+    ctx.fillStyle=ui.background.value==='claro' ? '#e3eaf0' : '#101d28';
+    ctx.fillRect(0,0,medida,medida);
+  }
+}
+
+function pintar(canvas, nombre, fotograma) {
+  const ctx=canvas.getContext('2d');
+  fondo(ctx,canvas.width);
+  const imagen=imagenes.get(nombre);
+  if(imagen && imagen.complete && imagen.naturalWidth===4500 && imagen.naturalHeight===750) {
+    ctx.imageSmoothingEnabled=true;
+    ctx.imageSmoothingQuality='high';
+    ctx.drawImage(imagen,fotograma*750,0,750,750,0,0,canvas.width,canvas.height);
+  }
+}
+
+function estadoCarga() {
+  ui.loaded.textContent=`${cargadas} / ${nombres.length} listas${fallidas ? ` · ${fallidas} con error` : ''}`;
+}
+
+function sincronizar() {
+  const frame=fotogramaActual();
+  ui.nombre.textContent=elegido;
+  ui.frame.value=String(frame);
+  ui.counter.textContent=`${frame+1} / 6`;
+  ui.phase.textContent=fases[frame];
+  ui.play.textContent=activo?'Pausar':'Reproducir';
+  ui.character.value=elegido;
+  ui.strip.href=`${elegido}.png`;
+  ui.error.hidden=!tarjetas.get(elegido)?.error;
+  ui.error.textContent=ui.error.hidden?'':`No se ha podido cargar ${elegido}.png como tira de 4500 × 750. Conserva las imágenes junto a este HTML.`;
+  for(const [nombre,tarjeta] of tarjetas) tarjeta.boton.setAttribute('aria-pressed',String(nombre===elegido));
+}
+
+function dibujar() {
+  const frame=fotogramaActual();
+  pintar(ui.principal,elegido,frame);
+  for(const [nombre,tarjeta] of tarjetas) pintar(tarjeta.canvas,nombre,ui.all.checked?frame:0);
+}
+
+function elegir(nombre) {
+  if(!imagenes.has(nombre)) return;
+  elegido=nombre;tiempo=0;activo=true;
+  sincronizar();dibujar();
+}
+
+function irA(frame) {
+  tiempo=comienzos[(frame+6)%6];activo=false;
+  sincronizar();dibujar();
+}
+
+for(const nombre of nombres) {
+  const opcion=document.createElement('option');opcion.value=nombre;opcion.textContent=nombre;ui.character.append(opcion);
+  const boton=document.createElement('button');boton.type='button';boton.className='card';boton.setAttribute('aria-label',`Ver animación de ${nombre}`);boton.setAttribute('aria-pressed','false');
+  const canvas=document.createElement('canvas');canvas.width=180;canvas.height=180;canvas.setAttribute('aria-hidden','true');
+  const etiqueta=document.createElement('span');etiqueta.className='name';etiqueta.textContent=nombre;
+  const estado=document.createElement('span');estado.className='state';estado.textContent='Cargando…';
+  boton.append(canvas,etiqueta,estado);boton.onclick=()=>elegir(nombre);ui.gallery.append(boton);
+  const tarjeta={boton,canvas,estado,error:false};tarjetas.set(nombre,tarjeta);
+  const imagen=new Image();imagenes.set(nombre,imagen);
+  const fallo=()=>{tarjeta.error=true;estado.textContent='No se pudo cargar';estado.className='state error';fallidas++;estadoCarga();sincronizar();dibujar();};
+  imagen.onerror=fallo;
+  imagen.onload=()=>{
+    if(imagen.naturalWidth!==4500||imagen.naturalHeight!==750){fallo();return;}
+    cargadas++;estado.textContent='6 fotogramas';estadoCarga();sincronizar();dibujar();
+  };
+  imagen.src=`${nombre}.png`;
+}
+
+ui.character.onchange=()=>elegir(ui.character.value);
+ui.play.onclick=()=>{if(!activo&&tiempo>=total-1)tiempo=0;activo=!activo;sincronizar();};
+ui.prev.onclick=()=>irA(fotogramaActual()-1);
+ui.next.onclick=()=>irA(fotogramaActual()+1);
+ui.frame.oninput=()=>irA(Number(ui.frame.value));
+ui.restart.onclick=()=>{tiempo=0;activo=true;sincronizar();dibujar();};
+ui.background.onchange=dibujar;
+ui.all.onchange=dibujar;
+
+function animar(ahora) {
+  const delta=anterior===null?0:Math.max(0,Math.min(200,ahora-anterior));anterior=ahora;
+  if(activo){
+    tiempo+=delta*Number(ui.speed.value);
+    if(tiempo>=total){if(ui.loop.checked)tiempo%=total;else{tiempo=total-0.001;activo=false;}}
+    sincronizar();
+  }
+  dibujar();
+  requestAnimationFrame(animar);
+}
+sincronizar();estadoCarga();dibujar();requestAnimationFrame(animar);
+</script>
+</body>
+</html>

@@ -135,10 +135,13 @@ head_soccer.tscn (HeadSoccer, nodo raíz, escena principal)
 - Cabezazo: `comprobar_colisiones()` detecta `Pelota` tras `move_and_slide()` y emite `golpear_pelota`.
 - Poderes: `CreadorPoderes` -> `Poder` (base) -> `PoderManoMagica` (vacío). Solo "mano_magica" registrado.
 - IA: `ComportamientoIA` (Node hijo) produce dirección y pulsos de salto/patada; `EstadoJugador.movimiento_general` y `accion_pulsada` permiten ejecutar humanos e IA con la misma física. No se introduce otra máquina de estados.
-- `ConfiguracionIA` (Resource) define DIFICIL (reacción 0.16 s, horizonte 0.95 s, error horizontal ±18 px) y EXTREMA (0.05 s, 1.5 s, ±2 px). Ambas respetan velocidad, salto, daño y aturdimiento del personaje; extrema también intenta golpear al rival cercano.
-- `PredictorPelotaIA` (RefCounted) reproduce gravedad, amortiguación, límite de velocidad y hasta cuatro rebotes por paso físico mediante consultas `PhysicsServer2D.body_test_motion`. No mueve la pelota y excluye ambos jugadores porque sus golpes futuros son desconocidos.
+- `ConfiguracionIA` (Resource) mantiene IDs DIFICIL/EXTREMA, presentados como Competitiva/Experta. Percepción atrasada 120/80 ms, decisiones variables 130–250/90–170 ms y estimación de vuelo 0.50/0.65 s. Ambas tienen errores persistentes de posición, velocidad y tiempo de salto; respetan las estadísticas del personaje.
+- Contención en `ComportamientoIA`: espera entre el 20% y el 30% del campo desde su portería, sale con ventaja de llegada (0.18 s) y proximidad, y abandona persecuciones más allá del 60% salvo peligro. Compromiso de disputa 0.65 s con histéresis; peligro defensivo interrumpe la espera. Se conservan los reflejos y la precisión de ambos perfiles.
+- Presión ante pérdida de tiempo: si la IA va perdiendo y percibe al rival a <=140 px de un balón casi inmóvil (<=35 px/s) durante 1.5 s seguidos, sale a disputarlo sin límite del 60% ni ventaja de llegada. Conserva la presión 1 s tras un toque; peligro defensivo tiene prioridad. Se limpia al reiniciar, no poder actuar, perder al rival o dejar de ir perdiendo. Umbrales en `ConfiguracionIA`.
+- `ComportamientoIA._observar` captura posiciones y mantiene memoria atrasada de pelota y rival. Infiere velocidad a partir de posiciones; las decisiones no leen la velocidad real ni las posiciones actuales. Limpia el historial al reiniciar o parar el partido.
+- `PredictorPelotaIA` (RefCounted) estima un vuelo parabólico corto con datos percibidos y gravedad aproximada. No consulta colisiones ni anticipa rebotes; debe observarlos con retraso para corregir su lectura. Sustituye al predictor físico exacto anterior.
 - La IA busca contactos alcanzables, se coloca detrás de la pelota respecto a la portería rival, programa saltos según su impulso y cubre su portería si no puede interceptar. La proyección es una estimación; los futuros golpes y colisiones con personajes no se predicen.
-- `apariciones.gd` conecta rival y porterías a cada IA. `Campo` ofrece selector Difícil/Extrema durante la intro; al iniciar lo oculta. La elección dura la sesión, sin escribir progreso. `EstadoJugadorReinicio` limpia las decisiones pendientes tras cada gol.
+- `apariciones.gd` conecta rival y porterías a cada IA. `Campo` ofrece selector Competitiva/Experta durante la intro; al iniciar lo oculta. La elección dura la sesión, sin escribir progreso. `EstadoJugadorReinicio` limpia las decisiones y memoria pendientes tras cada gol.
 - La IA no activa poderes: las implementaciones actuales siguen vacías. El bloqueo de patada en `pie.gd` dura el tween completo (0.30 s).
 - Uso, parámetros, límites y validación de los dos perfiles: `docs/IA.md`.
 
@@ -157,6 +160,7 @@ head_soccer.tscn (HeadSoccer, nodo raíz, escena principal)
   esquemas (P1 vs IA o P1 vs P2).
 
 ## 9. UI de partido
+- Vista previa independiente del aura: `Sprites/animaciones/superpoder_general/vista_previa.html`. Incluye las imágenes, reproduce 19 fotogramas y permite pausa, avance manual, velocidad, fondo y capas sobre Mark/Axel/Jude. No modifica la animación del partido.
 - `ui.gd` (CanvasLayer): barras de vida y poder, marcador, nombres, iconos, reloj, textos FIN / TIEMPO EXTRA,
   animación de gol. Lee `ControladorPartido.enfrentamiento` y `DatosJugadores`.
 - Poder: la barra se llena solo si `estado_actual.cargar_poder()`; al llenarse emite `poder_cargado`.

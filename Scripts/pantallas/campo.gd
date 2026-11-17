@@ -42,8 +42,8 @@ func crear_selector_ia() -> void:
 	etiqueta.text = "Dificultad del rival"
 	fila.add_child(etiqueta)
 	var opciones := OptionButton.new()
-	opciones.add_item("Difícil", ConfiguracionIA.Dificultad.DIFICIL)
-	opciones.add_item("Extrema", ConfiguracionIA.Dificultad.EXTREMA)
+	opciones.add_item("Competitiva", ConfiguracionIA.Dificultad.DIFICIL)
+	opciones.add_item("Experta", ConfiguracionIA.Dificultad.EXTREMA)
 	opciones.select(ControladorPartido.dificultad_ia)
 	opciones.focus_mode = Control.FOCUS_NONE
 	fila.add_child(opciones)
